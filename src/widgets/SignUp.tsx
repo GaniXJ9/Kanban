@@ -1,12 +1,54 @@
+import { useForm } from "react-hook-form";
 import Input from "../shared/Input";
+import type { RegisterInterface } from "../app/types/types";
+import { schema } from "../app/schema/registerSchema";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 function SingUp() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<RegisterInterface>({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data: RegisterInterface) => {
+    console.log(data);
+
+    reset();
+  };
+
   return (
-    <div className="flex flex-col items-center w-full gap-5 rounded-md">
-      <Input lable="username" type="text" />
-      <Input lable="email" type="email" />
-      <Input lable="password" type="password" />
-      <Input lable="confirm password" type="password" />
+    <form
+      className="flex flex-col items-center w-full gap-5 rounded-md"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <Input
+        label="username"
+        type="text"
+        {...register("username")}
+        error={errors.username?.message}
+      />
+      <Input
+        label="email"
+        type="email"
+        {...register("email")}
+        error={errors.email?.message}
+      />
+      <Input
+        label="password"
+        type="password"
+        {...register("password")}
+        error={errors.password?.message}
+      />
+      <Input
+        label="confirm password"
+        type="password"
+        {...register("confirmPassword")}
+        error={errors.confirmPassword?.message}
+      />
 
       <button
         className="
@@ -17,7 +59,7 @@ function SingUp() {
       >
         Sing Up
       </button>
-    </div>
+    </form>
   );
 }
 

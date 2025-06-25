@@ -3,8 +3,8 @@ import Input from "../shared/Input";
 function SingIn() {
   return (
     <div className="flex flex-col items-center w-full gap-5 rounded-md">
-      <Input lable="username" type="text" />
-      <Input lable="password" type="password" />
+      <Input label="username" type="text" />
+      <Input label="password" type="password" />
       <button
         className="
       font-medium
