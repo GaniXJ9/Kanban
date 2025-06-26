@@ -5,7 +5,7 @@ const regExpEmail: RegExp = new RegExp(/^\S+@\S+\.\S+$/);
 export const schema = yup.object().shape({
   username: yup
     .string()
-    // .trim()
+    .trim()
     .required("Must be filled!")
     .min(3, "Must be more than 3 sybmols"),
 

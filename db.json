@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": "82ff",
+      "username": "Gani",
+      "email": "gani@gmail.com",
+      "password": "123123123",
+      "confirmPassword": "123123123",
+      "token": "c1ce8200-14f7-4741-8272-5ffe85ae6bf6"
+    }
+  ]
+}

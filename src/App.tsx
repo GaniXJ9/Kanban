@@ -1,12 +1,12 @@
 import { BrowserRouter } from "react-router-dom";
 import AppRouter from "./app/router/AppRouter";
+import Header from "./widgets/Header.tsx";
 
 export default function App() {
-  // const [show, setShow] = useState<boolean>();
-
   return (
     <>
       <BrowserRouter>
+        <Header />
         <AppRouter />
       </BrowserRouter>
     </>

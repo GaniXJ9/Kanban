@@ -8,6 +8,7 @@ function Auth() {
   const handleAuthType = (item: string) => {
     setAuthType(item);
   };
+
   return (
     <section className="bg-gradient-to-t from-[#745BFF] to-white h-screen flex justify-center items-center">
       <div className="bg-gradient-to-t from-[#9469DE] to-[#7B77EE] p-10 w-1/2 shadow-xl">

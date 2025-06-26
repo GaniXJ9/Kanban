@@ -3,21 +3,38 @@ import Input from "../shared/Input";
 import type { RegisterInterface } from "../app/types/types";
 import { schema } from "../app/schema/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function SingUp() {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<RegisterInterface>({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: RegisterInterface) => {
-    console.log(data);
+  const navigate = useNavigate();
 
-    reset();
+  const onSubmit = async (data: RegisterInterface) => {
+    const newToken = crypto.randomUUID();
+    const dataWithToken = { ...data, token: newToken };
+
+    try {
+      const res = await fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dataWithToken),
+      });
+
+      if (res.ok) {
+        localStorage.setItem("token", dataWithToken.token);
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -28,25 +45,25 @@ function SingUp() {
       <Input
         label="username"
         type="text"
-        {...register("username")}
+        register={register("username")}
         error={errors.username?.message}
       />
       <Input
         label="email"
         type="email"
-        {...register("email")}
+        register={register("email")}
         error={errors.email?.message}
       />
       <Input
         label="password"
         type="password"
-        {...register("password")}
+        register={register("password")}
         error={errors.password?.message}
       />
       <Input
         label="confirm password"
         type="password"
-        {...register("confirmPassword")}
+        register={register("confirmPassword")}
         error={errors.confirmPassword?.message}
       />
 
