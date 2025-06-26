@@ -7,7 +7,9 @@ export default function App() {
     <>
       <BrowserRouter>
         <Header />
-        <AppRouter />
+        <main className="bg-[#ffffff] min-h-screen">
+          <AppRouter />
+        </main>
       </BrowserRouter>
     </>
   );
