@@ -6,6 +6,7 @@ const Main = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+
     if (!token) {
       navigate("/auth");
     }

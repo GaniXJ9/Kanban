@@ -2,10 +2,12 @@ import { useState } from "react";
 import SignIn from "../widgets/SignIn";
 import SignUp from "../widgets/SignUp";
 
-function Auth() {
-  const [authType, setAuthType] = useState<string>("sing-in");
+type authType = "sing-in" | "sing-up";
 
-  const handleAuthType = (item: string) => {
+function Auth() {
+  const [authType, setAuthType] = useState<authType>("sing-in");
+
+  const handleAuthType = (item: authType) => {
     setAuthType(item);
   };
 

@@ -8,6 +8,7 @@ function Header() {
     localStorage.removeItem("token");
     navigate("/auth");
   };
+
   return (
     <header
       className={`h-12 bg-blue-500 ${
