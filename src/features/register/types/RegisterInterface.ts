@@ -4,8 +4,3 @@ export interface RegisterInterface {
   password: string;
   confirmPassword: string;
 }
-
-export interface SingInInterface {
-  email: string;
-  password: string;
-}

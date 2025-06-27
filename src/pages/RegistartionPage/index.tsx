@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
-import Input from "../shared/Input";
-import type { RegisterInterface } from "../app/types/types";
-import { schema } from "../app/schema/registerSchema";
+import Input from "../../shared/Input";
+import type { RegisterInterface } from "../../features/register/types/RegisterInterface";
+import { schema } from "../../features/register/schema/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router-dom";
+import { useRegistration } from "../../features/register/HOC/useRegistration";
 
-function SingUp() {
+function RegistrationPage() {
+  const { registration } = useRegistration();
   const {
     register,
     handleSubmit,
@@ -14,26 +15,8 @@ function SingUp() {
     resolver: yupResolver(schema),
   });
 
-  const navigate = useNavigate();
-
   const onSubmit = async (data: RegisterInterface) => {
-    const newToken = crypto.randomUUID();
-    const dataWithToken = { ...data, token: newToken };
-
-    try {
-      const res = await fetch("http://localhost:3000/users", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dataWithToken),
-      });
-
-      if (res.ok) {
-        localStorage.setItem("token", dataWithToken.token);
-        navigate("/");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    registration(data);
   };
 
   return (
@@ -73,10 +56,10 @@ function SingUp() {
       lg:hover:cursor-pointer  lg:hover:bg-white lg:hover:text-[#7B77EE]
       lg:hover:shadow-[0_0_0_1px_#7B77EE] transition-all duration-200"
       >
-        Sing Up
+        Registration
       </button>
     </form>
   );
 }
 
-export default SingUp;
+export default RegistrationPage;

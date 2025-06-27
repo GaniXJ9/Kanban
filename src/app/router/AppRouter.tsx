@@ -1,11 +1,13 @@
 import { useRoutes } from "react-router-dom";
-import Main from "../../pages/Main";
+import MainPage from "../../pages/MainPage";
 import Auth from "../../pages/Auth";
+import RegistrationPage from "../../pages/RegistartionPage";
 
 function AppRouter() {
   const routes = useRoutes([
-    { path: "/", element: <Main /> },
+    { path: "/", element: <MainPage /> },
     { path: "/auth", element: <Auth /> },
+    { path: "/registration", element: <RegistrationPage /> },
   ]);
   return routes;
 }

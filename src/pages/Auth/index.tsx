@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SignIn from "../widgets/SignIn";
-import SignUp from "../widgets/SignUp";
+import SingInPage from "../SingInPage";
+import RegistrationPage from "../RegistartionPage";
 
 type authType = "sing-in" | "sing-up";
 
@@ -37,7 +37,7 @@ function Auth() {
           </p>
         </div>
 
-        {authType === "sing-in" ? <SignIn /> : <SignUp />}
+        {authType === "sing-in" ? <SingInPage /> : <RegistrationPage />}
       </div>
     </section>
   );

@@ -1,43 +1,18 @@
 import { useForm } from "react-hook-form";
-import Input from "../shared/Input";
-import type { SingInInterface } from "../app/types/types";
-import type { User } from "../app/types/User";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import Input from "../../shared/Input";
+import type { SingInInterface } from "../../features/sing-in/types/SingInInterface";
+import { useSignIn } from "../../features/sing-in/HOC/useSingIn";
 
-const getUsers = async () => {
-  try {
-    const users = await fetch("http://localhost:3000/users");
-
-    return users.json();
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-function SingIn() {
-  const [authProblem, setAuthProblem] = useState<boolean>(false);
-
+function SingInPage() {
+  const { authProblem, signIn } = useSignIn();
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<SingInInterface>({});
-  const navigate = useNavigate();
 
-  const onSubmit = async (data: SingInInterface) => {
-    const users = await getUsers();
-
-    const logedUser: User = users.find((user: User) => {
-      return user.email === data.email;
-    });
-
-    if (logedUser && logedUser.password === data.password) {
-      navigate("/");
-      localStorage.setItem("token", logedUser.token);
-    } else {
-      setAuthProblem(true);
-    }
+  const onSubmit = (data: SingInInterface) => {
+    signIn(data);
   };
 
   return (
@@ -75,4 +50,4 @@ function SingIn() {
   );
 }
 
-export default SingIn;
+export default SingInPage;
