@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import Input from "../../shared/Input";
 import type { SingInInterface } from "../../features/sing-in/types/SingInInterface";
-import { useSignIn } from "../../features/sing-in/HOC/useSingIn";
+import { useSignIn } from "../../features/sing-in/use-hook/useSingIn";
 
 function SingInPage() {
   const { authProblem, signIn } = useSignIn();

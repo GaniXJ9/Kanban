@@ -3,7 +3,7 @@ import Input from "../../shared/Input";
 import type { RegisterInterface } from "../../features/register/types/RegisterInterface";
 import { schema } from "../../features/register/schema/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useRegistration } from "../../features/register/HOC/useRegistration";
+import { useRegistration } from "../../features/register/use-hook/useRegistration";
 
 function RegistrationPage() {
   const { registration } = useRegistration();
