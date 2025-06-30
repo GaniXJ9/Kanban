@@ -10,8 +10,10 @@ function Header() {
 
   return (
     <header
-      className={`sticky top-0 left-0 h-14   flex items-center justify-between px-10 border-b border-white ${
-        theme === "light" ? "bg-[#6565a4]" : "bg-[#2d2d47]"
+      className={`sticky top-0 left-0 h-14   flex items-center justify-between px-10  border-b    ${
+        theme === "light"
+          ? "bg-[#6565a4] border-[#bcbcbc]"
+          : "bg-[#2d2d47] border-[#585858]"
       }
       ${location.pathname === "/auth" && "hidden"}
       `}
@@ -19,7 +21,7 @@ function Header() {
       <p className="text-white text-xl">Kanban</p>
 
       <InputBlock />
-      <div className="flex items-center">
+      <div className="flex gap-2 items-center">
         <ToggleThemeButton theme={theme} toggleTheme={toggleTheme} />
         <AccountBlock />
       </div>

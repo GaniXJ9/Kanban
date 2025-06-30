@@ -9,7 +9,8 @@ function ToggleThemeButton({
 }) {
   return (
     <div
-      className={`relative w-14  p-3  border-2 border-white rounded-full`}
+      className={`relative w-14  p-3  border-2  rounded-full 
+        ${theme === "light" ? "border-white" : "border-[#838383]"}`}
       onClick={toggleTheme}
     >
       <p
