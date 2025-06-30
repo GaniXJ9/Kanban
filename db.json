@@ -47,6 +47,14 @@
       "password": "123123123",
       "confirmPassword": "123123123",
       "token": "16875db0-d801-4a7f-b368-d124293b5abc"
+    },
+    {
+      "id": "be5b",
+      "username": "XJ9",
+      "email": "ganisergaliev29@gmail.com",
+      "password": "123123123",
+      "confirmPassword": "123123123",
+      "token": "736ab48b-9ad9-4de3-bebd-4ec4ab437c4a"
     }
   ]
 }

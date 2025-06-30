@@ -16,7 +16,7 @@ export function useRegistration() {
 
       if (res.ok) {
         localStorage.setItem("token", userToken);
-
+        localStorage.setItem("currentUser", JSON.stringify(dataWithToken));
         navigate("/");
       }
     } catch (error) {
