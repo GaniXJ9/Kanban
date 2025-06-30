@@ -10,9 +10,10 @@ function Header() {
   return (
     <header
       className={`sticky top-0 left-0 h-14   flex items-center justify-between px-10 border-b border-white ${
-        (location.pathname === "/auth" && "hidden",
-        theme === "light" ? "bg-[#6565a4]" : "bg-[#2d2d47]")
-      }`}
+        theme === "light" ? "bg-[#6565a4]" : "bg-[#2d2d47]"
+      }
+      ${location.pathname === "/auth" && "hidden"}
+      `}
     >
       <p className="text-white text-xl">Kanban</p>
       <div className="w-1/2  h-9 flex items-center gap-5 ">

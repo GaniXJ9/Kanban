@@ -1,15 +1,8 @@
-import { useEffect, useState } from "react";
-import type { ThemeType } from "../../app/store/StoreInterface";
+import { useEffect } from "react";
+import useStore from "../../app/store";
 
 function useTheme() {
-  const [theme, setTheme] = useState<ThemeType | string>(
-    localStorage.getItem("themeMode") || "light"
-  );
-
-  const toggleTheme = () => {
-    const nextState = theme === "light" ? "dark" : "light";
-    setTheme(nextState);
-  };
+  const { toggleTheme, theme } = useStore();
 
   useEffect(() => {
     localStorage.setItem("themeMode", theme);
