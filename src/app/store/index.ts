@@ -5,7 +5,7 @@ import type { SingInInterface } from "../../features/sing-in/types/SingInInterfa
 
 const useStore = create<StoreInterface>((set) => ({
   theme: localStorage.getItem("themeMode") || "light",
-  currentUser: null,
+  currentUser: JSON.parse(localStorage.getItem("currentUser") as string),
   toggleTheme: () => {
     set((state: StoreInterface) => {
       const nextTheme: ThemeType = state.theme === "light" ? "dark" : "light";
@@ -14,12 +14,18 @@ const useStore = create<StoreInterface>((set) => ({
       return { theme: nextTheme };
     });
   },
-  getCurrentUser: async (data: SingInInterface) => {
+  confirmData: async (data: SingInInterface) => {
     const users = await getUsers();
     const loggedUser = users.find(
       (user: UserType) => user.email === data.email
     );
-    set({ currentUser: loggedUser });
+
+    if (loggedUser) {
+      localStorage.setItem("currentUser", JSON.stringify(loggedUser));
+      set({ currentUser: loggedUser });
+    } else {
+      set({ currentUser: null });
+    }
   },
 }));
 

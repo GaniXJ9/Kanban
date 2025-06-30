@@ -4,12 +4,13 @@ import type { SingInInterface } from "../types/SingInInterface";
 import useStore from "../../../app/store";
 
 export function useSignIn() {
-  const { currentUser, getCurrentUser } = useStore();
+  const { currentUser, confirmData } = useStore();
   const navigate = useNavigate();
   const [authProblem, setAuthProblem] = useState<boolean>(false);
 
   const signIn = async (data: SingInInterface) => {
-    getCurrentUser(data);
+    console.log(currentUser);
+    confirmData(data);
 
     if (currentUser && currentUser.password === data.password) {
       localStorage.setItem("token", currentUser.token);

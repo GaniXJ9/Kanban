@@ -14,5 +14,5 @@ export interface StoreInterface {
   currentUser: null | UserType;
   theme: string | ThemeType;
   toggleTheme: () => void;
-  getCurrentUser: (data: SingInInterface) => void;
+  confirmData: (data: SingInInterface) => void;
 }

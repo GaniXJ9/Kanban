@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import useTheme from "../../shared/use-hook/useTheme";
 import AccountBlock from "./AccountBlock";
 import ToggleThemeButton from "./ToggleThemeButton";
+import InputBlock from "./InputBlock";
 
 function Header() {
   const { theme, toggleTheme } = useTheme();
@@ -16,18 +17,12 @@ function Header() {
       `}
     >
       <p className="text-white text-xl">Kanban</p>
-      <div className="w-1/2  h-9 flex items-center gap-5 ">
-        <input
-          type="text"
-          className="border border-white w-full h-full text-white px-5 rounded-md"
-        />
-        <button className="text-white border border-white px-5 h-full rounded-md bg-gray-500">
-          Cоздать
-        </button>
-      </div>
 
-      <ToggleThemeButton theme={theme} toggleTheme={toggleTheme} />
-      <AccountBlock />
+      <InputBlock />
+      <div className="flex items-center">
+        <ToggleThemeButton theme={theme} toggleTheme={toggleTheme} />
+        <AccountBlock />
+      </div>
     </header>
   );
 }
