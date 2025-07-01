@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import useTheme from "../../shared/use-hook/useTheme";
 import AccountBlock from "./AccountBlock/AccountBlock";
 import ToggleThemeButton from "./ToggleThemeButton";
-import InputBlock from "./InputBlock";
+import InputBlock from "./InputBlock/InputBlock";
 
 function Header() {
   const { theme, toggleTheme } = useTheme();
@@ -10,7 +10,7 @@ function Header() {
 
   return (
     <header
-      className={`sticky top-0 left-0 h-14   flex items-center justify-between px-10  border-b    ${
+      className={`sticky top-0 left-0 h-14   flex items-center justify-between px-10  border-b ${
         theme === "light"
           ? "bg-[#6565a4] border-[#bcbcbc]"
           : "bg-[#1a1a1a] border-[#585858]"

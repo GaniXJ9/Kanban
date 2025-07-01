@@ -10,11 +10,11 @@ function BoardListContainer() {
     <section>
       {currentUser?.boards.length === 0 ? (
         <h3
-          className={`text-xl w-full text-center ${
-            theme === "light" ? "text-slate-600" : "text-slate-200"
+          className={`text-lg font-normal uppercase w-full py-10 ${
+            theme === "light" ? "text-slate-400" : "text-slate-200"
           }`}
         >
-          Cписок пуст
+          Empty List
         </h3>
       ) : (
         <div>
