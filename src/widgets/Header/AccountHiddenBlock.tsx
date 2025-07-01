@@ -16,7 +16,7 @@ function AccountHiddenBlock({
         showAccount ? "block" : "hidden"
       }
       
-      ${theme === "light" ? "bg-[#6565a4]" : "bg-[#2d2d47]"}`}
+      ${theme === "light" ? "bg-[#6565a4]" : "bg-[#272731]"}`}
     >
       <h1 className="text-lg text-white font-medium">Account</h1>
 

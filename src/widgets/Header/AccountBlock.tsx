@@ -7,17 +7,18 @@ function AccountBlock() {
   const { currentUser, theme } = useStore();
   const [showAccount, setShowAccount] = useState<boolean>(false);
   const navigate = useNavigate();
-  const logOut = () => {
-    localStorage.removeItem("currentUser");
-
-    localStorage.removeItem("token");
-    navigate("/auth");
-  };
 
   const toggleShowAccount = () => {
-    console.log(currentUser);
     setShowAccount((prev) => !prev);
   };
+
+  const logOut = () => {
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("token");
+    navigate("/auth");
+    toggleShowAccount();
+  };
+
   return (
     <>
       <div
@@ -27,7 +28,7 @@ function AccountBlock() {
         onClick={toggleShowAccount}
       >
         <div
-          className={`size-10 border-2 rounded-full  flex items-center justify-center ${
+          className={`size-10 border-2 rounded-full flex items-center justify-center ${
             theme === "light"
               ? "bg-[#a194d4] border-white "
               : "bg-[#262629] border-[#838383]"

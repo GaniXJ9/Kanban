@@ -13,7 +13,7 @@ function Header() {
       className={`sticky top-0 left-0 h-14   flex items-center justify-between px-10  border-b    ${
         theme === "light"
           ? "bg-[#6565a4] border-[#bcbcbc]"
-          : "bg-[#2d2d47] border-[#585858]"
+          : "bg-[#1a1a1a] border-[#585858]"
       }
       ${location.pathname === "/auth" && "hidden"}
       `}
