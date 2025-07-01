@@ -5,7 +5,7 @@ import AccountHiddenBlock from "./AccountHiddenBlock";
 import AccountProfileIMG from "./AccountProfileIMG";
 
 function AccountBlock() {
-  const { currentUser, theme } = useStore();
+  const { theme } = useStore();
   const [showAccount, setShowAccount] = useState<boolean>(false);
   const navigate = useNavigate();
 

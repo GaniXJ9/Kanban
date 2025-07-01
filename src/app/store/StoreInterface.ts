@@ -1,14 +1,7 @@
 import type { SingInInterface } from "../../features/sing-in/types/SingInInterface";
+import type { UserType } from "../../features/user/UserType";
 
 export type ThemeType = "light" | "dark";
-
-export interface UserType {
-  username: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  token: string;
-}
 
 export interface StoreInterface {
   currentUser: null | UserType;

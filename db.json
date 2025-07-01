@@ -1,12 +1,13 @@
 {
   "users": [
     {
-      "id": "bcfd",
-      "username": "XJ9",
+      "id": "0e6e",
+      "username": "Gani",
       "email": "ganisergaliev29@gmail.com",
       "password": "123123123",
       "confirmPassword": "123123123",
-      "token": "ec5da5fd-d141-4b39-97a1-a3292bcd9134"
+      "token": "9d9e0fdb-1643-43c5-9ab2-95ecb2eff65b",
+      "boards": []
     }
   ]
 }
