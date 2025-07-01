@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useStore from "../../app/store";
+import useStore from "../../../app/store";
 import AccountHiddenBlock from "./AccountHiddenBlock";
+import AccountProfileIMG from "./AccountProfileIMG";
 
 function AccountBlock() {
   const { currentUser, theme } = useStore();
@@ -27,15 +28,7 @@ function AccountBlock() {
         }`}
         onClick={toggleShowAccount}
       >
-        <div
-          className={`size-10 border-2 rounded-full flex items-center justify-center ${
-            theme === "light"
-              ? "bg-[#a194d4] border-white "
-              : "bg-[#262629] border-[#838383]"
-          }`}
-        >
-          <p className="text-white uppercase">{currentUser?.username[0]}</p>
-        </div>
+        <AccountProfileIMG />
       </div>
       <AccountHiddenBlock showAccount={showAccount} logOut={logOut} />
     </>

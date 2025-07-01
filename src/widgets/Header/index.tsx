@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import useTheme from "../../shared/use-hook/useTheme";
-import AccountBlock from "./AccountBlock";
+import AccountBlock from "./AccountBlock/AccountBlock";
 import ToggleThemeButton from "./ToggleThemeButton";
 import InputBlock from "./InputBlock";
 
