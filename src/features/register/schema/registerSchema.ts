@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 const regExpEmail: RegExp = new RegExp(/^\S+@\S+\.\S+$/);
 
-export const schema = yup.object().shape({
+export const registerSchema = yup.object().shape({
   username: yup
     .string()
     .trim()

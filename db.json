@@ -8,6 +8,15 @@
       "confirmPassword": "123123123",
       "token": "9d9e0fdb-1643-43c5-9ab2-95ecb2eff65b",
       "boards": []
+    },
+    {
+      "id": "475d",
+      "username": "Gani",
+      "email": "ganisergaliev2922@gmail.com",
+      "password": "123123123",
+      "confirmPassword": "123123123",
+      "token": "76a73164-8e0b-46a1-bbbc-c460e851b22a",
+      "boards": []
     }
   ]
 }

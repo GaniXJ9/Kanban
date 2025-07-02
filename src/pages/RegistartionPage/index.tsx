@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import Input from "../../shared/Input";
 import type { RegisterInterface } from "../../features/register/types/RegisterInterface";
-import { schema } from "../../features/register/schema/registerSchema";
+import { registerSchema } from "../../features/register/schema/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegistration } from "../../features/register/use-hook/useRegistration";
 
@@ -12,7 +12,7 @@ function RegistrationPage() {
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterInterface>({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(registerSchema),
   });
 
   const onSubmit = async (data: RegisterInterface) => {

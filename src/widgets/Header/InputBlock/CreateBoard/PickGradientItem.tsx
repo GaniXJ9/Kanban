@@ -1,4 +1,4 @@
-function GradientPicker({
+function PickGradientItem({
   gradient,
   setColor,
 }: {
@@ -17,4 +17,4 @@ function GradientPicker({
   );
 }
 
-export default GradientPicker;
+export default PickGradientItem;
