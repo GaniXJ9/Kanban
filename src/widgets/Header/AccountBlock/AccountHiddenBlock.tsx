@@ -1,5 +1,5 @@
 import useStore from "../../../app/store";
-import LogOutIcon from "../../../icons/LogOutIcon";
+import LogOutIcon from "../../../shared/icons/LogOutIcon";
 import AccountProfileIMG from "./AccountProfileIMG";
 
 function AccountHiddenBlock({

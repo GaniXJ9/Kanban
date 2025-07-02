@@ -1,9 +1,9 @@
 import { useState } from "react";
 import useStore from "../../../app/store";
-import DesksIcon from "../../../icons/DesksIcon";
+import DesksIcon from "../../../shared/icons/DesksIcon";
 import CreateButton from "./CreateButton";
-import ArrowLeft from "../../../icons/ArrowLeft";
-import CloseIcon from "../../../icons/CloseIcon";
+import ArrowLeft from "../../../shared/icons/ArrowLeft";
+import CloseIcon from "../../../shared/icons/CloseIcon";
 import CreateBoardBlock from "./CreateBoard/CreateBoardBlock";
 
 type nextStepType = "board" | "template";

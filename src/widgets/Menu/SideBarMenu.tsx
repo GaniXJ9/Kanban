@@ -1,7 +1,7 @@
 import MenuLink from "./MenuLink";
-import DesksIcon from "../../icons/DesksIcon";
-import TemplateIcon from "../../icons/TemplateIcon";
-import MainPageIcon from "../../icons/MainPageIcon";
+import DesksIcon from "../../shared/icons/DesksIcon";
+import TemplateIcon from "../../shared/icons/TemplateIcon";
+import MainPageIcon from "../../shared/icons/MainPageIcon";
 import { useLocation } from "react-router-dom";
 
 function SideBarMenu() {
