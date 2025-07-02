@@ -1,7 +1,8 @@
 import { create } from "zustand";
-import type { StoreInterface, ThemeType, UserType } from "./StoreInterface";
+import type { StoreInterface, ThemeType } from "./StoreInterface";
 import getUsers from "../../shared/users/getUsers";
 import type { SingInInterface } from "../../features/sing-in/types/SingInInterface";
+import type { UserType } from "../../features/user/UserType";
 
 const useStore = create<StoreInterface>((set) => ({
   theme: localStorage.getItem("themeMode") || "light",

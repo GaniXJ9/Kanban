@@ -8,9 +8,9 @@ function AppBody() {
   const { theme } = useStore();
   return (
     <main
-      className={`min-h-screen flex justify-center   ${
+      className={`min-h-screen  flex justify-center   ${
         location.pathname !== "/auth" && "px-32"
-      }  ${theme === "light" ? "bg-[#eaf0f5]" : "bg-[#1a1a1a]"}
+      }  ${theme === "light" ? "bg-[#eaf0f5]" : "bg-[#212121]"}
          `}
     >
       <SideBarMenu />

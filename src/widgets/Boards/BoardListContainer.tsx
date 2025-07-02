@@ -1,13 +1,12 @@
 import useStore from "../../app/store";
+import type { CreateBoardInterface } from "../../features/register/types/CreateBoardInterface";
 import BoardCard from "./BoardCard";
 
 function BoardListContainer() {
   const { theme, currentUser } = useStore();
-  if (!currentUser?.boards) {
-    return <h1>Loading</h1>;
-  }
+
   return (
-    <section>
+    <section className="h-full">
       {currentUser?.boards.length === 0 ? (
         <h3
           className={`text-lg font-normal uppercase w-full py-10 ${
@@ -17,10 +16,12 @@ function BoardListContainer() {
           Empty List
         </h3>
       ) : (
-        <div>
-          {currentUser.boards.map((el) => (
-            <BoardCard el={el} />
-          ))}
+        <div className="w-full h-2/3  grid grid-cols-3 gap-3 py-4">
+          {currentUser?.boards.map(
+            (el: CreateBoardInterface, index: number) => (
+              <BoardCard el={el} key={index} />
+            )
+          )}
         </div>
       )}
     </section>

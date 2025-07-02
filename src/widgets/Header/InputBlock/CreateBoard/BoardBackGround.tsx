@@ -1,63 +1,3 @@
-// import { useEffect, useState } from "react";
-// import PickGradientBlock from "./PickGradientBlock";
-// import PickImgBlock from "./PickImgBlock";
-// import BoardRef from "./BoardRef";
-// import useBackGroundGradient from "../../../../shared/use-hook/useBackGroundGradient";
-// // import useStore from "../../../../app/store";
-// import { useForm } from "react-hook-form";
-// import BoardTitle from "./BoardTitle";
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import { createBoardSchema } from "../../../../features/register/schema/createBoardSchema";
-// import type { CreateBoardInterface } from "../../../../features/register/types/CreateBoardInterface";
-
-// function BoardBackGround() {
-//   // const { theme } = useStore();
-
-//   const {
-//     register,
-//     formState: { errors },
-//     handleSubmit,
-//     setValue,
-//   } = useForm({ resolver: yupResolver(createBoardSchema) });
-//   const { bgGradientColor } = useBackGroundGradient();
-//   const [bgColor, setBgColor] = useState<string>(bgGradientColor);
-//   const [bgImg, setBgImg] = useState<string | null>(null);
-
-//   useEffect(() => {
-//     if (bgImg) {
-//       setValue("background", bgImg);
-//     } else if (bgColor) {
-//       setValue("background", bgColor);
-//     }
-//   }, [bgColor, bgImg, setValue]);
-
-//   const onSubmit = (data: CreateBoardInterface) => {
-//     console.log(data);
-//   };
-//   return (
-//     <form className="w-full p-2" onSubmit={handleSubmit(onSubmit)}>
-//       <BoardRef bgColor={bgColor} bgImg={bgImg} />
-
-//       <div className="flex flex-col justify-between py-3">
-//         <BoardTitle title={"Background"} />
-
-//         <PickImgBlock setBg={setBgImg} />
-//         <PickGradientBlock setBg={setBgColor} setBgImg={setBgImg} />
-//       </div>
-
-//       <div>
-//         <BoardTitle title={"Board name"} />
-//         <input
-//           className="w-full p-1 border bg-white outline-none"
-//           {...register("title")}
-//         />
-//       </div>
-//     </form>
-//   );
-// }
-
-// export default BoardBackGround;
-
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -68,6 +8,8 @@ import BoardTitle from "./BoardTitle";
 import useBackGroundGradient from "../../../../shared/use-hook/useBackGroundGradient";
 import { createBoardSchema } from "../../../../features/register/schema/createBoardSchema";
 import type { CreateBoardInterface } from "../../../../features/register/types/CreateBoardInterface";
+import getUsers from "../../../../shared/users/getUsers";
+import type { UserType } from "../../../../features/user/UserType";
 
 function BoardBackGround() {
   const {
@@ -84,7 +26,6 @@ function BoardBackGround() {
   const [bgColor, setBgColor] = useState<string>(bgGradientColor);
   const [bgImg, setBgImg] = useState<string | null>(null);
 
-  // Автоматически устанавливаем значение background в форму
   useEffect(() => {
     if (bgImg) {
       setValue("background", bgImg);
@@ -92,10 +33,6 @@ function BoardBackGround() {
       setValue("background", bgColor);
     }
   }, [bgColor, bgImg, setValue]);
-
-  const onSubmit = (data: CreateBoardInterface) => {
-    console.log("✅ Успешно отправлено:", data);
-  };
 
   const fillGradientInput = (color: string) => {
     setBgColor(color);
@@ -105,6 +42,36 @@ function BoardBackGround() {
   const fillBackgroundImageInput = (img: string) => {
     setBgImg(img);
     setValue("background", img);
+  };
+
+  const onSubmit = async (data: CreateBoardInterface) => {
+    const token = localStorage.getItem("token");
+    const users = await getUsers();
+
+    const loggedUser = users.find((el: UserType) => {
+      return el.token === token;
+    });
+    const updatedBoards = [...(loggedUser.boards || []), data];
+
+    try {
+      const res = await fetch(`http://localhost:3000/users/${loggedUser.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...loggedUser,
+          boards: updatedBoards,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Ошибка при обновлении пользователя");
+
+      const result = await res.json();
+      localStorage.setItem("currentUser", JSON.stringify(result));
+    } catch (e) {
+      console.error("❌ Ошибка при отправке данных:", e);
+    }
   };
 
   return (

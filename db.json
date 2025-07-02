@@ -1,22 +1,18 @@
 {
   "users": [
     {
-      "id": "0e6e",
+      "id": "0c59",
       "username": "Gani",
       "email": "ganisergaliev29@gmail.com",
       "password": "123123123",
       "confirmPassword": "123123123",
-      "token": "9d9e0fdb-1643-43c5-9ab2-95ecb2eff65b",
-      "boards": []
-    },
-    {
-      "id": "475d",
-      "username": "Gani",
-      "email": "ganisergaliev2922@gmail.com",
-      "password": "123123123",
-      "confirmPassword": "123123123",
-      "token": "76a73164-8e0b-46a1-bbbc-c460e851b22a",
-      "boards": []
+      "token": "3122714e-d85e-4005-a3a7-0de30f7c3d91",
+      "boards": [
+        {
+          "title": "asdasdasd",
+          "background": "https://avatars.mds.yandex.net/i?id=bdfd1aac58c81e2851240c649922d617_l-5221533-images-thumbs&n=13"
+        }
+      ]
     }
   ]
 }

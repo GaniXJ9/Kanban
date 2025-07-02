@@ -1,14 +1,8 @@
 import { useEffect } from "react";
 import useBackGroundImg from "../../../../shared/use-hook/useBackGroundImg";
 import PickImgItem from "./PickImgItem";
-import { useForm } from "react-hook-form";
 
 function PickImgBlock({ setBg }: { setBg: (value: string) => void }) {
-  const {
-    register,
-    setValue,
-    formState: { errors },
-  } = useForm();
   const { bgImg, setForest, setMountine, setRiver, setSky } =
     useBackGroundImg();
 
