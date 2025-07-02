@@ -26,7 +26,7 @@ function CreateBlock({ closeBlock }: { closeBlock: () => void }) {
 
   return (
     <div
-      className={`absolute  top-full translate-y-4.5 -right-16  w-92 w-92  justify-center  min-h-60 rounded-md  
+      className={`absolute  top-full translate-y-4.5 -right-16  w-92   justify-center  min-h-60 rounded-md  
        
         ${
           theme === "light"
