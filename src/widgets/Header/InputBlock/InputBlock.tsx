@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useStore from "../../../app/store";
-import CreateBorderBlock from "./CreateBorderBlock";
+import CreateBlock from "./CreateBlock";
 
 function InputBlock() {
   const [showCreateBoardBlock, setShowCreateBoardBlock] =
@@ -10,6 +10,11 @@ function InputBlock() {
   const toggleCreateBoardBlock = () => {
     setShowCreateBoardBlock((prev) => !prev);
   };
+
+  const closeBlock = () => {
+    setShowCreateBoardBlock(false);
+  };
+
   return (
     <div className="relative w-1/2 h-9 flex items-center gap-5 ">
       <input
@@ -28,7 +33,7 @@ function InputBlock() {
       >
         Create
       </button>
-      <CreateBorderBlock showCreateBoardBlock={showCreateBoardBlock} />
+      {showCreateBoardBlock && <CreateBlock closeBlock={closeBlock} />}
     </div>
   );
 }

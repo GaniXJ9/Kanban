@@ -3,14 +3,12 @@ import useStore from "../../../app/store";
 import DesksIcon from "../../../icons/DesksIcon";
 import CreateButton from "./CreateButton";
 import ArrowLeft from "../../../icons/ArrowLeft";
+import CloseIcon from "../../../icons/CloseIcon";
+import CreateBoardBlock from "./CreateBoard/CreateBoardBlock";
 
 type nextStepType = "board" | "template";
 
-function CreateBorderBlock({
-  showCreateBoardBlock,
-}: {
-  showCreateBoardBlock: boolean;
-}) {
+function CreateBlock({ closeBlock }: { closeBlock: () => void }) {
   const [nextStepType, setNextStepType] = useState<nextStepType | null>(null);
   const { theme } = useStore();
 
@@ -25,10 +23,11 @@ function CreateBorderBlock({
   const goBack = () => {
     setNextStepType(null);
   };
+
   return (
     <div
-      className={`absolute  top-full translate-y-4.5 -right-16 min-w-60 max-w-92  justify-center  min-h-60 rounded-md  
-        ${showCreateBoardBlock ? "hidden" : "block "}
+      className={`absolute  top-full translate-y-4.5 -right-16  w-92 w-92  justify-center  min-h-60 rounded-md  
+       
         ${
           theme === "light"
             ? "bg-white  shadow-md border-none"
@@ -51,18 +50,32 @@ function CreateBorderBlock({
           />
         </div>
       ) : (
-        <div className="relative py-10">
+        <div className="relative py-3 px-4">
           <span
-            className="absolute top-3 left-1 lg:hover:cursor-pointer"
+            className={`absolute top-3 left-3 lg:hover:cursor-pointer p-1 rounded-md transition-all duration-200 ${
+              theme === "light"
+                ? "text-[#1a1a1a] lg:hover:bg-slate-200 lg:hover:text-white"
+                : "text-slate-200 lg:hover:bg-slate-900 lg:hover:text-slate-600"
+            }`}
             onClick={goBack}
           >
             <ArrowLeft />
           </span>
-          {nextStepType === "board" ? <> "board" </> : <> "template" </>}
+          <span
+            className={`absolute top-3 right-3 lg:hover:cursor-pointer p-1 rounded-md transition-all duration-200 ${
+              theme === "light"
+                ? "text-[#1a1a1a] lg:hover:bg-slate-200 lg:hover:text-white"
+                : "text-slate-200 lg:hover:bg-slate-900 lg:hover:text-slate-600"
+            }`}
+            onClick={closeBlock}
+          >
+            <CloseIcon />
+          </span>
+          {nextStepType === "board" ? <CreateBoardBlock /> : <> "template" </>}
         </div>
       )}
     </div>
   );
 }
 
-export default CreateBorderBlock;
+export default CreateBlock;
