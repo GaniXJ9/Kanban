@@ -3,10 +3,13 @@ import DesksIcon from "../../shared/icons/DesksIcon";
 import TemplateIcon from "../../shared/icons/TemplateIcon";
 import MainPageIcon from "../../shared/icons/MainPageIcon";
 import { useLocation } from "react-router-dom";
+import useStore from "../../app/store";
 
 function SideBarMenu() {
   const location = useLocation();
+  const { currentBoard } = useStore();
 
+  console.log(currentBoard);
   return (
     <aside
       className={`w-1/4 flex flex-col ${

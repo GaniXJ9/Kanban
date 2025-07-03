@@ -41,7 +41,6 @@ const useStore = create<StoreInterface>((set) => ({
       return null;
     }
   },
-
   setCurrentUser: (user: UserType) => set({ currentUser: user }),
   setCurrentBoard: (board: BoardType) => set({ currentBoard: board }),
 }));
