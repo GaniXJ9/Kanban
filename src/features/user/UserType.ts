@@ -4,5 +4,4 @@ export interface UserType {
   password: string;
   confirmPassword: string;
   token: string;
-  boards: [];
 }

@@ -7,7 +7,7 @@ export function useRegistration() {
   const navigate = useNavigate();
 
   const registration = async (data: RegisterInterface) => {
-    const dataWithToken: UserType = { ...data, token: userToken, boards: [] };
+    const dataWithToken: UserType = { ...data, token: userToken };
     try {
       const res = await fetch("http://localhost:3000/users", {
         method: "POST",
