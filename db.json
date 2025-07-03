@@ -1,34 +1,58 @@
 {
   "users": [
     {
-      "id": "feb3",
-      "username": "Gani",
+      "id": "6f21",
+      "username": "sun",
+      "email": "sun@gmail.com",
+      "password": "123123123",
+      "confirmPassword": "123123123",
+      "token": "6862a5d9-4e08-4e6b-9236-3c1708c1d286"
+    },
+    {
+      "id": "22f5",
+      "username": "XJ9",
       "email": "ganisergaliev29@gmail.com",
       "password": "123123123",
       "confirmPassword": "123123123",
-      "token": "1586ceb2-c406-456f-bce5-d698d9593000"
-    },
-    {
-      "id": "4507",
-      "username": "san",
-      "email": "san@gmail.com",
-      "password": "123123123",
-      "confirmPassword": "123123123",
-      "token": "e30f13a8-a485-418e-bab4-6c996f87ac7e"
+      "token": "8f435a36-e2cd-49ee-b537-497d2362625e"
     }
   ],
   "boards": [
     {
-      "id": "2702",
-      "title": "s",
-      "background": "https://avatars.mds.yandex.net/i?id=bdfd1aac58c81e2851240c649922d617_l-5221533-images-thumbs&n=13",
-      "user": "e30f13a8-a485-418e-bab4-6c996f87ac7e"
+      "id": "b007",
+      "title": "2",
+      "background": "linear-gradient(to right, #ff4b1f, #ff9068)",
+      "user": "6862a5d9-4e08-4e6b-9236-3c1708c1d286"
     },
     {
-      "id": "d53c",
-      "title": "s",
+      "id": "8394",
+      "title": "3",
+      "background": "linear-gradient(to right, #ff4b1f, #ff9068)",
+      "user": "6862a5d9-4e08-4e6b-9236-3c1708c1d286"
+    },
+    {
+      "id": "4d70",
+      "title": "1",
+      "background": "linear-gradient(to right, #59c173, #a17fe0, #5d26c1)",
+      "user": "8f435a36-e2cd-49ee-b537-497d2362625e"
+    },
+    {
+      "id": "90b1",
+      "title": "2",
+      "background": "linear-gradient(to right, #ff4b1f, #ff9068)",
+      "user": "8f435a36-e2cd-49ee-b537-497d2362625e"
+    },
+    {
+      "id": "1e14",
+      "title": "4",
       "background": "https://avatars.mds.yandex.net/i?id=bdfd1aac58c81e2851240c649922d617_l-5221533-images-thumbs&n=13",
-      "user": "e30f13a8-a485-418e-bab4-6c996f87ac7e"
+      "user": "8f435a36-e2cd-49ee-b537-497d2362625e"
+    },
+    {
+      "id": "88cb",
+      "title": "4",
+      "background": "https://i.pinimg.com/originals/92/13/cf/9213cfd73f7076aa237c427f766deb4c.jpg",
+      "user": "6862a5d9-4e08-4e6b-9236-3c1708c1d286"
     }
   ]
 }

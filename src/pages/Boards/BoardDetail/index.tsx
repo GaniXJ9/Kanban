@@ -4,8 +4,7 @@ import useStore from "../../../app/store";
 
 function BoardDetail() {
   const { id } = useParams();
-  const getBoard = useStore((state) => state.getBoard);
-  const currentBoard = useStore((state) => state.currentBoard);
+  const { getBoard, currentBoard } = useStore();
 
   useEffect(() => {
     if (id) {

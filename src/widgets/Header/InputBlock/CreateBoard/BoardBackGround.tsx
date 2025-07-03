@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 import PickGradientBlock from "./PickGradientBlock";
 import PickImgBlock from "./PickImgBlock";
 import BoardRef from "./BoardRef";
 import BoardTitle from "./BoardTitle";
 import useBackGroundGradient from "../../../../shared/use-hook/useBackGroundGradient";
+import useTheme from "../../../../shared/use-hook/useTheme";
+import useStore from "../../../../app/store";
 import { createBoardSchema } from "../../../../features/register/schema/createBoardSchema";
 import type { CreateBoardInterface } from "../../../../features/register/types/CreateBoardInterface";
-import getUsers from "../../../../shared/users/getUsers";
-import type { UserType } from "../../../../features/user/UserType";
-import useTheme from "../../../../shared/use-hook/useTheme";
 
 function BoardBackGround() {
   const {
@@ -27,6 +27,9 @@ function BoardBackGround() {
   const [bgColor, setBgColor] = useState<string>(bgGradientColor);
   const [bgImg, setBgImg] = useState<string | null>(null);
 
+  const { setCurrentBoard, setCurrentUser, currentUser } = useStore();
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (bgImg) {
       setValue("background", bgImg);
@@ -40,37 +43,47 @@ function BoardBackGround() {
     setBgImg(null);
     setValue("background", color);
   };
+
   const fillBackgroundImageInput = (img: string) => {
     setBgImg(img);
     setValue("background", img);
   };
 
   const onSubmit = async (data: CreateBoardInterface) => {
-    const token = localStorage.getItem("token");
-    const users = await getUsers();
-    const loggedUser = users.find((el: UserType) => el.token === token);
-    if (!loggedUser) {
-      console.error("User not found");
+    if (!currentUser) {
+      return null;
     }
+
     const newBoard = {
       ...data,
-      user: token,
+      user: currentUser.token,
     };
+
     try {
-      const pushBoard = await fetch("http://localhost:3000/boards", {
+      const res = await fetch("http://localhost:3000/boards", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newBoard),
       });
-      if (!pushBoard.ok) {
-        throw new Error("Error creating board");
+
+      if (!res.ok) {
+        throw new Error("Ошибка создания доски");
       }
-      const boardData = await pushBoard.json();
-      console.log("Board created:", boardData);
-    } catch (error) {
-      console.error("Error:", error);
+
+      const boardData = await res.json();
+
+      const updatedUser = {
+        ...currentUser,
+        boards: [...(currentUser.boards || []), boardData.id],
+      };
+
+      localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+      setCurrentUser(updatedUser);
+      setCurrentBoard(boardData);
+
+      navigate(`/boards/${boardData.id}`);
+    } catch (e) {
+      console.error(e);
     }
   };
   return (
@@ -81,7 +94,6 @@ function BoardBackGround() {
         <BoardTitle title="Background" />
 
         <PickImgBlock setBg={fillBackgroundImageInput} />
-
         <PickGradientBlock setBg={fillGradientInput} setBgImg={setBgImg} />
 
         {errors.background && (
@@ -94,7 +106,7 @@ function BoardBackGround() {
       <div className="py-3">
         <BoardTitle title="Board name" />
         <input
-          className={`w-full p-1 border border-slate-300 rounded-sm  outline-none my-2 ${
+          className={`w-full p-1 border border-slate-300 rounded-sm outline-none my-2 ${
             theme === "light" ? "text-slate-600" : "text-slate-200"
           }`}
           {...register("title")}

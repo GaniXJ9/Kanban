@@ -6,6 +6,7 @@ import SideBarMenu from "./Menu/SideBarMenu";
 function AppBody() {
   const location = useLocation();
   const { theme } = useStore();
+
   return (
     <main
       className={`min-h-screen  flex justify-center   ${

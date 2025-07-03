@@ -12,4 +12,5 @@ export interface StoreInterface {
   confirmData: (data: SingInInterface) => void;
   getBoard: (id: string) => void;
   setCurrentBoard: (board: BoardType) => void;
+  setCurrentUser: (user: UserType) => void;
 }
