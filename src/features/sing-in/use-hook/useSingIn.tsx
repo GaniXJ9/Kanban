@@ -9,7 +9,6 @@ export function useSignIn() {
   const [authProblem, setAuthProblem] = useState<boolean>(false);
 
   const signIn = async (data: SingInInterface) => {
-    console.log(currentUser);
     confirmData(data);
 
     if (currentUser && currentUser.password === data.password) {

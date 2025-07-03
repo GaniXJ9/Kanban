@@ -50,10 +50,7 @@ function PickGradientBlock({
           "linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea)"
         }
         setColor={setBgZink}
-      />{" "}
-      <p className="h-6 w-8 rounded-sm shadow lg:hover:cursor-pointer text-center pb-1 bg-gray-200">
-        ...
-      </p>
+      />
     </div>
   );
 }

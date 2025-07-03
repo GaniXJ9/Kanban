@@ -10,6 +10,7 @@ import { createBoardSchema } from "../../../../features/register/schema/createBo
 import type { CreateBoardInterface } from "../../../../features/register/types/CreateBoardInterface";
 import getUsers from "../../../../shared/users/getUsers";
 import type { UserType } from "../../../../features/user/UserType";
+import useTheme from "../../../../shared/use-hook/useTheme";
 
 function BoardBackGround() {
   const {
@@ -21,8 +22,8 @@ function BoardBackGround() {
     resolver: yupResolver(createBoardSchema),
   });
 
+  const { theme } = useTheme();
   const { bgGradientColor } = useBackGroundGradient();
-
   const [bgColor, setBgColor] = useState<string>(bgGradientColor);
   const [bgImg, setBgImg] = useState<string | null>(null);
 
@@ -47,33 +48,31 @@ function BoardBackGround() {
   const onSubmit = async (data: CreateBoardInterface) => {
     const token = localStorage.getItem("token");
     const users = await getUsers();
-
-    const loggedUser = users.find((el: UserType) => {
-      return el.token === token;
-    });
-    const updatedBoards = [...(loggedUser.boards || []), data];
-
+    const loggedUser = users.find((el: UserType) => el.token === token);
+    if (!loggedUser) {
+      console.error("User not found");
+    }
+    const newBoard = {
+      ...data,
+      user: token,
+    };
     try {
-      const res = await fetch(`http://localhost:3000/users/${loggedUser.id}`, {
-        method: "PUT",
+      const pushBoard = await fetch("http://localhost:3000/boards", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          ...loggedUser,
-          boards: updatedBoards,
-        }),
+        body: JSON.stringify(newBoard),
       });
-
-      if (!res.ok) throw new Error("Ошибка при обновлении пользователя");
-
-      const result = await res.json();
-      localStorage.setItem("currentUser", JSON.stringify(result));
-    } catch (e) {
-      console.error("❌ Ошибка при отправке данных:", e);
+      if (!pushBoard.ok) {
+        throw new Error("Error creating board");
+      }
+      const boardData = await pushBoard.json();
+      console.log("Board created:", boardData);
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
-
   return (
     <form className="w-full p-2" onSubmit={handleSubmit(onSubmit)}>
       <BoardRef bgColor={bgColor} bgImg={bgImg} />
@@ -95,7 +94,9 @@ function BoardBackGround() {
       <div className="py-3">
         <BoardTitle title="Board name" />
         <input
-          className="w-full p-1 border border-slate-300 rounded-sm  outline-none my-2"
+          className={`w-full p-1 border border-slate-300 rounded-sm  outline-none my-2 ${
+            theme === "light" ? "text-slate-600" : "text-slate-200"
+          }`}
           {...register("title")}
         />
         {errors.title && (
@@ -107,9 +108,13 @@ function BoardBackGround() {
 
       <button
         type="submit"
-        className="mt-4 px-4 py-2 bg-slate-800 text-white rounded"
+        className={`mt-4 px-4 py-2 text-white rounded w-full lg:hover:cursor-pointer transition-all duration-200 ${
+          theme === "light"
+            ? "bg-slate-500 lg:hover:bg-slate-200 lg:hover:text-slate-600"
+            : "bg-slate-700 lg:hover:bg-slate-200 lg:hover:text-slate-600"
+        }`}
       >
-        Создать доску
+        Create Board
       </button>
     </form>
   );
