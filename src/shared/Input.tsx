@@ -1,7 +1,7 @@
 import { useState, type ChangeEvent } from "react";
 import type { UseFormRegisterReturn } from "react-hook-form";
 
-function Input({
+const Input = ({
   label,
   type,
   error,
@@ -11,14 +11,13 @@ function Input({
   type: string;
   error?: string;
   register: UseFormRegisterReturn;
-}) {
+}) => {
   const [showLabel, setShowLabel] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
 
   const onInput = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
-
   const showLableAction = () => {
     setShowLabel(true);
   };
@@ -59,6 +58,6 @@ function Input({
       )}
     </div>
   );
-}
+};
 
 export default Input;

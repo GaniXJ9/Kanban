@@ -3,13 +3,17 @@ import AppRouter from "../app/router/AppRouter";
 import useStore from "../app/store";
 import SideBarMenu from "./Menu/SideBarMenu";
 
-function AppBody() {
+const AppBody = () => {
   const location = useLocation();
-  const { theme } = useStore();
+  const { theme, currentBoard } = useStore();
 
   return (
     <main
-      className={`min-h-screen  flex justify-center   ${
+      style={{
+        background: currentBoard?.background,
+        backgroundImage: `url(${currentBoard?.background})`,
+      }}
+      className={`min-h-screen  flex justify-center  bg-cover bg-center ${
         location.pathname !== "/auth" && "px-32"
       }  ${theme === "light" ? "bg-[#eaf0f5]" : "bg-[#212121]"}
          `}
@@ -20,6 +24,6 @@ function AppBody() {
       </div>
     </main>
   );
-}
+};
 
 export default AppBody;

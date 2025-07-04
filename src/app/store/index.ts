@@ -42,7 +42,7 @@ const useStore = create<StoreInterface>((set) => ({
     }
   },
   setCurrentUser: (user: UserType) => set({ currentUser: user }),
-  setCurrentBoard: (board: BoardType) => set({ currentBoard: board }),
+  setCurrentBoard: (board: BoardType | null) => set({ currentBoard: board }),
 }));
 
 export default useStore;

@@ -4,9 +4,9 @@ import BoardCard from "./BoardCard";
 import { getBoards } from "../../shared/boards/getBoards";
 import type { BoardType } from "../../features/register/types/BoardType";
 
-function BoardListContainer() {
+const BoardListContainer = () => {
   const [boards, setBoards] = useState<BoardType[] | null>(null);
-  const { theme, currentUser } = useStore();
+  const { theme, currentUser, setCurrentBoard } = useStore();
 
   useEffect(() => {
     async function showBoards() {
@@ -15,6 +15,7 @@ function BoardListContainer() {
         return board.user === currentUser?.token;
       });
 
+      setCurrentBoard(null);
       setBoards(currentUserBoards);
     }
 
@@ -24,6 +25,7 @@ function BoardListContainer() {
   if (!boards) {
     return <h1>loading</h1>;
   }
+
   return (
     <section className="h-full">
       {boards.length === 0 ? (
@@ -43,6 +45,6 @@ function BoardListContainer() {
       )}
     </section>
   );
-}
+};
 
 export default BoardListContainer;

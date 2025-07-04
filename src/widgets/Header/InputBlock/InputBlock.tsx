@@ -2,7 +2,7 @@ import { useState } from "react";
 import useStore from "../../../app/store";
 import CreateBlock from "./CreateBlock";
 
-function InputBlock() {
+const InputBlock = () => {
   const [showCreateBoardBlock, setShowCreateBoardBlock] =
     useState<boolean>(false);
   const { theme } = useStore();
@@ -36,6 +36,6 @@ function InputBlock() {
       {showCreateBoardBlock && <CreateBlock closeBlock={closeBlock} />}
     </div>
   );
-}
+};
 
 export default InputBlock;

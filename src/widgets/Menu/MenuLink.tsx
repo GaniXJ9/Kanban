@@ -2,7 +2,7 @@ import type { SVGProps } from "react";
 import { NavLink } from "react-router-dom";
 import useStore from "../../app/store";
 
-function MenuLink({
+const MenuLink = ({
   link,
   linkTitle,
   Icon,
@@ -10,7 +10,7 @@ function MenuLink({
   link: string;
   linkTitle: string;
   Icon: React.FC<SVGProps<SVGSVGElement>>;
-}) {
+}) => {
   const { theme } = useStore();
 
   return (
@@ -25,6 +25,6 @@ function MenuLink({
       <Icon /> {linkTitle}
     </NavLink>
   );
-}
+};
 
 export default MenuLink;

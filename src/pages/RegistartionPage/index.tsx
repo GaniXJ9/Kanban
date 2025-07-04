@@ -5,7 +5,7 @@ import { registerSchema } from "../../features/register/schema/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegistration } from "../../features/register/use-hook/useRegistration";
 
-function RegistrationPage() {
+const RegistartionPage = () => {
   const { registration } = useRegistration();
   const {
     register,
@@ -48,7 +48,6 @@ function RegistrationPage() {
         register={register("confirmPassword")}
         error={errors.confirmPassword?.message}
       />
-
       <button
         className="
       font-medium
@@ -60,6 +59,6 @@ function RegistrationPage() {
       </button>
     </form>
   );
-}
+};
 
-export default RegistrationPage;
+export default RegistartionPage;

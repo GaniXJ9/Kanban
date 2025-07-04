@@ -1,8 +1,9 @@
 import useStore from "../../app/store";
 import BoardListContainer from "../../widgets/Boards/BoardListContainer";
 
-function Boards() {
+const Boards = () => {
   const { theme } = useStore();
+
   return (
     <section className="h-full">
       <h1
@@ -12,10 +13,9 @@ function Boards() {
       >
         Boards List
       </h1>
-
       <BoardListContainer />
     </section>
   );
-}
+};
 
 export default Boards;

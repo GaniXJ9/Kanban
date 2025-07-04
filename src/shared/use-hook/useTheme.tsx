@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import useStore from "../../app/store";
 
-function useTheme() {
+const useTheme = () => {
   const { toggleTheme, theme } = useStore();
 
   useEffect(() => {
@@ -9,6 +9,6 @@ function useTheme() {
   }, [theme]);
 
   return { theme, toggleTheme };
-}
+};
 
 export default useTheme;

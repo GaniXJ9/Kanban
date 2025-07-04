@@ -11,6 +11,6 @@ export interface StoreInterface {
   toggleTheme: () => void;
   confirmData: (data: SingInInterface) => void;
   getBoard: (id: string) => void;
-  setCurrentBoard: (board: BoardType) => void;
+  setCurrentBoard: (board: BoardType | null) => void;
   setCurrentUser: (user: UserType) => void;
 }

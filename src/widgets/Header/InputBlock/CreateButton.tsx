@@ -2,7 +2,7 @@ import type React from "react";
 import useStore from "../../../app/store";
 import type { SVGProps } from "react";
 
-function CreateButton({
+const CreateButton = ({
   title,
   subtitle,
   Icon,
@@ -12,8 +12,9 @@ function CreateButton({
   subtitle: string;
   Icon: React.FC<SVGProps<SVGSVGElement>>;
   onClick: () => void;
-}) {
+}) => {
   const { theme } = useStore();
+
   return (
     <div
       onClick={onClick}
@@ -37,6 +38,6 @@ function CreateButton({
       </span>
     </div>
   );
-}
+};
 
 export default CreateButton;

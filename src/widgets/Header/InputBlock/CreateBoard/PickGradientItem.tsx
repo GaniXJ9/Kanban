@@ -1,13 +1,14 @@
-function PickGradientItem({
+const PickGradientItem = ({
   gradient,
   setColor,
 }: {
   gradient: string;
   setColor: () => void;
-}) {
+}) => {
   const gradientStyle = {
     background: gradient,
   };
+
   return (
     <p
       className="h-6 w-8 rounded-sm shadow lg:hover:cursor-pointer"
@@ -15,6 +16,6 @@ function PickGradientItem({
       onClick={setColor}
     ></p>
   );
-}
+};
 
 export default PickGradientItem;

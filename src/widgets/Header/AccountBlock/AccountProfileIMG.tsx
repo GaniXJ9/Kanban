@@ -1,6 +1,6 @@
 import useStore from "../../../app/store";
 
-function AccountProfileIMG() {
+const AccountProfileIMG = () => {
   const { theme, currentUser } = useStore();
 
   return (
@@ -14,6 +14,6 @@ function AccountProfileIMG() {
       <p className="text-white uppercase">{currentUser?.username[0]}</p>
     </div>
   );
-}
+};
 
 export default AccountProfileIMG;

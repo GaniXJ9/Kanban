@@ -12,7 +12,7 @@ import useStore from "../../../../app/store";
 import { createBoardSchema } from "../../../../features/register/schema/createBoardSchema";
 import type { CreateBoardInterface } from "../../../../features/register/types/CreateBoardInterface";
 
-function BoardBackGround() {
+const BoardBackGround = () => {
   const {
     register,
     formState: { errors },
@@ -21,12 +21,10 @@ function BoardBackGround() {
   } = useForm<CreateBoardInterface>({
     resolver: yupResolver(createBoardSchema),
   });
-
   const { theme } = useTheme();
   const { bgGradientColor } = useBackGroundGradient();
   const [bgColor, setBgColor] = useState<string>(bgGradientColor);
   const [bgImg, setBgImg] = useState<string | null>(null);
-
   const { setCurrentBoard, setCurrentUser, currentUser } = useStore();
   const navigate = useNavigate();
 
@@ -65,22 +63,19 @@ function BoardBackGround() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newBoard),
       });
-
-      if (!res.ok) {
-        throw new Error("Ошибка создания доски");
-      }
-
       const boardData = await res.json();
-
       const updatedUser = {
         ...currentUser,
         boards: [...(currentUser.boards || []), boardData.id],
       };
 
+      if (!res.ok) {
+        throw new Error("Ошибка создания доски");
+      }
+
       localStorage.setItem("currentUser", JSON.stringify(updatedUser));
       setCurrentUser(updatedUser);
       setCurrentBoard(boardData);
-
       navigate(`/boards/${boardData.id}`);
     } catch (e) {
       console.error(e);
@@ -89,20 +84,16 @@ function BoardBackGround() {
   return (
     <form className="w-full p-2" onSubmit={handleSubmit(onSubmit)}>
       <BoardRef bgColor={bgColor} bgImg={bgImg} />
-
       <div className="flex flex-col justify-between py-3">
         <BoardTitle title="Background" />
-
         <PickImgBlock setBg={fillBackgroundImageInput} />
         <PickGradientBlock setBg={fillGradientInput} setBgImg={setBgImg} />
-
         {errors.background && (
           <p className="text-red-500 text-sm mt-1">
             {errors.background.message}
           </p>
         )}
       </div>
-
       <div className="py-3">
         <BoardTitle title="Board name" />
         <input
@@ -115,9 +106,7 @@ function BoardBackGround() {
           <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>
         )}
       </div>
-
       <input type="hidden" {...register("background")} />
-
       <button
         type="submit"
         className={`mt-4 px-4 py-2 text-white rounded w-full lg:hover:cursor-pointer transition-all duration-200 ${
@@ -130,6 +119,6 @@ function BoardBackGround() {
       </button>
     </form>
   );
-}
+};
 
 export default BoardBackGround;

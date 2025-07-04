@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import useBackGroundImg from "../../../../shared/use-hook/useBackGroundImg";
 import PickImgItem from "./PickImgItem";
 
-function PickImgBlock({ setBg }: { setBg: (value: string) => void }) {
+const PickImgBlock = ({ setBg }: { setBg: (value: string) => void }) => {
   const { bgImg, setForest, setMountine, setRiver, setSky } =
     useBackGroundImg();
 
@@ -10,26 +10,27 @@ function PickImgBlock({ setBg }: { setBg: (value: string) => void }) {
     setBg(bgImg);
     console.log(bgImg);
   }, [bgImg]);
+
   return (
     <div className="flex justify-between py-2">
       <PickImgItem
-        url="https://i.pinimg.com/originals/a6/2d/90/a62d90c4feb5b064003dd453f8e779c4.jpg"
+        url="https://i.pinimg.com/originals/a9/59/22/a9592215c9342174fb0b4d5643727247.jpg"
         setImg={setForest}
       />
       <PickImgItem
-        url="https://i.pinimg.com/originals/92/13/cf/9213cfd73f7076aa237c427f766deb4c.jpg"
+        url="https://i.pinimg.com/originals/b6/65/c3/b665c39693c925a6c4d5c415e6ae93d1.jpg"
         setImg={setMountine}
       />
       <PickImgItem
-        url="https://avatars.mds.yandex.net/i?id=bdfd1aac58c81e2851240c649922d617_l-5221533-images-thumbs&n=13"
+        url="https://avatars.mds.yandex.net/i?id=6afe9003dc58a345d08f85621db2475d_l-4012815-images-thumbs&n=13"
         setImg={setRiver}
       />
       <PickImgItem
-        url="https://images.wallpaperscraft.ru/image/single/vozdushnyj_shar_aerostat_art_128614_2560x1600.jpg"
+        url="https://avatars.mds.yandex.net/i?id=557ea8789a278f192ff1c3ddcc00f5b3_l-5169643-images-thumbs&n=13"
         setImg={setSky}
       />
     </div>
   );
-}
+};
 
 export default PickImgBlock;

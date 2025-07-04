@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function useBackGroundGradient() {
+const useBackGroundGradient = () => {
   const [bgGradientColor, setGradientColor] = useState<string>(
     "linear-gradient(to right, #ff4b1f, #ff9068)"
   );
@@ -36,6 +36,6 @@ function useBackGroundGradient() {
     setBgSelenium,
     setBgZink,
   }; // Название функции это = setBg + Название градиента. Градиент беру с https://uigradients.com/
-}
+};
 
 export default useBackGroundGradient;

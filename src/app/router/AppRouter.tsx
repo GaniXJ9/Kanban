@@ -5,7 +5,7 @@ import Boards from "../../pages/Boards";
 import Templates from "../../pages/Templates";
 import BoardDetail from "../../pages/Boards/BoardDetail";
 
-function AppRouter() {
+const AppRouter = () => {
   const routes = useRoutes([
     { path: "/", element: <MainPage /> },
     { path: "/auth", element: <Auth /> },
@@ -13,7 +13,8 @@ function AppRouter() {
     { path: "/boards/:id", element: <BoardDetail /> },
     { path: "/templates", element: <Templates /> },
   ]);
+
   return routes;
-}
+};
 
 export default AppRouter;

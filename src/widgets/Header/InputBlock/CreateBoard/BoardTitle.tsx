@@ -2,6 +2,7 @@ import useStore from "../../../../app/store";
 
 const BoardTitle = ({ title }: { title: string }) => {
   const { theme } = useStore();
+
   return (
     <h3
       className={`text-xs font-medium uppercase ${

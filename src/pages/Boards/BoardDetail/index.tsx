@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import useStore from "../../../app/store";
 
-function BoardDetail() {
+const BoardDetail = () => {
   const { id } = useParams();
   const { getBoard, currentBoard } = useStore();
 
@@ -12,13 +12,15 @@ function BoardDetail() {
     }
   }, [id]);
 
-  if (!currentBoard) return <p>Загрузка...</p>;
+  if (!currentBoard) {
+    return <p>Loading...</p>;
+  }
 
   return (
-    <div>
+    <div className="w-full">
       <h1 className="text-2xl font-bold">{currentBoard.title}</h1>
     </div>
   );
-}
+};
 
 export default BoardDetail;

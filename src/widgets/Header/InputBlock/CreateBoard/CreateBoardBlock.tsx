@@ -1,8 +1,9 @@
 import useStore from "../../../../app/store";
 import BoardBackGround from "./BoardBackGround";
 
-function CreateBoardBlock() {
+const CreateBoardBlock = () => {
   const { theme } = useStore();
+
   return (
     <section className="w-full">
       <h1
@@ -15,6 +16,6 @@ function CreateBoardBlock() {
       <BoardBackGround />
     </section>
   );
-}
+};
 
 export default CreateBoardBlock;

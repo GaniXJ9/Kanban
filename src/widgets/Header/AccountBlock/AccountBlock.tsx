@@ -4,7 +4,7 @@ import useStore from "../../../app/store";
 import AccountHiddenBlock from "./AccountHiddenBlock";
 import AccountProfileIMG from "./AccountProfileIMG";
 
-function AccountBlock() {
+const AccountBlock = () => {
   const { theme } = useStore();
   const [showAccount, setShowAccount] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -33,6 +33,6 @@ function AccountBlock() {
       <AccountHiddenBlock showAccount={showAccount} logOut={logOut} />
     </>
   );
-}
+};
 
 export default AccountBlock;

@@ -1,13 +1,14 @@
-function BoardRef({
+const BoardRef = ({
   bgImg,
   bgColor,
 }: {
   bgImg: string | null;
   bgColor: string;
-}) {
+}) => {
   const blockStyle = bgImg
     ? { backgroundImage: `url(${bgImg})` }
     : { background: bgColor };
+
   return (
     <div
       className={`p-5 w-full h-48 rounded-sm shadow-md bg-cover bg-center flex justify-between items-start`}
@@ -26,6 +27,6 @@ function BoardRef({
       </div>
     </div>
   );
-}
+};
 
 export default BoardRef;

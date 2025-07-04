@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import PickGradientItem from "./PickGradientItem";
 import useBackGroundGradient from "../../../../shared/use-hook/useBackGroundGradient";
 
-function PickGradientBlock({
+const PickGradientBlock = ({
   setBg,
   setBgImg,
 }: {
   setBg: (value: string) => void;
   setBgImg: (value: null | string) => void;
-}) {
+}) => {
   const {
     bgGradientColor,
     setBgMagic,
@@ -23,6 +23,7 @@ function PickGradientBlock({
     setBg(bgGradientColor);
     setBgImg(null);
   }, [bgGradientColor]);
+
   return (
     <div className="flex justify-between py-2">
       <PickGradientItem
@@ -53,6 +54,6 @@ function PickGradientBlock({
       />
     </div>
   );
-}
+};
 
 export default PickGradientBlock;

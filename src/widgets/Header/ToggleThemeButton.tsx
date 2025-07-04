@@ -1,12 +1,12 @@
 import type { ThemeType } from "../../app/store/StoreInterface";
 
-function ToggleThemeButton({
+const ToggleThemeButton = ({
   theme,
   toggleTheme,
 }: {
   theme: ThemeType | string;
   toggleTheme: () => void;
-}) {
+}) => {
   return (
     <div
       className={`relative w-14  p-3  border-2  rounded-full lg:hover:cursor-pointer
@@ -24,6 +24,6 @@ function ToggleThemeButton({
       ></p>
     </div>
   );
-}
+};
 
 export default ToggleThemeButton;

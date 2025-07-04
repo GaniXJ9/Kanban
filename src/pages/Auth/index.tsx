@@ -1,15 +1,12 @@
 import { useState } from "react";
 import SingInPage from "../SingInPage";
 import RegistrationPage from "../RegistartionPage";
+import AuthNavPanel from "../../widgets/Auth/AuthNavPanel";
 
 type authType = "sing-in" | "sing-up";
 
-function Auth() {
+const Auth = () => {
   const [authType, setAuthType] = useState<authType>("sing-in");
-
-  const handleAuthType = (item: authType) => {
-    setAuthType(item);
-  };
 
   return (
     <section className="bg-gradient-to-t from-[#745BFF] to-white h-screen flex justify-center items-center">
@@ -17,30 +14,12 @@ function Auth() {
         <p className="w-full text-center text-5xl text-white font-extralight">
           KANBAN
         </p>
-
-        <div className=" my-3 py-5 flex justify-evenly">
-          <p
-            className={`text-3xl text-white font-medium uppercase lg:hover:cursor-pointer ${
-              authType === "sing-in" ? "opacity-100" : "opacity-50"
-            }`}
-            onClick={() => handleAuthType("sing-in")}
-          >
-            Sign In
-          </p>
-          <p
-            className={`text-3xl text-white font-medium uppercase lg:hover:cursor-pointer ${
-              authType === "sing-up" ? "opacity-100" : "opacity-50"
-            }`}
-            onClick={() => handleAuthType("sing-up")}
-          >
-            Sign Up
-          </p>
-        </div>
+        <AuthNavPanel setAuthType={setAuthType} />
 
         {authType === "sing-in" ? <SingInPage /> : <RegistrationPage />}
       </div>
     </section>
   );
-}
+};
 
 export default Auth;
