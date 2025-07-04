@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import useStore from "../../../app/store";
+import TaskStatusBlock from "../../../widgets/BorderDetail/TaskStatusBlock";
 
 const BoardDetail = () => {
   const { id } = useParams();
@@ -17,9 +18,11 @@ const BoardDetail = () => {
   }
 
   return (
-    <div className="w-full">
-      <h1 className="text-2xl font-bold">{currentBoard.title}</h1>
-    </div>
+    <section className="w-full pt-14 grid grid-cols-4 gap-10 min-h-1/2">
+      <TaskStatusBlock taskName="To Do" />
+      <TaskStatusBlock taskName="Done" />
+      <TaskStatusBlock taskName="In process" />
+    </section>
   );
 };
 

@@ -1,13 +1,18 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useTheme from "../../shared/use-hook/useTheme";
 import AccountBlock from "./AccountBlock/AccountBlock";
 import ToggleThemeButton from "./ToggleThemeButton";
 import InputBlock from "./InputBlock/InputBlock";
+import DesksIcon from "../../shared/icons/DesksIcon";
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
-
+  const navigate = useNavigate();
   const location = useLocation();
+
+  const toBoards = () => {
+    navigate("/boards");
+  };
 
   return (
     <header
@@ -19,7 +24,13 @@ const Header = () => {
       ${location.pathname === "/auth" && "hidden"}
       `}
     >
-      <p className="text-white text-xl">Kanban</p>
+      <div
+        className="lg:hover:cursor-pointer text-white flex items-center gap-1 "
+        onClick={toBoards}
+      >
+        <DesksIcon />
+        <span className="text-xl">Kanban</span>
+      </div>
 
       <InputBlock />
       <div className="flex gap-2 items-center">
