@@ -68,7 +68,6 @@ const BoardBackGround = () => {
         ...currentUser,
         boards: [...(currentUser.boards || []), boardData.id],
       };
-
       if (!res.ok) {
         throw new Error("Ошибка создания доски");
       }

@@ -27,7 +27,7 @@ const AddTaskBlock = () => {
       {showInputTask && (
         <div className="h-full  flex flex-col gap-3">
           <textarea
-            className={`p-2 w-full rounded-md outline-none capitalize transition-all duration-200 ${
+            className={`p-2 w-full rounded-md outline-none capitalize lg:hover:cursor-pointer ${
               theme === "light"
                 ? "bg-[#e0dfdf] text-slate-800 lg:hover:bg-slate-200"
                 : " bg-[#333333] text-slate-200 lg:hover:bg-slate-600"

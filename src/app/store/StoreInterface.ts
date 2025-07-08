@@ -13,4 +13,5 @@ export interface StoreInterface {
   getBoard: (id: string) => void;
   setCurrentBoard: (board: BoardType | null) => void;
   setCurrentUser: (user: UserType) => void;
+  deleteBoard: (id: string) => void;
 }

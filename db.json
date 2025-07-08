@@ -19,20 +19,14 @@
   ],
   "boards": [
     {
-      "id": "79ab",
-      "title": "New Board",
-      "background": "https://avatars.mds.yandex.net/i?id=557ea8789a278f192ff1c3ddcc00f5b3_l-5169643-images-thumbs&n=13",
+      "id": "3da8",
+      "title": "123",
+      "background": "linear-gradient(to right, #3c3b3f, #605c3c)",
       "user": "8f435a36-e2cd-49ee-b537-497d2362625e"
     },
     {
-      "id": "2f8c",
-      "title": "New Board2",
-      "background": "https://avatars.mds.yandex.net/i?id=6afe9003dc58a345d08f85621db2475d_l-4012815-images-thumbs&n=13",
-      "user": "8f435a36-e2cd-49ee-b537-497d2362625e"
-    },
-    {
-      "id": "4f5c",
-      "title": "яыучквсеамнпигртшоьщл",
+      "id": "57fb",
+      "title": "123",
       "background": "https://i.pinimg.com/originals/b6/65/c3/b665c39693c925a6c4d5c415e6ae93d1.jpg",
       "user": "8f435a36-e2cd-49ee-b537-497d2362625e"
     }

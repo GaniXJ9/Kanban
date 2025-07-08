@@ -41,6 +41,19 @@ const useStore = create<StoreInterface>((set) => ({
       return null;
     }
   },
+  deleteBoard: async (id: string) => {
+    try {
+      const res = await fetch(`http://localhost:3000/boards/${id}`, {
+        method: "DELETE",
+      });
+
+      if (res.ok) {
+        console.log("Удалено");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  },
   setCurrentUser: (user: UserType) => set({ currentUser: user }),
   setCurrentBoard: (board: BoardType | null) => set({ currentBoard: board }),
 }));
