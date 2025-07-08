@@ -1,4 +1,7 @@
-import type { BoardType } from "../../features/register/types/BoardType";
+import type {
+  BoardType,
+  ColumnType,
+} from "../../features/register/types/BoardType";
 import type { SingInInterface } from "../../features/sing-in/types/SingInInterface";
 import type { UserType } from "../../features/user/UserType";
 
@@ -14,4 +17,6 @@ export interface StoreInterface {
   setCurrentBoard: (board: BoardType | null) => void;
   setCurrentUser: (user: UserType) => void;
   deleteBoard: (id: string) => void;
+  addColumn: (currentBoard: BoardType, newColumnList: ColumnType[]) => void;
+  deleteColumn: (currentBoard: BoardType, columnId: number) => void;
 }

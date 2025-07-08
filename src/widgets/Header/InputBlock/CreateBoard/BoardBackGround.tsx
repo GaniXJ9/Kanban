@@ -55,6 +55,23 @@ const BoardBackGround = () => {
     const newBoard = {
       ...data,
       user: currentUser.token,
+      columns: [
+        {
+          id: 1,
+          columnName: "Done",
+          taskList: [],
+        },
+        {
+          id: 2,
+          columnName: "To Do",
+          taskList: [],
+        },
+        {
+          id: 3,
+          columnName: "In process",
+          taskList: [],
+        },
+      ],
     };
 
     try {

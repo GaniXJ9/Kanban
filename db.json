@@ -19,16 +19,27 @@
   ],
   "boards": [
     {
-      "id": "3da8",
-      "title": "123",
-      "background": "linear-gradient(to right, #3c3b3f, #605c3c)",
-      "user": "8f435a36-e2cd-49ee-b537-497d2362625e"
-    },
-    {
-      "id": "57fb",
-      "title": "123",
+      "id": "b6bd",
+      "title": "New BVoard",
       "background": "https://i.pinimg.com/originals/b6/65/c3/b665c39693c925a6c4d5c415e6ae93d1.jpg",
-      "user": "8f435a36-e2cd-49ee-b537-497d2362625e"
+      "user": "8f435a36-e2cd-49ee-b537-497d2362625e",
+      "columns": [
+        {
+          "id": 1,
+          "columnName": "Done",
+          "taskList": []
+        },
+        {
+          "id": 2,
+          "columnName": "To Do",
+          "taskList": []
+        },
+        {
+          "id": 3,
+          "columnName": "In process",
+          "taskList": []
+        }
+      ]
     }
   ]
 }

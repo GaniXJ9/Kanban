@@ -37,7 +37,7 @@ const BoardListContainer = () => {
           Empty List
         </h3>
       ) : (
-        <div className="w-full h-2/3  grid grid-cols-3 gap-3 py-4">
+        <div className="w-full h-2/3   grid grid-cols-3 gap-3 py-4">
           {boards.map((el: BoardType) => (
             <BoardCard el={el} key={el.id} />
           ))}
