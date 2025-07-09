@@ -19,9 +19,9 @@
   ],
   "boards": [
     {
-      "id": "b6bd",
-      "title": "New BVoard",
-      "background": "https://i.pinimg.com/originals/b6/65/c3/b665c39693c925a6c4d5c415e6ae93d1.jpg",
+      "id": "a6f3",
+      "title": "asd",
+      "background": "https://avatars.mds.yandex.net/i?id=6afe9003dc58a345d08f85621db2475d_l-4012815-images-thumbs&n=13",
       "user": "8f435a36-e2cd-49ee-b537-497d2362625e",
       "columns": [
         {
@@ -32,6 +32,11 @@
         {
           "id": 2,
           "columnName": "To Do",
+          "taskList": []
+        },
+        {
+          "id": 1752065252876,
+          "columnName": "ascasc",
           "taskList": []
         },
         {

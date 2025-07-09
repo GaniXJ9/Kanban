@@ -13,7 +13,7 @@ const AddColumnInput = ({
   const onSubmit = async (data: any) => {
     if (currentBoard) {
       const newColumn: ColumnType = {
-        id: currentBoard.columns[currentBoard.columns.length - 1].id + 1,
+        id: Number(new Date()),
         columnName: data.columnName,
         taskList: [],
       };

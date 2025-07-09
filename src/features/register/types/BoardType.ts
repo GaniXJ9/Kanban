@@ -5,7 +5,7 @@ export interface ColumnType {
 }
 
 export interface BoardType {
-  id: string;
+  id: number;
   title: string;
   background: string;
   user: string;

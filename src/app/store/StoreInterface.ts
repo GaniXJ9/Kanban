@@ -16,7 +16,10 @@ export interface StoreInterface {
   getBoard: (id: string) => void;
   setCurrentBoard: (board: BoardType | null) => void;
   setCurrentUser: (user: UserType) => void;
+  updateColumnOrder: (newColumns: ColumnType[]) => void;
   deleteBoard: (id: string) => void;
   addColumn: (currentBoard: BoardType, newColumnList: ColumnType[]) => void;
   deleteColumn: (currentBoard: BoardType, columnId: number) => void;
+
+  saveInServer: (id: number, columnOrder: ColumnType[]) => void;
 }

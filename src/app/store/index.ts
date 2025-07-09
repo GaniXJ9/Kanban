@@ -63,7 +63,7 @@ const useStore = create<StoreInterface>((set) => ({
       const res = await fetch(
         `http://localhost:3000/boards/${currentBoard.id}`,
         {
-          method: "PUT", // или PATCH, если не отправляешь всю доску
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
@@ -83,6 +83,14 @@ const useStore = create<StoreInterface>((set) => ({
       console.error("Ошибка:", e);
     }
   },
+  // ----
+  updateColumnOrder: (newColumns: ColumnType[]) =>
+    set((state) => ({
+      currentBoard: state.currentBoard
+        ? { ...state.currentBoard, columns: newColumns }
+        : null,
+    })),
+  // -----
   deleteColumn: async (currentBoard: BoardType, columnId: number) => {
     const updatedColumns = currentBoard?.columns.filter(
       (column) => column.id !== columnId
@@ -108,6 +116,25 @@ const useStore = create<StoreInterface>((set) => ({
   },
   setCurrentUser: (user: UserType) => set({ currentUser: user }),
   setCurrentBoard: (board: BoardType | null) => set({ currentBoard: board }),
+
+  saveInServer: (id: number, columnOrder: ColumnType[]) => {
+    fetch(`http://localhost:3000/boards/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ columns: columnOrder }),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Error");
+        }
+        return res.json();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  },
 }));
 
 export default useStore;

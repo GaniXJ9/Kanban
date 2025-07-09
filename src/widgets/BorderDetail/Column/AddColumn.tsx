@@ -13,7 +13,7 @@ const AddColumn = () => {
   return (
     <div
       className={`w-full text-start h-fit rounded-md transition-all duration-200 ${
-        theme === "light" ? "bg-[#e0dfdf] " : "bg-[#1a1a1a]"
+        theme === "light" ? "bg-[#e0dfdf]" : "bg-[#1a1a1a]"
       }`}
     >
       {!showInputColumn ? (

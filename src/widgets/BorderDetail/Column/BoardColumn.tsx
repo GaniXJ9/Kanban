@@ -1,56 +1,41 @@
-import { useState } from "react";
-import SettingsHorizontal from "../../../shared/icons/SettingsHorizontal";
 import useTheme from "../../../shared/use-hook/useTheme";
 import AddTaskBlock from "../AddTaskBlock";
 
-import ColumnSettings from "./ColumnSettings";
 import type { ColumnType } from "../../../features/register/types/BoardType";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import DragableItemIcon from "../../../shared/icons/DragableItemIcon";
+import ColumnHead from "./ColumnHead";
 
 const BoardColumn = ({ column }: { column: ColumnType }) => {
-  const [showSettings, setShowSettings] = useState<boolean>(false);
-  const [drag, setDrag] = useState<boolean>(false);
+  const { setNodeRef, attributes, listeners, transform, transition } =
+    useSortable({ id: column.id });
+  const style = { transform: CSS.Transform.toString(transform), transition };
   const { theme } = useTheme();
-
-  const handleDraggedItem = (value: boolean) => {
-    setDrag(value);
-  };
-
-  const toggleShowSettings = () => {
-    setShowSettings((prev) => !prev);
-  };
 
   return (
     <div
-      draggable={true}
-      onDrag={() => handleDraggedItem(true)}
-      onDragEnd={() => handleDraggedItem(false)}
+      style={style}
+      ref={setNodeRef}
       className={`relative flex flex-col gap-3 w-80 h-fit rounded-md p-5  ${
         theme === "light" ? "bg-white" : "bg-[#1a1a1a]"
-      } ${drag && "opacity-50"}
+      }
       `}
     >
-      <div className="flex justify-between items-center">
-        <h1
-          className={`font-medium text-sm uppercase ${
-            theme === "light" ? "text-slate-600" : "text-slate-200"
-          }`}
-        >
-          {column.columnName}
-        </h1>
-        <span
-          onClick={toggleShowSettings}
-          className={`lg:hover:cursor-pointer ${
-            theme === "light"
-              ? "text-slate-600 lg:hover:text-slate-800"
-              : "text-slate-200 lg:hover:text-slate-500"
-          }`}
-        >
-          <SettingsHorizontal />
-        </span>
-        <ColumnSettings showSettings={showSettings} id={column.id} />
-      </div>
-
+      <ColumnHead column={column} />
       <AddTaskBlock />
+      <div
+        className={`absolute top-0 left-1/2 -translate-1/2  px-2 py-3  z-0 rounded-xl lg:hover:cursor-pointer  ${
+          theme === "light"
+            ? "bg-white text-slate-600"
+            : "bg-[#1a1a1a] text-slate-200"
+        }
+        `}
+        {...attributes}
+        {...listeners}
+      >
+        <DragableItemIcon />
+      </div>
     </div>
   );
 };
