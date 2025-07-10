@@ -12,9 +12,10 @@ import {
 } from "@dnd-kit/sortable";
 
 const BoardDetail = () => {
-  const { getBoard, currentBoard, updateColumnOrder, saveInServer } =
+  const { theme, getBoard, currentBoard, updateColumnOrder, saveInServer } =
     useStore();
   const [columnOrder, setColumnOrder] = useState<ColumnType[]>([]);
+
   const { id } = useParams();
 
   const handleDragEnd = (event: DragEndEvent) => {
@@ -67,9 +68,16 @@ const BoardDetail = () => {
           ))}
         </SortableContext>
       </DndContext>
-      <div className=" flex flex-col gap-5 h-fit">
+      <div className=" flex flex-col gap-6 h-fit">
         <AddColumn />
-        <button onClick={SaveInServer} className="bg-white py-2">
+        <button
+          onClick={SaveInServer}
+          className={`rounded-md py-2  lg:hover:cursor-pointer transition-all duration-200 ${
+            theme === "light"
+              ? "bg-slate-300 text-slate-600 lg:hover:bg-slate-600  lg:hover:text-slate-300  "
+              : "bg-slate-600 text-slate-200 lg:hover:bg-slate-200  lg:hover:text-slate-600  "
+          }`}
+        >
           Save Order
         </button>
       </div>

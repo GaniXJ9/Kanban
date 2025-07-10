@@ -22,7 +22,7 @@ const ColumnSettings = ({
       className={`absolute flex flex-col justify-around  top-11 right-1 rounded-md transition-all duration-200 overflow-hidden
             ${theme === "light" ? "shadow-md bg-slate-400" : " bg-slate-600"}
             
-            ${showSettings ? "h-full" : "h-0"}`}
+            ${showSettings ? "max-h-full" : "max-h-0"}`}
     >
       <span
         onClick={handleDeleteColumn}
