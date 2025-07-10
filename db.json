@@ -19,16 +19,11 @@
   ],
   "boards": [
     {
-      "id": "b0e7",
-      "title": "123",
-      "background": "https://i.pinimg.com/originals/a9/59/22/a9592215c9342174fb0b4d5643727247.jpg",
+      "id": "a790",
+      "title": "s",
+      "background": "https://avatars.mds.yandex.net/i?id=6afe9003dc58a345d08f85621db2475d_l-4012815-images-thumbs&n=13",
       "user": "8f435a36-e2cd-49ee-b537-497d2362625e",
       "columns": [
-        {
-          "id": 1,
-          "columnName": "Done",
-          "taskList": []
-        },
         {
           "id": 2,
           "columnName": "To Do",
@@ -37,6 +32,16 @@
         {
           "id": 3,
           "columnName": "In process",
+          "taskList": []
+        },
+        {
+          "id": 1752150343255,
+          "columnName": "new",
+          "taskList": []
+        },
+        {
+          "id": 1752150361905,
+          "columnName": "e",
           "taskList": []
         }
       ]

@@ -6,6 +6,7 @@ import type { UserType } from "../../features/user/UserType";
 import type {
   BoardType,
   ColumnType,
+  TaskType,
 } from "../../features/register/types/BoardType";
 
 const useStore = create<StoreInterface>((set) => ({
@@ -83,14 +84,12 @@ const useStore = create<StoreInterface>((set) => ({
       console.error("Ошибка:", e);
     }
   },
-  // ----
   updateColumnOrder: (newColumns: ColumnType[]) =>
     set((state) => ({
       currentBoard: state.currentBoard
         ? { ...state.currentBoard, columns: newColumns }
         : null,
     })),
-  // -----
   deleteColumn: async (currentBoard: BoardType, columnId: number) => {
     const updatedColumns = currentBoard?.columns.filter(
       (column) => column.id !== columnId
@@ -116,7 +115,79 @@ const useStore = create<StoreInterface>((set) => ({
   },
   setCurrentUser: (user: UserType) => set({ currentUser: user }),
   setCurrentBoard: (board: BoardType | null) => set({ currentBoard: board }),
+  addTask: async (title: string, currentBoard: BoardType, columnId: number) => {
+    ///НУЖНО ЕЩЕ РАЗ ПОСМОТРЕТЬ
+    try {
+      const columnIndex = currentBoard.columns.findIndex(
+        (col) => col.id === columnId
+      );
+      const newTask: TaskType = {
+        id: Date.now(),
+        date: Date.now().toString(),
+        taskTitle: title,
+        comments: [],
+        background: null,
+      };
+      const column = currentBoard.columns[columnIndex];
+      const updatedTaskList = column.taskList
+        ? [...column.taskList, newTask]
+        : [newTask];
+      const updatedColumn = {
+        ...column,
+        taskList: updatedTaskList,
+      };
+      const updatedColumns = [...currentBoard.columns];
+      updatedColumns[columnIndex] = updatedColumn;
 
+      const response = await fetch(
+        `http://localhost:3000/boards/${currentBoard.id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ columns: updatedColumns }),
+        }
+      );
+
+      if (!response.ok) throw new Error("Failed to update board");
+
+      const updatedBoard = await response.json();
+      console.log("Updated board:", updatedBoard);
+    } catch (error) {
+      console.error("Error adding task:", error);
+    }
+  },
+  deleteTask: async (
+    column: ColumnType,
+    taskId: number,
+    currentBoard: BoardType
+  ) => {
+    const updatedTaskList = column.taskList.filter(
+      (task: TaskType) => task.id !== taskId
+    );
+    const updatedColumn = { ...column, taskList: updatedTaskList };
+    const updatedColumnList = currentBoard?.columns.map((col) =>
+      col.id === column.id ? updatedColumn : col
+    );
+
+    try {
+      const res = await fetch(
+        `http://localhost:3000/boards/${currentBoard?.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ columns: updatedColumnList }),
+        }
+      );
+
+      if (res.ok) {
+        return "+++";
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  },
   saveInServer: (id: number, columnOrder: ColumnType[]) => {
     fetch(`http://localhost:3000/boards/${id}`, {
       method: "PATCH",

@@ -1,11 +1,11 @@
 import useTheme from "../../../shared/use-hook/useTheme";
 import AddTaskBlock from "../AddTaskBlock";
-
 import type { ColumnType } from "../../../features/register/types/BoardType";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import DragableItemIcon from "../../../shared/icons/DragableItemIcon";
 import ColumnHead from "./ColumnHead";
+import TaskContainer from "./Tasks/TaskContainer";
 
 const BoardColumn = ({ column }: { column: ColumnType }) => {
   const { setNodeRef, attributes, listeners, transform, transition } =
@@ -23,7 +23,10 @@ const BoardColumn = ({ column }: { column: ColumnType }) => {
       `}
     >
       <ColumnHead column={column} />
-      <AddTaskBlock />
+      <TaskContainer column={column} />
+
+      <AddTaskBlock id={column.id} />
+
       <div
         className={`absolute top-0 left-1/2 -translate-1/2  px-2 py-3  z-0 rounded-xl lg:hover:cursor-pointer  ${
           theme === "light"

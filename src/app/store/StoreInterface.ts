@@ -20,6 +20,11 @@ export interface StoreInterface {
   deleteBoard: (id: string) => void;
   addColumn: (currentBoard: BoardType, newColumnList: ColumnType[]) => void;
   deleteColumn: (currentBoard: BoardType, columnId: number) => void;
-
+  addTask: (title: string, currentBoard: BoardType, id: number) => void;
+  deleteTask: (
+    column: ColumnType,
+    taskId: number,
+    currentBoard: BoardType
+  ) => void;
   saveInServer: (id: number, columnOrder: ColumnType[]) => void;
 }

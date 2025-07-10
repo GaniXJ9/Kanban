@@ -1,7 +1,15 @@
+export interface TaskType {
+  id: number;
+  date: string;
+  taskTitle: string;
+  comments: [];
+  background?: null;
+}
+
 export interface ColumnType {
   id: number;
   columnName: string;
-  taskList: [];
+  taskList: any;
 }
 
 export interface BoardType {
