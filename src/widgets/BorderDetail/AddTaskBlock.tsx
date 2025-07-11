@@ -1,41 +1,52 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import useStore from "../../app/store";
 
-const AddTaskBlock = ({ id }: { id: number }) => {
+const AddTaskBlock = ({
+  id,
+  isDragging,
+}: {
+  id: number;
+  isDragging: boolean;
+}) => {
   const { theme, currentBoard, addTask } = useStore();
   const [showInputTask, setShowInputTask] = useState<boolean>(false);
   const { register, handleSubmit } = useForm();
 
-  if (!currentBoard) return <></>;
+  useEffect(() => {
+    if (isDragging && showInputTask) {
+      setShowInputTask(false);
+    }
+  }, [isDragging]);
 
   const toggleInput = () => {
     setShowInputTask((prev) => !prev);
   };
 
   const onSubmit = async (data: any) => {
-    await addTask(data.taskTitle, currentBoard, id);
-    setShowInputTask(false);
+    if (currentBoard) {
+      await addTask(data.taskTitle, currentBoard, id);
+      setShowInputTask(false);
+    }
   };
 
   return (
     <div>
-      {!showInputTask && (
-        <button
-          className={`w-full text-start rounded-md outline-none px-2 py-2 lg:hover:cursor-pointer transition-all duration-200 ${
-            theme === "light"
-              ? "bg-[#e0dfdf]  text-slate-800 lg:hover:bg-slate-300"
-              : "bg-[#373737] text-white  lg:hover:bg-slate-600"
-          }`}
-          onClick={toggleInput}
-        >
-          + Add Task
-        </button>
-      )}
+      <button
+        className={`w-full text-start rounded-md outline-none px-2 py-2 lg:hover:cursor-pointer transition-all duration-200 ${
+          theme === "light"
+            ? "bg-[#e0dfdf]  text-slate-800 lg:hover:bg-slate-300"
+            : "bg-[#373737] text-white  lg:hover:bg-slate-600"
+        }`}
+        onClick={toggleInput}
+        disabled={isDragging}
+      >
+        + Add Task
+      </button>
 
-      {showInputTask && (
+      {showInputTask && !isDragging && (
         <form
-          className="h-full flex flex-col gap-3"
+          className="h-full flex flex-col gap-3 mt-2"
           onSubmit={handleSubmit(onSubmit)}
         >
           <textarea

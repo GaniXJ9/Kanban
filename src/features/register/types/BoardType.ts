@@ -1,7 +1,8 @@
 export interface TaskType {
   id: number;
-  date: string;
+  columnId: number;
   taskTitle: string;
+  date: string;
   comments: [];
   background?: null;
 }

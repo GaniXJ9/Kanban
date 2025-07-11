@@ -1,8 +1,5 @@
 import useStore from "../../../../app/store";
-import type {
-  ColumnType,
-  TaskType,
-} from "../../../../features/register/types/BoardType";
+import type { ColumnType } from "../../../../features/register/types/BoardType";
 import DeleteTaskIcon from "../../../../shared/icons/DeleteTaskIcon";
 import EditTaskIcon from "../../../../shared/icons/EditTaskIcon";
 
@@ -22,7 +19,7 @@ const TaskButtons = ({
   };
 
   return (
-    <div className="flex gap-1">
+    <div className="flex gap-1 z-10">
       <span
         className={`size-6  rounded-md border  flex items-center justify-center 
             ${

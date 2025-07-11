@@ -19,30 +19,70 @@
   ],
   "boards": [
     {
-      "id": "a790",
-      "title": "s",
+      "id": "5274",
+      "title": "qwe",
       "background": "https://avatars.mds.yandex.net/i?id=6afe9003dc58a345d08f85621db2475d_l-4012815-images-thumbs&n=13",
       "user": "8f435a36-e2cd-49ee-b537-497d2362625e",
       "columns": [
         {
           "id": 2,
           "columnName": "To Do",
-          "taskList": []
+          "taskList": [
+            {
+              "id": 1752235882235,
+              "date": "1752235882235",
+              "taskTitle": "zx",
+              "comments": [],
+              "background": null
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "columnName": "Done",
+          "taskList": [
+            {
+              "id": 1752233558030,
+              "date": "1752233558030",
+              "taskTitle": "asx",
+              "comments": [],
+              "background": null
+            },
+            {
+              "id": 1752235450166,
+              "date": "1752235450166",
+              "taskTitle": "фыс",
+              "comments": [],
+              "background": null
+            }
+          ]
         },
         {
           "id": 3,
           "columnName": "In process",
-          "taskList": []
-        },
-        {
-          "id": 1752150343255,
-          "columnName": "new",
-          "taskList": []
-        },
-        {
-          "id": 1752150361905,
-          "columnName": "e",
-          "taskList": []
+          "taskList": [
+            {
+              "id": 1752233220151,
+              "date": "1752233220151",
+              "taskTitle": "sac",
+              "comments": [],
+              "background": null
+            },
+            {
+              "id": 1752240367363,
+              "date": "1752240367363",
+              "taskTitle": "\\dfaf",
+              "comments": [],
+              "background": null
+            },
+            {
+              "id": 1752233561744,
+              "date": "1752233561744",
+              "taskTitle": "asx",
+              "comments": [],
+              "background": null
+            }
+          ]
         }
       ]
     }

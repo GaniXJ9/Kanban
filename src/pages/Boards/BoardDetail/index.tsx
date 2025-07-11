@@ -1,42 +1,142 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import useStore from "../../../app/store";
-import type { ColumnType } from "../../../features/register/types/BoardType";
-import BoardColumn from "../../../widgets/BorderDetail/Column/BoardColumn";
-import AddColumn from "../../../widgets/BorderDetail/Column/AddColumn";
-import { closestCorners, DndContext, type DragEndEvent } from "@dnd-kit/core";
 import {
-  arrayMove,
-  horizontalListSortingStrategy,
-  SortableContext,
-} from "@dnd-kit/sortable";
+  DndContext,
+  DragOverlay,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+  type DragOverEvent,
+  type DragStartEvent,
+} from "@dnd-kit/core";
+import { useEffect, useMemo, useState } from "react";
+import useStore from "../../../app/store";
+import { useParams } from "react-router-dom";
+import { arrayMove, SortableContext } from "@dnd-kit/sortable";
+import type {
+  ColumnType,
+  TaskType,
+} from "../../../features/register/types/BoardType";
+import BoardColumn from "../../../widgets/BorderDetail/Column/BoardColumn";
+import { createPortal } from "react-dom";
+import AddColumn from "../../../widgets/BorderDetail/Column/AddColumn";
+import TaskCard from "../../../widgets/BorderDetail/Column/Tasks/TaskCard";
 
 const BoardDetail = () => {
-  const { theme, getBoard, currentBoard, updateColumnOrder, saveInServer } =
-    useStore();
-  const [columnOrder, setColumnOrder] = useState<ColumnType[]>([]);
-
+  const { currentBoard, getBoard, saveInServer, theme } = useStore();
+  const [colums, setColumns] = useState<ColumnType[]>([]);
+  const [activeColumn, setActiveColumn] = useState<ColumnType | null>(null);
+  const [tasks, setTasks] = useState<TaskType[]>([]);
+  const [activeTask, setActiveTask] = useState<TaskType | null>(null);
   const { id } = useParams();
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 3,
+      },
+    })
+  );
 
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
-    if (!over || active.id === over.id) return;
+  const columsId = useMemo(() => colums?.map((col) => col.id), [colums]);
 
-    const oldIndex = columnOrder.findIndex(
-      (col) => col.id === Number(active.id)
-    );
-    const newIndex = columnOrder.findIndex((col) => col.id === Number(over.id));
+  const onDragStart = (event: DragStartEvent) => {
+    const item = event.active.data.current;
 
-    if (oldIndex !== -1 && newIndex !== -1 && currentBoard) {
-      const newOrder = arrayMove(columnOrder, oldIndex, newIndex);
-      setColumnOrder(newOrder);
-      updateColumnOrder(newOrder);
+    if (item?.type === "Column") {
+      setActiveColumn(item.column);
+      setActiveTask(null);
     }
+
+    if (item?.type === "Task") {
+      setActiveTask(item.task);
+      setActiveColumn(null);
+    }
+  };
+
+  const onDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    setActiveColumn(null);
+    setActiveTask(null);
+
+    if (!over) return;
+    if (active.id === over.id) return;
+
+    const activeType = active.data.current?.type;
+    const overType = over.data.current?.type;
+
+    if (activeType === "Column" && overType === "Column") {
+      setColumns((columns) => {
+        const activeIndex = columns.findIndex((col) => col.id === active.id);
+        const overIndex = columns.findIndex((col) => col.id === over.id);
+        return arrayMove(columns, activeIndex, overIndex);
+      });
+    }
+  };
+
+  const onDragOver = (event: DragOverEvent) => {
+    const { active, over } = event;
+
+    if (!over) return;
+
+    const activeType = active.data.current?.type;
+    const overType = over.data.current?.type;
+
+    if (activeType !== "Task") return;
+
+    const activeTask = active.data.current?.task;
+    const overTask = over.data.current?.task;
+    const overColumn = over.data.current?.column;
+
+    if (!overColumn) return;
+
+    setColumns((prevColumns) => {
+      const sourceColumnIndex = prevColumns.findIndex((col) =>
+        col.taskList.some((task: TaskType) => task.id === activeTask.id)
+      );
+
+      const destinationColumnIndex = prevColumns.findIndex(
+        (col) => col.id === overColumn.id
+      );
+
+      if (sourceColumnIndex === -1 || destinationColumnIndex === -1) {
+        return prevColumns;
+      }
+
+      const sourceColumn = prevColumns[sourceColumnIndex];
+      const destinationColumn = prevColumns[destinationColumnIndex];
+
+      if (sourceColumn.id === destinationColumn.id) {
+        return prevColumns;
+      }
+
+      const newSourceTasks = sourceColumn.taskList.filter(
+        (task: TaskType) => task.id !== activeTask.id
+      );
+      const newDestinationTasks = [...destinationColumn.taskList];
+
+      const overIndex = overTask
+        ? newDestinationTasks.findIndex((task) => task.id === overTask.id)
+        : newDestinationTasks.length;
+
+      newDestinationTasks.splice(overIndex, 0, activeTask);
+
+      const newColumns = [...prevColumns];
+      newColumns[sourceColumnIndex] = {
+        ...sourceColumn,
+        taskList: newSourceTasks,
+      };
+      newColumns[destinationColumnIndex] = {
+        ...destinationColumn,
+        taskList: newDestinationTasks,
+      };
+
+      return newColumns;
+    });
   };
 
   const SaveInServer = () => {
     if (currentBoard) {
-      saveInServer(currentBoard.id, columnOrder);
+      saveInServer(currentBoard.id, colums);
     }
   };
 
@@ -48,26 +148,38 @@ const BoardDetail = () => {
 
   useEffect(() => {
     if (currentBoard) {
-      setColumnOrder(currentBoard.columns);
+      setColumns(currentBoard.columns);
     }
   }, [currentBoard]);
 
-  if (!currentBoard) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <section className="w-full pt-14 grid  grid-cols-4 gap-10 min-h-1/2">
-      <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
-        <SortableContext
-          items={columnOrder.map((col) => col.id)}
-          strategy={horizontalListSortingStrategy}
-        >
-          {columnOrder.map((column: ColumnType) => (
-            <BoardColumn key={column.id} column={column} />
+      <DndContext
+        sensors={sensors}
+        onDragStart={onDragStart}
+        onDragEnd={onDragEnd}
+        onDragOver={onDragOver}
+      >
+        <SortableContext items={columsId}>
+          {colums.map((column: ColumnType) => (
+            <BoardColumn column={column} key={column.id} />
           ))}
         </SortableContext>
+
+        {createPortal(
+          <DragOverlay>
+            {activeColumn && <BoardColumn column={activeColumn} />}
+            {activeTask && (
+              <TaskCard
+                task={activeTask}
+                column={{ id: -1, columnName: "", taskList: [] }}
+              />
+            )}
+          </DragOverlay>,
+          document.body
+        )}
       </DndContext>
+
       <div className=" flex flex-col gap-6 h-fit">
         <AddColumn />
         <button
@@ -86,3 +198,5 @@ const BoardDetail = () => {
 };
 
 export default BoardDetail;
+
+////////////////////////////////////   TEEST
