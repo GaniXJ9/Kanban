@@ -1,11 +1,11 @@
 import { BrowserRouter } from "react-router-dom";
 import Header from "./widgets/Header/index.tsx";
 import AppBody from "./widgets/AppBody.tsx";
-import useStore from "./app/store/index.ts";
 import EntityPanel from "./widgets/EntityPanel/EntityPanel.tsx";
+import useBoardStore from "./app/store/board/boardStore.ts";
 
 const App = () => {
-  const { currentBoard } = useStore();
+  const { currentBoard } = useBoardStore();
 
   return (
     <>

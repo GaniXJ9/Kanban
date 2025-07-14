@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import useStore from "../../../app/store";
-import type { ColumnType } from "../../../features/register/types/BoardType";
+import useBoardStore from "../../../app/store/board/boardStore";
+import type { ColumnType } from "../../../features/register/types/ColumnType";
+import useColumnStore from "../../../app/store/column/columnStore";
 
 const AddColumnInput = ({
   toggleShowInputColumn,
@@ -8,7 +10,9 @@ const AddColumnInput = ({
   toggleShowInputColumn: () => void;
 }) => {
   const { register, handleSubmit } = useForm();
-  const { theme, currentBoard, addColumn } = useStore();
+  const { theme } = useStore();
+  const { currentBoard } = useBoardStore();
+  const { addColumn } = useColumnStore();
 
   const onSubmit = async (data: any) => {
     if (currentBoard) {

@@ -1,15 +1,13 @@
 import AddTaskBlock from "../AddTaskBlock";
-import type {
-  ColumnType,
-  TaskType,
-} from "../../../features/register/types/BoardType";
+
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import ColumnHead from "./ColumnHead";
 import TaskContainer from "./Tasks/TaskContainer";
-
 import useStore from "../../../app/store";
 import { useEffect, useState } from "react";
+import type { ColumnType } from "../../../features/register/types/ColumnType";
+import type { TaskType } from "../../../features/register/types/TaskType";
 
 const BoardColumn = ({ column }: { column: ColumnType }) => {
   const {

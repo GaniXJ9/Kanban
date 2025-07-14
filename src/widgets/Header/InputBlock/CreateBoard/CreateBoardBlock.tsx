@@ -1,5 +1,5 @@
 import useStore from "../../../../app/store";
-import BoardBackGround from "./BoardBackGround";
+import BoardBackGround from "./BoardForm";
 
 const CreateBoardBlock = () => {
   const { theme } = useStore();

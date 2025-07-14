@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { SingInInterface } from "../types/SingInInterface";
-import useStore from "../../../app/store";
+import useUserStore from "../../../app/store/user/userStore";
 
 export function useSignIn() {
-  const { currentUser, confirmData } = useStore();
+  const { currentUser, confirmData } = useUserStore();
   const navigate = useNavigate();
   const [authProblem, setAuthProblem] = useState<boolean>(false);
 

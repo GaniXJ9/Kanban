@@ -11,8 +11,9 @@ import useTheme from "../../../../shared/use-hook/useTheme";
 import useStore from "../../../../app/store";
 import { createBoardSchema } from "../../../../features/register/schema/createBoardSchema";
 import type { CreateBoardInterface } from "../../../../features/register/types/CreateBoardInterface";
+import useUserStore from "../../../../app/store/user/userStore";
 
-const BoardBackGround = () => {
+const BoardForm = () => {
   const {
     register,
     formState: { errors },
@@ -25,7 +26,8 @@ const BoardBackGround = () => {
   const { bgGradientColor } = useBackGroundGradient();
   const [bgColor, setBgColor] = useState<string>(bgGradientColor);
   const [bgImg, setBgImg] = useState<string | null>(null);
-  const { setCurrentBoard, setCurrentUser, currentUser } = useStore();
+  const { setCurrentBoard } = useStore();
+  const { setCurrentUser, currentUser } = useUserStore();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -104,11 +106,6 @@ const BoardBackGround = () => {
         <BoardTitle title="Background" />
         <PickImgBlock setBg={fillBackgroundImageInput} />
         <PickGradientBlock setBg={fillGradientInput} setBgImg={setBgImg} />
-        {errors.background && (
-          <p className="text-red-500 text-sm mt-1">
-            {errors.background.message}
-          </p>
-        )}
       </div>
       <div className="py-3">
         <BoardTitle title="Board name" />
@@ -137,4 +134,4 @@ const BoardBackGround = () => {
   );
 };
 
-export default BoardBackGround;
+export default BoardForm;

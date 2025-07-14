@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import PageTitle from "../../widgets/Common/PageTitle";
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const MainPage = () => {
     }
   }, []);
 
-  return <div>Main</div>;
+  return <PageTitle title="Main" />;
 };
 
 export default MainPage;

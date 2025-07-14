@@ -1,20 +1,9 @@
-export interface TaskType {
-  id: number;
-  columnId: number;
-  taskTitle: string;
-  date: string;
-  comments: [];
-  background?: null;
-}
+import type { ColumnType } from "./ColumnType";
 
-export interface ColumnType {
-  id: number;
-  columnName: string;
-  taskList: any;
-}
+type Id = number | string;
 
 export interface BoardType {
-  id: number;
+  id: Id;
   title: string;
   background: string;
   user: string;

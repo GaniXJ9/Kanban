@@ -15,7 +15,6 @@ const Auth = () => {
           KANBAN
         </p>
         <AuthNavPanel setAuthType={setAuthType} />
-
         {authType === "sing-in" ? <SingInPage /> : <RegistrationPage />}
       </div>
     </section>

@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
-import Input from "../../shared/Input";
+import AuthInput from "../../shared/ui/AuthInput";
 import type { RegisterInterface } from "../../features/register/types/RegisterInterface";
 import { registerSchema } from "../../features/register/schema/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegistration } from "../../features/register/use-hook/useRegistration";
+import AuthButton from "../../shared/ui/AuthButton";
 
 const RegistartionPage = () => {
   const { registration } = useRegistration();
@@ -24,39 +25,31 @@ const RegistartionPage = () => {
       className="flex flex-col items-center w-full gap-5 rounded-md"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <Input
+      <AuthInput
         label="username"
         type="text"
         register={register("username")}
         error={errors.username?.message}
       />
-      <Input
+      <AuthInput
         label="email"
         type="email"
         register={register("email")}
         error={errors.email?.message}
       />
-      <Input
+      <AuthInput
         label="password"
         type="password"
         register={register("password")}
         error={errors.password?.message}
       />
-      <Input
+      <AuthInput
         label="confirm password"
         type="password"
         register={register("confirmPassword")}
         error={errors.confirmPassword?.message}
       />
-      <button
-        className="
-      font-medium
-      bg-[rgba(62,74,246,0.2)] py-4 px-10 shadow-md text-white text-xl rounded-md 
-      lg:hover:cursor-pointer  lg:hover:bg-white lg:hover:text-[#7B77EE]
-      lg:hover:shadow-[0_0_0_1px_#7B77EE] transition-all duration-200"
-      >
-        Registration
-      </button>
+      <AuthButton text="Registration" />
     </form>
   );
 };

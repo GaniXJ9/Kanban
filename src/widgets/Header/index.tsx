@@ -31,7 +31,6 @@ const Header = () => {
         <DesksIcon />
         <span className="text-xl">Kanban</span>
       </div>
-
       <InputBlock />
       <div className="flex gap-2 items-center">
         <ToggleThemeButton theme={theme} toggleTheme={toggleTheme} />

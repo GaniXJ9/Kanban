@@ -1,18 +1,10 @@
-import useStore from "../../app/store";
 import BoardListContainer from "../../widgets/Boards/BoardListContainer";
+import PageTitle from "../../widgets/Common/PageTitle";
 
 const Boards = () => {
-  const { theme } = useStore();
-
   return (
     <section className="h-full">
-      <h1
-        className={`text-3xl font-medium ${
-          theme === "light" ? "text-slate-600" : "text-slate-200"
-        }`}
-      >
-        Boards List
-      </h1>
+      <PageTitle title="Boards List" />
       <BoardListContainer />
     </section>
   );

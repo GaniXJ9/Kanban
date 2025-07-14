@@ -2,10 +2,21 @@ import { useLocation } from "react-router-dom";
 import AppRouter from "../app/router/AppRouter";
 import useStore from "../app/store";
 import SideBarMenu from "./Menu/SideBarMenu";
+import useBoardStore from "../app/store/board/boardStore";
+import { useEffect } from "react";
 
 const AppBody = () => {
   const location = useLocation();
-  const { theme, currentBoard } = useStore();
+  const { theme } = useStore();
+  const { currentBoard, setCurrentBoard } = useBoardStore();
+
+  useEffect(() => {
+    if (currentBoard) {
+      if (location.pathname !== `/boards/${currentBoard.id}`) {
+        setCurrentBoard(null);
+      }
+    }
+  }, [location]);
 
   return (
     <main

@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import useStore from "../../app/store";
 import DeleteIcon from "../../shared/icons/DeleteIcon";
+import useBoardStore from "../../app/store/board/boardStore";
 
 const EntityPanel = () => {
   const navigate = useNavigate();
-  const { currentBoard, deleteBoard } = useStore();
+  const { currentBoard, deleteBoard } = useBoardStore();
 
   const handleBoardDeleting = () => {
     if (currentBoard) {

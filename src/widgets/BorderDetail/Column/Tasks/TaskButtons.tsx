@@ -1,5 +1,8 @@
 import useStore from "../../../../app/store";
-import type { ColumnType } from "../../../../features/register/types/BoardType";
+import useBoardStore from "../../../../app/store/board/boardStore";
+import type { Id } from "../../../../app/store/StoreInterface";
+import useTaskStore from "../../../../app/store/task/taskStore";
+import type { ColumnType } from "../../../../features/register/types/ColumnType";
 import DeleteTaskIcon from "../../../../shared/icons/DeleteTaskIcon";
 import EditTaskIcon from "../../../../shared/icons/EditTaskIcon";
 
@@ -8,10 +11,11 @@ const TaskButtons = ({
   taskId,
 }: {
   column: ColumnType;
-  taskId: number;
+  taskId: Id;
 }) => {
-  const { theme, currentBoard, deleteTask } = useStore();
-
+  const { theme } = useStore();
+  const { currentBoard } = useBoardStore();
+  const { deleteTask } = useTaskStore();
   const handleDeleteTask = () => {
     if (currentBoard) {
       deleteTask(column, taskId, currentBoard);

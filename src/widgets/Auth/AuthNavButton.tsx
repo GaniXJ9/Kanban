@@ -1,6 +1,6 @@
 type authType = "sing-in" | "sing-up";
 
-const AuthButton = ({
+const AuthNavButton = ({
   buttonText,
   authType,
   handleAuthType,
@@ -21,4 +21,4 @@ const AuthButton = ({
   );
 };
 
-export default AuthButton;
+export default AuthNavButton;

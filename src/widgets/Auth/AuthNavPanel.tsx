@@ -1,4 +1,4 @@
-import AuthButton from "./AuthButton";
+import AuthNavButton from "./AuthNavButton";
 
 type authType = "sing-in" | "sing-up";
 
@@ -12,12 +12,12 @@ const AuthNavPanel = ({
   };
   return (
     <div className=" my-3 py-5 flex justify-evenly">
-      <AuthButton
+      <AuthNavButton
         buttonText="Sing In"
         authType="sing-in"
         handleAuthType={handleAuthType}
       />
-      <AuthButton
+      <AuthNavButton
         buttonText="Sing Up"
         authType="sing-up"
         handleAuthType={handleAuthType}

@@ -3,10 +3,12 @@ import useStore from "../../app/store";
 import BoardCard from "./BoardCard";
 import { getBoards } from "../../shared/boards/getBoards";
 import type { BoardType } from "../../features/register/types/BoardType";
+import useUserStore from "../../app/store/user/userStore";
 
 const BoardListContainer = () => {
   const [boards, setBoards] = useState<BoardType[] | null>(null);
-  const { theme, currentUser, setCurrentBoard } = useStore();
+  const { theme, setCurrentBoard } = useStore();
+  const { currentUser } = useUserStore();
 
   useEffect(() => {
     async function showBoards() {

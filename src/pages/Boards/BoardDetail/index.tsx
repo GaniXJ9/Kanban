@@ -12,20 +12,19 @@ import { useEffect, useMemo, useState } from "react";
 import useStore from "../../../app/store";
 import { useParams } from "react-router-dom";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
-import type {
-  ColumnType,
-  TaskType,
-} from "../../../features/register/types/BoardType";
 import BoardColumn from "../../../widgets/BorderDetail/Column/BoardColumn";
 import { createPortal } from "react-dom";
 import AddColumn from "../../../widgets/BorderDetail/Column/AddColumn";
 import TaskCard from "../../../widgets/BorderDetail/Column/Tasks/TaskCard";
+import useBoardStore from "../../../app/store/board/boardStore";
+import type { ColumnType } from "../../../features/register/types/ColumnType";
+import type { TaskType } from "../../../features/register/types/TaskType";
 
 const BoardDetail = () => {
-  const { currentBoard, getBoard, saveInServer, theme } = useStore();
+  const { saveInServer, theme } = useStore();
+  const { currentBoard, getBoard } = useBoardStore();
   const [colums, setColumns] = useState<ColumnType[]>([]);
   const [activeColumn, setActiveColumn] = useState<ColumnType | null>(null);
-  const [tasks, setTasks] = useState<TaskType[]>([]);
   const [activeTask, setActiveTask] = useState<TaskType | null>(null);
   const { id } = useParams();
   const sensors = useSensors(
@@ -58,8 +57,12 @@ const BoardDetail = () => {
     setActiveColumn(null);
     setActiveTask(null);
 
-    if (!over) return;
-    if (active.id === over.id) return;
+    if (!over) {
+      return;
+    }
+    if (active.id === over.id) {
+      return;
+    }
 
     const activeType = active.data.current?.type;
     const overType = over.data.current?.type;
@@ -68,6 +71,7 @@ const BoardDetail = () => {
       setColumns((columns) => {
         const activeIndex = columns.findIndex((col) => col.id === active.id);
         const overIndex = columns.findIndex((col) => col.id === over.id);
+
         return arrayMove(columns, activeIndex, overIndex);
       });
     }
@@ -76,18 +80,23 @@ const BoardDetail = () => {
   const onDragOver = (event: DragOverEvent) => {
     const { active, over } = event;
 
-    if (!over) return;
+    if (!over) {
+      return;
+    }
 
     const activeType = active.data.current?.type;
-    const overType = over.data.current?.type;
 
-    if (activeType !== "Task") return;
+    if (activeType !== "Task") {
+      return;
+    }
 
     const activeTask = active.data.current?.task;
     const overTask = over.data.current?.task;
     const overColumn = over.data.current?.column;
 
-    if (!overColumn) return;
+    if (!overColumn) {
+      return;
+    }
 
     setColumns((prevColumns) => {
       const sourceColumnIndex = prevColumns.findIndex((col) =>
@@ -198,5 +207,3 @@ const BoardDetail = () => {
 };
 
 export default BoardDetail;
-
-////////////////////////////////////   TEEST

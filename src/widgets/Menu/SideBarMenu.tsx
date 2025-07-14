@@ -3,12 +3,16 @@ import DesksIcon from "../../shared/icons/DesksIcon";
 import TemplateIcon from "../../shared/icons/TemplateIcon";
 import MainPageIcon from "../../shared/icons/MainPageIcon";
 import { useLocation } from "react-router-dom";
-import useStore from "../../app/store";
+import useBoardStore from "../../app/store/board/boardStore";
+import { useEffect } from "react";
 
 const SideBarMenu = () => {
   const location = useLocation();
-  const { currentBoard } = useStore();
+  const { currentBoard, setCurrentBoard } = useBoardStore();
 
+  useEffect(() => {
+    setCurrentBoard(null);
+  }, []);
   return (
     <aside
       className={`w-1/4 flex flex-col ${

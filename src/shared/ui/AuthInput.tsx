@@ -1,7 +1,7 @@
 import { useState, type ChangeEvent } from "react";
 import type { UseFormRegisterReturn } from "react-hook-form";
 
-const Input = ({
+const AuthInput = ({
   label,
   type,
   error,
@@ -60,4 +60,4 @@ const Input = ({
   );
 };
 
-export default Input;
+export default AuthInput;

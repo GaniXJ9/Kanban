@@ -2,7 +2,7 @@ import { useState } from "react";
 import useStore from "../../../app/store";
 import SettingsHorizontal from "../../../shared/icons/SettingsHorizontal";
 import ColumnSettings from "./ColumnSettings";
-import type { ColumnType } from "../../../features/register/types/BoardType";
+import type { ColumnType } from "../../../features/register/types/ColumnType";
 
 const ColumnHead = ({ column }: { column: ColumnType }) => {
   const [showSettings, setShowSettings] = useState<boolean>(false);

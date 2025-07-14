@@ -1,7 +1,9 @@
 import useStore from "../../../app/store";
+import useUserStore from "../../../app/store/user/userStore";
 
 const AccountProfileIMG = () => {
-  const { theme, currentUser } = useStore();
+  const { theme } = useStore();
+  const { currentUser } = useUserStore();
 
   return (
     <div

@@ -1,8 +1,6 @@
 import useStore from "../../../../app/store";
-import type {
-  ColumnType,
-  TaskType,
-} from "../../../../features/register/types/BoardType";
+import type { ColumnType } from "../../../../features/register/types/ColumnType";
+import type { TaskType } from "../../../../features/register/types/TaskType";
 import TaskButtons from "./TaskButtons";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
