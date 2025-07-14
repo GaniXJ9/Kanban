@@ -23,8 +23,8 @@ const TaskButtons = ({
   };
 
   return (
-    <div className="flex gap-1 z-10">
-      <span
+    <div className="flex gap-1">
+      <button
         className={`size-6  rounded-md border  flex items-center justify-center 
             ${
               theme === "light"
@@ -33,9 +33,9 @@ const TaskButtons = ({
             } `}
       >
         <EditTaskIcon />
-      </span>
+      </button>
 
-      <span
+      <button
         className={`size-6   rounded-md border  flex items-center justify-center 
             ${
               theme === "light"
@@ -45,7 +45,7 @@ const TaskButtons = ({
         onClick={handleDeleteTask}
       >
         <DeleteTaskIcon />
-      </span>
+      </button>
     </div>
   );
 };

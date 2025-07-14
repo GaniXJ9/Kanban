@@ -2,12 +2,7 @@ import { create } from "zustand";
 import type { SingInInterface } from "../../../features/sing-in/types/SingInInterface";
 import getUsers from "../../../shared/users/getUsers";
 import type { UserType } from "../../../features/user/UserType";
-
-interface UserStoreInterface {
-  currentUser: null | UserType;
-  confirmData: (data: SingInInterface) => void;
-  setCurrentUser: (user: UserType) => void;
-}
+import type { UserStoreInterface } from "../type/UserStoreInterface";
 
 const useUserStore = create<UserStoreInterface>((set) => ({
   currentUser: JSON.parse(localStorage.getItem("currentUser") as string),

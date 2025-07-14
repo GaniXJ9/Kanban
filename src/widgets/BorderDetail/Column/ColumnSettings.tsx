@@ -1,6 +1,7 @@
 import useStore from "../../../app/store";
 import useBoardStore from "../../../app/store/board/boardStore";
 import useColumnStore from "../../../app/store/column/columnStore";
+import type { Id } from "../../../app/store/StoreInterface";
 import DeleteIcon from "../../../shared/icons/DeleteIcon";
 import EditIcon from "../../../shared/icons/EditIcon";
 
@@ -8,7 +9,7 @@ const ColumnSettings = ({
   id,
   showSettings,
 }: {
-  id: number;
+  id: Id;
   showSettings: boolean;
 }) => {
   const { theme } = useStore();
@@ -28,15 +29,15 @@ const ColumnSettings = ({
             
             ${showSettings ? "max-h-full" : "max-h-0"}`}
     >
-      <span
+      <button
         onClick={handleDeleteColumn}
         className="block m-1 p-2 bg-red-500 text-center rounded-md text-slate-200 lg:hover:cursor-pointer lg:hover:bg-slate-100 lg:hover:text-slate-700 transition-all duration-200"
       >
         <DeleteIcon />
-      </span>
-      <span className="block m-1 p-2 bg-slate-700 text-center rounded-md text-slate-200 lg:hover:cursor-pointer lg:hover:bg-slate-100 lg:hover:text-slate-700 transition-all duration-200">
+      </button>
+      <button className="block m-1 p-2 bg-slate-700 text-center rounded-md text-slate-200 lg:hover:cursor-pointer lg:hover:bg-slate-100 lg:hover:text-slate-700 transition-all duration-200">
         <EditIcon />
-      </span>
+      </button>
     </div>
   );
 };

@@ -27,7 +27,7 @@ const TaskCard = ({ task, column }: { task: TaskType; column: ColumnType }) => {
       {...listeners}
       style={style}
       ref={setNodeRef}
-      className={`cursor-grab relative p-1 w-full rounded-md flex px-2 items-center justify-between ${
+      className={`cursor-grab  p-1 w-full rounded-md flex px-2 items-center justify-between ${
         theme === "light" ? "bg-slate-300" : "bg-[#222222] "
       }`}
     >

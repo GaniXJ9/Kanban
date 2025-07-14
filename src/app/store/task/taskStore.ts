@@ -3,11 +3,7 @@ import type { ColumnType } from "../../../features/register/types/ColumnType";
 import type { BoardType } from "../../../features/register/types/BoardType";
 import type { TaskType } from "../../../features/register/types/TaskType";
 import type { Id } from "../StoreInterface";
-
-interface TaskStoreInterface {
-  addTask: (title: string, currentBoard: BoardType, id: Id) => void;
-  deleteTask: (column: ColumnType, taskId: Id, currentBoard: BoardType) => void;
-}
+import type { TaskStoreInterface } from "../type/TaskStoreInterface";
 
 const useTaskStore = create<TaskStoreInterface>(() => ({
   addTask: async (title: string, currentBoard: BoardType, columnId: Id) => {

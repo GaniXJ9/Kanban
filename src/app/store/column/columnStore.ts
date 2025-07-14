@@ -1,14 +1,8 @@
 import { create } from "zustand";
 import type { BoardType } from "../../../features/register/types/BoardType";
 import type { ColumnType } from "../../../features/register/types/ColumnType";
-
-interface ColumnStoreInterface {
-  currentBoard: null | BoardType;
-  setCurrentBoard: (board: BoardType | null) => void;
-  updateColumnOrder: (newColumns: ColumnType[]) => void;
-  addColumn: (currentBoard: BoardType, newColumnList: ColumnType[]) => void;
-  deleteColumn: (currentBoard: BoardType, columnId: number) => void;
-}
+import type { Id } from "../StoreInterface";
+import type { ColumnStoreInterface } from "../type/ColumnStoreInterface";
 
 const useColumnStore = create<ColumnStoreInterface>((set) => ({
   currentBoard: null,
@@ -29,21 +23,16 @@ const useColumnStore = create<ColumnStoreInterface>((set) => ({
       );
 
       if (res.ok) {
-        console.log("Успещно");
+        console.log("Success");
       } else {
-        console.log("Ошибка при добавлении");
+        console.log("Error");
       }
     } catch (e) {
-      console.error("Ошибка:", e);
+      console.error("Error:", e);
     }
   },
-  updateColumnOrder: (newColumns: ColumnType[]) =>
-    set((state) => ({
-      currentBoard: state.currentBoard
-        ? { ...state.currentBoard, columns: newColumns }
-        : null,
-    })),
-  deleteColumn: async (currentBoard: BoardType, columnId: number) => {
+
+  deleteColumn: async (currentBoard: BoardType, columnId: Id) => {
     const updatedColumns = currentBoard?.columns.filter(
       (column) => column.id !== columnId
     );
@@ -67,6 +56,12 @@ const useColumnStore = create<ColumnStoreInterface>((set) => ({
     }
   },
   setCurrentBoard: (board: BoardType | null) => set({ currentBoard: board }),
+  updateColumnOrder: (newColumns: ColumnType[]) =>
+    set((state) => ({
+      currentBoard: state.currentBoard
+        ? { ...state.currentBoard, columns: newColumns }
+        : null,
+    })),
 }));
 
 export default useColumnStore;

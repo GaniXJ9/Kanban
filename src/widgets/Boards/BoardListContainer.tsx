@@ -4,11 +4,13 @@ import BoardCard from "./BoardCard";
 import { getBoards } from "../../shared/boards/getBoards";
 import type { BoardType } from "../../features/register/types/BoardType";
 import useUserStore from "../../app/store/user/userStore";
+import useBoardStore from "../../app/store/board/boardStore";
 
 const BoardListContainer = () => {
   const [boards, setBoards] = useState<BoardType[] | null>(null);
-  const { theme, setCurrentBoard } = useStore();
+  const { theme } = useStore();
   const { currentUser } = useUserStore();
+  const { setCurrentBoard } = useBoardStore();
 
   useEffect(() => {
     async function showBoards() {
@@ -39,7 +41,7 @@ const BoardListContainer = () => {
           Empty List
         </h3>
       ) : (
-        <div className="w-full h-2/3   grid grid-cols-3 gap-3 py-4">
+        <div className="w-full h-2/3  grid grid-cols-3 gap-3 py-4">
           {boards.map((el: BoardType) => (
             <BoardCard el={el} key={el.id} />
           ))}

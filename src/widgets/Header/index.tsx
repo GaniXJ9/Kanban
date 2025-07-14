@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 left-0 h-14   flex items-center justify-between px-10  border-b z-10 ${
+      className={`sticky top-0 left-0 h-14   flex items-center justify-between px-10  border-b z-50 ${
         theme === "light"
           ? "bg-[#6565a4] border-[#bcbcbc]"
           : "bg-[#1a1a1a] border-[#585858]"
