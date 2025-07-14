@@ -16,6 +16,7 @@ const TaskButtons = ({
   const { theme } = useStore();
   const { currentBoard } = useBoardStore();
   const { deleteTask } = useTaskStore();
+
   const handleDeleteTask = () => {
     if (currentBoard) {
       deleteTask(column, taskId, currentBoard);
@@ -34,7 +35,6 @@ const TaskButtons = ({
       >
         <EditTaskIcon />
       </button>
-
       <button
         className={`size-6   rounded-md border  flex items-center justify-center 
             ${

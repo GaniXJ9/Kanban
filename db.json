@@ -19,9 +19,9 @@
   ],
   "boards": [
     {
-      "id": "72f1",
-      "title": "123",
-      "background": "https://avatars.mds.yandex.net/i?id=6afe9003dc58a345d08f85621db2475d_l-4012815-images-thumbs&n=13",
+      "id": "5f31",
+      "title": "asc",
+      "background": "https://i.pinimg.com/originals/b6/65/c3/b665c39693c925a6c4d5c415e6ae93d1.jpg",
       "user": "8f435a36-e2cd-49ee-b537-497d2362625e",
       "columns": [
         {
@@ -30,36 +30,28 @@
           "taskList": []
         },
         {
-          "id": 3,
-          "columnName": "In process",
+          "id": 2,
+          "columnName": "To Do",
           "taskList": [
             {
-              "id": 1752496373041,
-              "date": "1752496373041",
-              "taskTitle": "K",
+              "id": 1752497203658,
+              "date": "1752497203658",
+              "taskTitle": "asdasd",
+              "comments": [],
+              "background": null
+            },
+            {
+              "id": 1752497182422,
+              "date": "1752497182422",
+              "taskTitle": "asc",
               "comments": [],
               "background": null
             }
           ]
         },
         {
-          "id": 1752495752308,
-          "columnName": "asc",
-          "taskList": []
-        },
-        {
-          "id": 1752496265919,
-          "columnName": "asc",
-          "taskList": []
-        },
-        {
-          "id": 1752496284631,
-          "columnName": "",
-          "taskList": []
-        },
-        {
-          "id": 1752496295949,
-          "columnName": "",
+          "id": 3,
+          "columnName": "In process",
           "taskList": []
         }
       ]

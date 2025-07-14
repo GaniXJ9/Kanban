@@ -6,6 +6,7 @@ const AddColumnButton = ({
   toggleShowInputColumn: () => void;
 }) => {
   const { theme } = useStore();
+
   return (
     <button
       onClick={toggleShowInputColumn}

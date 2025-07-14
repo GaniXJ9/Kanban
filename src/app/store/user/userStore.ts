@@ -8,16 +8,20 @@ const useUserStore = create<UserStoreInterface>((set) => ({
   currentUser: JSON.parse(localStorage.getItem("currentUser") as string),
 
   confirmData: async (data: SingInInterface) => {
-    const users = await getUsers();
-    const loggedUser = users.find(
-      (user: UserType) => user.email === data.email
-    );
+    try {
+      const users = await getUsers();
+      const loggedUser = users.find(
+        (user: UserType) => user.email === data.email
+      );
 
-    if (loggedUser) {
-      localStorage.setItem("currentUser", JSON.stringify(loggedUser));
-      set({ currentUser: loggedUser });
-    } else {
-      set({ currentUser: null });
+      if (loggedUser) {
+        localStorage.setItem("currentUser", JSON.stringify(loggedUser));
+        set({ currentUser: loggedUser });
+      } else {
+        set({ currentUser: null });
+      }
+    } catch (e) {
+      console.log("error", e);
     }
   },
 

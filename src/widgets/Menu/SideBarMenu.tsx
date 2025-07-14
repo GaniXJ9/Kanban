@@ -13,6 +13,7 @@ const SideBarMenu = () => {
   useEffect(() => {
     setCurrentBoard(null);
   }, []);
+
   return (
     <aside
       className={`w-1/4 flex flex-col ${

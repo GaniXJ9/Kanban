@@ -1,10 +1,8 @@
 import { SortableContext } from "@dnd-kit/sortable";
-import type {
-  ColumnType,
-  TaskType,
-} from "../../../../features/register/types/BoardType";
 import TaskCard from "./TaskCard";
 import { useMemo } from "react";
+import type { TaskType } from "../../../../features/register/types/TaskType";
+import type { ColumnType } from "../../../../features/register/types/ColumnType";
 
 const TaskContainer = ({
   tasks,
@@ -23,7 +21,7 @@ const TaskContainer = ({
         {tasks.map((task: TaskType) => (
           <TaskCard task={task} key={task.id} column={column} />
         ))}
-      </div>{" "}
+      </div>
     </SortableContext>
   );
 };

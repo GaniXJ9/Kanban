@@ -49,7 +49,7 @@ const RegistartionPage = () => {
         register={register("confirmPassword")}
         error={errors.confirmPassword?.message}
       />
-      <AuthButton text="Registration" />
+      <AuthButton buttonText="Registration" />
     </form>
   );
 };

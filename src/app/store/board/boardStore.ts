@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import type { BoardType } from "../../../features/register/types/BoardType";
-
-type Id = number | string;
+import type { Id } from "../StoreInterface";
 
 interface BoardStoreInterface {
   currentBoard: null | BoardType;
