@@ -15,6 +15,15 @@
       "password": "123123123",
       "confirmPassword": "123123123",
       "token": "8f435a36-e2cd-49ee-b537-497d2362625e"
+    },
+    {
+      "id": "cdda",
+      "username": "Maks",
+      "email": "m@gmail.com",
+      "password": "123123123",
+      "confirmPassword": "123123123",
+      "token": "75be5d71-04e4-472a-8bb1-59dae4021600",
+      "boards": []
     }
   ],
   "boards": [
@@ -44,6 +53,60 @@
               "id": 1752497182422,
               "date": "1752497182422",
               "taskTitle": "asc",
+              "comments": [],
+              "background": null
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "columnName": "In process",
+          "taskList": []
+        }
+      ]
+    },
+    {
+      "id": "9dc1",
+      "title": "123",
+      "background": "https://avatars.mds.yandex.net/i?id=6afe9003dc58a345d08f85621db2475d_l-4012815-images-thumbs&n=13",
+      "user": "8f435a36-e2cd-49ee-b537-497d2362625e",
+      "columns": [
+        {
+          "id": 1,
+          "columnName": "Done",
+          "taskList": []
+        },
+        {
+          "id": 2,
+          "columnName": "To Do",
+          "taskList": []
+        },
+        {
+          "id": 3,
+          "columnName": "In process",
+          "taskList": []
+        }
+      ]
+    },
+    {
+      "id": "0234",
+      "title": "asd",
+      "background": "https://avatars.mds.yandex.net/i?id=557ea8789a278f192ff1c3ddcc00f5b3_l-5169643-images-thumbs&n=13",
+      "user": "75be5d71-04e4-472a-8bb1-59dae4021600",
+      "columns": [
+        {
+          "id": 1,
+          "columnName": "Done",
+          "taskList": []
+        },
+        {
+          "id": 2,
+          "columnName": "To Do",
+          "taskList": [
+            {
+              "id": 1752498338813,
+              "date": "1752498338813",
+              "taskTitle": "as",
               "comments": [],
               "background": null
             }
