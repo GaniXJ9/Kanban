@@ -1,6 +1,5 @@
 import useStore from "../../../app/store";
 import useBoardStore from "../../../app/store/board/boardStore";
-import useColumnStore from "../../../app/store/column/columnStore";
 import type { Id } from "../../../app/store/StoreInterface";
 import DeleteIcon from "../../../shared/icons/DeleteIcon";
 import EditIcon from "../../../shared/icons/EditIcon";
@@ -13,12 +12,11 @@ const ColumnSettings = ({
   showSettings: boolean;
 }) => {
   const { theme } = useStore();
-  const { currentBoard } = useBoardStore();
-  const { deleteColumn } = useColumnStore();
+  const { currentBoard, deleteColumn } = useBoardStore();
 
   const handleDeleteColumn = () => {
     if (currentBoard) {
-      deleteColumn(currentBoard, id);
+      deleteColumn(id);
     }
   };
 

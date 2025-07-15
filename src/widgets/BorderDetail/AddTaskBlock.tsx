@@ -3,12 +3,10 @@ import { useForm } from "react-hook-form";
 import useStore from "../../app/store";
 import useBoardStore from "../../app/store/board/boardStore";
 import type { Id } from "../../app/store/StoreInterface";
-import useTaskStore from "../../app/store/task/taskStore";
 
 const AddTaskBlock = ({ id, isDragging }: { id: Id; isDragging: boolean }) => {
   const { theme } = useStore();
-  const { currentBoard } = useBoardStore();
-  const { addTask } = useTaskStore();
+  const { currentBoard, addTask } = useBoardStore();
   const [showInputTask, setShowInputTask] = useState<boolean>(false);
   const { register, handleSubmit } = useForm();
 

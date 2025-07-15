@@ -6,42 +6,51 @@ import type { ColumnStoreInterface } from "../type/ColumnStoreInterface";
 
 const useColumnStore = create<ColumnStoreInterface>((set) => ({
   currentBoard: null,
+
   addColumn: async (currentBoard: BoardType, newColumnList: ColumnType[]) => {
     try {
-      const res = await fetch(`/api/boards/${currentBoard.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...currentBoard,
-          columns: newColumnList,
-        }),
-      });
+      const updatedBoard = {
+        ...currentBoard,
+        columns: newColumnList,
+      };
+
+      const res = await fetch(
+        `http://localhost:3000/boards/${currentBoard.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedBoard),
+        }
+      );
 
       if (res.ok) {
-        console.log("Success");
+        set({ currentBoard: updatedBoard });
+        console.log("Column added successfully");
       } else {
-        console.log("Error");
+        console.log("Failed to add column");
       }
     } catch (e) {
-      console.error("Error:", e);
+      console.error("Add column error:", e);
     }
   },
-
   deleteColumn: async (currentBoard: BoardType, columnId: Id) => {
     const updatedColumns = currentBoard?.columns.filter(
       (column) => column.id !== columnId
     );
 
     try {
-      const res = await fetch(`/api/boards/${currentBoard?.id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ columns: updatedColumns }),
-      });
+      const res = await fetch(
+        `http://localhost:3000/boards/${currentBoard?.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ columns: updatedColumns }),
+        }
+      );
       if (res.ok) {
         console.log("Удалено");
       }

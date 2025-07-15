@@ -8,7 +8,6 @@ const ColumnHead = ({ column }: { column: ColumnType }) => {
   const [showSettings, setShowSettings] = useState<boolean>(false);
 
   const { theme } = useStore();
-
   const toggleShowSettings = () => {
     setShowSettings((prev) => !prev);
   };

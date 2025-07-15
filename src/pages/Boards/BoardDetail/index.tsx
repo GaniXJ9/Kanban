@@ -9,7 +9,6 @@ import {
   type DragStartEvent,
 } from "@dnd-kit/core";
 import { useEffect, useMemo, useState } from "react";
-import useStore from "../../../app/store";
 import { useParams } from "react-router-dom";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 import BoardColumn from "../../../widgets/BorderDetail/Column/BoardColumn";
@@ -21,8 +20,7 @@ import type { ColumnType } from "../../../features/register/types/ColumnType";
 import type { TaskType } from "../../../features/register/types/TaskType";
 
 const BoardDetail = () => {
-  const { saveInServer, theme } = useStore();
-  const { currentBoard, getBoard } = useBoardStore();
+  const { currentBoard, getBoard, updateColumnOrder } = useBoardStore();
   const [colums, setColumns] = useState<ColumnType[]>([]);
   const [activeColumn, setActiveColumn] = useState<ColumnType | null>(null);
   const [activeTask, setActiveTask] = useState<TaskType | null>(null);
@@ -36,12 +34,6 @@ const BoardDetail = () => {
   );
 
   const columsId = useMemo(() => colums?.map((col) => col.id), [colums]);
-
-  const SaveInServer = () => {
-    if (currentBoard) {
-      saveInServer(currentBoard.id, colums);
-    }
-  };
 
   const onDragStart = (event: DragStartEvent) => {
     const item = event.active.data.current;
@@ -63,23 +55,22 @@ const BoardDetail = () => {
     setActiveColumn(null);
     setActiveTask(null);
 
-    if (!over) {
-      return;
-    }
-    if (active.id === over.id) {
-      return;
-    }
+    if (!over || active.id === over.id) return;
 
     const activeType = active.data.current?.type;
     const overType = over.data.current?.type;
 
     if (activeType === "Column" && overType === "Column") {
-      setColumns((columns) => {
-        const activeIndex = columns.findIndex((col) => col.id === active.id);
-        const overIndex = columns.findIndex((col) => col.id === over.id);
+      const activeIndex = colums.findIndex((col) => col.id === active.id);
+      const overIndex = colums.findIndex((col) => col.id === over.id);
 
-        return arrayMove(columns, activeIndex, overIndex);
-      });
+      if (activeIndex === -1 || overIndex === -1) return;
+
+      const newColumnOrder = arrayMove(colums, activeIndex, overIndex);
+
+      setColumns(newColumnOrder); // обновление локального UI
+
+      updateColumnOrder(newColumnOrder); // сохранение на сервере ✅
     }
   };
 
@@ -158,6 +149,7 @@ const BoardDetail = () => {
   useEffect(() => {
     if (currentBoard) {
       setColumns(currentBoard.columns);
+      console.log("CoLUMN");
     }
   }, [currentBoard]);
 
@@ -191,16 +183,6 @@ const BoardDetail = () => {
 
       <div className=" flex flex-col gap-6 h-fit">
         <AddColumn />
-        <button
-          onClick={SaveInServer}
-          className={`rounded-md py-2  lg:hover:cursor-pointer transition-all duration-200 ${
-            theme === "light"
-              ? "bg-slate-300 text-slate-600 lg:hover:bg-slate-600  lg:hover:text-slate-300  "
-              : "bg-slate-600 text-slate-200 lg:hover:bg-slate-200  lg:hover:text-slate-600  "
-          }`}
-        >
-          Save Order
-        </button>
       </div>
     </section>
   );

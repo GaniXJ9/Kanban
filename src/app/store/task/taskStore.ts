@@ -7,7 +7,6 @@ import type { TaskStoreInterface } from "../type/TaskStoreInterface";
 
 const useTaskStore = create<TaskStoreInterface>(() => ({
   addTask: async (title: string, currentBoard: BoardType, columnId: Id) => {
-    ///НУЖНО ЕЩЕ РАЗ ПОСМОТРЕТЬ
     try {
       const columnIndex = currentBoard.columns.findIndex(
         (col) => col.id === columnId
@@ -30,11 +29,14 @@ const useTaskStore = create<TaskStoreInterface>(() => ({
       const updatedColumns = [...currentBoard.columns];
       updatedColumns[columnIndex] = updatedColumn;
 
-      const response = await fetch(`/api/boards/${currentBoard.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ columns: updatedColumns }),
-      });
+      const response = await fetch(
+        `http://localhost:3000/boards/${currentBoard.id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ columns: updatedColumns }),
+        }
+      );
 
       if (!response.ok) throw new Error("Failed to update board");
 
@@ -58,13 +60,16 @@ const useTaskStore = create<TaskStoreInterface>(() => ({
     );
 
     try {
-      const res = await fetch(`/api/boards/${currentBoard?.id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ columns: updatedColumnList }),
-      });
+      const res = await fetch(
+        `http://localhost:3000/boards/${currentBoard?.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ columns: updatedColumnList }),
+        }
+      );
 
       if (res.ok) {
         return "+++";
