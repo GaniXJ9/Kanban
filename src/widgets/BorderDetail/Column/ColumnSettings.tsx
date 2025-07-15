@@ -24,7 +24,7 @@ const ColumnSettings = ({
 
   return (
     <div
-      className={`absolute flex flex-col justify-around  top-11 right-1 rounded-md transition-all duration-200 overflow-hidden
+      className={`absolute flex flex-col justify-around  top-11 right-1 rounded-md transition-all duration-200 overflow-hidden z-10
             ${theme === "light" ? "shadow-md bg-slate-400" : " bg-slate-600"}
             
             ${showSettings ? "max-h-full" : "max-h-0"}`}

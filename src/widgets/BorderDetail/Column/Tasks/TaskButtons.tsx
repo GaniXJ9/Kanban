@@ -9,9 +9,11 @@ import EditTaskIcon from "../../../../shared/icons/EditTaskIcon";
 const TaskButtons = ({
   column,
   taskId,
+  toggelEditMode,
 }: {
   column: ColumnType;
   taskId: Id;
+  toggelEditMode: () => void;
 }) => {
   const { theme } = useStore();
   const { currentBoard } = useBoardStore();
@@ -24,9 +26,10 @@ const TaskButtons = ({
   };
 
   return (
-    <div className="flex gap-1">
+    <div className="flex gap-1 z-0">
       <button
-        className={`size-6  rounded-md border  flex items-center justify-center 
+        onClick={toggelEditMode}
+        className={`size-6  rounded-md border  flex items-center justify-center lg:hover:cursor-pointer
             ${
               theme === "light"
                 ? "text-slate-600 bg-slate-100 border-[#a5a1a1]"
@@ -36,7 +39,7 @@ const TaskButtons = ({
         <EditTaskIcon />
       </button>
       <button
-        className={`size-6   rounded-md border  flex items-center justify-center 
+        className={`size-6   rounded-md border  flex items-center justify-center  lg:hover:cursor-pointer
             ${
               theme === "light"
                 ? "text-slate-200 bg-[#f82758] border-[#a5a1a1] "

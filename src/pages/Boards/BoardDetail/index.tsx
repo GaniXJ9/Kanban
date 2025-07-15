@@ -37,6 +37,12 @@ const BoardDetail = () => {
 
   const columsId = useMemo(() => colums?.map((col) => col.id), [colums]);
 
+  const SaveInServer = () => {
+    if (currentBoard) {
+      saveInServer(currentBoard.id, colums);
+    }
+  };
+
   const onDragStart = (event: DragStartEvent) => {
     const item = event.active.data.current;
 
@@ -141,12 +147,6 @@ const BoardDetail = () => {
 
       return newColumns;
     });
-  };
-
-  const SaveInServer = () => {
-    if (currentBoard) {
-      saveInServer(currentBoard.id, colums);
-    }
   };
 
   useEffect(() => {

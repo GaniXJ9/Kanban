@@ -1,6 +1,6 @@
 export const getBoards = async () => {
   try {
-    const res = await fetch("http://localhost:3000/boards");
+    const res = await fetch("/api/boards");
 
     return await res.json();
   } catch (error) {

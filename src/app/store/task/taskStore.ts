@@ -30,14 +30,11 @@ const useTaskStore = create<TaskStoreInterface>(() => ({
       const updatedColumns = [...currentBoard.columns];
       updatedColumns[columnIndex] = updatedColumn;
 
-      const response = await fetch(
-        `http://localhost:3000/boards/${currentBoard.id}`,
-        {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ columns: updatedColumns }),
-        }
-      );
+      const response = await fetch(`/api/boards/${currentBoard.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ columns: updatedColumns }),
+      });
 
       if (!response.ok) throw new Error("Failed to update board");
 
@@ -61,16 +58,13 @@ const useTaskStore = create<TaskStoreInterface>(() => ({
     );
 
     try {
-      const res = await fetch(
-        `http://localhost:3000/boards/${currentBoard?.id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ columns: updatedColumnList }),
-        }
-      );
+      const res = await fetch(`/api/boards/${currentBoard?.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ columns: updatedColumnList }),
+      });
 
       if (res.ok) {
         return "+++";

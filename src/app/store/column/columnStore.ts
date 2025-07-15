@@ -8,19 +8,16 @@ const useColumnStore = create<ColumnStoreInterface>((set) => ({
   currentBoard: null,
   addColumn: async (currentBoard: BoardType, newColumnList: ColumnType[]) => {
     try {
-      const res = await fetch(
-        `http://localhost:3000/boards/${currentBoard.id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ...currentBoard,
-            columns: newColumnList,
-          }),
-        }
-      );
+      const res = await fetch(`/api/boards/${currentBoard.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...currentBoard,
+          columns: newColumnList,
+        }),
+      });
 
       if (res.ok) {
         console.log("Success");
@@ -38,16 +35,13 @@ const useColumnStore = create<ColumnStoreInterface>((set) => ({
     );
 
     try {
-      const res = await fetch(
-        `http://localhost:3000/boards/${currentBoard?.id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ columns: updatedColumns }),
-        }
-      );
+      const res = await fetch(`/api/boards/${currentBoard?.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ columns: updatedColumns }),
+      });
       if (res.ok) {
         console.log("Удалено");
       }

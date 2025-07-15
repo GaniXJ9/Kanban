@@ -13,7 +13,7 @@ const useBoardStore = create<BoardStoreInterface>((set) => ({
   currentBoard: null,
   getBoard: async (id: Id) => {
     try {
-      const res = await fetch(`http://localhost:3000/boards/${id}`);
+      const res = await fetch(`/api/boards/${id}`);
       const boardData = await res.json();
       set({ currentBoard: boardData });
       return boardData;
@@ -24,10 +24,9 @@ const useBoardStore = create<BoardStoreInterface>((set) => ({
   },
   deleteBoard: async (id: Id) => {
     try {
-      const res = await fetch(`http://localhost:3000/boards/${id}`, {
+      const res = await fetch(`/api/boards/${id}`, {
         method: "DELETE",
       });
-
       if (res.ok) {
         console.log("Удалено");
       }
