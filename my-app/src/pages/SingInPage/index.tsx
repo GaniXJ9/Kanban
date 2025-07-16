@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import Input from "../../shared/ui/AuthInput";
 import type { SingInInterface } from "../../features/sing-in/types/SingInInterface";
 import { useSignIn } from "../../features/sing-in/use-hook/useSingIn";
 import AuthButton from "../../shared/ui/AuthButton";
+import AuthInput from "../../shared/ui/AuthInput";
 
 const SingInPage = () => {
   const { authProblem, signIn } = useSignIn();
@@ -30,13 +30,17 @@ const SingInPage = () => {
       >
         Incorrect data! Wrong password or email!
       </p>
-      <Input
+      <AuthInput
         label="email"
         type="email"
         register={register("email")}
         error={errors.email?.message}
       />
-      <Input label="password" type="password" register={register("password")} />
+      <AuthInput
+        label="password"
+        type="password"
+        register={register("password")}
+      />
       <AuthButton buttonText="Sing In" />
     </form>
   );

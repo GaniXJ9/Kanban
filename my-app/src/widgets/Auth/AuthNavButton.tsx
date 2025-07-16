@@ -11,7 +11,7 @@ const AuthNavButton = ({
 }) => {
   return (
     <button
-      className={`text-3xl text-white font-medium uppercase lg:hover:cursor-pointer ${
+      className={`text-xl lg:text-3xl text-white font-medium uppercase lg:hover:cursor-pointer ${
         authType === "sing-in" ? "opacity-100" : "opacity-50"
       }`}
       onClick={() => handleAuthType(authType)}
