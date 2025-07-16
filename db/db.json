@@ -1,0 +1,75 @@
+{
+  "users": [
+    {
+      "id": "6f21",
+      "username": "sun",
+      "email": "sun@gmail.com",
+      "password": "123123123",
+      "confirmPassword": "123123123",
+      "token": "6862a5d9-4e08-4e6b-9236-3c1708c1d286"
+    },
+    {
+      "id": "22f5",
+      "username": "XJ9",
+      "email": "ganisergaliev29@gmail.com",
+      "password": "123123123",
+      "confirmPassword": "123123123",
+      "token": "8f435a36-e2cd-49ee-b537-497d2362625e"
+    },
+    {
+      "id": "cdda",
+      "username": "Maks",
+      "email": "m@gmail.com",
+      "password": "123123123",
+      "confirmPassword": "123123123",
+      "token": "75be5d71-04e4-472a-8bb1-59dae4021600",
+      "boards": []
+    }
+  ],
+  "boards": [
+    {
+      "id": "c734",
+      "title": "1",
+      "background": "https://i.pinimg.com/originals/b6/65/c3/b665c39693c925a6c4d5c415e6ae93d1.jpg",
+      "user": "8f435a36-e2cd-49ee-b537-497d2362625e",
+      "columns": [
+        {
+          "id": 3,
+          "columnName": "In process",
+          "taskList": []
+        },
+        {
+          "id": 1,
+          "columnName": "Done",
+          "taskList": []
+        },
+        {
+          "id": 1752649794037,
+          "columnName": "",
+          "taskList": [
+            {
+              "id": 1752650517168,
+              "date": "1752650517168",
+              "taskTitle": "asc",
+              "comments": [],
+              "background": null
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "columnName": "To Do",
+          "taskList": [
+            {
+              "id": 1752651204101,
+              "date": "1752651204101",
+              "taskTitle": "фысфыс",
+              "comments": [],
+              "background": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
