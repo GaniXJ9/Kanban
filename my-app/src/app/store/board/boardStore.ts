@@ -19,6 +19,12 @@ interface BoardStoreInterface {
   updateColumnOrder: (newColumns: ColumnType[]) => void;
   addTask: (title: string, currentBoard: BoardType, id: Id) => void;
   deleteTask: (column: ColumnType, taskId: Id, currentBoard: BoardType) => void;
+  updateTask: (
+    columnId: Id,
+    taskId: Id,
+    newTitle: string,
+    currentBoard: BoardType
+  ) => void;
   updateTaskOrder: (newColumns: ColumnType[]) => void;
 }
 
@@ -30,7 +36,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
       const boardData = await res.json();
       set({ currentBoard: boardData });
     } catch (e) {
-      console.error("Failed to fetch board:", e);
+      console.error(e);
     }
   },
   deleteBoard: async (id: Id) => {
@@ -40,7 +46,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
       });
 
       if (res.ok) {
-        console.log("Удалено");
+        console.log("Deleted");
       }
     } catch (e) {
       console.log(e);
@@ -67,22 +73,24 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
 
       if (res.ok) {
         set({ currentBoard: updatedBoard });
-        console.log("Column added successfully");
-      } else {
-        console.log("Failed to add column");
+        console.log("Added");
       }
     } catch (e) {
-      console.error("Add column error:", e);
+      console.error(e);
     }
   },
 
   deleteColumn: async (columnId: Id) => {
     const { currentBoard } = get();
-    if (!currentBoard) return;
+
+    if (!currentBoard) {
+      return;
+    }
 
     const updatedColumns = currentBoard.columns.filter(
       (col) => col.id !== columnId
     );
+
     try {
       const res = await fetch(
         `http://localhost:3000/boards/${currentBoard.id}`,
@@ -110,9 +118,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
       const updatedColumns = currentBoard.columns.map((column) =>
         column.id === id ? newColumn : column
       );
-
       const updatedBoard = { ...currentBoard, columns: updatedColumns };
-
       const res = await fetch(
         `http://localhost:3000/boards/${currentBoard.id}`,
         {
@@ -124,18 +130,21 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
         }
       );
 
-      if (!res.ok) throw new Error("Failed to update column");
+      if (res.ok) {
+        console.log("Updated");
+      }
 
       set({ currentBoard: updatedBoard });
-
-      console.log(" Column updated ");
     } catch (e) {
       console.error(e);
     }
   },
   updateColumnOrder: async (newColumns: ColumnType[]) => {
     const { currentBoard } = get();
-    if (!currentBoard) return;
+
+    if (!currentBoard) {
+      return;
+    }
 
     const updatedBoard = {
       ...currentBoard,
@@ -156,13 +165,11 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
         }
       );
 
-      if (!res.ok) {
-        throw new Error("Ошибка при сохранении порядка колонок");
+      if (res.ok) {
+        console.log("Updates");
       }
-
-      console.log(" сохранён на сервере");
-    } catch (error) {
-      console.error(" Ошибка ", error);
+    } catch (e) {
+      console.error(e);
     }
   },
 
@@ -198,15 +205,15 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
         }
       );
 
-      if (!res.ok) throw new Error("Failed to update board");
+      if (res.ok) {
+        console.log("Added");
+      }
 
       const updatedBoard = await res.json();
 
       set({ currentBoard: updatedBoard });
-
-      console.log("Updated board:", updatedBoard);
-    } catch (error) {
-      console.error("Error adding task:", error);
+    } catch (e) {
+      console.error(e);
     }
   },
   deleteTask: async (
@@ -241,11 +248,52 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
         }
       );
 
-      if (!res.ok) throw new Error("Failed to delete task");
-
-      console.log(" Task deleted & saved on server");
+      if (res.ok) {
+        console.log("Deleted");
+      }
     } catch (e) {
-      console.error(" Error deleting task:", e);
+      console.error(e);
+    }
+  },
+  updateTask: async (
+    columnId: Id,
+    taskId: Id,
+    newTitle: string,
+    currentBoard: BoardType
+  ) => {
+    const updatedColumns = currentBoard.columns.map((column) => {
+      if (column.id !== columnId) {
+        return column;
+      }
+
+      const updatedTaskList = column.taskList.map((task: TaskType) =>
+        task.id === taskId ? { ...task, taskTitle: newTitle } : task
+      );
+
+      return { ...column, taskList: updatedTaskList };
+    });
+
+    const updatedBoard = { ...currentBoard, columns: updatedColumns };
+
+    set({ currentBoard: updatedBoard });
+
+    try {
+      const res = await fetch(
+        `http://localhost:3000/boards/${currentBoard.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ columns: updatedColumns }),
+        }
+      );
+
+      if (res.ok) {
+        console.log("Updated");
+      }
+    } catch (e) {
+      console.error(e);
     }
   },
   updateTaskOrder: async (newColumns: ColumnType[]) => {
@@ -257,7 +305,6 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
       columns: newColumns,
     };
 
-    // 🟢 Сначала локально обновляем Zustand
     set({ currentBoard: updatedBoard });
 
     try {
@@ -272,11 +319,11 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
         }
       );
 
-      if (!res.ok) throw new Error("Ошибка при сохранении тасков");
-
-      console.log("✅ Порядок тасков успешно сохранён на сервере");
-    } catch (error) {
-      console.error("❌ Ошибка сохранения тасков:", error);
+      if (res.ok) {
+        console.log("Updated");
+      }
+    } catch (e) {
+      console.error(e);
     }
   },
 }));

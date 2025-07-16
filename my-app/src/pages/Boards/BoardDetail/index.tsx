@@ -144,7 +144,6 @@ const BoardDetail = () => {
   useEffect(() => {
     if (currentBoard) {
       setColumns(currentBoard.columns);
-      console.log("CoLUMN");
     }
   }, [currentBoard]);
 
