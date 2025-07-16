@@ -28,46 +28,38 @@
   ],
   "boards": [
     {
-      "id": "c734",
+      "id": "5ac8",
       "title": "1",
-      "background": "https://i.pinimg.com/originals/b6/65/c3/b665c39693c925a6c4d5c415e6ae93d1.jpg",
+      "background": "https://avatars.mds.yandex.net/i?id=557ea8789a278f192ff1c3ddcc00f5b3_l-5169643-images-thumbs&n=13",
       "user": "8f435a36-e2cd-49ee-b537-497d2362625e",
       "columns": [
         {
-          "id": 3,
-          "columnName": "In process",
-          "taskList": []
-        },
-        {
           "id": 1,
-          "columnName": "Done",
+          "columnName": "Doneasd",
+          "taskList": [
+            {
+              "id": 1752658865521,
+              "date": "1752658865521",
+              "taskTitle": "ascasc",
+              "comments": [],
+              "background": null
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "columnName": "In ",
           "taskList": []
         },
         {
-          "id": 1752649794037,
-          "columnName": "",
-          "taskList": [
-            {
-              "id": 1752650517168,
-              "date": "1752650517168",
-              "taskTitle": "asc",
-              "comments": [],
-              "background": null
-            }
-          ]
+          "id": 1752658737660,
+          "columnName": "ascsd",
+          "taskList": []
         },
         {
-          "id": 2,
-          "columnName": "To Do",
-          "taskList": [
-            {
-              "id": 1752651204101,
-              "date": "1752651204101",
-              "taskTitle": "фысфыс",
-              "comments": [],
-              "background": null
-            }
-          ]
+          "id": 1752658742706,
+          "columnName": "qdqwd",
+          "taskList": []
         }
       ]
     }

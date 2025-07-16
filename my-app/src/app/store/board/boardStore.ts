@@ -10,6 +10,11 @@ interface BoardStoreInterface {
   setCurrentBoard: (board: BoardType | null) => void;
   deleteBoard: (id: Id) => void;
   addColumn: (newColumn: ColumnType) => Promise<void>;
+  updateColumn: (
+    id: Id,
+    currentBoard: BoardType,
+    newColumn: ColumnType
+  ) => void;
   deleteColumn: (columnId: Id) => Promise<void>;
   updateColumnOrder: (newColumns: ColumnType[]) => void;
   addTask: (title: string, currentBoard: BoardType, id: Id) => void;
@@ -96,7 +101,38 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
       console.log(e);
     }
   },
+  updateColumn: async (
+    id: Id,
+    currentBoard: BoardType,
+    newColumn: ColumnType
+  ) => {
+    try {
+      const updatedColumns = currentBoard.columns.map((column) =>
+        column.id === id ? newColumn : column
+      );
 
+      const updatedBoard = { ...currentBoard, columns: updatedColumns };
+
+      const res = await fetch(
+        `http://localhost:3000/boards/${currentBoard.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ columns: updatedColumns }),
+        }
+      );
+
+      if (!res.ok) throw new Error("Failed to update column");
+
+      set({ currentBoard: updatedBoard });
+
+      console.log(" Column updated ");
+    } catch (e) {
+      console.error(e);
+    }
+  },
   updateColumnOrder: async (newColumns: ColumnType[]) => {
     const { currentBoard } = get();
     if (!currentBoard) return;

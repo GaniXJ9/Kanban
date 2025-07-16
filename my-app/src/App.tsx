@@ -11,7 +11,6 @@ const App = () => {
     <>
       <BrowserRouter>
         <Header />
-        <div>ddascascdввв d</div>
         {currentBoard && <EntityPanel />}
         <AppBody />
       </BrowserRouter>
