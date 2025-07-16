@@ -8,6 +8,7 @@ interface BoardStoreInterface {
   currentBoard: null | BoardType;
   getBoard: (id: Id) => Promise<void>;
   setCurrentBoard: (board: BoardType | null) => void;
+  deleteBoard: (id: Id) => void;
   addColumn: (newColumn: ColumnType) => Promise<void>;
   deleteColumn: (columnId: Id) => Promise<void>;
   updateColumnOrder: (newColumns: ColumnType[]) => void;
@@ -17,7 +18,6 @@ interface BoardStoreInterface {
 
 const useBoardStore = create<BoardStoreInterface>((set, get) => ({
   currentBoard: null,
-
   getBoard: async (id: Id) => {
     try {
       const res = await fetch(`http://localhost:3000/boards/${id}`);
@@ -27,7 +27,19 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
       console.error("Failed to fetch board:", e);
     }
   },
+  deleteBoard: async (id: Id) => {
+    try {
+      const res = await fetch(`http://localhost:3000/boards/${id}`, {
+        method: "DELETE",
+      });
 
+      if (res.ok) {
+        console.log("Удалено");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  },
   setCurrentBoard: (board: BoardType | null) => set({ currentBoard: board }),
 
   addColumn: async (newColumn: ColumnType) => {

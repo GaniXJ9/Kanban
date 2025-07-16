@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useStore from "../../app/store";
 import BoardCard from "./BoardCard";
-import { getBoards } from "../../shared/boards/getBoards";
+import { getAllBoards } from "../../shared/boards/getAllBoards";
 import type { BoardType } from "../../features/register/types/BoardType";
 import useUserStore from "../../app/store/user/userStore";
 import useBoardStore from "../../app/store/board/boardStore";
@@ -14,7 +14,7 @@ const BoardListContainer = () => {
 
   useEffect(() => {
     async function showBoards() {
-      const allBoards = await getBoards();
+      const allBoards = await getAllBoards();
       const currentUserBoards = allBoards.filter((board: BoardType) => {
         return board.user === currentUser?.token;
       });

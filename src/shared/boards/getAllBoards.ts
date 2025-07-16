@@ -1,4 +1,4 @@
-export const getBoards = async () => {
+export const getAllBoards = async () => {
   try {
     const res = await fetch("http://localhost:3000/boards");
 
