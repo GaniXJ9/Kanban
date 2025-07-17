@@ -4,6 +4,7 @@ import AccountBlock from "./AccountBlock/AccountBlock";
 import ToggleThemeButton from "./ToggleThemeButton";
 import InputBlock from "./InputBlock/InputBlock";
 import DesksIcon from "../../shared/icons/DesksIcon";
+// import MobileMenuIcon from "../../shared/icons/MobileMenuIcon";
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
@@ -24,12 +25,20 @@ const Header = () => {
       ${location.pathname === "/auth" && "hidden"}
       `}
     >
+      <div className="flex lg:hidden items-center gap-3 px-3">
+        {/* <span className="p-2 bg-slate-200 text-slate-500 rounded-md">
+          <MobileMenuIcon />
+        </span> */}
+        <span className="text-slate-200">
+          <DesksIcon />
+        </span>
+      </div>
       <div
-        className="lg:hover:cursor-pointer text-white flex items-center gap-1 "
+        className="lg:hover:cursor-pointer text-white items-center gap-1 hidden lg:flex"
         onClick={toBoards}
       >
         <DesksIcon />
-        <span className="text-xl">Kanban</span>
+        <span className="text-xl ">Kanban</span>
       </div>
       <InputBlock />
       <div className="flex gap-2 items-center">

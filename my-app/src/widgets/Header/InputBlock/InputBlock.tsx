@@ -17,7 +17,7 @@ const InputBlock = () => {
   };
 
   return (
-    <div className="relative w-1/2 h-9 flex items-center gap-5 ">
+    <div className="relative w-1/2 h-9  items-center gap-5 hidden lg:flex">
       <div className="relative w-full">
         <span className="absolute text-white top-2 left-2">
           <Search />

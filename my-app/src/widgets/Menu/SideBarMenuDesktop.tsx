@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import useBoardStore from "../../app/store/board/boardStore";
 import { useEffect } from "react";
 
-const SideBarMenu = () => {
+const SideBarMenuDesktop = () => {
   const location = useLocation();
   const { currentBoard, setCurrentBoard } = useBoardStore();
 
@@ -16,7 +16,7 @@ const SideBarMenu = () => {
 
   return (
     <aside
-      className={`w-1/4 flex flex-col ${
+      className={`w-1/4 hidden lg:flex flex-col  ${
         location.pathname === "/auth" && "hidden"
       }
       ${currentBoard && "hidden"}
@@ -36,4 +36,4 @@ const SideBarMenu = () => {
   );
 };
 
-export default SideBarMenu;
+export default SideBarMenuDesktop;

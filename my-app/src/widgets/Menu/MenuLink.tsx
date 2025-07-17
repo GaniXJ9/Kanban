@@ -16,13 +16,14 @@ const MenuLink = ({
   return (
     <NavLink
       to={link}
-      className={`text-lg font-normal flex gap-3 p-2 rounded-md items-center w-full transition-all duration-200 ${
+      className={`text-2xl w-1/2  lg:w-full  lg:text-lg lg:font-normal  flex  justify-between lg:justify-start gap-3 p-2 rounded-md items-center transition-all duration-200 ${
         theme === "light"
           ? "lg:hover:bg-[#6565a4] text-slate-500 lg:hover:text-white"
           : "lg:hover:bg-slate-200 text-[#cbc9c9] lg:hover:text-[#1a1a1a]"
       } `}
     >
-      <Icon /> {linkTitle}
+      <Icon />
+      <span> {linkTitle}</span>
     </NavLink>
   );
 };
