@@ -12,6 +12,7 @@ const SideBarMenuDesktop = () => {
 
   useEffect(() => {
     setCurrentBoard(null);
+    console.log(location.pathname);
   }, []);
 
   return (

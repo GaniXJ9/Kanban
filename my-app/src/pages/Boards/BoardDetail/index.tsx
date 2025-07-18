@@ -8,6 +8,7 @@ import {
   type DragOverEvent,
   type DragStartEvent,
 } from "@dnd-kit/core";
+
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
@@ -26,10 +27,11 @@ const BoardDetail = () => {
   const [activeColumn, setActiveColumn] = useState<ColumnType | null>(null);
   const [activeTask, setActiveTask] = useState<TaskType | null>(null);
   const { id } = useParams();
+
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
-        distance: 3,
+        distance: 10,
       },
     })
   );
@@ -52,7 +54,6 @@ const BoardDetail = () => {
 
   const onDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
-
     setActiveColumn(null);
     setActiveTask(null);
 
@@ -70,14 +71,12 @@ const BoardDetail = () => {
       const newColumnOrder = arrayMove(colums, activeIndex, overIndex);
 
       setColumns(newColumnOrder);
-
       updateColumnOrder(newColumnOrder);
     }
   };
 
   const onDragOver = (event: DragOverEvent) => {
     const { active, over } = event;
-
     if (!over) return;
 
     const activeType = active.data.current?.type;
@@ -136,19 +135,15 @@ const BoardDetail = () => {
   };
 
   useEffect(() => {
-    if (id) {
-      getBoard(id);
-    }
+    if (id) getBoard(id);
   }, [id]);
 
   useEffect(() => {
-    if (currentBoard) {
-      setColumns(currentBoard.columns);
-    }
+    if (currentBoard) setColumns(currentBoard.columns);
   }, [currentBoard]);
 
   return (
-    <section className="w-full pt-14 grid  grid-cols-4 gap-10 min-h-1/2">
+    <section className="w-full pt-14 grid grid-cols-1 lg:grid-cols-4  gap-6 min-h-1/2">
       <DndContext
         sensors={sensors}
         onDragStart={onDragStart}
@@ -175,7 +170,7 @@ const BoardDetail = () => {
         )}
       </DndContext>
 
-      <div className=" flex flex-col gap-6 h-fit">
+      <div className="flex flex-col gap-6 h-fit">
         <AddColumn />
       </div>
     </section>

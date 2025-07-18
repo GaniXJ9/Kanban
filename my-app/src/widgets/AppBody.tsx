@@ -4,6 +4,7 @@ import useStore from "../app/store";
 import useBoardStore from "../app/store/board/boardStore";
 import { useEffect } from "react";
 import SideBarMenuDesktop from "./Menu/SideBarMenuDesktop";
+import SideBarMenuMobile from "./Menu/SideBarMenuMobile";
 
 const AppBody = () => {
   const location = useLocation();
@@ -25,12 +26,12 @@ const AppBody = () => {
         backgroundImage: `url(${currentBoard?.background})`,
       }}
       className={`min-h-screen  flex justify-center  bg-cover bg-center relative ${
-        location.pathname !== "/auth" && "px-32"
+        location.pathname !== "/auth" && "px-12 lg:px-32"
       }  ${theme === "light" ? "bg-[#eaf0f5]" : "bg-[#212121]"}
          `}
     >
-      <SideBarMenuDesktop />
-
+      {!currentBoard && location.pathname !== "/auth" && <SideBarMenuDesktop />}
+      {location.pathname !== "/auth" && <SideBarMenuMobile />}
       <div className={`w-full ${location.pathname !== "/auth" && "py-5"}`}>
         <AppRouter />
       </div>

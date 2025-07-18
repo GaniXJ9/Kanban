@@ -22,7 +22,9 @@ const MenuLink = ({
           : "lg:hover:bg-slate-200 text-[#cbc9c9] lg:hover:text-[#1a1a1a]"
       } `}
     >
-      <Icon />
+      <span className="hidden lg:block">
+        <Icon />
+      </span>
       <span> {linkTitle}</span>
     </NavLink>
   );

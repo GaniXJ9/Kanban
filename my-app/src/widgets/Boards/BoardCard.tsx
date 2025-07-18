@@ -12,9 +12,9 @@ const BoardCard = ({ el }: { el: BoardType }) => {
   return (
     <div
       onClick={navigateToBorderDetail}
-      className={`relative group rounded-md max-h-60  flex flex-col lg:hover:cursor-pointer ${
+      className={`relative group rounded-md min-h-36 lg:min-h-44 flex flex-col lg:hover:cursor-pointer ${
         theme === "light"
-          ? "bg-slate-100  shadow-md"
+          ? "bg-slate-100 shadow-md"
           : "bg-[#1a1a1a] border border-[#585858]"
       }`}
     >
