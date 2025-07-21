@@ -8,7 +8,6 @@ import {
   type DragOverEvent,
   type DragStartEvent,
 } from "@dnd-kit/core";
-
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
@@ -155,7 +154,6 @@ const BoardDetail = () => {
             <BoardColumn column={column} key={column.id} />
           ))}
         </SortableContext>
-
         {createPortal(
           <DragOverlay>
             {activeColumn && <BoardColumn column={activeColumn} />}
@@ -169,7 +167,6 @@ const BoardDetail = () => {
           document.body
         )}
       </DndContext>
-
       <div className="flex flex-col gap-6 h-fit">
         <AddColumn />
       </div>

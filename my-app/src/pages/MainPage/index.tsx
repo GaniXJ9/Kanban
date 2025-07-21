@@ -13,7 +13,11 @@ const MainPage = () => {
     }
   }, []);
 
-  return <PageTitle title="Main" />;
+  return (
+    <>
+      <PageTitle title="Main" />
+    </>
+  );
 };
 
 export default MainPage;

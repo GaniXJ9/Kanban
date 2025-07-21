@@ -36,7 +36,7 @@ const BoardColumn = ({ column }: { column: ColumnType }) => {
       style={style}
       ref={setNodeRef}
       onClick={onClick}
-      className={`relative flex flex-col gap-3 rounded-md p-5 h-fit w-full ${
+      className={`relative  flex flex-col gap-3 rounded-md p-5 h-fit  ${
         theme === "light" ? "bg-white" : "bg-[#1a1a1a]"
       }
      ${isDragging && "opacity-70"}

@@ -25,9 +25,11 @@ const AppBody = () => {
         background: currentBoard?.background,
         backgroundImage: `url(${currentBoard?.background})`,
       }}
-      className={`min-h-screen  flex justify-center  bg-cover bg-center relative ${
-        location.pathname !== "/auth" && "px-12 lg:px-32"
-      }  ${theme === "light" ? "bg-[#eaf0f5]" : "bg-[#212121]"}
+      className={`min-h-screen  flex justify-center  bg-cover bg-center relative 
+        ${location.pathname === `/boards/${currentBoard?.id}` && "px-0"}
+        ${location.pathname !== "/auth" && "px-12 lg:px-32"}  ${
+        theme === "light" ? "bg-[#eaf0f5]" : "bg-[#212121]"
+      }
          `}
     >
       {!currentBoard && location.pathname !== "/auth" && <SideBarMenuDesktop />}

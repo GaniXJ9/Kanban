@@ -8,7 +8,12 @@ const AddTaskBlock = ({ id, isDragging }: { id: Id; isDragging: boolean }) => {
   const { theme } = useStore();
   const { currentBoard, addTask } = useBoardStore();
   const [showInputTask, setShowInputTask] = useState<boolean>(false);
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
     if (isDragging && showInputTask) {
@@ -48,7 +53,12 @@ const AddTaskBlock = ({ id, isDragging }: { id: Id; isDragging: boolean }) => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <textarea
-            {...register("taskTitle", { required: true })}
+            {...register("taskTitle", {
+              required: {
+                value: true,
+                message: "Must be filled",
+              },
+            })}
             placeholder="Enter task title..."
             className={`p-2 w-full rounded-md outline-none capitalize lg:hover:cursor-pointer ${
               theme === "light"
@@ -56,7 +66,12 @@ const AddTaskBlock = ({ id, isDragging }: { id: Id; isDragging: boolean }) => {
                 : "bg-[#333333] text-slate-200 lg:hover:bg-slate-600"
             }`}
           />
-
+          {errors.taskTitle && (
+            <p className="text-red-500 text-sm">
+              {" "}
+              {String(errors.taskTitle?.message)}
+            </p>
+          )}
           <div className="flex justify-between gap-3">
             <button
               type="submit"
