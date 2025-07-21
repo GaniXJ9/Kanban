@@ -19,7 +19,7 @@ const AccountHiddenBlock = ({
         showAccount ? "block" : "hidden"
       } ${theme === "light" ? "bg-[#6565a4]" : "bg-[#242424]"}`}
     >
-      <h1 className="text-lg text-white font-medium  ">Account</h1>
+      <h1 className="text-lg text-white font-medium ">Account</h1>
       <div className="flex">
         <AccountProfileIMG />
         <p className=" flex flex-col justify-center px-2">

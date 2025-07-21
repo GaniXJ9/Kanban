@@ -1,6 +1,5 @@
 import { create } from "zustand";
-import type { Id, StoreInterface, ThemeType } from "./StoreInterface";
-import type { ColumnType } from "../../features/register/types/ColumnType";
+import type { StoreInterface, ThemeType } from "./StoreInterface";
 
 const useStore = create<StoreInterface>((set) => ({
   theme: localStorage.getItem("themeMode") || "light",
@@ -14,23 +13,23 @@ const useStore = create<StoreInterface>((set) => ({
     });
   },
 
-  saveInServer: async (id: Id, columnOrder: ColumnType[]) => {
-    try {
-      const res = await fetch(`http://localhost:3000/boards/${id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ columns: columnOrder }),
-      });
+  // saveInServer: async (id: Id, columnOrder: ColumnType[]) => {
+  //   try {
+  //     const resolve = await fetch(`http://localhost:3000/boards/${id}`, {
+  //       method: "PATCH",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ columns: columnOrder }),
+  //     });
 
-      if (!res.ok) {
-        throw new Error("Ошибка при сохранении колонок");
-      }
-    } catch (error) {
-      console.error("❌ Ошибка сохранения:", error);
-    }
-  },
+  //     if (resolve.ok) {
+  //      console.log(Save)
+  //     }
+  //   } catch (error) {
+  //     console.error("❌ Ошибка сохранения:", error);
+  //   }
+  // },
 }));
 
 export default useStore;

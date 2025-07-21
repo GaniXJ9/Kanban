@@ -1,32 +1,9 @@
 import { create } from "zustand";
 import type { BoardType } from "../../../features/register/types/BoardType";
 import type { ColumnType } from "../../../features/register/types/ColumnType";
-import type { Id } from "../StoreInterface";
 import type { TaskType } from "../../../features/register/types/TaskType";
-
-interface BoardStoreInterface {
-  currentBoard: null | BoardType;
-  getBoard: (id: Id) => Promise<void>;
-  setCurrentBoard: (board: BoardType | null) => void;
-  deleteBoard: (id: Id) => void;
-  addColumn: (newColumn: ColumnType) => Promise<void>;
-  updateColumn: (
-    id: Id,
-    currentBoard: BoardType,
-    newColumn: ColumnType
-  ) => void;
-  deleteColumn: (columnId: Id) => Promise<void>;
-  updateColumnOrder: (newColumns: ColumnType[]) => void;
-  addTask: (title: string, currentBoard: BoardType, id: Id) => void;
-  deleteTask: (column: ColumnType, taskId: Id, currentBoard: BoardType) => void;
-  updateTask: (
-    columnId: Id,
-    taskId: Id,
-    newTitle: string,
-    currentBoard: BoardType
-  ) => void;
-  updateTaskOrder: (newColumns: ColumnType[]) => void;
-}
+import type { BoardStoreInterface } from "../type/BoardInterface";
+import type { Id } from "../../../shared/type/IdType";
 
 const useBoardStore = create<BoardStoreInterface>((set, get) => ({
   currentBoard: null,
@@ -41,11 +18,11 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
   },
   deleteBoard: async (id: Id) => {
     try {
-      const res = await fetch(`http://localhost:3000/boards/${id}`, {
+      const resolve = await fetch(`http://localhost:3000/boards/${id}`, {
         method: "DELETE",
       });
 
-      if (res.ok) {
+      if (resolve.ok) {
         console.log("Deleted");
       }
     } catch (e) {
@@ -62,7 +39,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
     const updatedBoard = { ...currentBoard, columns: updatedColumns };
 
     try {
-      const res = await fetch(
+      const resolve = await fetch(
         `http://localhost:3000/boards/${currentBoard.id}`,
         {
           method: "PATCH",
@@ -71,7 +48,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
         }
       );
 
-      if (res.ok) {
+      if (resolve.ok) {
         set({ currentBoard: updatedBoard });
         console.log("Added");
       }
@@ -92,7 +69,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
     );
 
     try {
-      const res = await fetch(
+      const resolve = await fetch(
         `http://localhost:3000/boards/${currentBoard.id}`,
         {
           method: "PATCH",
@@ -101,7 +78,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
         }
       );
 
-      if (res.ok) {
+      if (resolve.ok) {
         set({ currentBoard: { ...currentBoard, columns: updatedColumns } });
         console.log("Column deleted");
       }
@@ -119,7 +96,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
         column.id === id ? newColumn : column
       );
       const updatedBoard = { ...currentBoard, columns: updatedColumns };
-      const res = await fetch(
+      const resolve = await fetch(
         `http://localhost:3000/boards/${currentBoard.id}`,
         {
           method: "PATCH",
@@ -130,7 +107,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
         }
       );
 
-      if (res.ok) {
+      if (resolve.ok) {
         console.log("Updated");
       }
 
@@ -154,7 +131,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
     set({ currentBoard: updatedBoard });
 
     try {
-      const res = await fetch(
+      const resolve = await fetch(
         `http://localhost:3000/boards/${currentBoard.id}`,
         {
           method: "PATCH",
@@ -165,7 +142,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
         }
       );
 
-      if (res.ok) {
+      if (resolve.ok) {
         console.log("Updates");
       }
     } catch (e) {
@@ -196,7 +173,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
       const updatedColumns = [...currentBoard.columns];
       updatedColumns[columnIndex] = updatedColumn;
 
-      const res = await fetch(
+      const resolve = await fetch(
         `http://localhost:3000/boards/${currentBoard.id}`,
         {
           method: "PATCH",
@@ -205,11 +182,11 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
         }
       );
 
-      if (res.ok) {
+      if (resolve.ok) {
         console.log("Added");
       }
 
-      const updatedBoard = await res.json();
+      const updatedBoard = await resolve.json();
 
       set({ currentBoard: updatedBoard });
     } catch (e) {
@@ -237,7 +214,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
     set({ currentBoard: updatedBoard });
 
     try {
-      const res = await fetch(
+      const resolve = await fetch(
         `http://localhost:3000/boards/${currentBoard.id}`,
         {
           method: "PATCH",
@@ -248,7 +225,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
         }
       );
 
-      if (res.ok) {
+      if (resolve.ok) {
         console.log("Deleted");
       }
     } catch (e) {
@@ -278,7 +255,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
     set({ currentBoard: updatedBoard });
 
     try {
-      const res = await fetch(
+      const resolve = await fetch(
         `http://localhost:3000/boards/${currentBoard.id}`,
         {
           method: "PATCH",
@@ -289,7 +266,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
         }
       );
 
-      if (res.ok) {
+      if (resolve.ok) {
         console.log("Updated");
       }
     } catch (e) {
@@ -308,7 +285,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
     set({ currentBoard: updatedBoard });
 
     try {
-      const res = await fetch(
+      const resolve = await fetch(
         `http://localhost:3000/boards/${currentBoard.id}`,
         {
           method: "PATCH",
@@ -319,7 +296,7 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
         }
       );
 
-      if (res.ok) {
+      if (resolve.ok) {
         console.log("Updated");
       }
     } catch (e) {

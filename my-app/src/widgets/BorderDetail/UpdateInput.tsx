@@ -28,7 +28,6 @@ const UpdateInput = ({
   return (
     <div className="relative w-full">
       <span
-        // onClick={handleUpdate}
         className={`absolute top-0 right-1  transition-all duration-200 flex items-center justify-center h-full lg:hover:text-slate-400 lg:hover:cursor-pointer  ${
           focused
             ? "opacity-100 translate-x-0"

@@ -12,14 +12,15 @@ export function useRegistration() {
       token: userToken,
       boards: [],
     };
+
     try {
-      const res = await fetch("http://localhost:3000/users", {
+      const response = await fetch("http://localhost:3000/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataWithToken),
       });
 
-      if (res.ok) {
+      if (response.ok) {
         localStorage.setItem("token", userToken);
         localStorage.setItem("currentUser", JSON.stringify(dataWithToken));
         navigate("/");

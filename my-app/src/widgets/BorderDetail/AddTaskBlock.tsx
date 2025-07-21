@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import useStore from "../../app/store";
 import useBoardStore from "../../app/store/board/boardStore";
-import type { Id } from "../../app/store/StoreInterface";
+import type { Id } from "../../shared/type/IdType";
 
 const AddTaskBlock = ({ id, isDragging }: { id: Id; isDragging: boolean }) => {
   const { theme } = useStore();
@@ -68,7 +68,6 @@ const AddTaskBlock = ({ id, isDragging }: { id: Id; isDragging: boolean }) => {
           />
           {errors.taskTitle && (
             <p className="text-red-500 text-sm">
-              {" "}
               {String(errors.taskTitle?.message)}
             </p>
           )}

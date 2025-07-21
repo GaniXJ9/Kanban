@@ -1,4 +1,4 @@
-type Id = number | string;
+import type { Id } from "../../../shared/type/IdType";
 
 export interface TaskType {
   id: Id;

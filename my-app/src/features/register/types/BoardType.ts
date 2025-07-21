@@ -1,6 +1,5 @@
+import type { Id } from "../../../shared/type/IdType";
 import type { ColumnType } from "./ColumnType";
-
-type Id = number | string;
 
 export interface BoardType {
   id: Id;
