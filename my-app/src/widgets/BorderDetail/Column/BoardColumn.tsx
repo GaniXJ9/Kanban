@@ -21,10 +21,6 @@ const BoardColumn = ({ column }: { column: ColumnType }) => {
   const [tasks, setTasks] = useState<TaskType[]>([]);
   const { theme } = useStore();
 
-  const onClick = () => {
-    console.log("click");
-  };
-
   useEffect(() => {
     setTasks(column.taskList);
   }, [column]);
@@ -35,7 +31,6 @@ const BoardColumn = ({ column }: { column: ColumnType }) => {
       {...listeners}
       style={style}
       ref={setNodeRef}
-      onClick={onClick}
       className={`relative  flex flex-col gap-3 rounded-md p-5 h-fit  ${
         theme === "light" ? "bg-white" : "bg-[#1a1a1a]"
       }

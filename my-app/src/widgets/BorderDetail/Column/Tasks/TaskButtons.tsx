@@ -1,9 +1,10 @@
 import useStore from "../../../../app/store";
 import useBoardStore from "../../../../app/store/board/boardStore";
-import type { Id } from "../../../../app/store/StoreInterface";
 import type { ColumnType } from "../../../../features/register/types/ColumnType";
+import type { TaskType } from "../../../../features/register/types/TaskType";
+import BarsOutlined from "../../../../shared/icons/BarsOutlined";
 import DeleteTaskIcon from "../../../../shared/icons/DeleteTaskIcon";
-import EditTaskIcon from "../../../../shared/icons/EditTaskIcon";
+import type { Id } from "../../../../shared/type/IdType";
 
 const TaskButtons = ({
   column,
@@ -13,7 +14,7 @@ const TaskButtons = ({
   taskId: Id;
 }) => {
   const { theme } = useStore();
-  const { currentBoard, deleteTask } = useBoardStore();
+  const { currentBoard, deleteTask, setCurrentTask } = useBoardStore();
 
   const handleDeleteTask = () => {
     if (currentBoard) {
@@ -21,9 +22,18 @@ const TaskButtons = ({
     }
   };
 
+  const handleCurrentTask = () => {
+    const task = column.taskList.find((item: TaskType) => item.id === taskId);
+
+    if (task) {
+      setCurrentTask(task);
+    }
+  };
+
   return (
     <div className="flex gap-1 z-0">
-      {/* <button
+      <button
+        onClick={handleCurrentTask}
         className={`size-6  rounded-md border  flex items-center justify-center lg:hover:cursor-pointer
             ${
               theme === "light"
@@ -31,8 +41,8 @@ const TaskButtons = ({
                 : "text-slate-200 bg-[#606060] border-[#1a1a1a]"
             } `}
       >
-        <EditTaskIcon />
-      </button> */}
+        <BarsOutlined />
+      </button>
       <button
         className={`size-6   rounded-md border  flex items-center justify-center  lg:hover:cursor-pointer
             ${

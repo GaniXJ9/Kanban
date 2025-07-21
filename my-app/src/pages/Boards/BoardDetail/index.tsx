@@ -18,10 +18,16 @@ import TaskCard from "../../../widgets/BorderDetail/Column/Tasks/TaskCard";
 import useBoardStore from "../../../app/store/board/boardStore";
 import type { ColumnType } from "../../../features/register/types/ColumnType";
 import type { TaskType } from "../../../features/register/types/TaskType";
+import TaskModal from "../../../widgets/BorderDetail/TaskModalWindow/TaskModal";
 
 const BoardDetail = () => {
-  const { currentBoard, getBoard, updateColumnOrder, updateTaskOrder } =
-    useBoardStore();
+  const {
+    currentBoard,
+    currentTask,
+    getBoard,
+    updateColumnOrder,
+    updateTaskOrder,
+  } = useBoardStore();
   const [colums, setColumns] = useState<ColumnType[]>([]);
   const [activeColumn, setActiveColumn] = useState<ColumnType | null>(null);
   const [activeTask, setActiveTask] = useState<TaskType | null>(null);
@@ -170,6 +176,8 @@ const BoardDetail = () => {
       <div className="flex flex-col gap-6 h-fit">
         <AddColumn />
       </div>
+
+      {currentTask && <TaskModal />}
     </section>
   );
 };

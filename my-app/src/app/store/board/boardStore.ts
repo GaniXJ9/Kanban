@@ -4,9 +4,11 @@ import type { ColumnType } from "../../../features/register/types/ColumnType";
 import type { TaskType } from "../../../features/register/types/TaskType";
 import type { BoardStoreInterface } from "../type/BoardInterface";
 import type { Id } from "../../../shared/type/IdType";
+import type { CommentType } from "../../../features/register/types/CommentType";
 
 const useBoardStore = create<BoardStoreInterface>((set, get) => ({
   currentBoard: null,
+  currentTask: null,
   getBoard: async (id: Id) => {
     try {
       const res = await fetch(`http://localhost:3000/boards/${id}`);
@@ -30,7 +32,6 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
     }
   },
   setCurrentBoard: (board: BoardType | null) => set({ currentBoard: board }),
-
   addColumn: async (newColumn: ColumnType) => {
     const { currentBoard } = get();
     if (!currentBoard) return;
@@ -56,7 +57,6 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
       console.error(e);
     }
   },
-
   deleteColumn: async (columnId: Id) => {
     const { currentBoard } = get();
 
@@ -149,7 +149,6 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
       console.error(e);
     }
   },
-
   addTask: async (title: string, currentBoard: BoardType, columnId: Id) => {
     try {
       const columnIndex = currentBoard.columns.findIndex(
@@ -298,6 +297,54 @@ const useBoardStore = create<BoardStoreInterface>((set, get) => ({
 
       if (resolve.ok) {
         console.log("Updated");
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  },
+  setCurrentTask: (task: TaskType | null) => {
+    set({ currentTask: task });
+  },
+  addComment: async (comment: CommentType, currentBoardId: Id) => {
+    const { currentBoard } = get();
+    if (!currentBoard) return;
+
+    const updatedColumns = currentBoard.columns.map((column) => {
+      const updatedTasks =
+        column.taskList?.map((task) => {
+          if (task.id === comment.taskId) {
+            const updatedComments = task.comments
+              ? [...task.comments, comment]
+              : [comment];
+            return { ...task, comments: updatedComments };
+          }
+          return task;
+        }) || [];
+
+      return { ...column, taskList: updatedTasks };
+    });
+
+    try {
+      const response = await fetch(
+        `http://localhost:3000/boards/${currentBoardId}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ columns: updatedColumns }),
+        }
+      );
+
+      if (response.ok) {
+        const updatedTask = updatedColumns
+          .flatMap((col) => col.taskList || [])
+          .find((t) => t.id === comment.taskId);
+
+        set({
+          currentBoard: { ...currentBoard, columns: updatedColumns },
+          currentTask: updatedTask || null,
+        });
+
+        console.log("Comment added");
       }
     } catch (e) {
       console.error(e);
