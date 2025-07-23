@@ -18,6 +18,7 @@ const SideBarMenuMobile = () => {
   useEffect(() => {
     setShow(false);
   }, [location.pathname]);
+
   return (
     <aside
       className={`fixed top-0 left-0 flex lg:hidden shadow z-50 min-h-screen transition-all duration-200 

@@ -15,22 +15,18 @@ import BoardColumn from "../../../widgets/BorderDetail/Column/BoardColumn";
 import { createPortal } from "react-dom";
 import AddColumn from "../../../widgets/BorderDetail/Column/AddColumn";
 import TaskCard from "../../../widgets/BorderDetail/Column/Tasks/TaskCard";
-import useBoardStore from "../../../app/store/board/boardStore";
-import type { ColumnType } from "../../../features/register/types/ColumnType";
-import type { TaskType } from "../../../features/register/types/TaskType";
-import TaskModal from "../../../widgets/BorderDetail/TaskModalWindow/TaskModal";
+import useColumns from "../../../app/store/columns";
+import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
+import useBoards from "../../../app/store/boards";
+import type { TaskEntity } from "../../../features/types/tasks/TaskEntity";
+import useTasks from "../../../app/store/tasks";
 
 const BoardDetail = () => {
-  const {
-    currentBoard,
-    currentTask,
-    getBoard,
-    updateColumnOrder,
-    updateTaskOrder,
-  } = useBoardStore();
-  const [colums, setColumns] = useState<ColumnType[]>([]);
-  const [activeColumn, setActiveColumn] = useState<ColumnType | null>(null);
-  const [activeTask, setActiveTask] = useState<TaskType | null>(null);
+  const [activeColumn, setActiveColumn] = useState<ColumnEntity | null>(null);
+  const [activeTask, setActiveTask] = useState<TaskEntity | null>(null);
+  const { currentBoard, getBoard } = useBoards();
+  const { columns, setColumns, updateColumnOrder } = useColumns();
+  const { updateTaskOrder } = useTasks();
   const { id } = useParams();
 
   const sensors = useSensors(
@@ -41,7 +37,7 @@ const BoardDetail = () => {
     })
   );
 
-  const columsId = useMemo(() => colums?.map((col) => col.id), [colums]);
+  const columsId = useMemo(() => columns?.map((col) => col.id), [columns]);
 
   const onDragStart = (event: DragStartEvent) => {
     const item = event.active.data.current;
@@ -59,6 +55,7 @@ const BoardDetail = () => {
 
   const onDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
+
     setActiveColumn(null);
     setActiveTask(null);
 
@@ -68,75 +65,80 @@ const BoardDetail = () => {
     const overType = over.data.current?.type;
 
     if (activeType === "Column" && overType === "Column") {
-      const activeIndex = colums.findIndex((col) => col.id === active.id);
-      const overIndex = colums.findIndex((col) => col.id === over.id);
+      const activeIndex = columns.findIndex((col) => col.id === active.id);
+      const overIndex = columns.findIndex((col) => col.id === over.id);
 
       if (activeIndex === -1 || overIndex === -1) return;
 
-      const newColumnOrder = arrayMove(colums, activeIndex, overIndex);
-
+      const newColumnOrder = arrayMove(columns, activeIndex, overIndex);
       setColumns(newColumnOrder);
       updateColumnOrder(newColumnOrder);
+    }
+
+    if (activeType === "Task") {
+      const newOrder = useColumns.getState().columns;
+
+      if (currentBoard) {
+        updateTaskOrder(newOrder, currentBoard);
+      }
     }
   };
 
   const onDragOver = (event: DragOverEvent) => {
     const { active, over } = event;
+
     if (!over) return;
 
     const activeType = active.data.current?.type;
+
     if (activeType !== "Task") return;
 
     const activeTask = active.data.current?.task;
     const overTask = over.data.current?.task;
     const overColumn = over.data.current?.column;
 
-    if (!overColumn) return;
+    if (!activeTask || !overColumn) return;
 
-    setColumns((prevColumns) => {
-      const sourceColumnIndex = prevColumns.findIndex((col) =>
-        col.taskList.some((task: TaskType) => task.id === activeTask.id)
-      );
-      const destinationColumnIndex = prevColumns.findIndex(
-        (col) => col.id === overColumn.id
-      );
+    const columnsFromStore = useColumns.getState().columns;
 
-      if (sourceColumnIndex === -1 || destinationColumnIndex === -1) {
-        return prevColumns;
-      }
+    const sourceColumnIndex = columnsFromStore.findIndex((col) =>
+      col.tasks.some((task) => task.id === activeTask.id)
+    );
+    const destinationColumnIndex = columnsFromStore.findIndex(
+      (col) => col.id === overColumn.id
+    );
 
-      const sourceColumn = prevColumns[sourceColumnIndex];
-      const destinationColumn = prevColumns[destinationColumnIndex];
+    if (sourceColumnIndex === -1 || destinationColumnIndex === -1) return;
 
-      if (sourceColumn.id === destinationColumn.id) {
-        return prevColumns;
-      }
+    const sourceColumn = columnsFromStore[sourceColumnIndex];
+    const destinationColumn = columnsFromStore[destinationColumnIndex];
 
-      const newSourceTasks = sourceColumn.taskList.filter(
-        (task: TaskType) => task.id !== activeTask.id
-      );
-      const newDestinationTasks = [...destinationColumn.taskList];
+    if (destinationColumn.tasks.some((task) => task.id === activeTask.id)) {
+      return;
+    }
 
-      const overIndex = overTask
-        ? newDestinationTasks.findIndex((task) => task.id === overTask.id)
-        : newDestinationTasks.length;
+    const newSourceTasks = sourceColumn.tasks.filter(
+      (task) => task.id !== activeTask.id
+    );
+    const newDestinationTasks = [...destinationColumn.tasks];
 
-      newDestinationTasks.splice(overIndex, 0, activeTask);
+    const overIndex = overTask
+      ? newDestinationTasks.findIndex((task) => task.id === overTask.id)
+      : newDestinationTasks.length;
 
-      const newColumns = [...prevColumns];
-      newColumns[sourceColumnIndex] = {
-        ...sourceColumn,
-        taskList: newSourceTasks,
-      };
-      newColumns[destinationColumnIndex] = {
-        ...destinationColumn,
-        taskList: newDestinationTasks,
-      };
+    newDestinationTasks.splice(overIndex, 0, activeTask);
 
-      updateTaskOrder(newColumns);
+    const newColumns = [...columnsFromStore];
+    newColumns[sourceColumnIndex] = {
+      ...sourceColumn,
+      tasks: newSourceTasks,
+    };
+    newColumns[destinationColumnIndex] = {
+      ...destinationColumn,
+      tasks: newDestinationTasks,
+    };
 
-      return newColumns;
-    });
+    setColumns(newColumns);
   };
 
   useEffect(() => {
@@ -144,8 +146,14 @@ const BoardDetail = () => {
   }, [id]);
 
   useEffect(() => {
-    if (currentBoard) setColumns(currentBoard.columns);
-  }, [currentBoard]);
+    if (currentBoard) {
+      setColumns(currentBoard?.columns);
+    }
+  }, [currentBoard, currentBoard?.columns]);
+
+  if (!columns) {
+    return <h1>loading</h1>;
+  }
 
   return (
     <section className="w-full pt-14 grid grid-cols-1 lg:grid-cols-4  gap-6 min-h-1/2">
@@ -156,7 +164,7 @@ const BoardDetail = () => {
         onDragOver={onDragOver}
       >
         <SortableContext items={columsId}>
-          {colums.map((column: ColumnType) => (
+          {columns.map((column: ColumnEntity) => (
             <BoardColumn column={column} key={column.id} />
           ))}
         </SortableContext>
@@ -166,7 +174,7 @@ const BoardDetail = () => {
             {activeTask && (
               <TaskCard
                 task={activeTask}
-                column={{ id: -1, columnName: "", taskList: [] }}
+                column={{ id: -1, name: "", tasks: [] }}
               />
             )}
           </DragOverlay>,
@@ -177,7 +185,7 @@ const BoardDetail = () => {
         <AddColumn />
       </div>
 
-      {currentTask && <TaskModal />}
+      {/* {currentTask && <TaskModal />} */}
     </section>
   );
 };

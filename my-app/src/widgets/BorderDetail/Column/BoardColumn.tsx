@@ -2,13 +2,11 @@ import AddTaskBlock from "../AddTaskBlock";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import ColumnHead from "./ColumnHead";
-import TaskContainer from "./Tasks/TaskContainer";
 import useStore from "../../../app/store";
-import { useEffect, useState } from "react";
-import type { ColumnType } from "../../../features/register/types/ColumnType";
-import type { TaskType } from "../../../features/register/types/TaskType";
+import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
+import TaskContainer from "./Tasks/TaskContainer";
 
-const BoardColumn = ({ column }: { column: ColumnType }) => {
+const BoardColumn = ({ column }: { column: ColumnEntity }) => {
   const {
     setNodeRef,
     isDragging,
@@ -18,12 +16,7 @@ const BoardColumn = ({ column }: { column: ColumnType }) => {
     transition,
   } = useSortable({ id: column.id, data: { type: "Column", column } });
   const style = { transform: CSS.Transform.toString(transform), transition };
-  const [tasks, setTasks] = useState<TaskType[]>([]);
   const { theme } = useStore();
-
-  useEffect(() => {
-    setTasks(column.taskList);
-  }, [column]);
 
   return (
     <div
@@ -38,8 +31,8 @@ const BoardColumn = ({ column }: { column: ColumnType }) => {
       `}
     >
       <ColumnHead column={column} />
-      <TaskContainer tasks={tasks} column={column} />
-      <AddTaskBlock id={column.id} isDragging={isDragging} />
+      <TaskContainer tasks={column.tasks} column={column} />
+      <AddTaskBlock column={column} isDragging={isDragging} />
     </div>
   );
 };

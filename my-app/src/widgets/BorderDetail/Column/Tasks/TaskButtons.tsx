@@ -1,7 +1,7 @@
 import useStore from "../../../../app/store";
-import useBoardStore from "../../../../app/store/board/boardStore";
-import type { ColumnType } from "../../../../features/register/types/ColumnType";
-import type { TaskType } from "../../../../features/register/types/TaskType";
+import type { ColumnEntity } from "../../../../features/types/columns/ColumnEntity";
+import useBoards from "../../../../app/store/boards";
+import useTasks from "../../../../app/store/tasks";
 import BarsOutlined from "../../../../shared/icons/BarsOutlined";
 import DeleteTaskIcon from "../../../../shared/icons/DeleteTaskIcon";
 import type { Id } from "../../../../shared/type/IdType";
@@ -10,30 +10,22 @@ const TaskButtons = ({
   column,
   taskId,
 }: {
-  column: ColumnType;
+  column: ColumnEntity;
   taskId: Id;
 }) => {
   const { theme } = useStore();
-  const { currentBoard, deleteTask, setCurrentTask } = useBoardStore();
+  const { currentBoard } = useBoards();
+  const { deleteTask } = useTasks();
 
   const handleDeleteTask = () => {
     if (currentBoard) {
-      deleteTask(column, taskId, currentBoard);
-    }
-  };
-
-  const handleCurrentTask = () => {
-    const task = column.taskList.find((item: TaskType) => item.id === taskId);
-
-    if (task) {
-      setCurrentTask(task);
+      deleteTask(taskId, column, currentBoard);
     }
   };
 
   return (
     <div className="flex gap-1 z-0">
       <button
-        onClick={handleCurrentTask}
         className={`size-6  rounded-md border  flex items-center justify-center lg:hover:cursor-pointer
             ${
               theme === "light"

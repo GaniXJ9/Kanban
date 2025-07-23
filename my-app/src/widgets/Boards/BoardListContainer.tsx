@@ -1,29 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useStore from "../../app/store";
 import BoardCard from "./BoardCard";
-import { getAllBoards } from "../../shared/boards/getAllBoards";
-import type { BoardType } from "../../features/register/types/BoardType";
-import useUserStore from "../../app/store/user/userStore";
-import useBoardStore from "../../app/store/board/boardStore";
+import useUserStore from "../../app/store/users";
+import useBoards from "../../app/store/boards";
+import type { BoardEntity } from "../../features/types/boards/BoardEntity";
 
 const BoardListContainer = () => {
-  const [boards, setBoards] = useState<BoardType[] | null>(null);
+  const { boards, setUserBoards } = useBoards();
   const { theme } = useStore();
   const { currentUser } = useUserStore();
-  const { setCurrentBoard } = useBoardStore();
 
   useEffect(() => {
-    async function showBoards() {
-      const allBoards = await getAllBoards();
-      const currentUserBoards = allBoards.filter((board: BoardType) => {
-        return board.user === currentUser?.token;
-      });
-
-      setCurrentBoard(null);
-      setBoards(currentUserBoards);
-    }
-
-    showBoards();
+    if (currentUser) setUserBoards(currentUser?.token);
   }, []);
 
   if (!boards) {
@@ -42,7 +30,7 @@ const BoardListContainer = () => {
         </h3>
       ) : (
         <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-2 p-2">
-          {boards.map((el: BoardType) => (
+          {boards.map((el: BoardEntity) => (
             <BoardCard el={el} key={el.id} />
           ))}
         </div>

@@ -1,15 +1,15 @@
 import { SortableContext } from "@dnd-kit/sortable";
 import TaskCard from "./TaskCard";
 import { useMemo } from "react";
-import type { TaskType } from "../../../../features/register/types/TaskType";
-import type { ColumnType } from "../../../../features/register/types/ColumnType";
+import type { ColumnEntity } from "../../../../features/types/columns/ColumnEntity";
+import type { TaskEntity } from "../../../../features/types/tasks/TaskEntity";
 
 const TaskContainer = ({
   tasks,
   column,
 }: {
-  tasks: TaskType[];
-  column: ColumnType;
+  tasks: TaskEntity[];
+  column: ColumnEntity;
 }) => {
   const tasksIds = useMemo(() => {
     return tasks.map((task) => task.id);
@@ -18,7 +18,7 @@ const TaskContainer = ({
   return (
     <SortableContext items={tasksIds}>
       <div className="flex flex-col gap-2">
-        {tasks.map((task: TaskType) => (
+        {tasks.map((task: TaskEntity) => (
           <TaskCard task={task} key={task.id} column={column} />
         ))}
       </div>

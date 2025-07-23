@@ -1,24 +1,39 @@
 import useStore from "../../../../app/store";
-import type { ColumnType } from "../../../../features/register/types/ColumnType";
-import type { TaskType } from "../../../../features/register/types/TaskType";
 import TaskButtons from "./TaskButtons";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { useState } from "react";
-import useBoardStore from "../../../../app/store/board/boardStore";
 import UpdateInput from "../../UpdateInput";
+import type { TaskEntity } from "../../../../features/types/tasks/TaskEntity";
+import type { ColumnEntity } from "../../../../features/types/columns/ColumnEntity";
+import useBoards from "../../../../app/store/boards";
+import useTasks from "../../../../app/store/tasks";
 
-const TaskCard = ({ task, column }: { task: TaskType; column: ColumnType }) => {
-  const [value, setValue] = useState<string>(task.taskTitle);
+const TaskCard = ({
+  task,
+  column,
+}: {
+  task: TaskEntity;
+  column: ColumnEntity;
+}) => {
+  const [value, setValue] = useState<string>(task.name);
   const { theme } = useStore();
-  const { currentBoard, updateTask } = useBoardStore();
+  const { currentBoard } = useBoards();
+  const { updateTask } = useTasks();
   const { setNodeRef, attributes, listeners, transform, transition } =
-    useSortable({ id: task.id, data: { type: "Task", task } });
+    useSortable({
+      id: task.id,
+      data: {
+        type: "Task",
+        task,
+        column,
+      },
+    });
   const style = { transform: CSS.Transform.toString(transform), transition };
 
   const handleUpdateTask = () => {
     if (currentBoard) {
-      updateTask(column.id, task.id, value, currentBoard);
+      updateTask(task, value, column, currentBoard);
     }
   };
 

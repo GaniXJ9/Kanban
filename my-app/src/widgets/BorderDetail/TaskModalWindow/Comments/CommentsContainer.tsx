@@ -1,13 +1,13 @@
-import useBoardStore from "../../../../app/store/board/boardStore";
+// import CommentCard from "./CommentCard";
 
 const CommentsContainer = () => {
-  const { currentTask } = useBoardStore();
+  // const
 
   return (
-    <section className="mt-4">
-      {currentTask?.comments?.map((comment) => (
-        <h1 key={comment.id}>{comment.commentText}</h1>
-      ))}
+    <section className="mt-4 flex flex-col gap-3">
+      {/* {currentTask?.comments?.map((comment) => (
+        <CommentCard key={comment.id} comment={comment} />
+      ))} */}
     </section>
   );
 };

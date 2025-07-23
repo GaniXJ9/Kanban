@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { SingInInterface } from "../types/SingInInterface";
-import useUserStore from "../../../app/store/user/userStore";
+import type { SignInForm } from "../schema";
+import useUsers from "../../../app/store/users";
 
 export function useSignIn() {
-  const { currentUser, confirmData } = useUserStore();
+  const { currentUser, confirmData } = useUsers();
   const navigate = useNavigate();
   const [authProblem, setAuthProblem] = useState<boolean>(false);
 
-  const signIn = async (data: SingInInterface) => {
+  const toSignIn = async (data: SignInForm) => {
     confirmData(data);
 
     if (currentUser && currentUser.password === data.password) {
@@ -19,5 +19,5 @@ export function useSignIn() {
     }
   };
 
-  return { signIn, authProblem };
+  return { toSignIn, authProblem };
 }

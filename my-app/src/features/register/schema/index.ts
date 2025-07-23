@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 const regExpEmail: RegExp = new RegExp(/^\S+@\S+\.\S+$/);
 
-export const registerSchema = yup.object().shape({
+export const registration = yup.object().shape({
   username: yup
     .string()
     .trim()
@@ -19,3 +19,5 @@ export const registerSchema = yup.object().shape({
     .required()
     .oneOf([yup.ref("password")], "Passwords are not matching"),
 });
+
+export type RegistrationForm = yup.InferType<typeof registration>;

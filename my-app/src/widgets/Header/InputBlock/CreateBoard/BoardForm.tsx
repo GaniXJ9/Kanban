@@ -8,10 +8,9 @@ import BoardRef from "./BoardRef";
 import BoardTitle from "./BoardTitle";
 import useBackGroundGradient from "../../../../shared/use-hook/useBackGroundGradient";
 import useTheme from "../../../../shared/use-hook/useTheme";
-import { createBoardSchema } from "../../../../features/register/schema/createBoardSchema";
-import type { CreateBoardInterface } from "../../../../features/register/types/CreateBoardInterface";
-import useUserStore from "../../../../app/store/user/userStore";
-import useBoardStore from "../../../../app/store/board/boardStore";
+import useBoards from "../../../../app/store/boards";
+import useUsers from "../../../../app/store/users";
+import { board, type BoardDataForm } from "../../../../features/boards/schema";
 
 const BoardForm = () => {
   const {
@@ -19,15 +18,15 @@ const BoardForm = () => {
     formState: { errors },
     handleSubmit,
     setValue,
-  } = useForm<CreateBoardInterface>({
-    resolver: yupResolver(createBoardSchema),
+  } = useForm<BoardDataForm>({
+    resolver: yupResolver(board),
   });
   const { theme } = useTheme();
   const { bgGradientColor } = useBackGroundGradient();
   const [bgColor, setBgColor] = useState<string>(bgGradientColor);
   const [bgImg, setBgImg] = useState<string | null>(null);
-  const { setCurrentBoard } = useBoardStore();
-  const { setCurrentUser, currentUser } = useUserStore();
+  const { createBoard } = useBoards();
+  const { currentUser } = useUsers();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -49,56 +48,38 @@ const BoardForm = () => {
     setValue("background", img);
   };
 
-  const onSubmit = async (data: CreateBoardInterface) => {
+  const onSubmit = async (data: BoardDataForm) => {
     if (!currentUser) {
       return null;
     }
-
+    const defaultColumns = [
+      {
+        id: 1,
+        name: "To Do",
+        tasks: [],
+      },
+      {
+        id: 2,
+        name: "Done",
+        tasks: [],
+      },
+      {
+        id: 3,
+        name: "In Proccess",
+        tasks: [],
+      },
+    ];
+    const id = crypto.randomUUID();
     const newBoard = {
+      id: id,
+      userToken: currentUser.token,
+      columns: [...defaultColumns],
       ...data,
-      user: currentUser.token,
-      columns: [
-        {
-          id: 1,
-          columnName: "Done",
-          taskList: [],
-        },
-        {
-          id: 2,
-          columnName: "To Do",
-          taskList: [],
-        },
-        {
-          id: 3,
-          columnName: "In process",
-          taskList: [],
-        },
-      ],
     };
 
-    try {
-      const res = await fetch("http://localhost:3000/boards", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newBoard),
-      });
-      const boardData = await res.json();
-      const updatedUser = {
-        ...currentUser,
-        boards: [...(currentUser.boards || []), boardData.id],
-      };
+    createBoard(newBoard);
 
-      if (!res.ok) {
-        throw new Error("Ошибка создания доски");
-      }
-
-      localStorage.setItem("currentUser", JSON.stringify(updatedUser));
-      setCurrentUser(updatedUser);
-      setCurrentBoard(boardData);
-      navigate(`/boards/${boardData.id}`);
-    } catch (e) {
-      console.error(e);
-    }
+    navigate(`/boards/${newBoard.id}`);
   };
   return (
     <form className="w-full p-2" onSubmit={handleSubmit(onSubmit)}>

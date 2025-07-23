@@ -1,19 +1,23 @@
 import { useForm } from "react-hook-form";
-import type { SingInInterface } from "../../features/sing-in/types/SingInInterface";
+
 import { useSignIn } from "../../features/sing-in/use-hook/useSingIn";
 import AuthButton from "../../shared/ui/AuthButton";
 import AuthInput from "../../shared/ui/AuthInput";
+import { signIn, type SignInForm } from "../../features/sing-in/schema";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const SingInPage = () => {
-  const { authProblem, signIn } = useSignIn();
+  const { authProblem, toSignIn } = useSignIn();
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<SingInInterface>({});
+  } = useForm<SignInForm>({
+    resolver: yupResolver(signIn),
+  });
 
-  const onSubmit = (data: SingInInterface) => {
-    signIn(data);
+  const onSubmit = (data: SignInForm) => {
+    toSignIn(data);
   };
 
   return (

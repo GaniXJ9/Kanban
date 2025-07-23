@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import useStore from "../../app/store";
-import type { BoardType } from "../../features/register/types/BoardType";
-const BoardCard = ({ el }: { el: BoardType }) => {
+import type { BoardEntity } from "../../features/types/boards/BoardEntity";
+
+const BoardCard = ({ el }: { el: BoardEntity }) => {
   const { theme } = useStore();
   const navigate = useNavigate();
 

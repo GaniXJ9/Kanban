@@ -1,5 +1,5 @@
 import useStore from "../../../app/store";
-import useUserStore from "../../../app/store/user/userStore";
+import useUsers from "../../../app/store/users";
 import LogOutIcon from "../../../shared/icons/LogOutIcon";
 import AccountProfileIMG from "./AccountProfileIMG";
 
@@ -11,7 +11,7 @@ const AccountHiddenBlock = ({
   logOut: () => void;
 }) => {
   const { theme } = useStore();
-  const { currentUser } = useUserStore();
+  const { currentUser } = useUsers();
 
   return (
     <div

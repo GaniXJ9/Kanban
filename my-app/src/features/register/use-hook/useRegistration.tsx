@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import type { RegisterInterface } from "../types/RegisterInterface";
-import type { UserType } from "../../user/UserType";
+
+import type { RegistrationForm } from "../schema";
+import type { UserEntity } from "../../types/users/UserEntity";
 
 export function useRegistration() {
   const userToken = crypto.randomUUID();
   const navigate = useNavigate();
 
-  const registration = async (data: RegisterInterface) => {
-    const dataWithToken: UserType = {
+  const toRegister = async (data: RegistrationForm) => {
+    const dataWithToken: UserEntity = {
       ...data,
       token: userToken,
       boards: [],
@@ -30,5 +31,5 @@ export function useRegistration() {
     }
   };
 
-  return { registration, userToken };
+  return { toRegister, userToken };
 }

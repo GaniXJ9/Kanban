@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
 import useStore from "../../../app/store";
-import useBoardStore from "../../../app/store/board/boardStore";
-import type { ColumnType } from "../../../features/register/types/ColumnType";
+import columnStoreTest from "../../../app/store/columns";
+import boardStoreTEST from "../../../app/store/boards";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { column, type ColumnForm } from "../../../features/columns/schema";
 
 const AddColumnInput = ({
   toggleShowInputColumn,
@@ -12,21 +14,14 @@ const AddColumnInput = ({
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<ColumnForm>({ resolver: yupResolver(column) });
   const { theme } = useStore();
-  const { currentBoard, addColumn } = useBoardStore();
+  const { addColumn } = columnStoreTest();
+  const { currentBoard } = boardStoreTEST();
 
-  const onSubmit = async (data: any) => {
-    if (currentBoard) {
-      const newColumn: ColumnType = {
-        id: Number(new Date()),
-        columnName: data.columnName,
-        taskList: [],
-      };
-
-      await addColumn(newColumn);
-      toggleShowInputColumn();
-    }
+  const onSubmit = async (data: ColumnForm) => {
+    const newColumn = { id: crypto.randomUUID(), ...data, tasks: [] };
+    if (currentBoard) addColumn(newColumn, currentBoard);
   };
 
   return (
@@ -35,7 +30,7 @@ const AddColumnInput = ({
       onSubmit={handleSubmit(onSubmit)}
     >
       <input
-        {...register("columnName", {
+        {...register("name", {
           required: {
             value: true,
             message: "Must be Filled",
@@ -47,11 +42,8 @@ const AddColumnInput = ({
             : "bg-[#333333] text-slate-200 hover:bg-slate-600"
         }`}
       />
-      {errors.columnName && (
-        <p className="text-red-500 text-sm">
-          {" "}
-          {String(errors.columnName?.message)}
-        </p>
+      {errors.name && (
+        <p className="text-red-500 text-sm"> {String(errors.name?.message)}</p>
       )}
       <div className="flex justify-between gap-3">
         <button

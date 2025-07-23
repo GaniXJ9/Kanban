@@ -1,15 +1,16 @@
 import useStore from "../../../app/store";
-import useBoardStore from "../../../app/store/board/boardStore";
+// import useBoardStore from "../../../app/store/board/boardStore";
 import CloseIcon from "../../../shared/icons/CloseIcon";
 import PictureTwotone from "../../../shared/icons/PictureTwotone";
 
 const ModalHeaderButtonPanel = () => {
   const { theme } = useStore();
-  const { setCurrentTask } = useBoardStore();
+  // const { setCurrentTask } = useBoardStore();
 
-  const setCurrentTaskToNull = () => {
-    setCurrentTask(null);
-  };
+  // const setCurrentTaskToNull = () => {
+  //   setCurrentTask(null);
+  // };
+
   return (
     <div className="flex items-center gap-5">
       <button
@@ -25,7 +26,7 @@ const ModalHeaderButtonPanel = () => {
         className={` lg:hover:cursor-pointer ${
           theme === "light" ? "text-slate-600" : "text-slate-200"
         }`}
-        onClick={setCurrentTaskToNull}
+        // onClick={setCurrentTaskToNull}
       >
         <CloseIcon />
       </button>

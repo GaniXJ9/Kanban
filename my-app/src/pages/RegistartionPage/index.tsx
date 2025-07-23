@@ -1,23 +1,25 @@
 import { useForm } from "react-hook-form";
 import AuthInput from "../../shared/ui/AuthInput";
-import type { RegisterInterface } from "../../features/register/types/RegisterInterface";
-import { registerSchema } from "../../features/register/schema/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegistration } from "../../features/register/use-hook/useRegistration";
 import AuthButton from "../../shared/ui/AuthButton";
+import {
+  registration,
+  type RegistrationForm,
+} from "../../features/register/schema";
 
 const RegistartionPage = () => {
-  const { registration } = useRegistration();
+  const { toRegister } = useRegistration();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegisterInterface>({
-    resolver: yupResolver(registerSchema),
+  } = useForm<RegistrationForm>({
+    resolver: yupResolver(registration),
   });
 
-  const onSubmit = async (data: RegisterInterface) => {
-    registration(data);
+  const onSubmit = async (data: RegistrationForm) => {
+    toRegister(data);
   };
 
   return (

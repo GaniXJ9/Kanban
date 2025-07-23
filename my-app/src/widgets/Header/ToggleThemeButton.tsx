@@ -1,4 +1,4 @@
-import type { ThemeType } from "../../app/store/StoreInterface";
+import type { ThemeType } from "../../app/store/Store";
 
 const ToggleThemeButton = ({
   theme,

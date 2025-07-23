@@ -2,42 +2,41 @@ import { useState } from "react";
 import useStore from "../../../../app/store";
 import CommentAddIcon from "../../../../shared/icons/CommentAddIcon";
 import { useForm } from "react-hook-form";
-import type { CommentType } from "../../../../features/register/types/CommentType";
-import useBoardStore from "../../../../app/store/board/boardStore";
-import useUserStore from "../../../../app/store/user/userStore";
+// import useUsers from "../../../../app/store/users";
+// import useBoards from "../../../../app/store/boards";
 
 const CommentInput = () => {
   const [focused, setFocused] = useState(false);
   const { theme } = useStore();
-  const { currentBoard, currentTask, addComment } = useBoardStore();
-  const { currentUser } = useUserStore();
+  // const { currentBoard, currentTask, addComment } = useBoards();
+  // const { currentUser } = useUsers();
 
   const {
     register,
-    handleSubmit,
+    // handleSubmit,
     formState: { errors },
-    reset,
+    // reset,
   } = useForm();
 
-  const onSubmit = (data: any) => {
-    if (!currentTask || !currentUser) return;
+  // const onSubmit = (data: any) => {
+  //   if (!currentTask || !currentUser) return;
 
-    const comment: CommentType = {
-      id: Date.now(),
-      taskId: currentTask.id,
-      commentDate: new Date(),
-      user: currentUser,
-      ...data,
-    };
+  //   const comment: CommentType = {
+  //     id: Date.now(),
+  //     taskId: currentTask.id,
+  //     commentDate: new Date(),
+  //     user: currentUser,
+  //     ...data,
+  //   };
 
-    if (currentBoard) {
-      addComment(comment, currentBoard.id);
-      reset();
-    }
-  };
+  //   if (currentBoard) {
+  //     addComment(comment, currentBoard.id);
+  //     reset();
+  //   }
+  // };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="relative">
+    <form /*onSubmit={handleSubmit(onSubmit)}*/ className="relative">
       <button
         type="submit"
         className={`absolute top-1 right-8 transition-all duration-200 flex items-center justify-center h-full 

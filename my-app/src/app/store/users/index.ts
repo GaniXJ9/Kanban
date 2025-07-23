@@ -1,17 +1,16 @@
 import { create } from "zustand";
-import type { SingInInterface } from "../../../features/sing-in/types/SingInInterface";
 import getUsers from "../../../shared/users/getUsers";
-import type { UserType } from "../../../features/user/UserType";
-import type { UserStoreInterface } from "../type/UserStoreInterface";
+import type { Users } from "../../../features/types/users/Users";
+import type { UserEntity } from "../../../features/types/users/UserEntity";
+import type { SignInForm } from "../../../features/sing-in/schema";
 
-const useUserStore = create<UserStoreInterface>((set) => ({
+const useUsers = create<Users>((set) => ({
   currentUser: JSON.parse(localStorage.getItem("currentUser") as string),
-
-  confirmData: async (data: SingInInterface) => {
+  confirmData: async (data: SignInForm) => {
     try {
       const users = await getUsers();
       const loggedUser = users.find(
-        (user: UserType) => user.email === data.email
+        (user: UserEntity) => user.email === data.email
       );
 
       if (loggedUser) {
@@ -25,7 +24,7 @@ const useUserStore = create<UserStoreInterface>((set) => ({
     }
   },
 
-  setCurrentUser: (user: UserType) => set({ currentUser: user }),
+  setCurrentUser: (user: UserEntity) => set({ currentUser: user }),
 }));
 
-export default useUserStore;
+export default useUsers;

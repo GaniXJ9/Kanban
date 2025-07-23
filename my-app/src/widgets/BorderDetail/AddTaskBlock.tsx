@@ -1,19 +1,31 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import useStore from "../../app/store";
-import useBoardStore from "../../app/store/board/boardStore";
-import type { Id } from "../../shared/type/IdType";
+import useTasks from "../../app/store/tasks";
+import useBoards from "../../app/store/boards";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { task, type TaskForm } from "../../features/tasks/schema";
+import type { ColumnEntity } from "../../features/types/columns/ColumnEntity";
 
-const AddTaskBlock = ({ id, isDragging }: { id: Id; isDragging: boolean }) => {
+const AddTaskBlock = ({
+  column,
+  isDragging,
+}: {
+  column: ColumnEntity;
+  isDragging: boolean;
+}) => {
   const { theme } = useStore();
-  const { currentBoard, addTask } = useBoardStore();
+  const { currentBoard } = useBoards();
+  const { addTask } = useTasks();
   const [showInputTask, setShowInputTask] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(task),
+  });
 
   useEffect(() => {
     if (isDragging && showInputTask) {
@@ -25,9 +37,16 @@ const AddTaskBlock = ({ id, isDragging }: { id: Id; isDragging: boolean }) => {
     setShowInputTask((prev) => !prev);
   };
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: TaskForm) => {
+    const newTask = {
+      id: crypto.randomUUID(),
+      ...data,
+      date: Number(new Date()),
+      background: null,
+      comments: [],
+    };
     if (currentBoard) {
-      await addTask(data.taskTitle, currentBoard, id);
+      await addTask(newTask, column, currentBoard);
       setShowInputTask(false);
       reset();
     }
@@ -53,12 +72,7 @@ const AddTaskBlock = ({ id, isDragging }: { id: Id; isDragging: boolean }) => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <textarea
-            {...register("taskTitle", {
-              required: {
-                value: true,
-                message: "Must be filled",
-              },
-            })}
+            {...register("name")}
             placeholder="Enter task title..."
             className={`p-2 w-full rounded-md outline-none capitalize lg:hover:cursor-pointer ${
               theme === "light"
@@ -66,9 +80,9 @@ const AddTaskBlock = ({ id, isDragging }: { id: Id; isDragging: boolean }) => {
                 : "bg-[#333333] text-slate-200 lg:hover:bg-slate-600"
             }`}
           />
-          {errors.taskTitle && (
+          {errors.name && (
             <p className="text-red-500 text-sm">
-              {String(errors.taskTitle?.message)}
+              {String(errors.name?.message)}
             </p>
           )}
           <div className="flex justify-between gap-3">

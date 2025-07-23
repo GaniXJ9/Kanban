@@ -3,12 +3,12 @@ import DesksIcon from "../../shared/icons/DesksIcon";
 import TemplateIcon from "../../shared/icons/TemplateIcon";
 import MainPageIcon from "../../shared/icons/MainPageIcon";
 import { useLocation } from "react-router-dom";
-import useBoardStore from "../../app/store/board/boardStore";
 import { useEffect } from "react";
+import useBoards from "../../app/store/boards";
 
 const SideBarMenuDesktop = () => {
   const location = useLocation();
-  const { currentBoard, setCurrentBoard } = useBoardStore();
+  const { currentBoard, setCurrentBoard } = useBoards();
 
   useEffect(() => {
     setCurrentBoard(null);
