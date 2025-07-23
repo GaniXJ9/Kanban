@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import useStore from "../../app/store";
 import type { BoardEntity } from "../../features/types/boards/BoardEntity";
+import Skeleton from "react-loading-skeleton";
 
 const BoardCard = ({ el }: { el: BoardEntity }) => {
   const { theme } = useStore();
@@ -19,21 +20,27 @@ const BoardCard = ({ el }: { el: BoardEntity }) => {
           : "bg-[#1a1a1a] border border-[#585858]"
       }`}
     >
-      <div
-        className={`lg:group-hover:opacity-50 rounded-t-md w-full h-3/4 bg-cover bg-center transition-all duration-200`}
-        style={{
-          background: el.background,
-          backgroundImage: `url(${el.background})`,
-        }}
-      ></div>
+      {el ? (
+        <>
+          <div
+            className={`lg:group-hover:opacity-50 rounded-t-md w-full h-3/4 bg-cover bg-center transition-all duration-200`}
+            style={{
+              background: el.background,
+              backgroundImage: `url(${el.background})`,
+            }}
+          ></div>
 
-      <h1
-        className={`text-md p-2  ${
-          theme === "light" ? "text-slate-600" : "text-slate-200"
-        }`}
-      >
-        {el.title}
-      </h1>
+          <h1
+            className={`text-md p-2  ${
+              theme === "light" ? "text-slate-600" : "text-slate-200"
+            }`}
+          >
+            {el.title}
+          </h1>
+        </>
+      ) : (
+        <Skeleton />
+      )}
     </div>
   );
 };

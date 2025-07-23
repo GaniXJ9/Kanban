@@ -138,6 +138,9 @@ const BoardDetail = () => {
       tasks: newDestinationTasks,
     };
 
+    if (currentBoard) {
+      useTasks.getState().updateTaskOrder(newColumns, currentBoard);
+    }
     setColumns(newColumns);
   };
 

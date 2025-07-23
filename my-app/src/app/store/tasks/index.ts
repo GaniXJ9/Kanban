@@ -2,7 +2,7 @@ import { create } from "zustand";
 import type { TaskEntity } from "../../../features/types/tasks/TaskEntity";
 import type { BoardEntity } from "../../../features/types/boards/BoardEntity";
 import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
-import useBoards from "../boards";
+import useBoards from "../../store/boards";
 import type { Id } from "../../../shared/type/IdType";
 import type { Tasks } from "../../../features/types/tasks/Tasks";
 
@@ -32,7 +32,7 @@ const useTasks = create<Tasks>((set) => ({
     );
     try {
       const response = await fetch(
-        `http://localhost:3000/boardsTEST/${currentBoard.id}`,
+        `http://localhost:3000/boards/${currentBoard.id}`,
         {
           method: "PATCH",
           body: JSON.stringify({ columns: updatedColumnList }),

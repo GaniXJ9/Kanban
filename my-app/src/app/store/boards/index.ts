@@ -2,13 +2,14 @@ import { create } from "zustand";
 import type { Id } from "../../../shared/type/IdType";
 import type { Boards } from "../../../features/types/boards/Boards";
 import type { BoardEntity } from "../../../features/types/boards/BoardEntity";
+import { BOARDS_URL } from "../../api";
 
 const useBoards = create<Boards>((set) => ({
   boards: [],
   currentBoard: null,
   setUserBoards: async (userToken: string) => {
     try {
-      const response = await fetch("http://localhost:3000/boards");
+      const response = await fetch(BOARDS_URL);
       const data: BoardEntity[] = await response.json();
 
       set({
@@ -20,7 +21,7 @@ const useBoards = create<Boards>((set) => ({
   },
   createBoard: async (board: BoardEntity) => {
     try {
-      const boardResponse = await fetch("http://localhost:3000/boards", {
+      const boardResponse = await fetch(BOARDS_URL, {
         method: "POST",
         body: JSON.stringify(board),
       });
@@ -34,7 +35,7 @@ const useBoards = create<Boards>((set) => ({
   },
   getBoard: async (id: Id) => {
     try {
-      const res = await fetch(`http://localhost:3000/boards/${id}`);
+      const res = await fetch(`${BOARDS_URL}/${id}`);
       const boardData = await res.json();
       set({ currentBoard: boardData });
     } catch (e) {
@@ -43,7 +44,7 @@ const useBoards = create<Boards>((set) => ({
   },
   deleteBoard: async (id: Id) => {
     try {
-      const response = await fetch(`http://localhost:3000/boards/${id}`, {
+      const response = await fetch(`${BOARDS_URL}/${id}`, {
         method: "DELETE",
       });
 

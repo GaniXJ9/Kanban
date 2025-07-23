@@ -4,26 +4,22 @@ import type { BoardEntity } from "../../../features/types/boards/BoardEntity";
 import type { Columns } from "../../../features/types/columns/Columns";
 import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
 import useBoards from "../boards";
+import { BOARDS_URL } from "../../api";
 
 const useColumns = create<Columns>((set) => ({
   columns: [],
   currentColumn: null,
-
   setColumns: (list: ColumnEntity[]) => {
     set(() => ({ columns: [...list] }));
   },
-
   addColumn: async (column: ColumnEntity, currentBoard: BoardEntity) => {
     const updatedColumnList = [...currentBoard.columns, column];
 
     try {
-      const response = await fetch(
-        `http://localhost:3000/boards/${currentBoard.id}`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({ columns: updatedColumnList }),
-        }
-      );
+      const response = await fetch(`${BOARDS_URL}/${currentBoard.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ columns: updatedColumnList }),
+      });
 
       if (response.ok) {
         const newBoard = { ...currentBoard, columns: updatedColumnList };
@@ -39,13 +35,10 @@ const useColumns = create<Columns>((set) => ({
       (column) => column.id !== columnId
     );
     try {
-      const response = await fetch(
-        `http://localhost:3000/boards/${currentBoard.id}`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({ columns: updatedColumnList }),
-        }
-      );
+      const response = await fetch(`${BOARDS_URL}/${currentBoard.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ columns: updatedColumnList }),
+      });
       if (response.ok) {
         const newBoard = { ...currentBoard, columns: updatedColumnList };
         set(() => ({ columns: updatedColumnList }));
@@ -66,16 +59,13 @@ const useColumns = create<Columns>((set) => ({
     );
 
     try {
-      const response = await fetch(
-        `http://localhost:3000/boards/${currentBoard.id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ columns: updatedColumnList }),
-        }
-      );
+      const response = await fetch(`${BOARDS_URL}/${currentBoard.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ columns: updatedColumnList }),
+      });
 
       if (response.ok) {
         const newBoard = { ...currentBoard, columns: updatedColumnList };
@@ -92,16 +82,13 @@ const useColumns = create<Columns>((set) => ({
     if (!currentBoard) return;
 
     try {
-      const response = await fetch(
-        `http://localhost:3000/boards/${currentBoard.id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ columns: newColumnOrder }),
-        }
-      );
+      const response = await fetch(`${BOARDS_URL}/${currentBoard.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ columns: newColumnOrder }),
+      });
 
       if (response.ok) {
         const updatedBoard = { ...currentBoard, columns: newColumnOrder };

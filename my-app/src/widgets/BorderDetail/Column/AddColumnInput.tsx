@@ -14,6 +14,7 @@ const AddColumnInput = ({
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<ColumnForm>({ resolver: yupResolver(column) });
   const { theme } = useStore();
   const { addColumn } = columnStoreTest();
@@ -22,6 +23,7 @@ const AddColumnInput = ({
   const onSubmit = async (data: ColumnForm) => {
     const newColumn = { id: crypto.randomUUID(), ...data, tasks: [] };
     if (currentBoard) addColumn(newColumn, currentBoard);
+    reset();
   };
 
   return (
