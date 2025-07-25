@@ -12,6 +12,9 @@ const useColumns = create<Columns>((set) => ({
   setColumns: (list: ColumnEntity[]) => {
     set(() => ({ columns: [...list] }));
   },
+  setCurrentColumn: (column: ColumnEntity) => {
+    set(() => ({ currentColumn: column }));
+  },
   addColumn: async (column: ColumnEntity, currentBoard: BoardEntity) => {
     const updatedColumnList = [...currentBoard.columns, column];
 

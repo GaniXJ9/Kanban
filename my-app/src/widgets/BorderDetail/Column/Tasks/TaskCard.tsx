@@ -41,6 +41,7 @@ const TaskCard = ({
       {...listeners}
       style={style}
       ref={setNodeRef}
+      onClick={() => console.log(task)}
       className={`cursor-grab relative p-1 w-full rounded-md flex gap-2 px-2 items-center justify-between bg-slate-300 dark:bg-[#222222]`}
     >
       <UpdateInput

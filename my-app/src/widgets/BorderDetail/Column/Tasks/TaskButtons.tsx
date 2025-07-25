@@ -4,6 +4,7 @@ import useTasks from "../../../../app/store/tasks";
 import BarsOutlined from "../../../../shared/icons/BarsOutlined";
 import DeleteTaskIcon from "../../../../shared/icons/DeleteTaskIcon";
 import type { Id } from "../../../../shared/type/IdType";
+import useColumns from "../../../../app/store/columns";
 
 const TaskButtons = ({
   column,
@@ -13,6 +14,7 @@ const TaskButtons = ({
   taskId: Id;
 }) => {
   const { currentBoard } = useBoards();
+  const { setCurrentColumn } = useColumns();
   const { setCurrentTask, deleteTask } = useTasks();
 
   const handleDeleteTask = () => {
@@ -26,6 +28,7 @@ const TaskButtons = ({
     const currentTask = column.tasks.find((task) => task.id === taskId);
     if (currentTask) {
       setCurrentTask(currentTask);
+      setCurrentColumn(column);
     } else {
       console.log("Task Not Found");
     }

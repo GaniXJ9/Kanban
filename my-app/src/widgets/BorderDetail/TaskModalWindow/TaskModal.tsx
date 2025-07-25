@@ -1,27 +1,20 @@
 import useTasks from "../../../app/store/tasks";
-import CloseIcon from "../../../shared/icons/CloseIcon";
+import ModalBody from "./ModalBody";
+import ModalHeader from "./ModalHeader";
 
 const TaskModal = () => {
-  const { currentTask, setCurrentTask } = useTasks();
-
-  const closeModal = () => setCurrentTask(null);
+  const { currentTask } = useTasks();
 
   return (
     <aside
-      className={`fixed z-50 left-0 bottom-0 w-full px-10 py-10 border transition-transform duration-300 transform
-       bg-white
+      className={`fixed z-50 left-0 bottom-0 w-full rounded-t-2xl  dark:border dark:border-[] transition-transform duration-300 transform
+       bg-[#f5f5f5]
        
         ${currentTask ? "translate-y-0" : "translate-y-full"}
       `}
     >
-      <span
-        onClick={closeModal}
-        className="absolute top-3 right-3 cursor-pointer"
-      >
-        <CloseIcon />
-      </span>
-
-      <h2 className="text-xl font-bold">{currentTask?.name}</h2>
+      <ModalHeader />
+      <ModalBody />
     </aside>
   );
 };

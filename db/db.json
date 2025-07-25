@@ -106,11 +106,6 @@
       "userToken": "3178b943-712f-4695-97a7-9887c26d5d40",
       "columns": [
         {
-          "id": 1,
-          "name": "To Do",
-          "tasks": []
-        },
-        {
           "id": 2,
           "name": "Done",
           "tasks": []
@@ -121,17 +116,25 @@
           "tasks": []
         },
         {
-          "id": "503277c5-96cb-4462-977b-77e2b5753e58",
-          "name": "ыфс",
+          "id": 1,
+          "name": "To Do",
           "tasks": [
             {
-              "id": "e5ea62e9-0578-4034-97d9-043e9488b095",
-              "name": "ы",
-              "date": 1753431259438,
+              "id": "b907f946-5ff4-4486-8c94-58cb6df21342",
+              "name": "asc",
+              "date": 1753443270362,
+              "deadline": null,
+              "importance": null,
+              "description": null,
               "background": null,
               "comments": []
             }
           ]
+        },
+        {
+          "id": "503277c5-96cb-4462-977b-77e2b5753e58",
+          "name": "ыфс",
+          "tasks": []
         }
       ],
       "title": "s",

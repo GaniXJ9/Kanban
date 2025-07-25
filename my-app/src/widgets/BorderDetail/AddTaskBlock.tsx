@@ -5,6 +5,7 @@ import useBoards from "../../app/store/boards";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { task, type TaskForm } from "../../features/tasks/schema";
 import type { ColumnEntity } from "../../features/types/columns/ColumnEntity";
+import type { TaskEntity } from "../../features/types/tasks/TaskEntity";
 
 const AddTaskBlock = ({
   column,
@@ -36,10 +37,13 @@ const AddTaskBlock = ({
   };
 
   const onSubmit = async (data: TaskForm) => {
-    const newTask = {
+    const newTask: TaskEntity = {
       id: crypto.randomUUID(),
       ...data,
       date: Number(new Date()),
+      deadline: null,
+      importance: null,
+      description: null,
       background: null,
       comments: [],
     };
