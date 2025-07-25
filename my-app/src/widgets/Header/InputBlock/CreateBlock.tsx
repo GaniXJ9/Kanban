@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useStore from "../../../app/store";
 import DesksIcon from "../../../shared/icons/DesksIcon";
 import CreateButton from "./CreateButton";
 import ArrowLeft from "../../../shared/icons/ArrowLeft";
@@ -10,7 +9,6 @@ type nextStepType = "board" | "template";
 
 function CreateBlock({ closeBlock }: { closeBlock: () => void }) {
   const [nextStepType, setNextStepType] = useState<nextStepType | null>(null);
-  const { theme } = useStore();
 
   const showCreateBoard = () => {
     setNextStepType("board");
@@ -26,13 +24,7 @@ function CreateBlock({ closeBlock }: { closeBlock: () => void }) {
 
   return (
     <div
-      className={`absolute  top-full translate-y-4.5 -right-32  lg:-right-16  w-92 z-50 justify-center  min-h-60 rounded-md
-       
-        ${
-          theme === "light"
-            ? "bg-white  shadow-md border-none"
-            : "bg-[#242424] border border-[#585858]"
-        }`}
+      className={`absolute  top-full translate-y-4.5 -right-32  lg:-right-16  w-92 z-50 justify-center  min-h-60 rounded-md bg-white  shadow-md border-none dark:bg-[#242424] dark:border dark:border-[#585858]`}
     >
       {!nextStepType ? (
         <div className="flex flex-col py-5 ">
@@ -52,21 +44,14 @@ function CreateBlock({ closeBlock }: { closeBlock: () => void }) {
       ) : (
         <div className="relative py-3 px-4">
           <span
-            className={`absolute top-3 left-3 lg:hover:cursor-pointer p-1 rounded-md transition-all duration-200 ${
-              theme === "light"
-                ? "text-[#1a1a1a] lg:hover:bg-slate-200 lg:hover:text-white"
-                : "text-slate-200 lg:hover:bg-slate-900 lg:hover:text-slate-600"
-            }`}
+            className={`absolute top-3 left-3 lg:hover:cursor-pointer p-1 rounded-md transition-all duration-200 text-[#1a1a1a] lg:hover:bg-slate-200 lg:hover:text-white
+dark:text-slate-200 dark:lg:hover:bg-slate-900 dark:lg:hover:text-slate-600`}
             onClick={goBack}
           >
             <ArrowLeft />
           </span>
           <span
-            className={`absolute top-3 right-3 lg:hover:cursor-pointer p-1 rounded-md transition-all duration-200 ${
-              theme === "light"
-                ? "text-[#1a1a1a] lg:hover:bg-slate-200 lg:hover:text-white"
-                : "text-slate-200 lg:hover:bg-slate-900 lg:hover:text-slate-600"
-            }`}
+            className={`absolute top-3 right-3 lg:hover:cursor-pointer p-1 rounded-md transition-all duration-200 text-[#1a1a1a] lg:hover:bg-slate-200 lg:hover:text-white dark:text-slate-200 dark:lg:hover:bg-slate-900 dark:lg:hover:text-slate-600`}
             onClick={closeBlock}
           >
             <CloseIcon />

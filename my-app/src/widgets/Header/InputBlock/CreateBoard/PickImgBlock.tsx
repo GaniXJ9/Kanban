@@ -8,7 +8,6 @@ const PickImgBlock = ({ setBg }: { setBg: (value: string) => void }) => {
 
   useEffect(() => {
     setBg(bgImg);
-    console.log(bgImg);
   }, [bgImg]);
 
   return (

@@ -1,13 +1,7 @@
-import useStore from "../../../../app/store";
-
 const BoardTitle = ({ title }: { title: string }) => {
-  const { theme } = useStore();
-
   return (
     <h3
-      className={`text-xs font-medium uppercase ${
-        theme === "light" ? "text-slate-600" : "text-slate-200"
-      }`}
+      className={`text-xs font-medium uppercase text-slate-600 dark:text-slate-200`}
     >
       {title}
     </h3>

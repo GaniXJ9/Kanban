@@ -1,15 +1,10 @@
-import useStore from "../../../../app/store";
 import BoardForm from "./BoardForm";
 
 const CreateBoardBlock = () => {
-  const { theme } = useStore();
-
   return (
     <section className="w-full">
       <h1
-        className={`w-full text-center text-md font-medium ${
-          theme === "light" ? "text-slate-600" : "text-slate-200"
-        } `}
+        className={`w-full text-center text-md font-medium text-slate-600 dark:text-slate-200 `}
       >
         Create Board
       </h1>
