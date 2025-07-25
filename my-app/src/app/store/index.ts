@@ -1,12 +1,8 @@
 // store/index.ts
 import { create } from "zustand";
+import type { Store } from "./Store";
 
 type ThemeType = "light" | "dark";
-
-interface Store {
-  theme: ThemeType;
-  toggleTheme: () => void;
-}
 
 const useStore = create<Store>((set) => ({
   theme: (localStorage.getItem("themeMode") as ThemeType) || "light",

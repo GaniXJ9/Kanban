@@ -2,7 +2,6 @@ import AddTaskBlock from "../AddTaskBlock";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import ColumnHead from "./ColumnHead";
-import useStore from "../../../app/store";
 import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
 import TaskContainer from "./Tasks/TaskContainer";
 
@@ -16,7 +15,6 @@ const BoardColumn = ({ column }: { column: ColumnEntity }) => {
     transition,
   } = useSortable({ id: column.id, data: { type: "Column", column } });
   const style = { transform: CSS.Transform.toString(transform), transition };
-  const { theme } = useStore();
 
   return (
     <div
@@ -24,9 +22,7 @@ const BoardColumn = ({ column }: { column: ColumnEntity }) => {
       {...listeners}
       style={style}
       ref={setNodeRef}
-      className={`relative  flex flex-col gap-3 rounded-md p-5 h-fit  ${
-        theme === "light" ? "bg-white" : "bg-[#1a1a1a]"
-      }
+      className={`relative  flex flex-col gap-3 rounded-md p-5 h-fit bg-white dark:bg-[#1a1a1a]
      ${isDragging && "opacity-70"}
       `}
     >

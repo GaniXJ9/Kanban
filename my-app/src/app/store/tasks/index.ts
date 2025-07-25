@@ -5,6 +5,7 @@ import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity"
 import useBoards from "../../store/boards";
 import type { Id } from "../../../shared/type/IdType";
 import type { Tasks } from "../../../features/types/tasks/Tasks";
+import { BOARDS_URL } from "../../api";
 
 const useTasks = create<Tasks>((set) => ({
   tasks: [],
@@ -31,13 +32,10 @@ const useTasks = create<Tasks>((set) => ({
       col.id === column.id ? updatedColumn : col
     );
     try {
-      const response = await fetch(
-        `http://localhost:3000/boards/${currentBoard.id}`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({ columns: updatedColumnList }),
-        }
-      );
+      const response = await fetch(`${BOARDS_URL}/${currentBoard.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ columns: updatedColumnList }),
+      });
 
       if (response.ok) {
         const newBoard = { ...currentBoard, columns: updatedColumnList };
@@ -64,13 +62,10 @@ const useTasks = create<Tasks>((set) => ({
     );
 
     try {
-      const response = await fetch(
-        `http://localhost:3000/boards/${currentBoard.id}`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({ columns: updatedColumnList }),
-        }
-      );
+      const response = await fetch(`${BOARDS_URL}/${currentBoard.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ columns: updatedColumnList }),
+      });
 
       if (response.ok) {
         const newBoard = { ...currentBoard, columns: updatedColumnList };
@@ -100,16 +95,13 @@ const useTasks = create<Tasks>((set) => ({
     );
 
     try {
-      const response = await fetch(
-        `http://localhost:3000/boards/${currentBoard.id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ columns: updatedColumnList }),
-        }
-      );
+      const response = await fetch(`${BOARDS_URL}/${currentBoard.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ columns: updatedColumnList }),
+      });
 
       if (response.ok) {
         const newBoard = { ...currentBoard, columns: updatedColumnList };
@@ -129,16 +121,13 @@ const useTasks = create<Tasks>((set) => ({
     const updatedBoard = { ...currentBoard, columns: newOrder };
 
     try {
-      const response = await fetch(
-        `http://localhost:3000/boards/${currentBoard.id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ columns: newOrder }),
-        }
-      );
+      const response = await fetch(`${BOARDS_URL}/${currentBoard.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ columns: newOrder }),
+      });
 
       if (response.ok) {
         useBoards.getState().setCurrentBoard(updatedBoard);

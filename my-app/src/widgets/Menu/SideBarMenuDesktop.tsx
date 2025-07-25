@@ -16,12 +16,10 @@ const SideBarMenuDesktop = () => {
 
   return (
     <aside
-      className={`w-1/4 hidden lg:flex flex-col  ${
+      className={`w-1/4 hidden lg:flex flex-col ${
         location.pathname === "/auth" && "hidden"
       }
-      ${currentBoard && "hidden"}
-    
-      `}
+      ${currentBoard && "hidden"}`}
     >
       <div className="flex flex-col py-5 ">
         <MenuLink link={"/boards"} linkTitle={"Boards"} Icon={DesksIcon} />

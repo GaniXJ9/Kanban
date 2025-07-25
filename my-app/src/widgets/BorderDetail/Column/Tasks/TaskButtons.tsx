@@ -1,4 +1,3 @@
-import useStore from "../../../../app/store";
 import type { ColumnEntity } from "../../../../features/types/columns/ColumnEntity";
 import useBoards from "../../../../app/store/boards";
 import useTasks from "../../../../app/store/tasks";
@@ -13,7 +12,6 @@ const TaskButtons = ({
   column: ColumnEntity;
   taskId: Id;
 }) => {
-  const { theme } = useStore();
   const { currentBoard } = useBoards();
   const { setCurrentTask, deleteTask } = useTasks();
 
@@ -37,22 +35,12 @@ const TaskButtons = ({
     <div className="flex gap-1 z-0">
       <button
         onClick={showModal}
-        className={`size-6  rounded-md border  flex items-center justify-center lg:hover:cursor-pointer
-            ${
-              theme === "light"
-                ? "text-slate-600 bg-slate-100 border-[#a5a1a1]"
-                : "text-slate-200 bg-[#606060] border-[#1a1a1a]"
-            } `}
+        className={`size-6  rounded-md border  flex items-center justify-center lg:hover:cursor-pointer text-slate-600 bg-slate-100 border-[#a5a1a1] dark:text-slate-200 dark:bg-[#606060] dark:border-[#1a1a1a]`}
       >
         <BarsOutlined />
       </button>
       <button
-        className={`size-6   rounded-md border  flex items-center justify-center  lg:hover:cursor-pointer
-            ${
-              theme === "light"
-                ? "text-slate-200 bg-[#f82758] border-[#a5a1a1] "
-                : "text-slate-200 bg-[#e9093d] border-[#1a1a1a]"
-            } `}
+        className={`size-6   rounded-md border  flex items-center justify-center  lg:hover:cursor-pointer text-slate-200 bg-[#f82758] border-[#a5a1a1] dark:text-slate-200 dark:bg-[#e9093d] dark:border-[#1a1a1a]`}
         onClick={handleDeleteTask}
       >
         <DeleteTaskIcon />

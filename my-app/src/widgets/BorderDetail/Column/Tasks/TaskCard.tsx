@@ -1,4 +1,3 @@
-import useStore from "../../../../app/store";
 import TaskButtons from "./TaskButtons";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -17,7 +16,6 @@ const TaskCard = ({
   column: ColumnEntity;
 }) => {
   const [value, setValue] = useState<string>(task.name);
-  const { theme } = useStore();
   const { currentBoard } = useBoards();
   const { updateTask } = useTasks();
   const { setNodeRef, attributes, listeners, transform, transition } =
@@ -43,9 +41,7 @@ const TaskCard = ({
       {...listeners}
       style={style}
       ref={setNodeRef}
-      className={`cursor-grab relative p-1 w-full rounded-md flex gap-2 px-2 items-center justify-between ${
-        theme === "light" ? "bg-slate-300" : "bg-[#222222] "
-      }`}
+      className={`cursor-grab relative p-1 w-full rounded-md flex gap-2 px-2 items-center justify-between bg-slate-300 dark:bg-[#222222]`}
     >
       <UpdateInput
         handleUpdate={handleUpdateTask}

@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import useStore from "../../app/store";
 import BoardCard from "./BoardCard";
 import useUserStore from "../../app/store/users";
 import useBoards from "../../app/store/boards";
@@ -7,7 +6,6 @@ import type { BoardEntity } from "../../features/types/boards/BoardEntity";
 
 const BoardListContainer = () => {
   const { boards, setUserBoards } = useBoards();
-  const { theme } = useStore();
   const { currentUser } = useUserStore();
 
   useEffect(() => {
@@ -22,9 +20,7 @@ const BoardListContainer = () => {
     <section className="h-full">
       {boards.length === 0 ? (
         <h3
-          className={`text-lg font-normal uppercase w-full py-10 ${
-            theme === "light" ? "text-slate-400" : "text-slate-200"
-          }`}
+          className={`text-lg font-normal uppercase w-full py-10 text-slate-400 dark:text-slate-200`}
         >
           Empty List
         </h3>

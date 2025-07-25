@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import useStore from "../../app/store";
 import useTasks from "../../app/store/tasks";
 import useBoards from "../../app/store/boards";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,7 +13,6 @@ const AddTaskBlock = ({
   column: ColumnEntity;
   isDragging: boolean;
 }) => {
-  const { theme } = useStore();
   const { currentBoard } = useBoards();
   const { addTask } = useTasks();
   const [showInputTask, setShowInputTask] = useState<boolean>(false);
@@ -55,11 +53,9 @@ const AddTaskBlock = ({
   return (
     <div>
       <button
-        className={`w-full text-start rounded-md outline-none px-2 py-2 lg:hover:cursor-pointer transition-all duration-200 ${
-          theme === "light"
-            ? "bg-[#e0dfdf]  text-slate-800 lg:hover:bg-slate-300"
-            : "bg-[#373737] text-white  lg:hover:bg-slate-600"
-        }`}
+        className={`w-full text-start rounded-md outline-none px-2 py-2 lg:hover:cursor-pointer transition-all duration-200
+          bg-[#e0dfdf]  text-slate-800 lg:hover:bg-slate-30
+          dark:bg-[#373737] dark:text-white  dark:lg:hover:bg-slate-600`}
         onClick={toggleInput}
         disabled={isDragging}
       >
@@ -74,11 +70,7 @@ const AddTaskBlock = ({
           <textarea
             {...register("name")}
             placeholder="Enter task title..."
-            className={`p-2 w-full rounded-md outline-none capitalize lg:hover:cursor-pointer ${
-              theme === "light"
-                ? "bg-[#e0dfdf] text-slate-800 lg:hover:bg-slate-200"
-                : "bg-[#333333] text-slate-200 lg:hover:bg-slate-600"
-            }`}
+            className={`p-2 w-full rounded-md outline-none capitalize lg:hover:cursor-pointer bg-[#e0dfdf] text-slate-800 lg:hover:bg-slate-200 dark:bg-[#333333] dark:text-slate-200 dark:lg:hover:bg-slate-600`}
           />
           {errors.name && (
             <p className="text-red-500 text-sm">
@@ -88,11 +80,10 @@ const AddTaskBlock = ({
           <div className="flex justify-between gap-3">
             <button
               type="submit"
-              className={`px-5 py-2 w-full rounded-md font-medium lg:hover:cursor-pointer transition-all duration-200 ${
-                theme === "light"
-                  ? "bg-slate-300 text-slate-800 lg:hover:bg-slate-800  lg:hover:text-slate-200"
-                  : "bg-slate-800 text-slate-200 lg:hover:bg-slate-200  lg:hover:text-slate-800"
-              }`}
+              className={`px-5 py-2 w-full rounded-md font-medium lg:hover:cursor-pointer transition-all duration-200
+                bg-slate-300 text-slate-800 lg:hover:bg-slate-800  lg:hover:text-slate-200
+                dark:bg-slate-800 dark:text-slate-200 dark:lg:hover:bg-slate-200  dark:lg:hover:text-slate-800
+               `}
             >
               Add Card
             </button>
