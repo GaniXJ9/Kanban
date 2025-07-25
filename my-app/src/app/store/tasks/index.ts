@@ -12,7 +12,7 @@ const useTasks = create<Tasks>((set) => ({
   setTasks: (tasks: TaskEntity[]) => {
     set({ tasks });
   },
-  setCurrentTask: (task: TaskEntity) => {
+  setCurrentTask: (task: TaskEntity | null) => {
     set({ currentTask: task });
   },
   addTask: async (

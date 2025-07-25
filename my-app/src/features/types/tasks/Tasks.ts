@@ -7,7 +7,7 @@ export interface Tasks {
   tasks: TaskEntity[];
   currentTask: TaskEntity | null;
   setTasks: (tasks: TaskEntity[]) => void;
-  setCurrentTask: (task: TaskEntity) => void;
+  setCurrentTask: (task: TaskEntity | null) => void;
   addTask: (
     task: TaskEntity,
     column: ColumnEntity,

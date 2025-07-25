@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useStore from "../../../app/store";
 import AccountHiddenBlock from "./AccountHiddenBlock";
 import AccountProfileIMG from "./AccountProfileIMG";
 
 const AccountBlock = () => {
-  const { theme } = useStore();
   const [showAccount, setShowAccount] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -23,9 +21,7 @@ const AccountBlock = () => {
   return (
     <>
       <div
-        className={`relative flex items-center  p-1 rounded-md lg:hover:cursor-pointer ${
-          theme === "light" ? "lg:hover:bg-gray-300" : "lg:hover:bg-gray-700"
-        }`}
+        className={`relative flex items-center  p-1 rounded-md lg:hover:cursor-pointer lg:hover:bg-gray-300 dark:lg:hover:bg-gray-700`}
         onClick={toggleShowAccount}
       >
         <AccountProfileIMG />

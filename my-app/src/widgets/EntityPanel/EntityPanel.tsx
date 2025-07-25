@@ -1,14 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import DeleteIcon from "../../shared/icons/DeleteIcon";
-import boardStoreTEST from "../../app/store/boards";
+import useBoards from "../../app/store/boards";
+import useTasks from "../../app/store/tasks";
 
 const EntityPanel = () => {
   const navigate = useNavigate();
-  const { currentBoard, deleteBoard } = boardStoreTEST();
+  const { currentBoard, deleteBoard } = useBoards();
+  const { setCurrentTask } = useTasks();
 
-  const handleBoardDeleting = () => {
+  const handleDelete = () => {
     if (currentBoard) {
       deleteBoard(currentBoard.id);
+      setCurrentTask(null);
       navigate("/boards");
     }
   };
@@ -19,7 +22,7 @@ const EntityPanel = () => {
         {currentBoard?.title}
       </h1>
       <div
-        onClick={handleBoardDeleting}
+        onClick={handleDelete}
         className={`border  p-2 rounded-full lg:hover:bg-red-500 lg:hover:border-re-500 text-white transition-all duration-200 lg:hover:cursor-pointer`}
       >
         <DeleteIcon />

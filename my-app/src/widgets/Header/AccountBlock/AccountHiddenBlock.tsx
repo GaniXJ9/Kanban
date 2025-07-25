@@ -1,4 +1,3 @@
-import useStore from "../../../app/store";
 import useUsers from "../../../app/store/users";
 import LogOutIcon from "../../../shared/icons/LogOutIcon";
 import AccountProfileIMG from "./AccountProfileIMG";
@@ -10,14 +9,14 @@ const AccountHiddenBlock = ({
   showAccount: boolean;
   logOut: () => void;
 }) => {
-  const { theme } = useStore();
   const { currentUser } = useUsers();
 
   return (
     <div
-      className={`border absolute top-16 border-[#838383] right-5 h-52 w-80 flex flex-col justify-between  px-4 py-3 rounded-md shadow-lg  gap-2 ${
-        showAccount ? "block" : "hidden"
-      } ${theme === "light" ? "bg-[#6565a4]" : "bg-[#242424]"}`}
+      className={`border absolute top-16 border-[#838383] bg-[#6565a4] dark:bg-[#242424]
+        right-5 h-52 w-80 flex flex-col justify-between  px-4 py-3 rounded-md shadow-lg  gap-2 ${
+          showAccount ? "block" : "hidden"
+        }`}
     >
       <h1 className="text-lg text-white font-medium ">Account</h1>
       <div className="flex">
@@ -33,9 +32,7 @@ const AccountHiddenBlock = ({
       </div>
       <div className="border-b h-full border-[#768fb1]"></div>
       <p
-        className={`text-white lg:hover:cursor-pointer p-1 rounded-sm  flex justify-between ${
-          theme === "light" ? "lg:hover:bg-[#777dac]" : "lg:hover:bg-[#3e3e55]"
-        }`}
+        className={`text-white lg:hover:cursor-pointer p-1 rounded-sm  flex justify-between lg:hover:bg-[#777dac] dark:lg:hover:bg-[#3e3e55]`}
         onClick={logOut}
       >
         <span>Log out</span>

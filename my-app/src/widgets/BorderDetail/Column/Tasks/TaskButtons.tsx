@@ -15,17 +15,28 @@ const TaskButtons = ({
 }) => {
   const { theme } = useStore();
   const { currentBoard } = useBoards();
-  const { deleteTask } = useTasks();
+  const { setCurrentTask, deleteTask } = useTasks();
 
   const handleDeleteTask = () => {
     if (currentBoard) {
       deleteTask(taskId, column, currentBoard);
+      setCurrentTask(null);
+    }
+  };
+
+  const showModal = () => {
+    const currentTask = column.tasks.find((task) => task.id === taskId);
+    if (currentTask) {
+      setCurrentTask(currentTask);
+    } else {
+      console.log("Task Not Found");
     }
   };
 
   return (
     <div className="flex gap-1 z-0">
       <button
+        onClick={showModal}
         className={`size-6  rounded-md border  flex items-center justify-center lg:hover:cursor-pointer
             ${
               theme === "light"

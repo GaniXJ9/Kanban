@@ -1,25 +1,28 @@
-import useStore from "../../../app/store";
-
-import ModalBody from "./ModalBody";
-import ModalHeader from "./ModalHeader";
+import useTasks from "../../../app/store/tasks";
+import CloseIcon from "../../../shared/icons/CloseIcon";
 
 const TaskModal = () => {
-  const { theme } = useStore();
+  const { currentTask, setCurrentTask } = useTasks();
+
+  const closeModal = () => setCurrentTask(null);
 
   return (
-    <section className="fixed flex pt-32  justify-center top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.5)] ">
-      <div
-        className={`relative w-11/12 lg:w-3/4 h-fit border  rounded-lg  overflow-y-hidden ${
-          theme === "light"
-            ? "bg-slate-300 border-[#1a1a1a]"
-            : "bg-[#25272a] border-gray-300"
-        }`}
+    <aside
+      className={`fixed z-50 left-0 bottom-0 w-full px-10 py-10 border transition-transform duration-300 transform
+       bg-white
+       
+        ${currentTask ? "translate-y-0" : "translate-y-full"}
+      `}
+    >
+      <span
+        onClick={closeModal}
+        className="absolute top-3 right-3 cursor-pointer"
       >
-        <ModalHeader />
+        <CloseIcon />
+      </span>
 
-        <ModalBody />
-      </div>
-    </section>
+      <h2 className="text-xl font-bold">{currentTask?.name}</h2>
+    </aside>
   );
 };
 

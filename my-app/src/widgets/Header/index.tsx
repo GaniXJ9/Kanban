@@ -1,12 +1,10 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import useTheme from "../../shared/use-hook/useTheme";
 import AccountBlock from "./AccountBlock/AccountBlock";
 import ToggleThemeButton from "./ToggleThemeButton";
 import InputBlock from "./InputBlock/InputBlock";
 import DesksIcon from "../../shared/icons/DesksIcon";
 
 const Header = () => {
-  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -16,11 +14,7 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 left-0 h-14  flex items-center justify-between px-3 lg:px-10  border-b z-50 ${
-        theme === "light"
-          ? "bg-[#6565a4] border-[#bcbcbc]"
-          : "bg-[#1a1a1a] border-[#585858]"
-      }
+      className={`sticky top-0 left-0 h-14 bg-[#6565a4] border-[#bcbcbc] dark:bg-[#1a1a1a] dark:border-[#585858] flex items-center justify-between px-3 lg:px-10  border-b z-50 
       ${location.pathname === "/auth" && "hidden"}
       `}
     >
@@ -38,7 +32,7 @@ const Header = () => {
       </div>
       <InputBlock />
       <div className="flex gap-2 items-center">
-        <ToggleThemeButton theme={theme} toggleTheme={toggleTheme} />
+        <ToggleThemeButton />
         <AccountBlock />
       </div>
     </header>

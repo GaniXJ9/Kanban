@@ -7,6 +7,6 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "types": ["node"]
+    "types": ["node", "vite/client"]
   }
 }

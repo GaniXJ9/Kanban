@@ -20,6 +20,7 @@ import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity"
 import useBoards from "../../../app/store/boards";
 import type { TaskEntity } from "../../../features/types/tasks/TaskEntity";
 import useTasks from "../../../app/store/tasks";
+import TaskModal from "../../../widgets/BorderDetail/TaskModalWindow/TaskModal";
 
 const BoardDetail = () => {
   const [activeColumn, setActiveColumn] = useState<ColumnEntity | null>(null);
@@ -188,7 +189,7 @@ const BoardDetail = () => {
         <AddColumn />
       </div>
 
-      {/* {currentTask && <TaskModal />} */}
+      <TaskModal />
     </section>
   );
 };
