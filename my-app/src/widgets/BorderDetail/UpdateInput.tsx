@@ -11,6 +11,7 @@ const UpdateInput = ({
   setValue: (e: string) => void;
 }) => {
   const [focused, setFocused] = useState<boolean>(false);
+
   const onFocus = () => {
     setFocused(true);
   };

@@ -18,9 +18,15 @@ export interface Tasks {
     column: ColumnEntity,
     currentBoard: BoardEntity
   ) => void;
-  updateTask: (
+  updateTitle: (
     task: TaskEntity,
     newName: string,
+    column: ColumnEntity,
+    currentBoard: BoardEntity
+  ) => void;
+  updateDescription: (
+    task: TaskEntity,
+    value: string,
     column: ColumnEntity,
     currentBoard: BoardEntity
   ) => void;

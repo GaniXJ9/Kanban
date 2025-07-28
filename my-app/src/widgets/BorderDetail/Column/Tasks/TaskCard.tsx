@@ -17,7 +17,7 @@ const TaskCard = ({
 }) => {
   const [value, setValue] = useState<string>(task.name);
   const { currentBoard } = useBoards();
-  const { updateTask } = useTasks();
+  const { updateTitle } = useTasks();
   const { setNodeRef, attributes, listeners, transform, transition } =
     useSortable({
       id: task.id,
@@ -31,7 +31,7 @@ const TaskCard = ({
 
   const handleUpdateTask = () => {
     if (currentBoard) {
-      updateTask(task, value, column, currentBoard);
+      updateTitle(task, value, column, currentBoard);
     }
   };
 
@@ -42,7 +42,7 @@ const TaskCard = ({
       style={style}
       ref={setNodeRef}
       onClick={() => console.log(task)}
-      className={`cursor-grab relative p-1 w-full rounded-md flex gap-2 px-2 items-center justify-between bg-slate-300 dark:bg-[#222222]`}
+      className={`z-20 cursor-grab relative p-1 w-full rounded-md flex gap-2 px-2 items-center justify-between bg-slate-300 dark:bg-[#222222]`}
     >
       <UpdateInput
         handleUpdate={handleUpdateTask}

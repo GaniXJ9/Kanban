@@ -1,7 +1,7 @@
 import useStore from "../../../../app/store";
 import CommentIcon from "../../../../shared/icons/CommentIcon";
 import CommentInput from "./CommentInput";
-import CommentsContainer from "./CommentsContainer";
+import CommentsContainer from "./Comments";
 
 const CommentsBlock = () => {
   const { theme } = useStore();

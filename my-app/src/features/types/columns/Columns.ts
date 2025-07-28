@@ -6,7 +6,7 @@ export interface Columns {
   columns: ColumnEntity[];
   currentColumn: ColumnEntity | null;
   setColumns: (list: ColumnEntity[]) => void;
-  setCurrentColumn: (column: ColumnEntity) => void;
+  setCurrentColumn: (column: ColumnEntity | null) => void;
   addColumn: (column: ColumnEntity, currentBoard: BoardEntity) => void;
   deleteColumn: (columnId: Id, currentBoard: BoardEntity) => void;
   updateColumn: (

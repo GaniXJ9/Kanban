@@ -76,7 +76,7 @@ const useTasks = create<Tasks>((set) => ({
       console.log(e);
     }
   },
-  updateTask: async (
+  updateTitle: async (
     task: TaskEntity,
     newName: string,
     column: ColumnEntity,
@@ -114,6 +114,46 @@ const useTasks = create<Tasks>((set) => ({
       console.error(e);
     }
   },
+
+  updateDescription: async (
+    task: TaskEntity,
+    newValue: string,
+    column: ColumnEntity,
+    currentBoard: BoardEntity
+  ) => {
+    const updatedTask = { ...task, description: newValue };
+    const updatedTaskList = column.tasks.map((t) =>
+      t.id === task.id ? updatedTask : t
+    );
+    const updatedColumn: ColumnEntity = {
+      ...column,
+      tasks: updatedTaskList,
+    };
+    const updatedColumnList = currentBoard.columns.map((col) =>
+      col.id === column.id ? updatedColumn : col
+    );
+
+    try {
+      const response = await fetch(`${BOARDS_URL}/${currentBoard.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ columns: updatedColumnList }),
+      });
+
+      if (response.ok) {
+        const newBoard = { ...currentBoard, columns: updatedColumnList };
+
+        set(() => ({ tasks: updatedColumn.tasks }));
+
+        useBoards.getState().setCurrentBoard(newBoard);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  },
+
   updateTaskOrder: async (
     newOrder: ColumnEntity[],
     currentBoard: BoardEntity

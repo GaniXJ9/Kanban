@@ -41,8 +41,8 @@ const ImportanceUI = () => {
         title={currentTask?.importance || "Set Importance"}
       >
         <div
-          className={`absolute top-5 -right-3 flex flex-col gap-5 bg-gray-300 overflow-hidden px-3 rounded-lg border-slate-600  transition-all  duration-200 ${
-            showOptions ? "h-0 p-0 border-none" : "py-2 h-fit"
+          className={`absolute -top-2 left-5 flex flex-row gap-5 bg-gray-300 overflow-hidden  rounded-lg border-slate-600  transition-all  duration-200 ${
+            showOptions ? "w-0  border-none" : "w-fit "
           }`}
         >
           {importaceVariant.map((el) => (
@@ -50,7 +50,7 @@ const ImportanceUI = () => {
               key={el.id}
               className={`${importanceColor(
                 el.value
-              )} rounded-full shadow-[0_0_0_1px_white] p-2 w-fit`}
+              )} rounded-full ring-2 ring-blue-100 p-2 w-fit`}
               title={el.value}
             ></span>
           ))}
