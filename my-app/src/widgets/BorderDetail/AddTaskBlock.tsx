@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { task, type TaskForm } from "../../features/tasks/schema";
 import type { ColumnEntity } from "../../features/types/columns/ColumnEntity";
 import type { TaskEntity } from "../../features/types/tasks/TaskEntity";
-import SecondaryButton from "../../shared/ui/bottons/SecondaryButton";
+// import SecondaryButton from "../../shared/ui/bottons/SecondaryButton";
 
 const AddTaskBlock = ({
   column,

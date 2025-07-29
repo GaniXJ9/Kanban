@@ -152,95 +152,27 @@
         {
           "id": 2,
           "name": "Done",
-          "tasks": []
-        },
-        {
-          "id": 3,
-          "name": "In Proccess",
           "tasks": [
             {
-              "id": "3c3f988f-6dfc-4b13-b286-ebbddf616a71",
-              "name": "a",
-              "date": 1753702288540,
+              "id": "934dc06e-cc1b-42d2-ae67-1fd6c486490b",
+              "name": "asc",
+              "date": 1753791272700,
               "deadline": null,
-              "importance": "High Priorety",
-              "description": "",
+              "importance": null,
+              "description": null,
               "background": null,
-              "comments": [
-                {
-                  "id": "88813e5c-f750-4f19-bc20-066f07e0c83d",
-                  "text": "asc",
-                  "date": "2025-07-28T13:09:33.498Z",
-                  "user": {
-                    "id": "8df8",
-                    "username": "Gani",
-                    "email": "ganisergaliev29@gmail.com",
-                    "password": "123123123",
-                    "confirmPassword": "123123123",
-                    "token": "3178b943-712f-4695-97a7-9887c26d5d40",
-                    "boards": []
-                  }
-                },
-                {
-                  "id": "4ffabb5d-28ae-4197-ab74-aa7f615f77fb",
-                  "text": "ascascasc",
-                  "date": "2025-07-29T09:55:53.462Z",
-                  "user": {
-                    "id": "8df8",
-                    "username": "Gani",
-                    "email": "ganisergaliev29@gmail.com",
-                    "password": "123123123",
-                    "confirmPassword": "123123123",
-                    "token": "3178b943-712f-4695-97a7-9887c26d5d40",
-                    "boards": []
-                  }
-                }
-              ]
+              "comments": []
             }
           ]
+        },
+        {
+          "id": "cd105600-23c3-4617-98d3-6a7dcef8a5f3",
+          "name": "asc",
+          "tasks": []
         }
       ],
       "title": "asc",
       "background": "https://avatars.mds.yandex.net/i?id=6afe9003dc58a345d08f85621db2475d_l-4012815-images-thumbs&n=13"
-    },
-    {
-      "id": "0139c4ed-ed99-4b90-bd22-5e1720afe92d",
-      "userToken": "3178b943-712f-4695-97a7-9887c26d5d40",
-      "columns": [
-        {
-          "id": 1,
-          "name": "To Do",
-          "tasks": []
-        },
-        {
-          "id": "9245ac92-2f08-4cc6-a80e-220604d021d0",
-          "name": "cvbnm,./",
-          "tasks": [
-            {
-              "id": "6357d31a-1abe-4199-b83b-f0a17a826dfa",
-              "name": "1",
-              "date": 1753783249428,
-              "deadline": null,
-              "importance": null,
-              "description": "123123ф",
-              "background": null,
-              "comments": []
-            },
-            {
-              "id": "d5667613-9bee-4b70-a88f-ec2a8e9cd332",
-              "name": "2",
-              "date": 1753783250573,
-              "deadline": null,
-              "importance": null,
-              "description": "1231231",
-              "background": null,
-              "comments": []
-            }
-          ]
-        }
-      ],
-      "title": "123",
-      "background": "https://i.pinimg.com/originals/b6/65/c3/b665c39693c925a6c4d5c415e6ae93d1.jpg"
     }
   ]
 }
