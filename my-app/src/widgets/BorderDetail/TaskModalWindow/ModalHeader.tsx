@@ -2,7 +2,7 @@ import CloseIcon from "../../../shared/icons/CloseIcon";
 import useTasks from "../../../app/store/tasks";
 import PictureTwotone from "../../../shared/icons/PictureTwotone";
 import ModalInfo from "./ModalInfo";
-// import ImportanceUI from "./ImportanceUI";
+import ImportanceUI from "./ImportanceUI";
 
 const ModalHeader = () => {
   const { setCurrentTask } = useTasks();
@@ -10,7 +10,7 @@ const ModalHeader = () => {
   const closeModal = () => setCurrentTask(null);
 
   return (
-    <div className="h-20  bg-[#6565a4]  dark:bg-[#1a1a1a] p-10 flex items-center relative rounded-t-2xl border-b border-white dark:border-[#535252]">
+    <div className=" bg-[#6565a4]  dark:bg-[#1a1a1a] p-5 px-10 flex items-center relative rounded-t-2xl border-b border-white dark:border-[#535252]">
       <div className="absolute top-5 right-5 flex items-center gap-5">
         <span className="cursor-pointer  text-slate-200 bg-slate-900/30 p-2 rounded-lg">
           <PictureTwotone />
@@ -23,7 +23,7 @@ const ModalHeader = () => {
         </span>
       </div>
       <ModalInfo />
-      {/* <ImportanceUI /> */}
+      <ImportanceUI />
     </div>
   );
 };

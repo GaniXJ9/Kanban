@@ -3,7 +3,7 @@ import TaskDescription from "./TaskDescription";
 
 const ModalBody = () => {
   return (
-    <section className="px-7  flex overflow-y-auto ">
+    <section className="px-7 flex overflow-y-auto  max-h-[50vh]">
       <TaskDescription />
       <Comments />
     </section>

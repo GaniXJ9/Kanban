@@ -179,6 +179,47 @@ const useTasks = create<Tasks>((set) => ({
       console.error(e);
     }
   },
+
+  setImportance: async (
+    value: string,
+    task: TaskEntity,
+    column: ColumnEntity,
+    currentBoard: BoardEntity
+  ) => {
+    const updatedTask = { ...task, importance: value };
+    const updatedTaskList = column.tasks.map((t) =>
+      t.id === task.id ? updatedTask : t
+    );
+    const updatedColumn: ColumnEntity = {
+      ...column,
+      tasks: updatedTaskList,
+    };
+    const updatedColumnList = currentBoard.columns.map((col) =>
+      col.id === column.id ? updatedColumn : col
+    );
+
+    try {
+      const response = await fetch(`${BOARDS_URL}/${currentBoard.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ columns: updatedColumnList }),
+      });
+
+      if (response.ok) {
+        const newBoard = { ...currentBoard, columns: updatedColumnList };
+
+        set(() => ({
+          tasks: updatedColumn.tasks,
+          currentTask: updatedTask,
+        }));
+        useBoards.getState().setCurrentBoard(newBoard);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  },
 }));
 
 export default useTasks;

@@ -4,6 +4,6 @@ import type { UserEntity } from "../users/UserEntity";
 export interface CommentEntity {
   id: Id;
   user: UserEntity;
-  text: string;
+  text: string | null;
   date: Date;
 }

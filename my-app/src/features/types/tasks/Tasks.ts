@@ -34,4 +34,10 @@ export interface Tasks {
     newOrder: ColumnEntity[],
     currentBoard: BoardEntity
   ) => void;
+  setImportance: (
+    value: string,
+    task: TaskEntity,
+    column: ColumnEntity,
+    currentBoard: BoardEntity
+  ) => void;
 }
