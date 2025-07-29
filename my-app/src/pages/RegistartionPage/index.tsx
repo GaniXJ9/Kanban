@@ -2,11 +2,11 @@ import { useForm } from "react-hook-form";
 import AuthInput from "../../shared/ui/AuthInput";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegistration } from "../../features/register/use-hook/useRegistration";
-import AuthButton from "../../shared/ui/AuthButton";
 import {
   registration,
   type RegistrationForm,
 } from "../../features/register/schema";
+import PrimaryButton from "../../shared/ui/bottons/PrimaryButton";
 
 const RegistartionPage = () => {
   const { toRegister } = useRegistration();
@@ -51,7 +51,7 @@ const RegistartionPage = () => {
         register={register("confirmPassword")}
         error={errors.confirmPassword?.message}
       />
-      <AuthButton buttonText="Registration" />
+      <PrimaryButton text="Registration" padding={"px-3 py-2"} />
     </form>
   );
 };

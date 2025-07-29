@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import type { ColumnEntity } from "../../../../features/types/columns/ColumnEntity";
 import type { TaskEntity } from "../../../../features/types/tasks/TaskEntity";
 
-const TaskContainer = ({
+const TaskList = ({
   tasks,
   column,
 }: {
@@ -26,4 +26,4 @@ const TaskContainer = ({
   );
 };
 
-export default TaskContainer;
+export default TaskList;

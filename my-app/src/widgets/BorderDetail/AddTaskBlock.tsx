@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { task, type TaskForm } from "../../features/tasks/schema";
 import type { ColumnEntity } from "../../features/types/columns/ColumnEntity";
 import type { TaskEntity } from "../../features/types/tasks/TaskEntity";
+import SecondaryButton from "../../shared/ui/bottons/SecondaryButton";
 
 const AddTaskBlock = ({
   column,
@@ -65,6 +66,11 @@ const AddTaskBlock = ({
       >
         + Add Task
       </button>
+      {/* <SecondaryButton
+        onClick={toggleInput}
+        text="+ Add Task"
+        padding="px-2 py-2"
+      /> */}
 
       {showInputTask && !isDragging && (
         <form

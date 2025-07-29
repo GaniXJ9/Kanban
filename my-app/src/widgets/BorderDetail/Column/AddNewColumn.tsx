@@ -3,8 +3,11 @@ import columnStoreTest from "../../../app/store/columns";
 import boardStoreTEST from "../../../app/store/boards";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { column, type ColumnForm } from "../../../features/columns/schema";
+import DangerButton from "../../../shared/ui/bottons/DangerButton";
+import CloseIcon from "../../../shared/icons/CloseIcon";
+import SecondaryButton from "../../../shared/ui/bottons/SecondaryButton";
 
-const AddColumnInput = ({
+const AddNewColumn = ({
   toggleShowInputColumn,
 }: {
   toggleShowInputColumn: () => void;
@@ -30,6 +33,7 @@ const AddColumnInput = ({
       onSubmit={handleSubmit(onSubmit)}
     >
       <input
+        placeholder="Column Name"
         {...register("name", {
           required: {
             value: true,
@@ -42,21 +46,21 @@ const AddColumnInput = ({
         <p className="text-red-500 text-sm"> {String(errors.name?.message)}</p>
       )}
       <div className="flex justify-between gap-3">
-        <button
-          className={`px-5 py-2 w-full rounded-md font-medium transition-all bg-slate-300 text-slate-800 hover:bg-slate-800 hover:text-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-200 dark:hover:text-slate-800"`}
-        >
-          Add Column
-        </button>
-        <button
-          type="button"
+        <SecondaryButton
+          text="Add Column"
+          padding=" p-2"
+          rounded="md"
+          size="w-full"
+        />
+        <DangerButton
+          Icon={CloseIcon}
+          padding="p-3"
+          rounded="md"
           onClick={toggleShowInputColumn}
-          className="px-5 py-2 bg-red-500 rounded-md text-white hover:bg-red-400"
-        >
-          x
-        </button>
+        />
       </div>
     </form>
   );
 };
 
-export default AddColumnInput;
+export default AddNewColumn;

@@ -1,4 +1,4 @@
-import TaskButtons from "./TaskButtons";
+import TaskControls from "./TaskControls";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { useState } from "react";
@@ -50,7 +50,7 @@ const TaskCard = ({
         setValue={setValue}
       />
 
-      <TaskButtons column={column} taskId={task.id} />
+      <TaskControls column={column} taskId={task.id} />
     </div>
   );
 };

@@ -5,6 +5,7 @@ import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity"
 import useBoards from "../../../app/store/boards";
 import useColumns from "../../../app/store/columns";
 import useTasks from "../../../app/store/tasks";
+import SecondaryButton from "../../../shared/ui/bottons/SecondaryButton";
 
 const ColumnHead = ({ column }: { column: ColumnEntity }) => {
   const [value, setValue] = useState<string>(column.name);
@@ -32,12 +33,18 @@ const ColumnHead = ({ column }: { column: ColumnEntity }) => {
         setValue={setValue}
         defFalue={value}
       />
-      <button
+      {/* <button
         onClick={handleDelete}
         className={`block m-1 p-2 text-center rounded-md  lg:hover:cursor-pointer  transition-all duration-200 text-slate-600 lg:hover:bg-slate-600 lg:hover:text-slate-200 dark:text-slate-200 dark:lg:hover:bg-[#373737] dark:lg:hover:text-slate-600`}
       >
         <DeleteIcon />
-      </button>
+      </button> */}
+      <SecondaryButton
+        onClick={handleDelete}
+        padding="p-2"
+        rounded="md"
+        Icon={DeleteIcon}
+      />
     </div>
   );
 };

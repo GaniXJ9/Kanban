@@ -10,6 +10,7 @@ import useBackGroundGradient from "../../../../shared/use-hook/useBackGroundGrad
 import useBoards from "../../../../app/store/boards";
 import useUsers from "../../../../app/store/users";
 import { board, type BoardDataForm } from "../../../../features/boards/schema";
+import PrimaryButton from "../../../../shared/ui/bottons/PrimaryButton";
 
 const BoardForm = () => {
   const {
@@ -98,12 +99,14 @@ const BoardForm = () => {
         )}
       </div>
       <input type="hidden" {...register("background")} />
-      <button
+
+      <PrimaryButton text="Create Board" padding="px-4 py-2" size={"w-full"} />
+      {/* <button
         type="submit"
         className={`mt-4 px-4 py-2 text-white rounded w-full lg:hover:cursor-pointer transition-all duration-200 bg-slate-500 dark:bg-slate-700 lg:hover:bg-slate-200 lg:hover:text-slate-600`}
       >
         Create Board
-      </button>
+      </button> */}
     </form>
   );
 };

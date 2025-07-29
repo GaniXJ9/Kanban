@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import DeleteIcon from "../../shared/icons/DeleteIcon";
 import useBoards from "../../app/store/boards";
 import useTasks from "../../app/store/tasks";
+import DangerButton from "../../shared/ui/bottons/DangerButton";
 
 const EntityPanel = () => {
   const navigate = useNavigate();
@@ -21,12 +22,13 @@ const EntityPanel = () => {
       <h1 className={`text-xl font-medium text-white`}>
         {currentBoard?.title}
       </h1>
-      <div
+
+      <DangerButton
         onClick={handleDelete}
-        className={`border  p-2 rounded-full lg:hover:bg-red-500 lg:hover:border-re-500 text-white transition-all duration-200 lg:hover:cursor-pointer`}
-      >
-        <DeleteIcon />
-      </div>
+        padding={"p-2"}
+        rounded={"full"}
+        Icon={DeleteIcon}
+      />
     </section>
   );
 };

@@ -11,7 +11,7 @@ import {
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
-import BoardColumn from "../../../widgets/BorderDetail/Column/BoardColumn";
+
 import { createPortal } from "react-dom";
 import AddColumn from "../../../widgets/BorderDetail/Column/AddColumn";
 import TaskCard from "../../../widgets/BorderDetail/Column/Tasks/TaskCard";
@@ -21,6 +21,7 @@ import useBoards from "../../../app/store/boards";
 import type { TaskEntity } from "../../../features/types/tasks/TaskEntity";
 import useTasks from "../../../app/store/tasks";
 import TaskModal from "../../../widgets/BorderDetail/TaskModalWindow/TaskModal";
+import Column from "../../../widgets/BorderDetail/Column/Column";
 
 const BoardDetail = () => {
   const [activeColumn, setActiveColumn] = useState<ColumnEntity | null>(null);
@@ -169,12 +170,12 @@ const BoardDetail = () => {
       >
         <SortableContext items={columsId}>
           {columns.map((column: ColumnEntity) => (
-            <BoardColumn column={column} key={column.id} />
+            <Column column={column} key={column.id} />
           ))}
         </SortableContext>
         {createPortal(
           <DragOverlay>
-            {activeColumn && <BoardColumn column={activeColumn} />}
+            {activeColumn && <Column column={activeColumn} />}
             {activeTask && (
               <TaskCard
                 task={activeTask}

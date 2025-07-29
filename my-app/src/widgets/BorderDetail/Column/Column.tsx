@@ -3,9 +3,9 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import ColumnHead from "./ColumnHead";
 import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
-import TaskContainer from "./Tasks/TaskContainer";
+import TaskList from "./Tasks/TaskList";
 
-const BoardColumn = ({ column }: { column: ColumnEntity }) => {
+const Column = ({ column }: { column: ColumnEntity }) => {
   const {
     setNodeRef,
     isDragging,
@@ -27,10 +27,10 @@ const BoardColumn = ({ column }: { column: ColumnEntity }) => {
       `}
     >
       <ColumnHead column={column} />
-      <TaskContainer tasks={column.tasks} column={column} />
+      <TaskList tasks={column.tasks} column={column} />
       <AddTaskBlock column={column} isDragging={isDragging} />
     </div>
   );
 };
 
-export default BoardColumn;
+export default Column;

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import AddColumnInput from "./AddColumnInput";
-import AddColumnButton from "./AddColumnButton";
+import AddNewColumn from "./AddNewColumn";
+import SecondaryButton from "../../../shared/ui/bottons/SecondaryButton";
 
 const AddColumn = () => {
   const [showInputColumn, setShowInputColumn] = useState<boolean>(false);
@@ -14,9 +14,15 @@ const AddColumn = () => {
       className={`w-full text-start h-fit rounded-md transition-all duration-200 bg-[#ffffff] dark:bg-[#1a1a1a]`}
     >
       {!showInputColumn ? (
-        <AddColumnButton toggleShowInputColumn={toggleShowInputColumn} />
+        <SecondaryButton
+          text="+ Add Column"
+          size="size-full "
+          onClick={toggleShowInputColumn}
+          padding="p-3"
+          rounded="md"
+        />
       ) : (
-        <AddColumnInput toggleShowInputColumn={toggleShowInputColumn} />
+        <AddNewColumn toggleShowInputColumn={toggleShowInputColumn} />
       )}
     </div>
   );
