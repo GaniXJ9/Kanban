@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 import BoardCard from "./BoardCard";
-import useUserStore from "../../app/store/users";
 import useBoards from "../../app/store/boards";
 import type { BoardEntity } from "../../features/types/boards/BoardEntity";
+import useUsers from "../../app/store/users";
 
-const BoardListContainer = () => {
+const BoardList = () => {
   const { boards, setUserBoards } = useBoards();
-  const { currentUser } = useUserStore();
+  const { currentUser } = useUsers();
 
   useEffect(() => {
-    if (currentUser) setUserBoards(currentUser?.token);
+    if (currentUser) {
+      setUserBoards(currentUser?.token);
+    }
   }, []);
 
   if (!boards) {
@@ -26,8 +28,8 @@ const BoardListContainer = () => {
         </h3>
       ) : (
         <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-2 p-2">
-          {boards.map((el: BoardEntity) => (
-            <BoardCard el={el} key={el.id} />
+          {boards.map((board: BoardEntity) => (
+            <BoardCard board={board} key={board.id} />
           ))}
         </div>
       )}
@@ -35,4 +37,4 @@ const BoardListContainer = () => {
   );
 };
 
-export default BoardListContainer;
+export default BoardList;

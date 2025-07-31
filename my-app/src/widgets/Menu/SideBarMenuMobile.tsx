@@ -3,8 +3,8 @@ import MobileMenuIcon from "../../shared/icons/MobileMenuIcon";
 import { useLocation } from "react-router-dom";
 import MenuLink from "./MenuLink";
 import DesksIcon from "../../shared/icons/DesksIcon";
-import TemplateIcon from "../../shared/icons/TemplateIcon";
-import MainPageIcon from "../../shared/icons/MainPageIcon";
+// import TemplateIcon from "../../shared/icons/TemplateIcon";
+// import MainPageIcon from "../../shared/icons/MainPageIcon";
 
 const SideBarMenuMobile = () => {
   const location = useLocation();
@@ -38,12 +38,12 @@ const SideBarMenuMobile = () => {
         }`}
       >
         <MenuLink link={"/boards"} linkTitle={"Boards"} Icon={DesksIcon} />
-        <MenuLink
+        {/* <MenuLink
           link={"/templates"}
           linkTitle={"Templates"}
           Icon={TemplateIcon}
         />
-        <MenuLink link={"/"} linkTitle={"Main"} Icon={MainPageIcon} />
+        <MenuLink link={"/"} linkTitle={"Main"} Icon={MainPageIcon} /> */}
       </div>
     </aside>
   );

@@ -6,6 +6,7 @@ const PrimaryButton = ({
   size,
   fontSize,
   padding,
+  margin,
   rounded,
   onClick,
   Icon,
@@ -16,14 +17,16 @@ const PrimaryButton = ({
       className={clsx(
         size,
         padding,
+        margin || "mx-auto",
         `text-${fontSize}`,
         `rounded-${rounded}`,
-        `border mx-auto block rounded-md
+        `border  block rounded-md
       lg:hover:bg-slate-400 dark:lg:hover:bg-slate-600
       text-white bg-slate-600 dark:bg-slate-800 h-full
          lg:hover:text-slate-200
         dark:text-slate-200 
-        font-normal lg:cursor-pointer transition-all duration-200`
+        font-normal lg:cursor-pointer transition-all duration-200
+        `
       )}
     >
       {Icon && <Icon />}

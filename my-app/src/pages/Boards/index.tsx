@@ -1,11 +1,11 @@
-import BoardListContainer from "../../widgets/Boards/BoardListContainer";
+import BoardList from "../../widgets/Boards/BoardList";
 import PageTitle from "../../widgets/Common/PageTitle";
 
 const Boards = () => {
   return (
     <section className="h-full">
       <PageTitle title="Boards List" />
-      <BoardListContainer />
+      <BoardList />
     </section>
   );
 };

@@ -102,9 +102,14 @@
       "background": "linear-gradient(to right, #ff4b1f, #ff9068)"
     },
     {
-      "id": "5d63f3c1-233e-43d8-a20b-36571838244e",
+      "id": "827f9f9a-ea5e-4eb6-b85b-ec17aee5f7e1",
       "userToken": "3178b943-712f-4695-97a7-9887c26d5d40",
       "columns": [
+        {
+          "id": 1,
+          "name": "To Do",
+          "tasks": []
+        },
         {
           "id": 2,
           "name": "Done",
@@ -114,46 +119,10 @@
           "id": 3,
           "name": "In Proccess",
           "tasks": []
-        },
-        {
-          "id": 1,
-          "name": "To Do",
-          "tasks": [
-            {
-              "id": "b907f946-5ff4-4486-8c94-58cb6df21342",
-              "name": "asc",
-              "date": 1753443270362,
-              "deadline": null,
-              "importance": "High Priorety",
-              "description": "ascasc",
-              "background": null,
-              "comments": [
-                {
-                  "id": "c82f7334-4a33-4f6c-b608-73ea1c6878a6",
-                  "text": "ascascasc",
-                  "date": "2025-07-31T09:36:09.213Z",
-                  "user": {
-                    "id": "8df8",
-                    "username": "Gani",
-                    "email": "ganisergaliev29@gmail.com",
-                    "password": "123123123",
-                    "confirmPassword": "123123123",
-                    "token": "3178b943-712f-4695-97a7-9887c26d5d40",
-                    "boards": []
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "503277c5-96cb-4462-977b-77e2b5753e58",
-          "name": "ыфс",
-          "tasks": []
         }
       ],
-      "title": "s",
-      "background": "https://i.pinimg.com/originals/b6/65/c3/b665c39693c925a6c4d5c415e6ae93d1.jpg"
+      "title": "sdc",
+      "background": "linear-gradient(to right, #ff4b1f, #ff9068)"
     }
   ]
 }
