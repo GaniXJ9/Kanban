@@ -5,8 +5,8 @@ import { useState } from "react";
 import UpdateInput from "../BorderDetail/UpdateInput";
 
 const BoardCard = ({ board }: { board: BoardEntity }) => {
-  const [value, setValue] = useState<string>(board.title);
-  const { updateTitle } = useBoards();
+  const [value, setValue] = useState<string>(board.name);
+  const { updateName } = useBoards();
   const navigate = useNavigate();
 
   const navigateToBorderDetail = () => {
@@ -14,7 +14,7 @@ const BoardCard = ({ board }: { board: BoardEntity }) => {
   };
 
   const handleUpdate = () => {
-    updateTitle(board, value);
+    updateName(board, value);
   };
 
   return (

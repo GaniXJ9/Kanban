@@ -55,13 +55,13 @@ const useBoards = create<Boards>((set) => ({
       console.log(e);
     }
   },
-  updateTitle: async (currentBoard: BoardEntity, newValue: string) => {
+  updateName: async (currentBoard: BoardEntity, newValue: string) => {
     try {
       const response = await fetch(
         `http://localhost:3000/boards/${currentBoard.id}`,
         {
           method: "PATCH",
-          body: JSON.stringify({ title: newValue }),
+          body: JSON.stringify({ name: newValue }),
         }
       );
       if (response.ok) {

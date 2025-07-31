@@ -48,61 +48,7 @@
   ],
   "boards": [
     {
-      "id": "10bee053-794f-484f-9b11-6d5b489c97ef",
-      "userToken": "ad985344-0493-4ffd-a4c9-a639b6b71a04",
-      "columns": [
-        {
-          "id": 1,
-          "name": "To Do",
-          "tasks": []
-        },
-        {
-          "id": 2,
-          "name": "Done",
-          "tasks": []
-        },
-        {
-          "id": 3,
-          "name": "In Proccess",
-          "tasks": [
-            {
-              "id": "13a10357-957d-43b4-943a-e00db2dbbdde",
-              "name": "12312",
-              "date": 1753269493036,
-              "background": null,
-              "comments": []
-            }
-          ]
-        }
-      ],
-      "title": "123",
-      "background": "https://i.pinimg.com/originals/b6/65/c3/b665c39693c925a6c4d5c415e6ae93d1.jpg"
-    },
-    {
-      "id": "fab77170-9424-48da-b63a-968aa1130fc3",
-      "userToken": "5e5d79c1-462e-4180-832f-0dfd67efb009",
-      "columns": [
-        {
-          "id": 1,
-          "name": "To Do",
-          "tasks": []
-        },
-        {
-          "id": 2,
-          "name": "Done",
-          "tasks": []
-        },
-        {
-          "id": 3,
-          "name": "In Proccess",
-          "tasks": []
-        }
-      ],
-      "title": "123",
-      "background": "linear-gradient(to right, #ff4b1f, #ff9068)"
-    },
-    {
-      "id": "827f9f9a-ea5e-4eb6-b85b-ec17aee5f7e1",
+      "id": "ca1ba3cd-37c1-4510-b8a3-2e44b15d84dc",
       "userToken": "3178b943-712f-4695-97a7-9887c26d5d40",
       "columns": [
         {
@@ -121,8 +67,9 @@
           "tasks": []
         }
       ],
-      "title": "sdc",
-      "background": "linear-gradient(to right, #ff4b1f, #ff9068)"
+      "name": "gANI",
+      "background": "https://avatars.mds.yandex.net/i?id=6afe9003dc58a345d08f85621db2475d_l-4012815-images-thumbs&n=13",
+      "title": "1qwdqwd"
     }
   ]
 }

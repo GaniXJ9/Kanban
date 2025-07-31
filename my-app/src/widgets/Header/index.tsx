@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import AccountBlock from "./AccountBlock/AccountBlock";
 import ToggleThemeButton from "./ToggleThemeButton";
-import InputBlock from "./InputBlock/InputBlock";
+import InputBlock from "./InputBlock/Search";
 import DesksIcon from "../../shared/icons/DesksIcon";
 
 const Header = () => {

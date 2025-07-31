@@ -3,7 +3,7 @@ import type { ColumnEntity } from "../columns/ColumnEntity";
 
 export interface BoardEntity {
   id: Id;
-  title: string;
+  name: string;
   background: string;
   userToken: string;
   columns: ColumnEntity[];

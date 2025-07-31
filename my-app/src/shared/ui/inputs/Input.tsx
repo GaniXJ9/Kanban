@@ -44,7 +44,7 @@ const Input = ({
         type={type}
         className={`${
           error ? "shadow-[0_0_1px_3px_#f43b3b]" : "shadow-md"
-        } transition-all duration-200 w-full bg-[rgba(255,255,255,0.2)] rounded-md  text-${fontSize} lg:text-xl  text-white outline-none py-2 px-3 lg:py-4 lg:px-5 lg:hover:cursor-pointer placeholder:uppercase placeholder:text-sm lg:placeholder:text-lg`}
+        } transition-all duration-200 w-full bg-[rgba(255,255,255,0.2)] rounded-md  text-${fontSize} lg:text-xl  text-white outline-none py-2 px-3 lg:py-3 lg:px-4 lg:hover:cursor-pointer placeholder:uppercase placeholder:text-sm lg:placeholder:text-lg`}
         placeholder={showLabel ? "" : label}
         onFocus={showLableAction}
         onBlur={hideLableAction}

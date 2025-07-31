@@ -92,21 +92,15 @@ const BoardForm = () => {
         <BoardTitle title="Board name" />
         <input
           className={`w-full p-1 border border-slate-300 rounded-sm outline-none my-2 text-slate-600 dark:text-slate-200`}
-          {...register("title")}
+          {...register("name")}
         />
-        {errors.title && (
-          <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>
+        {errors.name && (
+          <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
         )}
       </div>
       <input type="hidden" {...register("background")} />
 
       <PrimaryButton text="Create Board" padding="px-4 py-2" size={"w-full"} />
-      {/* <button
-        type="submit"
-        className={`mt-4 px-4 py-2 text-white rounded w-full lg:hover:cursor-pointer transition-all duration-200 bg-slate-500 dark:bg-slate-700 lg:hover:bg-slate-200 lg:hover:text-slate-600`}
-      >
-        Create Board
-      </button> */}
     </form>
   );
 };

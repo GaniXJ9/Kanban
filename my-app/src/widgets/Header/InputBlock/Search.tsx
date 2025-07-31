@@ -4,7 +4,7 @@ import Search from "../../../shared/icons/SearchIcon";
 import { useLocation } from "react-router-dom";
 import PrimaryButton from "../../../shared/ui/bottons/PrimaryButton";
 
-const InputBlock = () => {
+const SearchBlock = () => {
   const location = useLocation();
   const [showCreateBoardBlock, setShowCreateBoardBlock] =
     useState<boolean>(false);
@@ -45,4 +45,4 @@ const InputBlock = () => {
   );
 };
 
-export default InputBlock;
+export default SearchBlock;
