@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import useTasks from "../../../app/store/tasks";
 import ModalBody from "./ModalBody";
-import ModalHeader from "./ModalHeader";
+import ModalHeader from "./ModalHeader/ModalHeader";
 
 const TaskModal = () => {
   const { currentTask, setCurrentTask } = useTasks();

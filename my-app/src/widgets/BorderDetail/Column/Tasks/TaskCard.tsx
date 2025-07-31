@@ -41,7 +41,6 @@ const TaskCard = ({
       {...listeners}
       style={style}
       ref={setNodeRef}
-      onClick={() => console.log(task)}
       className={`z-20 cursor-grab relative p-1 w-full rounded-md flex gap-2 px-2 items-center justify-between bg-slate-300 dark:bg-[#222222]`}
     >
       <UpdateInput
@@ -49,7 +48,6 @@ const TaskCard = ({
         defFalue={value}
         setValue={setValue}
       />
-
       <TaskControls column={column} taskId={task.id} />
     </div>
   );

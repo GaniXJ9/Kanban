@@ -27,9 +27,9 @@ const Textarea = ({
       placeholder={placeholder}
       onFocus={onFocus}
       onBlur={onBlur}
-      className="bg-slate-300 text-slate-600 lg:cursor-pointer dark:lg:hover:bg-slate-600 lg:hover:bg-slate-400
+      className="outline-none bg-slate-300 text-slate-600 lg:cursor-pointer dark:lg:hover:bg-slate-600 lg:hover:bg-slate-400
          dark:text-slate-200 dark:bg-[#535252] border border-slate-600 dark:border-[#c7c7c7]
-          resize-none w-full p-3 rounded-lg"
+          resize-none w-full p-1 lg:p-3 rounded-lg text-md"
       onChange={onChange}
       value={value}
     />

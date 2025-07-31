@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-import useTasks from "../../../app/store/tasks";
-import useColumns from "../../../app/store/columns";
-import useBoards from "../../../app/store/boards";
+import useTasks from "../../../../app/store/tasks";
+import useColumns from "../../../../app/store/columns";
+import useBoards from "../../../../app/store/boards";
 
 const importaceVariant = [
   { id: 1, value: "Optionaly", color: "#00ffbc" },
   { id: 2, value: "Not urgent, but necessary", color: "#ead159" },
   { id: 3, value: "Important", color: "#f44927" },
-  { id: 4, value: "High Priorety", color: "#7d1999" }, // 🔧 исправил опечатку
+  { id: 4, value: "High Priorety", color: "#7d1999" },
 ];
 
 const importanceColor = (importance: string | null) => {
@@ -68,7 +68,7 @@ const ImportanceUI = () => {
       ></div>
 
       <ul
-        className={`absolute top-0 left-8 flex transition-all duration-300 ${
+        className={`absolute top-0 left-8 flex flex-col lg:flex-row transition-all duration-300 ${
           showOptions
             ? "gap-2 translate-x-0 opacity-100"
             : "gap-0 translate-x-full opacity-0"
