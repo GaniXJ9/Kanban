@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
-import columnStoreTest from "../../../app/store/columns";
-import boardStoreTEST from "../../../app/store/boards";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { column, type ColumnForm } from "../../../features/columns/schema";
 import DangerButton from "../../../shared/ui/bottons/DangerButton";
 import CloseIcon from "../../../shared/icons/CloseIcon";
-import SecondaryButton from "../../../shared/ui/bottons/SecondaryButton";
+import Success from "../../../shared/ui/bottons/Success";
+import ConfirmIcon from "../../../shared/icons/ConfirmIcon";
+import useColumns from "../../../app/store/columns";
+import useBoards from "../../../app/store/boards";
 
 const AddNewColumn = ({
   toggleShowInputColumn,
@@ -18,8 +19,8 @@ const AddNewColumn = ({
     formState: { errors },
     reset,
   } = useForm<ColumnForm>({ resolver: yupResolver(column) });
-  const { addColumn } = columnStoreTest();
-  const { currentBoard } = boardStoreTEST();
+  const { addColumn } = useColumns();
+  const { currentBoard } = useBoards();
 
   const onSubmit = async (data: ColumnForm) => {
     const newColumn = { id: crypto.randomUUID(), ...data, tasks: [] };
@@ -46,8 +47,9 @@ const AddNewColumn = ({
         <p className="text-red-500 text-sm"> {String(errors.name?.message)}</p>
       )}
       <div className="flex justify-between gap-3">
-        <SecondaryButton
-          text="Add Column"
+        <Success
+          text="Add"
+          Icon={ConfirmIcon}
           padding=" p-2"
           rounded="md"
           size="w-full"

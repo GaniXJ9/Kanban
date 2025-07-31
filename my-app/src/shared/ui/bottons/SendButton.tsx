@@ -1,14 +1,14 @@
 import clsx from "clsx";
 import type { buttonProps } from "../../../features/types/common/buttonProps";
+import SendIcon from "../../icons/SendIcon";
 
-const DangerButton = ({
+const SendButton = ({
   text,
   size,
   fontSize,
   padding,
   rounded,
   onClick,
-  Icon,
 }: buttonProps) => {
   return (
     <button
@@ -18,18 +18,15 @@ const DangerButton = ({
         padding,
         `text-${fontSize}`,
         `rounded-${rounded}`,
-        ` 
-        flex items-center justify-center
-        bg-red-500 
-        lg:hover:bg-red-300 dark:lg:hover:bg-red-600
-       text-slate-200 
+        `border-2 bg-slate-500 text-slate-200 lg:hover:bg-slate-200 lg:hover:border-slate-500 lg:hover:text-slate-500
+        dark:bg-slate-700 dark:lg:hover:bg-slate-500 dark:lg:hover:text-slate-200
         font-normal lg:cursor-pointer transition-all duration-200`
       )}
     >
-      {Icon && <Icon />}
+      <SendIcon />
       {text && <span>{text}</span>}
     </button>
   );
 };
 
-export default DangerButton;
+export default SendButton;

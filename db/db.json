@@ -125,9 +125,24 @@
               "date": 1753443270362,
               "deadline": null,
               "importance": null,
-              "description": null,
+              "description": "ascasc",
               "background": null,
-              "comments": []
+              "comments": [
+                {
+                  "id": "89f3b87c-c86a-414a-8bf7-c24b3f8e6ef8",
+                  "text": "ascasc",
+                  "date": "2025-07-31T08:45:29.893Z",
+                  "user": {
+                    "id": "8df8",
+                    "username": "Gani",
+                    "email": "ganisergaliev29@gmail.com",
+                    "password": "123123123",
+                    "confirmPassword": "123123123",
+                    "token": "3178b943-712f-4695-97a7-9887c26d5d40",
+                    "boards": []
+                  }
+                }
+              ]
             }
           ]
         },
@@ -139,40 +154,6 @@
       ],
       "title": "s",
       "background": "https://i.pinimg.com/originals/b6/65/c3/b665c39693c925a6c4d5c415e6ae93d1.jpg"
-    },
-    {
-      "id": "d14caaa8-b9fc-4dd2-8111-853c80f7edf2",
-      "userToken": "3178b943-712f-4695-97a7-9887c26d5d40",
-      "columns": [
-        {
-          "id": 1,
-          "name": "To Do",
-          "tasks": []
-        },
-        {
-          "id": 2,
-          "name": "Done",
-          "tasks": [
-            {
-              "id": "934dc06e-cc1b-42d2-ae67-1fd6c486490b",
-              "name": "asc",
-              "date": 1753791272700,
-              "deadline": null,
-              "importance": null,
-              "description": null,
-              "background": null,
-              "comments": []
-            }
-          ]
-        },
-        {
-          "id": "cd105600-23c3-4617-98d3-6a7dcef8a5f3",
-          "name": "asc",
-          "tasks": []
-        }
-      ],
-      "title": "asc",
-      "background": "https://avatars.mds.yandex.net/i?id=6afe9003dc58a345d08f85621db2475d_l-4012815-images-thumbs&n=13"
     }
   ]
 }

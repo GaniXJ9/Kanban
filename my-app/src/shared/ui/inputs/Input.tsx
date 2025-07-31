@@ -1,6 +1,6 @@
 import { useState, type ChangeEvent } from "react";
 import type { UseFormRegisterReturn } from "react-hook-form";
-import type { fontSize } from "../../../features/types/common/fontSize";
+import type { Size } from "../../../features/types/common/Size";
 
 const Input = ({
   label,
@@ -13,7 +13,7 @@ const Input = ({
   type: string;
   error?: string;
   register: UseFormRegisterReturn;
-  fontSize: fontSize;
+  fontSize: Size;
 }) => {
   const [showLabel, setShowLabel] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");

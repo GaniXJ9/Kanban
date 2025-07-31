@@ -6,6 +6,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { task, type TaskForm } from "../../features/tasks/schema";
 import type { ColumnEntity } from "../../features/types/columns/ColumnEntity";
 import type { TaskEntity } from "../../features/types/tasks/TaskEntity";
+import SecondaryButton from "../../shared/ui/bottons/SecondaryButton";
+import Success from "../../shared/ui/bottons/Success";
+import ConfirmIcon from "../../shared/icons/ConfirmIcon";
+import DangerButton from "../../shared/ui/bottons/DangerButton";
+import CloseIcon from "../../shared/icons/CloseIcon";
 // import SecondaryButton from "../../shared/ui/bottons/SecondaryButton";
 
 const AddTaskBlock = ({
@@ -57,20 +62,13 @@ const AddTaskBlock = ({
 
   return (
     <div>
-      <button
-        className={`w-full text-start rounded-md outline-none px-2 py-2 lg:hover:cursor-pointer transition-all duration-200
-          bg-[#e0dfdf]  text-slate-800 lg:hover:bg-slate-30
-          dark:bg-[#373737] dark:text-white  dark:lg:hover:bg-slate-600`}
-        onClick={toggleInput}
-        disabled={isDragging}
-      >
-        + Add Task
-      </button>
-      {/* <SecondaryButton
+      <SecondaryButton
+        size="w-full"
+        rounded="md"
         onClick={toggleInput}
         text="+ Add Task"
         padding="px-2 py-2"
-      /> */}
+      />
 
       {showInputTask && !isDragging && (
         <form
@@ -88,22 +86,21 @@ const AddTaskBlock = ({
             </p>
           )}
           <div className="flex justify-between gap-3">
-            <button
-              type="submit"
-              className={`px-5 py-2 w-full rounded-md font-medium lg:hover:cursor-pointer transition-all duration-200
-                bg-slate-300 text-slate-800 lg:hover:bg-slate-800  lg:hover:text-slate-200
-                dark:bg-slate-800 dark:text-slate-200 dark:lg:hover:bg-slate-200  dark:lg:hover:text-slate-800
-               `}
-            >
-              Add Card
-            </button>
-            <button
-              type="button"
-              className="px-5 py-2 w-fit transition-all duration-200 bg-red-500 rounded-md text-lg font-medium text-white lg:hover:cursor-pointer lg:hover:bg-red-400"
+            <Success
+              Icon={ConfirmIcon}
+              fontSize="md"
+              size="w-full"
+              rounded="md"
+              text="Add"
+              padding="px-2 py-2"
+            />
+
+            <DangerButton
               onClick={toggleInput}
-            >
-              x
-            </button>
+              Icon={CloseIcon}
+              padding="px-3 py-2"
+              rounded="md"
+            />
           </div>
         </form>
       )}

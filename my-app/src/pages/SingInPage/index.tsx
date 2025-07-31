@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
-
+import Input from "../../shared/ui/inputs/Input";
 import { useSignIn } from "../../features/sing-in/use-hook/useSingIn";
-import AuthInput from "../../shared/ui/AuthInput";
 import { signIn, type SignInForm } from "../../features/sing-in/schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PrimaryButton from "../../shared/ui/bottons/PrimaryButton";
@@ -34,13 +33,15 @@ const SingInPage = () => {
       >
         Incorrect data! Wrong password or email!
       </p>
-      <AuthInput
+      <Input
+        fontSize="md"
         label="email"
         type="email"
         register={register("email")}
         error={errors.email?.message}
       />
-      <AuthInput
+      <Input
+        fontSize="md"
         label="password"
         type="password"
         register={register("password")}

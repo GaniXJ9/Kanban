@@ -27,9 +27,9 @@ const TaskControls = ({
   };
 
   const showModal = () => {
-    const currentTask = column.tasks.find((task) => task.id === taskId);
-    if (currentTask) {
-      setCurrentTask(currentTask);
+    const task = column.tasks.find((task) => task.id === taskId);
+    if (task) {
+      setCurrentTask(task);
       setCurrentColumn(column);
     } else {
       console.log("Task Not Found");

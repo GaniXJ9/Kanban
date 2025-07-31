@@ -1,27 +1,33 @@
-import type { fontSize } from "../../../features/types/common/fontSize";
+import clsx from "clsx";
+import type { buttonProps } from "../../../features/types/common/buttonProps";
 
 const PrimaryButton = ({
   text,
   size,
   fontSize,
   padding,
+  rounded,
   onClick,
-}: {
-  text: string;
-  size?: string;
-  fontSize?: fontSize;
-  padding: string;
-  onClick?: () => void;
-}) => {
+  Icon,
+}: buttonProps) => {
   return (
     <button
       onClick={onClick}
-      className={`${size} ${padding} h-full text-${fontSize}
-      border mx-auto block
+      className={clsx(
+        size,
+        padding,
+        `text-${fontSize}`,
+        `rounded-${rounded}`,
+        `border mx-auto block rounded-md
       lg:hover:bg-slate-400 dark:lg:hover:bg-slate-600
-      text-white bg-slate-600 dark:bg-slate-800 font-normal lg:cursor-pointer rounded-md transition-all duration-200`}
+      text-white bg-slate-600 dark:bg-slate-800 h-full
+         lg:hover:text-slate-200
+        dark:text-slate-200 
+        font-normal lg:cursor-pointer transition-all duration-200`
+      )}
     >
-      {text}
+      {Icon && <Icon />}
+      {text && <span>{text}</span>}
     </button>
   );
 };
