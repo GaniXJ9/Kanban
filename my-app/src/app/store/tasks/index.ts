@@ -9,12 +9,37 @@ import { BOARDS_URL } from "../../api";
 
 const useTasks = create<Tasks>((set) => ({
   tasks: [],
+  filteredTasks: [],
   currentTask: null,
   setTasks: (tasks: TaskEntity[]) => {
     set({ tasks });
   },
   setCurrentTask: (task: TaskEntity | null) => {
     set({ currentTask: task });
+  },
+  filterTask: (searchQuery: string, tasks: TaskEntity[]) => {
+    const filtered = tasks.filter((task) =>
+      task.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    set({ filteredTasks: filtered });
+  },
+  getTasks: async (currentBoard: BoardEntity) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/boards/${currentBoard.id}`
+      );
+      const data: BoardEntity = await response.json();
+      const allTasks: TaskEntity[] = data.columns.flatMap((col) => col.tasks);
+
+      if (response.ok) {
+        set(() => ({
+          tasks: allTasks,
+        }));
+      }
+    } catch (e) {
+      console.log(e);
+    }
   },
   addTask: async (
     task: TaskEntity,

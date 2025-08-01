@@ -23,5 +23,9 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "src/shared/icons/DragableItemIcon.tsx"]
+  "include": [
+    "src",
+    "src/shared/icons/DragableItemIcon.tsx",
+    "src/shared/icons/Sad/.tsx"
+  ]
 }

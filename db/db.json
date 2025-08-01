@@ -59,11 +59,78 @@
         {
           "id": 2,
           "name": "Done",
-          "tasks": []
+          "tasks": [
+            {
+              "id": "034f141d-0a6a-48df-9831-997614c08cd2",
+              "name": "gani",
+              "date": 1754035813334,
+              "deadline": null,
+              "importance": null,
+              "description": null,
+              "background": null,
+              "comments": []
+            },
+            {
+              "id": "4d8a45f4-ca75-4f27-a112-ac34c0683360",
+              "name": "gani",
+              "date": 1754035816274,
+              "deadline": null,
+              "importance": null,
+              "description": null,
+              "background": null,
+              "comments": []
+            },
+            {
+              "id": "d5cbb6ea-365e-4f58-be7f-d83ebf156e8d",
+              "name": "gbbb",
+              "date": 1754035819825,
+              "deadline": null,
+              "importance": null,
+              "description": null,
+              "background": null,
+              "comments": []
+            },
+            {
+              "id": "45f85dd5-1709-4db1-b156-f13768bab72f",
+              "name": "grbrgb",
+              "date": 1754035823150,
+              "deadline": null,
+              "importance": null,
+              "description": null,
+              "background": null,
+              "comments": []
+            },
+            {
+              "id": "3b319210-c5c1-46cf-8917-a418fb12d10b",
+              "name": "s",
+              "date": 1754035920971,
+              "deadline": null,
+              "importance": null,
+              "description": null,
+              "background": null,
+              "comments": []
+            }
+          ]
         },
         {
           "id": 3,
           "name": "In Proccess",
+          "tasks": [
+            {
+              "id": "e18634bc-fc1a-4208-8e76-583823d29cc1",
+              "name": "rrr",
+              "date": 1754035824257,
+              "deadline": null,
+              "importance": null,
+              "description": null,
+              "background": null,
+              "comments": []
+            }
+          ]
+        },
+        {
+          "id": "7d36fff6-8a2f-4f16-8658-c9fe659b7b70",
+          "name": "sd",
           "tasks": []
         }
       ],

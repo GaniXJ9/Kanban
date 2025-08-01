@@ -40,7 +40,7 @@ const UpdateInput = ({
         onBlur={onBlur}
         onChange={onChange}
         value={defFalue}
-        className={` lg:cursor-pointer font-medium text-sm uppercase py-1 w-full px-1 pr-7 text-slate-600 placeholder:text-slate-600 dark:text-slate-200 dark:placeholder:text-slate-200`}
+        className={` lg:cursor-pointer font-medium text-sm capitalize py-1 w-full px-1 pr-7 text-slate-600 placeholder:text-slate-600 dark:text-slate-200 dark:placeholder:text-slate-200`}
       />
     </div>
   );

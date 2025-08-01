@@ -5,9 +5,12 @@ import type { TaskEntity } from "./TaskEntity";
 
 export interface Tasks {
   tasks: TaskEntity[];
+  filteredTasks: TaskEntity[];
   currentTask: TaskEntity | null;
   setTasks: (tasks: TaskEntity[]) => void;
   setCurrentTask: (task: TaskEntity | null) => void;
+  filterTask: (searchQuery: string, tasks: TaskEntity[]) => void;
+  getTasks: (currentBoard: BoardEntity) => void;
   addTask: (
     task: TaskEntity,
     column: ColumnEntity,

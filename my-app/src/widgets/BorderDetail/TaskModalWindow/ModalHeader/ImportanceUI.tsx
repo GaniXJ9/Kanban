@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import useTasks from "../../../../app/store/tasks";
 import useColumns from "../../../../app/store/columns";
 import useBoards from "../../../../app/store/boards";
+import { importanceColor } from "../../../../shared/actions/importanceColor";
 
 const importaceVariant = [
   { id: 1, value: "Optionaly", color: "#00ffbc" },
@@ -9,21 +10,6 @@ const importaceVariant = [
   { id: 3, value: "Important", color: "#f44927" },
   { id: 4, value: "High Priorety", color: "#7d1999" },
 ];
-
-const importanceColor = (importance: string | null) => {
-  switch (importance) {
-    case "Optionaly":
-      return "bg-[#00ffbc]";
-    case "Not urgent, but necessary":
-      return "bg-[#ead159]";
-    case "Important":
-      return "bg-[#f44927]";
-    case "High Priorety":
-      return "bg-[#7d1999]";
-    default:
-      return "bg-[#c5c5c5]";
-  }
-};
 
 const ImportanceUI = () => {
   const [showOptions, setShowOptions] = useState(false);
@@ -37,6 +23,10 @@ const ImportanceUI = () => {
       setImportance(value, currentTask, currentColumn, currentBoard);
       setShowOptions(false);
     }
+  };
+
+  const toggleShowOptions = () => {
+    setShowOptions((prev) => !prev);
   };
 
   useEffect(() => {
@@ -58,11 +48,25 @@ const ImportanceUI = () => {
 
   return (
     <div ref={wrapperRef} className="relative">
-      <div
-        onClick={() => setShowOptions((prev) => !prev)}
+      {/* <div
+        onClick={toggleShowOptions}
         className={`size-3 mx-2 p-2 outline-none rounded-full shadow-[0_0_0_1px_white] lg:cursor-pointer lg:hover:opacity-50 ${importanceColor(
           currentTask?.importance || null
         )}`}
+        title={currentTask?.importance || "Set Importance"}
+        tabIndex={0}
+      ></div> */}
+
+      <div
+        onClick={toggleShowOptions}
+        className={`size-3 mx-2 p-2 outline-none rounded-full transition-shadow duration-300  lg:cursor-pointer lg:hover:opacity-50
+    shadow-[0_0_0_1px_white] 
+    ${importanceColor(currentTask?.importance || null)} 
+    ${
+      currentTask?.importance
+        ? "shadow-[0_0_8px_3px_rgba(255,255,255,0.4)]"
+        : ""
+    }`}
         title={currentTask?.importance || "Set Importance"}
         tabIndex={0}
       ></div>
@@ -78,9 +82,10 @@ const ImportanceUI = () => {
           <li
             key={el.id}
             onMouseDown={() => handleSelectImportance(el.value)}
-            className={`p-2 bg-[${
-              el.color
-            }] shadow-[0_0_0_1px_white] rounded-full lg:cursor-pointer lg:hover:opacity-50 ${
+            className={`p-2
+              bg-[${
+                el.color
+              }] shadow-[0_0_0_1px_white] rounded-full lg:cursor-pointer lg:hover:opacity-50 ${
               el.value === currentTask?.importance &&
               "opacity-20 pointer-events-none"
             }`}
