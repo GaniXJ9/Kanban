@@ -24,7 +24,7 @@ function CreateBlock({ closeBlock }: { closeBlock: () => void }) {
 
   return (
     <div
-      className={`absolute  top-full translate-y-4.5 -right-32  lg:-right-16  w-92 z-50 justify-center  min-h-60 rounded-md bg-white  shadow-md border-none dark:bg-[#242424] dark:border dark:border-[#585858]`}
+      className={`absolute  top-full left-1/2 -translate-x-1/2  w-92 z-50 justify-center  min-h-60 rounded-md bg-white  shadow-md border-none dark:bg-[#242424] dark:border dark:border-[#585858]`}
     >
       {!nextStepType ? (
         <div className="flex flex-col py-5 ">

@@ -1,16 +1,32 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import AccountBlock from "./AccountBlock/AccountBlock";
 import ToggleThemeButton from "./ToggleThemeButton";
-import InputBlock from "./InputBlock/Search";
 import DesksIcon from "../../shared/icons/DesksIcon";
+import PrimaryButton from "../../shared/ui/bottons/PrimaryButton";
+import { useEffect, useState } from "react";
+import CreateBlock from "./InputBlock/CreateBlock";
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [showCreateBoardBlock, setShowCreateBoardBlock] =
+    useState<boolean>(false);
 
   const toBoards = () => {
     navigate("/boards");
   };
+
+  const toggleCreateBoardBlock = () => {
+    setShowCreateBoardBlock((prev) => !prev);
+  };
+
+  const closeBlock = () => {
+    setShowCreateBoardBlock(false);
+  };
+
+  useEffect(() => {
+    setShowCreateBoardBlock(false);
+  }, [location.pathname]);
 
   return (
     <header
@@ -30,7 +46,14 @@ const Header = () => {
         <DesksIcon />
         <span className="text-xl">Kanban</span>
       </div>
-      <InputBlock />
+      <div className="relative h-full p-2">
+        <PrimaryButton
+          text="Create"
+          onClick={toggleCreateBoardBlock}
+          padding="px-5"
+        />
+      </div>
+      {showCreateBoardBlock && <CreateBlock closeBlock={closeBlock} />}
       <div className="flex gap-2 items-center">
         <ToggleThemeButton />
         <AccountBlock />

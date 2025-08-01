@@ -7,7 +7,7 @@ import type { Id } from "../../../shared/type/IdType";
 import type { Tasks } from "../../../features/types/tasks/Tasks";
 import { BOARDS_URL } from "../../api";
 
-const useTasks = create<Tasks>((set) => ({
+const useTasks = create<Tasks>((set, get) => ({
   tasks: [],
   filteredTasks: [],
   currentTask: null,
@@ -17,29 +17,17 @@ const useTasks = create<Tasks>((set) => ({
   setCurrentTask: (task: TaskEntity | null) => {
     set({ currentTask: task });
   },
-  filterTask: (searchQuery: string, tasks: TaskEntity[]) => {
-    const filtered = tasks.filter((task) =>
-      task.name.toLowerCase().includes(searchQuery.toLowerCase())
+  filterTask: (searchQuery: string) => {
+    const all = get().tasks;
+    const result = all.filter((t) =>
+      t.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-
-    set({ filteredTasks: filtered });
+    set({ filteredTasks: result });
   },
-  getTasks: async (currentBoard: BoardEntity) => {
-    try {
-      const response = await fetch(
-        `http://localhost:3000/boards/${currentBoard.id}`
-      );
-      const data: BoardEntity = await response.json();
-      const allTasks: TaskEntity[] = data.columns.flatMap((col) => col.tasks);
 
-      if (response.ok) {
-        set(() => ({
-          tasks: allTasks,
-        }));
-      }
-    } catch (e) {
-      console.log(e);
-    }
+  getTasks: (board: BoardEntity) => {
+    const allTasks = board.columns.flatMap((col) => col.tasks);
+    set({ tasks: allTasks, filteredTasks: allTasks });
   },
   addTask: async (
     task: TaskEntity,

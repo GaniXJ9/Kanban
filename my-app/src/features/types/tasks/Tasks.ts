@@ -9,8 +9,8 @@ export interface Tasks {
   currentTask: TaskEntity | null;
   setTasks: (tasks: TaskEntity[]) => void;
   setCurrentTask: (task: TaskEntity | null) => void;
-  filterTask: (searchQuery: string, tasks: TaskEntity[]) => void;
-  getTasks: (currentBoard: BoardEntity) => void;
+  filterTask: (searchQuery: string) => void;
+  getTasks: (board: BoardEntity) => void;
   addTask: (
     task: TaskEntity,
     column: ColumnEntity,

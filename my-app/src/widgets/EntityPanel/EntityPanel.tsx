@@ -3,6 +3,7 @@ import DeleteIcon from "../../shared/icons/DeleteIcon";
 import useBoards from "../../app/store/boards";
 import useTasks from "../../app/store/tasks";
 import DangerButton from "../../shared/ui/bottons/DangerButton";
+import SearchBlock from "../Header/InputBlock/Search";
 
 const EntityPanel = () => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const EntityPanel = () => {
     <section className="fixed w-full flex justify-between items-center px-10 backdrop-blur-sm h-16 z-40 mb-14 ">
       <h1 className={`text-xl font-medium text-white`}>{currentBoard?.name}</h1>
 
+      <SearchBlock />
       <DangerButton
         onClick={handleDelete}
         padding={"p-2"}
