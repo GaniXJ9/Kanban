@@ -3,6 +3,8 @@ import BoardCard from "./BoardCard";
 import useBoards from "../../app/store/boards";
 import type { BoardEntity } from "../../features/types/boards/BoardEntity";
 import useUsers from "../../app/store/users";
+import "react-loading-skeleton/dist/skeleton.css";
+import Loader from "../Loader";
 
 const BoardList = () => {
   const { boards, setUserBoards } = useBoards();
@@ -15,9 +17,8 @@ const BoardList = () => {
   }, []);
 
   if (!boards) {
-    return <h1>loading</h1>;
+    return <Loader />;
   }
-
   return (
     <section className="h-full">
       {boards.length === 0 ? (

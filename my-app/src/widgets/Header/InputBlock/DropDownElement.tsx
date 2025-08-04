@@ -11,7 +11,7 @@ const DropDownElement = ({ task }: { task: TaskEntity }) => {
 
   return (
     <div
-      className="p-2 text-slate-600 dark:text-slate-200 lg:hover:bg-slate-400 lg:hover:text-slate-200 
+      className="p-2  text-slate-600 dark:text-slate-200 lg:hover:bg-slate-400 lg:hover:text-slate-200 
      dark:lg:hover:bg-slate-300 dark:lg:hover:text-slate-600
      flex items-center justify-between
      "

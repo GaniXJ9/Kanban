@@ -3,6 +3,8 @@ import TaskCard from "./TaskCard";
 import { useMemo } from "react";
 import type { ColumnEntity } from "../../../../features/types/columns/ColumnEntity";
 import type { TaskEntity } from "../../../../features/types/tasks/TaskEntity";
+import useTasks from "../../../../app/store/tasks";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const TaskList = ({
   tasks,
@@ -11,6 +13,8 @@ const TaskList = ({
   tasks: TaskEntity[];
   column: ColumnEntity;
 }) => {
+  const { taskLoadId } = useTasks();
+
   const tasksIds = useMemo(() => {
     return tasks.map((task) => task.id);
   }, [tasks]);
@@ -18,9 +22,32 @@ const TaskList = ({
   return (
     <SortableContext items={tasksIds}>
       <div className="flex flex-col gap-2">
-        {tasks.map((task: TaskEntity) => (
-          <TaskCard task={task} key={task.id} column={column} />
-        ))}
+        {taskLoadId === column.id ? (
+          <>
+            {tasks.map((task: TaskEntity) => (
+              <TaskCard task={task} key={task.id} column={column} />
+            ))}
+            <SkeletonTheme
+              baseColor="rgb(0,0,0,0.2)"
+              highlightColor="rgb(0,0,0,0.1)"
+            >
+              <Skeleton height={20} />
+            </SkeletonTheme>
+          </>
+        ) : (
+          tasks.map((task: TaskEntity) =>
+            taskLoadId === task.id ? (
+              <SkeletonTheme
+                baseColor="rgb(0,0,0,0.2)"
+                highlightColor="rgb(0,0,0,0.1)"
+              >
+                <Skeleton height={20} />
+              </SkeletonTheme>
+            ) : (
+              <TaskCard task={task} key={task.id} column={column} />
+            )
+          )
+        )}
       </div>
     </SortableContext>
   );

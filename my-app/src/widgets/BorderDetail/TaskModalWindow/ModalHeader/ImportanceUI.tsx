@@ -3,6 +3,7 @@ import useTasks from "../../../../app/store/tasks";
 import useColumns from "../../../../app/store/columns";
 import useBoards from "../../../../app/store/boards";
 import { importanceColor } from "../../../../shared/actions/importanceColor";
+import Loader from "../../../Loader";
 
 const importaceVariant = [
   { id: 1, value: "Optionaly", color: "#00ffbc" },
@@ -13,7 +14,7 @@ const importaceVariant = [
 
 const ImportanceUI = () => {
   const [showOptions, setShowOptions] = useState(false);
-  const { currentTask, setImportance } = useTasks();
+  const { currentTask, taskLoadId, setImportance } = useTasks();
   const { currentColumn } = useColumns();
   const { currentBoard } = useBoards();
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -48,18 +49,10 @@ const ImportanceUI = () => {
 
   return (
     <div ref={wrapperRef} className="relative">
-      {/* <div
-        onClick={toggleShowOptions}
-        className={`size-3 mx-2 p-2 outline-none rounded-full shadow-[0_0_0_1px_white] lg:cursor-pointer lg:hover:opacity-50 ${importanceColor(
-          currentTask?.importance || null
-        )}`}
-        title={currentTask?.importance || "Set Importance"}
-        tabIndex={0}
-      ></div> */}
-
-      <div
-        onClick={toggleShowOptions}
-        className={`size-3 mx-2 p-2 outline-none rounded-full transition-shadow duration-300  lg:cursor-pointer lg:hover:opacity-50
+      <div className="flex items-center">
+        <div
+          onClick={toggleShowOptions}
+          className={`size-3 mx-2 p-2 outline-none rounded-full transition-shadow duration-300  lg:cursor-pointer lg:hover:opacity-50
     shadow-[0_0_0_1px_white] 
     ${importanceColor(currentTask?.importance || null)} 
     ${
@@ -67,10 +60,12 @@ const ImportanceUI = () => {
         ? "shadow-[0_0_8px_3px_rgba(255,255,255,0.4)]"
         : ""
     }`}
-        title={currentTask?.importance || "Set Importance"}
-        tabIndex={0}
-      ></div>
-
+          title={currentTask?.importance || "Set Importance"}
+          tabIndex={0}
+        >
+          {taskLoadId && <Loader size={20} text=" " />}
+        </div>
+      </div>
       <ul
         className={`absolute top-0 left-8 flex flex-col lg:flex-row transition-all duration-300 ${
           showOptions

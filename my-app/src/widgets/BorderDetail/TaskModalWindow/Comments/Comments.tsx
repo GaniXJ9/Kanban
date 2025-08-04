@@ -22,7 +22,9 @@ const Comments = () => {
         ) : (
           <div className="flex flex-col-reverse gap-10">
             {currentTask?.comments.map((comment: CommentEntity) => (
-              <CommentCard comment={comment} key={comment.id} />
+              <>
+                <CommentCard comment={comment} key={comment.id} />
+              </>
             ))}
           </div>
         )}

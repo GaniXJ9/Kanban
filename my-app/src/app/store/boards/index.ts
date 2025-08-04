@@ -5,29 +5,37 @@ import type { BoardEntity } from "../../../features/types/boards/BoardEntity";
 import { BOARDS_URL } from "../../api";
 
 const useBoards = create<Boards>((set) => ({
-  boards: [],
+  loading: false,
+  loadingId: null,
+  boards: null,
   currentBoard: null,
   setUserBoards: async (userToken: string) => {
     try {
+      set({ loading: true });
+
       const response = await fetch(BOARDS_URL);
       const data: BoardEntity[] = await response.json();
 
-      set({
-        boards: data.filter((board) => board.userToken === userToken),
-      });
+      if (response.ok) {
+        set({
+          boards: data.filter((board) => board.userToken === userToken),
+        });
+        set({ loading: false });
+      }
     } catch (e) {
       console.log(e);
     }
   },
   createBoard: async (board: BoardEntity) => {
     try {
+      set({ loadingId: board.id });
       const boardResponse = await fetch(BOARDS_URL, {
         method: "POST",
         body: JSON.stringify(board),
       });
 
       if (boardResponse.ok) {
-        console.log("Board added");
+        set({ loadingId: null });
       }
     } catch (e) {
       console.log(e);
@@ -35,9 +43,14 @@ const useBoards = create<Boards>((set) => ({
   },
   getBoard: async (id: Id) => {
     try {
-      const res = await fetch(`${BOARDS_URL}/${id}`);
-      const boardData = await res.json();
-      set({ currentBoard: boardData });
+      set({ loadingId: id });
+      const response = await fetch(`${BOARDS_URL}/${id}`);
+      const boardData = await response.json();
+
+      if (response.ok) {
+        set({ loadingId: null });
+        set({ currentBoard: boardData });
+      }
     } catch (e) {
       console.log(e);
     }
@@ -49,25 +62,26 @@ const useBoards = create<Boards>((set) => ({
       });
 
       if (response.ok) {
-        console.log("Deleted");
+        set(() => ({ loadingId: null }));
       }
     } catch (e) {
       console.log(e);
     }
   },
-  updateName: async (currentBoard: BoardEntity, newValue: string) => {
+  updateName: async (id: Id, newValue: string) => {
     try {
-      const response = await fetch(
-        `http://localhost:3000/boards/${currentBoard.id}`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({ name: newValue }),
-        }
-      );
+      set(() => ({ loadingId: id }));
+
+      const response = await fetch(`${BOARDS_URL}/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ name: newValue }),
+      });
       if (response.ok) {
-        console.log("Updated");
+        set(() => ({ loadingId: null }));
       }
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   },
   setCurrentBoard: (board: BoardEntity | null) => set({ currentBoard: board }),
 }));

@@ -22,12 +22,14 @@ import type { TaskEntity } from "../../../features/types/tasks/TaskEntity";
 import useTasks from "../../../app/store/tasks";
 import TaskModal from "../../../widgets/BorderDetail/TaskModalWindow/TaskModal";
 import Column from "../../../widgets/BorderDetail/Column/Column";
+import Loader from "../../../widgets/Loader";
 
 const BoardDetail = () => {
   const [activeColumn, setActiveColumn] = useState<ColumnEntity | null>(null);
   const [activeTask, setActiveTask] = useState<TaskEntity | null>(null);
   const { currentBoard, getBoard } = useBoards();
-  const { columns, setColumns, updateColumnOrder } = useColumns();
+  const { loading, columnLoadId, columns, setColumns, updateColumnOrder } =
+    useColumns();
   const { updateTaskOrder } = useTasks();
   const { id } = useParams();
 
@@ -157,7 +159,11 @@ const BoardDetail = () => {
   }, [currentBoard, currentBoard?.columns]);
 
   if (!columns) {
-    return <h1>loading</h1>;
+    return (
+      <section className="pt-14">
+        <Loader color="border-slate-600" size={100} />
+      </section>
+    );
   }
 
   return (
@@ -169,9 +175,26 @@ const BoardDetail = () => {
         onDragOver={onDragOver}
       >
         <SortableContext items={columsId}>
-          {columns.map((column: ColumnEntity) => (
-            <Column column={column} key={column.id} />
-          ))}
+          {loading ? (
+            <>
+              {columns.map((column: ColumnEntity) => (
+                <Column column={column} key={column.id} />
+              ))}
+              <Loader />
+            </>
+          ) : (
+            <>
+              {columns.map((column: ColumnEntity) =>
+                columnLoadId === column.id ? (
+                  <div>
+                    <Loader text="" color="border-red-500" />
+                  </div>
+                ) : (
+                  <Column column={column} key={column.id} />
+                )
+              )}
+            </>
+          )}
         </SortableContext>
         {createPortal(
           <DragOverlay>

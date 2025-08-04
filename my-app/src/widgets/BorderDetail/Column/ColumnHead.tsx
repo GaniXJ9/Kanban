@@ -33,12 +33,7 @@ const ColumnHead = ({ column }: { column: ColumnEntity }) => {
         setValue={setValue}
         defFalue={value}
       />
-      {/* <button
-        onClick={handleDelete}
-        className={`block m-1 p-2 text-center rounded-md  lg:hover:cursor-pointer  transition-all duration-200 text-slate-600 lg:hover:bg-slate-600 lg:hover:text-slate-200 dark:text-slate-200 dark:lg:hover:bg-[#373737] dark:lg:hover:text-slate-600`}
-      >
-        <DeleteIcon />
-      </button> */}
+
       <SecondaryButton
         onClick={handleDelete}
         padding="p-2"

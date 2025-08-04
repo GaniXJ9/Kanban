@@ -9,6 +9,7 @@ import useTasks from "../tasks";
 import type { Id } from "../../../shared/type/IdType";
 
 interface Comments {
+  commentLoadId: Id | null;
   addComment: (
     currentBoard: BoardEntity,
     column: ColumnEntity,
@@ -23,13 +24,18 @@ interface Comments {
   ) => void;
 }
 
-const useComments = create<Comments>(() => ({
+const useComments = create<Comments>((set) => ({
+  commentLoadId: null,
   addComment: async (
     currentBoard: BoardEntity,
     column: ColumnEntity,
     task: TaskEntity,
     newComment: CommentEntity
   ) => {
+    set(() => ({
+      commentLoadId: task.id,
+    }));
+
     const updatedComments = [...task.comments, newComment];
     const updatedTask = { ...task, comments: updatedComments };
 
@@ -55,6 +61,9 @@ const useComments = create<Comments>(() => ({
         const newBoard = { ...currentBoard, columns: updatedColumns };
         useBoards.getState().setCurrentBoard(newBoard);
         useTasks.getState().setCurrentTask(updatedTask);
+        set(() => ({
+          commentLoadId: null,
+        }));
       }
     } catch (e) {
       console.log(e);

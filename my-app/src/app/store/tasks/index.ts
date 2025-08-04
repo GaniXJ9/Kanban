@@ -9,6 +9,8 @@ import { BOARDS_URL } from "../../api";
 
 const useTasks = create<Tasks>((set, get) => ({
   tasks: [],
+  loading: false,
+  taskLoadId: null,
   filteredTasks: [],
   currentTask: null,
   setTasks: (tasks: TaskEntity[]) => {
@@ -34,6 +36,7 @@ const useTasks = create<Tasks>((set, get) => ({
     column: ColumnEntity,
     currentBoard: BoardEntity
   ) => {
+    set(() => ({ taskLoadId: column.id }));
     const updatedTaskList = [...column.tasks, task];
 
     const updatedColumn: ColumnEntity = {
@@ -52,7 +55,7 @@ const useTasks = create<Tasks>((set, get) => ({
 
       if (response.ok) {
         const newBoard = { ...currentBoard, columns: updatedColumnList };
-        set(() => ({ tasks: updatedColumn.tasks }));
+        set(() => ({ tasks: updatedColumn.tasks, taskLoadId: null }));
         useBoards.getState().setCurrentBoard(newBoard);
       }
     } catch (e) {
@@ -60,11 +63,13 @@ const useTasks = create<Tasks>((set, get) => ({
     }
   },
   deleteTask: async (
-    taskId: Id,
+    id: Id,
     column: ColumnEntity,
     currentBoard: BoardEntity
   ) => {
-    const updatedTaskList = column.tasks.filter((task) => task.id !== taskId);
+    set(() => ({ taskLoadId: id }));
+
+    const updatedTaskList = column.tasks.filter((task) => task.id !== id);
     const updatedColumn: ColumnEntity = {
       ...column,
       tasks: updatedTaskList,
@@ -82,7 +87,7 @@ const useTasks = create<Tasks>((set, get) => ({
 
       if (response.ok) {
         const newBoard = { ...currentBoard, columns: updatedColumnList };
-        set(() => ({ tasks: updatedColumn.tasks }));
+        set(() => ({ tasks: updatedColumn.tasks, taskLoadId: null }));
         useBoards.getState().setCurrentBoard(newBoard);
       }
     } catch (e) {
@@ -199,6 +204,8 @@ const useTasks = create<Tasks>((set, get) => ({
     column: ColumnEntity,
     currentBoard: BoardEntity
   ) => {
+    set(() => ({ taskLoadId: task.id }));
+
     const updatedTask = { ...task, importance: value };
     const updatedTaskList = column.tasks.map((t) =>
       t.id === task.id ? updatedTask : t
@@ -226,6 +233,7 @@ const useTasks = create<Tasks>((set, get) => ({
         set(() => ({
           tasks: updatedColumn.tasks,
           currentTask: updatedTask,
+          taskLoadId: null,
         }));
         useBoards.getState().setCurrentBoard(newBoard);
       }

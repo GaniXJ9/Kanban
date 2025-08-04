@@ -5,6 +5,8 @@ import type { TaskEntity } from "./TaskEntity";
 
 export interface Tasks {
   tasks: TaskEntity[];
+  loading: boolean;
+  taskLoadId: Id | null;
   filteredTasks: TaskEntity[];
   currentTask: TaskEntity | null;
   setTasks: (tasks: TaskEntity[]) => void;
@@ -16,11 +18,7 @@ export interface Tasks {
     column: ColumnEntity,
     currentBoard: BoardEntity
   ) => void;
-  deleteTask: (
-    taskId: Id,
-    column: ColumnEntity,
-    currentBoard: BoardEntity
-  ) => void;
+  deleteTask: (id: Id, column: ColumnEntity, currentBoard: BoardEntity) => void;
   updateTitle: (
     task: TaskEntity,
     newName: string,

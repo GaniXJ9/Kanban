@@ -7,7 +7,9 @@ import useBoards from "../../../app/store/boards";
 const SearchBlock = () => {
   const { currentBoard } = useBoards();
   const { filterTask, getTasks } = useTasks();
+
   const [focused, setFocused] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState<string>("");
 
   const onBlur = () => {
     setFocused(false);
@@ -17,9 +19,17 @@ const SearchBlock = () => {
     setFocused(true);
   };
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    filterTask(e.target.value);
+  const onInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
   };
+
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      filterTask(searchValue);
+    }, 1000);
+
+    return () => clearTimeout(delayDebounce);
+  }, [searchValue]);
 
   useEffect(() => {
     if (currentBoard) {
@@ -29,12 +39,12 @@ const SearchBlock = () => {
 
   return (
     <div className="relative w-1/2 h-9 items-center gap-5 flex">
-      <div className="relative w-full  block">
+      <div className="relative w-full block">
         <span className="absolute text-white top-2 left-2">
           <Search />
         </span>
         <input
-          onChange={onChange}
+          onInput={onInput}
           onBlur={onBlur}
           onFocus={onFocus}
           type="text"

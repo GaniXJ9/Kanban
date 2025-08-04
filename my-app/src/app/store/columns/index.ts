@@ -7,6 +7,8 @@ import useBoards from "../boards";
 import { BOARDS_URL } from "../../api";
 
 const useColumns = create<Columns>((set) => ({
+  loading: false,
+  columnLoadId: null,
   columns: [],
   currentColumn: null,
   setColumns: (list: ColumnEntity[]) => {
@@ -16,6 +18,8 @@ const useColumns = create<Columns>((set) => ({
     set(() => ({ currentColumn: column }));
   },
   addColumn: async (column: ColumnEntity, currentBoard: BoardEntity) => {
+    set(() => ({ loading: true }));
+
     const updatedColumnList = [...currentBoard.columns, column];
 
     try {
@@ -26,16 +30,20 @@ const useColumns = create<Columns>((set) => ({
 
       if (response.ok) {
         const newBoard = { ...currentBoard, columns: updatedColumnList };
-        set(() => ({ columns: updatedColumnList }));
+        set(() => ({ columns: updatedColumnList, loading: false }));
         useBoards.getState().setCurrentBoard(newBoard);
       }
     } catch (e) {
       console.log(e);
     }
   },
-  deleteColumn: async (columnId: Id, currentBoard: BoardEntity) => {
+  deleteColumn: async (id: Id, currentBoard: BoardEntity) => {
+    set(() => ({
+      columnLoadId: id,
+    }));
+
     const updatedColumnList = currentBoard.columns.filter(
-      (column) => column.id !== columnId
+      (column) => column.id !== id
     );
     try {
       const response = await fetch(`${BOARDS_URL}/${currentBoard.id}`, {
@@ -44,7 +52,7 @@ const useColumns = create<Columns>((set) => ({
       });
       if (response.ok) {
         const newBoard = { ...currentBoard, columns: updatedColumnList };
-        set(() => ({ columns: updatedColumnList }));
+        set(() => ({ columns: updatedColumnList, columnLoadId: null }));
         useBoards.getState().setCurrentBoard(newBoard);
       }
     } catch (e) {
@@ -56,6 +64,8 @@ const useColumns = create<Columns>((set) => ({
     column: ColumnEntity,
     newTitle: string
   ) => {
+    set(() => ({ columnLoadId: column.id }));
+
     const updatedColumn = { ...column, name: newTitle };
     const updatedColumnList = currentBoard.columns.map((col) =>
       col.id === column.id ? updatedColumn : col
@@ -72,7 +82,7 @@ const useColumns = create<Columns>((set) => ({
 
       if (response.ok) {
         const newBoard = { ...currentBoard, columns: updatedColumnList };
-        set(() => ({ columns: updatedColumnList }));
+        set(() => ({ columns: updatedColumnList, columnLoadId: null }));
         useBoards.getState().setCurrentBoard(newBoard);
       }
     } catch (e) {
