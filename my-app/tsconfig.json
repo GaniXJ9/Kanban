@@ -5,8 +5,9 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
+    "jsx": "react-jsx",
     "target": "es6",
     "module": "commonjs",
-    "types": ["node", "vite/client"]
+    "types": ["node", "jest", "vite/client"]
   }
 }

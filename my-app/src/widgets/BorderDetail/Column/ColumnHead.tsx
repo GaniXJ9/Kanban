@@ -1,11 +1,11 @@
 import { useState } from "react";
 import DeleteIcon from "../../../shared/icons/DeleteIcon";
-import UpdateInput from "../UpdateInput";
+import UpdateInput from "../../../shared/ui/inputs/UpdateInput";
 import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
 import useBoards from "../../../app/store/boards";
 import useColumns from "../../../app/store/columns";
 import useTasks from "../../../app/store/tasks";
-import SecondaryButton from "../../../shared/ui/bottons/SecondaryButton";
+import SecondaryButton from "../../../shared/ui/buttons/SecondaryButton";
 
 const ColumnHead = ({ column }: { column: ColumnEntity }) => {
   const [value, setValue] = useState<string>(column.name);

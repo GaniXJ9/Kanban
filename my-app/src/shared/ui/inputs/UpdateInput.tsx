@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent } from "react";
-import ConfirmIcon from "../../shared/icons/ConfirmIcon";
+import ConfirmIcon from "../../icons/ConfirmIcon";
 
 const UpdateInput = ({
   handleUpdate,
@@ -27,6 +27,7 @@ const UpdateInput = ({
   return (
     <div className="relative w-full ">
       <span
+        data-testid="confirm-icon"
         className={`absolute top-0 right-1  text-slate-600 dark:text-slate-200 transition-all duration-200 flex items-center justify-center h-full lg:hover:text-slate-400 lg:hover:cursor-pointer  ${
           focused
             ? "opacity-100 translate-x-0"
@@ -36,6 +37,7 @@ const UpdateInput = ({
         <ConfirmIcon />
       </span>
       <input
+        data-testid="test-input"
         onFocus={onFocus}
         onBlur={onBlur}
         onChange={onChange}

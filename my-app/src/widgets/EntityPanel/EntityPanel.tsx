@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import DeleteIcon from "../../shared/icons/DeleteIcon";
 import useBoards from "../../app/store/boards";
 import useTasks from "../../app/store/tasks";
-import DangerButton from "../../shared/ui/bottons/DangerButton";
+import DangerButton from "../../shared/ui/buttons/DangerButton";
 import SearchBlock from "../Header/InputBlock/Search";
 
 const EntityPanel = () => {

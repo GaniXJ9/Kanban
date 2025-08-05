@@ -5,7 +5,7 @@ import useTasks from "../../../../app/store/tasks";
 import useColumns from "../../../../app/store/columns";
 import useComments from "../../../../app/store/comments";
 import type { CommentEntity } from "../../../../features/types/comments/CommentEntity";
-import SendButton from "../../../../shared/ui/bottons/SendButton";
+import SendButton from "../../../../shared/ui/buttons/SendButton";
 import Textarea from "../../../../shared/ui/textareas/Textarea";
 
 const AddComment = () => {

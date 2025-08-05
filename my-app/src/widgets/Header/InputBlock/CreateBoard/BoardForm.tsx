@@ -10,7 +10,7 @@ import useBackGroundGradient from "../../../../shared/use-hook/useBackGroundGrad
 import useBoards from "../../../../app/store/boards";
 import useUsers from "../../../../app/store/users";
 import { board, type BoardDataForm } from "../../../../features/boards/schema";
-import PrimaryButton from "../../../../shared/ui/bottons/PrimaryButton";
+import PrimaryButton from "../../../../shared/ui/buttons/PrimaryButton";
 
 const BoardForm = () => {
   const {

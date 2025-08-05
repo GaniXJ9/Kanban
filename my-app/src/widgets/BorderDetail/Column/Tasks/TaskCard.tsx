@@ -2,7 +2,7 @@ import TaskControls from "./TaskControls";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { useState } from "react";
-import UpdateInput from "../../UpdateInput";
+import UpdateInput from "../../../../shared/ui/inputs/UpdateInput";
 import type { TaskEntity } from "../../../../features/types/tasks/TaskEntity";
 import type { ColumnEntity } from "../../../../features/types/columns/ColumnEntity";
 import useBoards from "../../../../app/store/boards";

@@ -5,8 +5,8 @@ import BarsOutlined from "../../../../shared/icons/BarsOutlined";
 import DeleteTaskIcon from "../../../../shared/icons/DeleteTaskIcon";
 import type { Id } from "../../../../shared/type/IdType";
 import useColumns from "../../../../app/store/columns";
-import SecondaryButton from "../../../../shared/ui/bottons/SecondaryButton";
-import DangerButton from "../../../../shared/ui/bottons/DangerButton";
+import SecondaryButton from "../../../../shared/ui/buttons/SecondaryButton";
+import DangerButton from "../../../../shared/ui/buttons/DangerButton";
 
 const TaskControls = ({
   column,

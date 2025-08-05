@@ -3,7 +3,7 @@ import Input from "../../shared/ui/inputs/Input";
 import { useSignIn } from "../../features/sing-in/use-hook/useSingIn";
 import { signIn, type SignInForm } from "../../features/sing-in/schema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import PrimaryButton from "../../shared/ui/bottons/PrimaryButton";
+import PrimaryButton from "../../shared/ui/buttons/PrimaryButton";
 
 const SingInPage = () => {
   const { authProblem, toSignIn } = useSignIn();

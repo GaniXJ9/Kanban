@@ -11,7 +11,6 @@ import {
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
-
 import { createPortal } from "react-dom";
 import AddColumn from "../../../widgets/BorderDetail/Column/AddColumn";
 import TaskCard from "../../../widgets/BorderDetail/Column/Tasks/TaskCard";
@@ -212,7 +211,6 @@ const BoardDetail = () => {
       <div className="flex flex-col gap-6 h-fit">
         <AddColumn />
       </div>
-
       <TaskModal />
     </section>
   );

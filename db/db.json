@@ -52,115 +52,6 @@
       "userToken": "3178b943-712f-4695-97a7-9887c26d5d40",
       "columns": [
         {
-          "id": 1,
-          "name": "To Do",
-          "tasks": [
-            {
-              "id": "d9ac8409-b2f4-4acb-90ca-98c60f3defb4",
-              "name": "GanieefwefAEFWEWESFFQ",
-              "date": 1754302799575,
-              "deadline": null,
-              "importance": null,
-              "description": null,
-              "background": null,
-              "comments": []
-            },
-            {
-              "id": "54b3628f-6053-4389-85cb-aec3f59cb5bf",
-              "name": "GalymASC",
-              "date": 1754302803399,
-              "deadline": null,
-              "importance": "Important",
-              "description": null,
-              "background": null,
-              "comments": [
-                {
-                  "id": "46a856e2-4d0c-457f-aea3-e0c785b288ef",
-                  "text": "ascac",
-                  "date": "2025-08-04T10:42:49.451Z",
-                  "user": {
-                    "id": "8df8",
-                    "username": "Gani",
-                    "email": "ganisergaliev29@gmail.com",
-                    "password": "123123123",
-                    "confirmPassword": "123123123",
-                    "token": "3178b943-712f-4695-97a7-9887c26d5d40",
-                    "boards": []
-                  }
-                },
-                {
-                  "id": "6717c7e2-cedb-439a-9d6c-40326fbee0ad",
-                  "text": "asc",
-                  "date": "2025-08-04T10:42:53.509Z",
-                  "user": {
-                    "id": "8df8",
-                    "username": "Gani",
-                    "email": "ganisergaliev29@gmail.com",
-                    "password": "123123123",
-                    "confirmPassword": "123123123",
-                    "token": "3178b943-712f-4695-97a7-9887c26d5d40",
-                    "boards": []
-                  }
-                },
-                {
-                  "id": "efb5a35f-407c-489b-be23-0d6e9d542ec5",
-                  "text": "s",
-                  "date": "2025-08-04T10:42:58.046Z",
-                  "user": {
-                    "id": "8df8",
-                    "username": "Gani",
-                    "email": "ganisergaliev29@gmail.com",
-                    "password": "123123123",
-                    "confirmPassword": "123123123",
-                    "token": "3178b943-712f-4695-97a7-9887c26d5d40",
-                    "boards": []
-                  }
-                }
-              ]
-            },
-            {
-              "id": "a09dbbf7-9455-43e5-864c-0303984ea182",
-              "name": "Gasyrdwe",
-              "date": 1754302807036,
-              "deadline": null,
-              "importance": null,
-              "description": null,
-              "background": null,
-              "comments": []
-            },
-            {
-              "id": "cfb84df5-799f-4ce6-8140-a9ccd88cb80c",
-              "name": "Gena\n",
-              "date": 1754302811148,
-              "deadline": null,
-              "importance": null,
-              "description": null,
-              "background": null,
-              "comments": []
-            },
-            {
-              "id": "ad99edb1-31d0-4d0e-8f66-2caab3936d21",
-              "name": "Gera\n",
-              "date": 1754302816608,
-              "deadline": null,
-              "importance": null,
-              "description": null,
-              "background": null,
-              "comments": []
-            },
-            {
-              "id": "684b6903-c2ff-4102-a459-a4cf703fce10",
-              "name": "Greom\\",
-              "date": 1754302820616,
-              "deadline": null,
-              "importance": "High Priorety",
-              "description": null,
-              "background": null,
-              "comments": []
-            }
-          ]
-        },
-        {
           "id": 2,
           "name": "Done",
           "tasks": [
@@ -173,69 +64,6 @@
               "description": null,
               "background": null,
               "comments": []
-            },
-            {
-              "id": "cc2be492-e1a2-4b44-88e1-2b7e10f18bce",
-              "name": "ae",
-              "date": 1754302825943,
-              "deadline": null,
-              "importance": null,
-              "description": null,
-              "background": null,
-              "comments": []
-            },
-            {
-              "id": "53fdcc48-94b2-45c0-b187-b53a1b8bf904",
-              "name": "ec",
-              "date": 1754302828624,
-              "deadline": null,
-              "importance": null,
-              "description": null,
-              "background": null,
-              "comments": [
-                {
-                  "id": "48144036-c10f-41a7-bcb9-9c04d55e3c05",
-                  "text": "ASCa",
-                  "date": "2025-08-04T10:49:19.248Z",
-                  "user": {
-                    "id": "8df8",
-                    "username": "Gani",
-                    "email": "ganisergaliev29@gmail.com",
-                    "password": "123123123",
-                    "confirmPassword": "123123123",
-                    "token": "3178b943-712f-4695-97a7-9887c26d5d40",
-                    "boards": []
-                  }
-                },
-                {
-                  "id": "e7c4e40c-07e3-41e5-ae46-5787991b7840",
-                  "text": "sca",
-                  "date": "2025-08-04T10:50:09.175Z",
-                  "user": {
-                    "id": "8df8",
-                    "username": "Gani",
-                    "email": "ganisergaliev29@gmail.com",
-                    "password": "123123123",
-                    "confirmPassword": "123123123",
-                    "token": "3178b943-712f-4695-97a7-9887c26d5d40",
-                    "boards": []
-                  }
-                },
-                {
-                  "id": "f1a0024f-7176-4a63-8c20-cb8b3b26984b",
-                  "text": "ascasc",
-                  "date": "2025-08-04T10:50:14.838Z",
-                  "user": {
-                    "id": "8df8",
-                    "username": "Gani",
-                    "email": "ganisergaliev29@gmail.com",
-                    "password": "123123123",
-                    "confirmPassword": "123123123",
-                    "token": "3178b943-712f-4695-97a7-9887c26d5d40",
-                    "boards": []
-                  }
-                }
-              ]
             }
           ]
         },
@@ -293,6 +121,27 @@
               ]
             }
           ]
+        },
+        {
+          "id": 1,
+          "name": "To Do",
+          "tasks": [
+            {
+              "id": "d9ac8409-b2f4-4acb-90ca-98c60f3defb4",
+              "name": "GanieefwefAEFWEWESFFQ",
+              "date": 1754302799575,
+              "deadline": null,
+              "importance": null,
+              "description": null,
+              "background": null,
+              "comments": []
+            }
+          ]
+        },
+        {
+          "id": "2c9f8b88-36b0-460e-8656-ef188c7e61c4",
+          "name": "d",
+          "tasks": []
         }
       ],
       "name": "1q",

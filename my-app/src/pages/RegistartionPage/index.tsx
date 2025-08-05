@@ -5,7 +5,7 @@ import {
   registration,
   type RegistrationForm,
 } from "../../features/register/schema";
-import PrimaryButton from "../../shared/ui/bottons/PrimaryButton";
+import PrimaryButton from "../../shared/ui/buttons/PrimaryButton";
 import Input from "../../shared/ui/inputs/Input";
 
 const RegistartionPage = () => {

@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { column, type ColumnForm } from "../../../features/columns/schema";
-import DangerButton from "../../../shared/ui/bottons/DangerButton";
+import DangerButton from "../../../shared/ui/buttons/DangerButton";
 import CloseIcon from "../../../shared/icons/CloseIcon";
-import Success from "../../../shared/ui/bottons/Success";
+import Success from "../../../shared/ui/buttons/Success";
 import ConfirmIcon from "../../../shared/icons/ConfirmIcon";
 import useColumns from "../../../app/store/columns";
 import useBoards from "../../../app/store/boards";

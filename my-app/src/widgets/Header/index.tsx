@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import AccountBlock from "./AccountBlock/AccountBlock";
 import ToggleThemeButton from "./ToggleThemeButton";
 import DesksIcon from "../../shared/icons/DesksIcon";
-import PrimaryButton from "../../shared/ui/bottons/PrimaryButton";
+import PrimaryButton from "../../shared/ui/buttons/PrimaryButton";
 import { useEffect, useState } from "react";
 import CreateBlock from "./InputBlock/CreateBlock";
 

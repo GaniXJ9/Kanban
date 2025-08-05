@@ -1,6 +1,6 @@
 import { useState } from "react";
 import AddNewColumn from "./AddNewColumn";
-import SecondaryButton from "../../../shared/ui/bottons/SecondaryButton";
+import SecondaryButton from "../../../shared/ui/buttons/SecondaryButton";
 
 const AddColumn = () => {
   const [showInputColumn, setShowInputColumn] = useState<boolean>(false);

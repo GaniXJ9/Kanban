@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import type { BoardEntity } from "../../features/types/boards/BoardEntity";
 import useBoards from "../../app/store/boards";
 import { useState } from "react";
-import UpdateInput from "../BorderDetail/UpdateInput";
+import UpdateInput from "../../shared/ui/inputs/UpdateInput";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 

@@ -6,10 +6,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { task, type TaskForm } from "../../features/tasks/schema";
 import type { ColumnEntity } from "../../features/types/columns/ColumnEntity";
 import type { TaskEntity } from "../../features/types/tasks/TaskEntity";
-import SecondaryButton from "../../shared/ui/bottons/SecondaryButton";
-import Success from "../../shared/ui/bottons/Success";
+import SecondaryButton from "../../shared/ui/buttons/SecondaryButton";
+import Success from "../../shared/ui/buttons/Success";
 import ConfirmIcon from "../../shared/icons/ConfirmIcon";
-import DangerButton from "../../shared/ui/bottons/DangerButton";
+import DangerButton from "../../shared/ui/buttons/DangerButton";
 import CloseIcon from "../../shared/icons/CloseIcon";
 // import SecondaryButton from "../../shared/ui/bottons/SecondaryButton";
 
