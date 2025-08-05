@@ -20,9 +20,13 @@ const AddColumn = () => {
           onClick={toggleShowInputColumn}
           padding="p-3"
           rounded="md"
+          data-testid="add-column-btn"
         />
       ) : (
-        <AddNewColumn toggleShowInputColumn={toggleShowInputColumn} />
+        <AddNewColumn
+          toggleShowInputColumn={toggleShowInputColumn}
+          data-testid="column-inp-block"
+        />
       )}
     </div>
   );

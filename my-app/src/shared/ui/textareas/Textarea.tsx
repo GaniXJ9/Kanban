@@ -23,6 +23,7 @@ const Textarea = ({
 
   return (
     <textarea
+      data-testid="test-textarea"
       required={required}
       placeholder={placeholder}
       onFocus={onFocus}

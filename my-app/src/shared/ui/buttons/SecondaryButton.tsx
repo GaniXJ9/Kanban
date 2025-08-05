@@ -26,8 +26,8 @@ const SecondaryButton = ({
         font-normal lg:cursor-pointer transition-all duration-200`
       )}
     >
-      {Icon && <Icon />}
-      {text && <span>{text}</span>}
+      {Icon && <Icon data-testid="btn-icon-id" />}
+      {text && <span data-testid="btn-text-id">{text}</span>}
     </button>
   );
 };

@@ -30,6 +30,7 @@ const AddNewColumn = ({
 
   return (
     <form
+      data-testid="add-new-column-form"
       className="h-full flex flex-col gap-3 p-3"
       onSubmit={handleSubmit(onSubmit)}
     >

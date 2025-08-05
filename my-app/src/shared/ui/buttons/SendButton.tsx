@@ -23,7 +23,7 @@ const SendButton = ({
         font-normal lg:cursor-pointer transition-all duration-200`
       )}
     >
-      <SendIcon />
+      <SendIcon data-testid="btn-icon-id" />
       {text && <span>{text}</span>}
     </button>
   );

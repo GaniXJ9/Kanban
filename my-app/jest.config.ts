@@ -5,6 +5,12 @@ const config: Config = {
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
+  moduleNameMapper: {
+    "\\.css$": "identity-obj-proxy",
+  },
+  transform: {
+    "^.+\\.[tj]sx?$": "ts-jest",
+  },
 };
 
 export default config;

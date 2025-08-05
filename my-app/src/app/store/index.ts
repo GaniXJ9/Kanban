@@ -1,4 +1,3 @@
-// store/index.ts
 import { create } from "zustand";
 import type { Store } from "./Store";
 

@@ -35,7 +35,7 @@ const useBackGroundGradient = () => {
     setBgCitrus,
     setBgSelenium,
     setBgZink,
-  }; // Название функции это = setBg + Название градиента. Градиент беру с https://uigradients.com/
+  };
 };
 
 export default useBackGroundGradient;

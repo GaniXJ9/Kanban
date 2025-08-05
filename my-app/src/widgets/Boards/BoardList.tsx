@@ -3,8 +3,8 @@ import BoardCard from "./BoardCard";
 import useBoards from "../../app/store/boards";
 import type { BoardEntity } from "../../features/types/boards/BoardEntity";
 import useUsers from "../../app/store/users";
-import "react-loading-skeleton/dist/skeleton.css";
 import Loader from "../Loader";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const BoardList = () => {
   const { boards, setUserBoards } = useBoards();
