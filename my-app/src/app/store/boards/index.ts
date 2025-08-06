@@ -7,7 +7,7 @@ import { BOARDS_URL } from "../../api";
 const useBoards = create<Boards>((set) => ({
   loading: false,
   loadingId: null,
-  boards: null,
+  boards: [],
   currentBoard: null,
   setUserBoards: async (userToken: string) => {
     try {

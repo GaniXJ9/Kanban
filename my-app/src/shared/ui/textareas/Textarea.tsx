@@ -5,7 +5,7 @@ interface TextareaProps {
   onBlur?: () => void;
   value: string;
   setValue: (value: string) => void;
-  placeholder: string;
+  placeholder?: string;
   required: boolean;
 }
 
@@ -23,7 +23,7 @@ const Textarea = ({
 
   return (
     <textarea
-      data-testid="test-textarea"
+      data-testid="test-textarea-id"
       required={required}
       placeholder={placeholder}
       onFocus={onFocus}

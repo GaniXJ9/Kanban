@@ -35,6 +35,7 @@ const AddNewColumn = ({
       onSubmit={handleSubmit(onSubmit)}
     >
       <input
+        data-testid="form-input-id"
         placeholder="Column Name"
         {...register("name", {
           required: {
