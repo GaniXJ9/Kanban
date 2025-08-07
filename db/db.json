@@ -52,6 +52,11 @@
       "userToken": "3178b943-712f-4695-97a7-9887c26d5d40",
       "columns": [
         {
+          "id": "2c9f8b88-36b0-460e-8656-ef188c7e61c4",
+          "name": "dsac",
+          "tasks": []
+        },
+        {
           "id": 2,
           "name": "Done",
           "tasks": [
@@ -71,16 +76,6 @@
           "id": 3,
           "name": "In ProccessEFWWEF",
           "tasks": [
-            {
-              "id": "c21809f5-ed8a-4daf-9736-858bd8499c8b",
-              "name": "AS",
-              "date": 1754304352040,
-              "deadline": null,
-              "importance": null,
-              "description": null,
-              "background": null,
-              "comments": []
-            },
             {
               "id": "dd108548-a94a-4469-8d59-bd9e42ed3970",
               "name": "ASC",
@@ -127,9 +122,9 @@
           "name": "To Do",
           "tasks": [
             {
-              "id": "d9ac8409-b2f4-4acb-90ca-98c60f3defb4",
-              "name": "GanieefwefAEFWEWESFFQ",
-              "date": 1754302799575,
+              "id": "c21809f5-ed8a-4daf-9736-858bd8499c8b",
+              "name": "AS",
+              "date": 1754304352040,
               "deadline": null,
               "importance": null,
               "description": null,
@@ -139,8 +134,13 @@
           ]
         },
         {
-          "id": "2c9f8b88-36b0-460e-8656-ef188c7e61c4",
-          "name": "d",
+          "id": "6b9a275c-7db5-43a7-888d-77710044218a",
+          "name": "asc",
+          "tasks": []
+        },
+        {
+          "id": "559bffe1-cf9f-45d6-8794-fc694a30fb79",
+          "name": "asc",
           "tasks": []
         }
       ],

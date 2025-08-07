@@ -22,7 +22,7 @@ const Column = ({ column }: { column: ColumnEntity }) => {
       {...listeners}
       style={style}
       ref={setNodeRef}
-      className={`relative  flex flex-col gap-3 rounded-md p-5 h-fit bg-white dark:bg-[#1a1a1a]
+      className={`relative flex flex-col gap-3 rounded-md p-5 bg-white dark:bg-[#1a1a1a] h-fit
      ${isDragging && "opacity-70"}
       `}
     >

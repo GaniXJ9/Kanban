@@ -166,7 +166,7 @@ const BoardDetail = () => {
   }
 
   return (
-    <section className="w-full pt-14 grid grid-cols-1 lg:grid-cols-4  gap-6 min-h-1/2">
+    <section className="w-full pt-14 grid grid-cols-1 lg:grid-cols-4  gap-6 ">
       <DndContext
         sensors={sensors}
         onDragStart={onDragStart}
@@ -208,6 +208,7 @@ const BoardDetail = () => {
           document.body
         )}
       </DndContext>
+
       <div className="flex flex-col gap-6 h-fit">
         <AddColumn />
       </div>
