@@ -38,7 +38,7 @@ const SearchBlock = () => {
   }, [currentBoard]);
 
   return (
-    <div className="relative w-1/2 h-9 items-center gap-5 flex">
+    <div className="relative mx-5 lg:mx-0 lg:w-1/2 h-9 items-center gap-5 lg:flex">
       <div className="relative w-full block">
         <span className="absolute text-white top-2 left-2">
           <Search />

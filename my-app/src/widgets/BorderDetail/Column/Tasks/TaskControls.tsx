@@ -36,7 +36,7 @@ const TaskControls = ({
     }
   };
   return (
-    <div className="flex gap-1 z-0">
+    <div className="flex gap-1 z-0  transition-all duration-200  ">
       <SecondaryButton
         onClick={showModal}
         padding="px-1"

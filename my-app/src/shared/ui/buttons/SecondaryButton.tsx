@@ -20,7 +20,8 @@ const SecondaryButton = ({
         padding,
         `text-${fontSize}`,
         `rounded-${rounded}`,
-        ` dark:text-slate-300 
+        `text-slate-600 dark:text-slate-300 
+        lg:hover:bg-slate-200
         dark:lg:hover:bg-[rgb(34,39,43)] 
         text-start 
     

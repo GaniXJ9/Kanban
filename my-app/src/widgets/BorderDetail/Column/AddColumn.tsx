@@ -11,7 +11,7 @@ const AddColumn = () => {
 
   return (
     <div
-      className={` text-start h-fit rounded-md transition-all duration-200 bg-[#ffffff] dark:bg-[#1a1a1a]`}
+      className={`text-start h-fit rounded-md transition-all duration-200 bg-[#ffffff] dark:bg-[#1a1a1a]`}
     >
       {!showInputColumn ? (
         <SecondaryButton

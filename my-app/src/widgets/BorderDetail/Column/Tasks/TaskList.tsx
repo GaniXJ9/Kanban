@@ -41,7 +41,7 @@ const TaskList = ({
                 baseColor="rgb(0,0,0,0.2)"
                 highlightColor="rgb(0,0,0,0.1)"
               >
-                <Skeleton height={20} />
+                <Skeleton height={20} key={task.id} />
               </SkeletonTheme>
             ) : (
               <TaskCard task={task} key={task.id} column={column} />

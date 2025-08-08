@@ -166,7 +166,7 @@ const BoardDetail = () => {
   }
 
   return (
-    <section className="w-full h-full scrollbar-custom overflow-auto pt-14 flex items-start gap-3 py-5">
+    <section className="w-full h-full px-2 scrollbar__custom dark:scrollbar__custom--dark overflow-hidden overflow-x-auto pt-14 flex gap-3 py-5 mb-20">
       <DndContext
         sensors={sensors}
         onDragStart={onDragStart}

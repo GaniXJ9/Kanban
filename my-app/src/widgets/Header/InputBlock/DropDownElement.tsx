@@ -11,8 +11,8 @@ const DropDownElement = ({ task }: { task: TaskEntity }) => {
 
   return (
     <div
-      className="p-2  text-slate-600 dark:text-slate-200 lg:hover:bg-slate-400 lg:hover:text-slate-200 
-     dark:lg:hover:bg-slate-300 dark:lg:hover:text-slate-600
+      className="p-2  text-slate-300 hover:bg-[rgb(151,156,249)]
+      dark:hover:bg-[rgb(51,58,64)]
      flex items-center justify-between
      "
       onClick={handleSearchTask}
@@ -20,7 +20,7 @@ const DropDownElement = ({ task }: { task: TaskEntity }) => {
       <p>{task.name}</p>
 
       <div
-        className={`size-3 mx-2 p-2 outline-none rounded-full transition-shadow duration-300 
+        className={` size-3 mx-2 p-2 outline-none rounded-full transition-shadow duration-300 
     shadow-[0_0_0_1px_white] 
     ${importanceColor(task?.importance || null)} 
     ${task?.importance ? "shadow-[0_0_8px_3px_rgba(255,255,255,0.4)]" : ""}`}
