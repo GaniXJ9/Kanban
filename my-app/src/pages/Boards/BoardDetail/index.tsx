@@ -166,7 +166,7 @@ const BoardDetail = () => {
   }
 
   return (
-    <section className="w-full pt-14 grid grid-cols-1 lg:grid-cols-4  gap-6 ">
+    <section className="w-full h-full scrollbar-custom overflow-auto pt-14 flex items-start gap-3 py-5">
       <DndContext
         sensors={sensors}
         onDragStart={onDragStart}
@@ -209,7 +209,7 @@ const BoardDetail = () => {
         )}
       </DndContext>
 
-      <div className="flex flex-col gap-6 h-fit">
+      <div className="flex-shrink-0 px-5">
         <AddColumn />
       </div>
       <TaskModal />

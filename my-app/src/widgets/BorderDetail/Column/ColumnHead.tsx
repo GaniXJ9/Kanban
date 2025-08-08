@@ -27,7 +27,7 @@ const ColumnHead = ({ column }: { column: ColumnEntity }) => {
   };
 
   return (
-    <div className="flex justify-between items-center gap-1">
+    <div className="flex justify-between items-center gap-1 ">
       <UpdateInput
         handleUpdate={handleUpdate}
         setValue={setValue}

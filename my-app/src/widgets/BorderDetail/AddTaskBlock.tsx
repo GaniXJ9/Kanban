@@ -11,7 +11,6 @@ import Success from "../../shared/ui/buttons/Success";
 import ConfirmIcon from "../../shared/icons/ConfirmIcon";
 import DangerButton from "../../shared/ui/buttons/DangerButton";
 import CloseIcon from "../../shared/icons/CloseIcon";
-// import SecondaryButton from "../../shared/ui/bottons/SecondaryButton";
 
 const AddTaskBlock = ({
   column,
@@ -53,6 +52,7 @@ const AddTaskBlock = ({
       background: null,
       comments: [],
     };
+
     if (currentBoard) {
       await addTask(newTask, column, currentBoard);
       setShowInputTask(false);
@@ -63,11 +63,12 @@ const AddTaskBlock = ({
   return (
     <div>
       <SecondaryButton
+        fontSize="sm"
         size="w-full"
         rounded="md"
         onClick={toggleInput}
-        text="+ Add Task"
-        padding="px-2 py-2"
+        text="+ Add тask"
+        padding="px-1 py-2"
       />
 
       {showInputTask && !isDragging && (

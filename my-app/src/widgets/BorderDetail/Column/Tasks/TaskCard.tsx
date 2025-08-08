@@ -41,7 +41,7 @@ const TaskCard = ({
       {...listeners}
       style={style}
       ref={setNodeRef}
-      className={`z-20 cursor-grab relative p-1 w-full rounded-md flex gap-2 px-2 items-center justify-between bg-slate-300 dark:bg-[#222222]`}
+      className={`z-20  cursor-grab relative p-1 w-full rounded-md flex gap-2 px-2 items-center justify-between bg-slate-300 dark:bg-[rgb(34,39,43)]`}
     >
       <UpdateInput
         handleUpdate={handleUpdateTask}

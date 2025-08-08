@@ -52,8 +52,49 @@
       "userToken": "3178b943-712f-4695-97a7-9887c26d5d40",
       "columns": [
         {
-          "id": "2c9f8b88-36b0-460e-8656-ef188c7e61c4",
-          "name": "dsac",
+          "id": "7fc1219e-d776-4e3c-ac30-4a6c59c4270d",
+          "name": "asc",
+          "tasks": []
+        },
+        {
+          "id": "c429e66f-f41f-42db-bef8-cce9647e6f8c",
+          "name": "asc",
+          "tasks": [
+            {
+              "id": "60d30b15-e02b-4632-b11d-4477c0492476",
+              "name": "s",
+              "date": 1754647633089,
+              "deadline": null,
+              "importance": null,
+              "description": null,
+              "background": null,
+              "comments": []
+            },
+            {
+              "id": "ab1179b2-54b2-43a6-94c2-df6993182d6b",
+              "name": "sac",
+              "date": 1754648772358,
+              "deadline": null,
+              "importance": null,
+              "description": null,
+              "background": null,
+              "comments": []
+            },
+            {
+              "id": "a177896d-0d2f-4203-ab02-beac438f0f7c",
+              "name": "asc",
+              "date": 1754648773763,
+              "deadline": null,
+              "importance": null,
+              "description": null,
+              "background": null,
+              "comments": []
+            }
+          ]
+        },
+        {
+          "id": "2cc77d13-5798-472d-a3bc-f09ff007c3a0",
+          "name": "asc",
           "tasks": []
         },
         {
@@ -62,20 +103,14 @@
           "tasks": []
         },
         {
-          "id": 1,
-          "name": "To Do",
-          "tasks": [
-            {
-              "id": "7739f6fe-7331-4abf-bf00-8d97c233e175",
-              "name": "j",
-              "date": 1754566390399,
-              "deadline": null,
-              "importance": "Optionaly",
-              "description": null,
-              "background": null,
-              "comments": []
-            }
-          ]
+          "id": "a9790730-b219-45f8-8c13-8096210dddfb",
+          "name": "asc",
+          "tasks": []
+        },
+        {
+          "id": "df3d30ba-097b-44f1-8e82-7c7ae38f1b1c",
+          "name": "asc",
+          "tasks": []
         }
       ],
       "name": "1q",

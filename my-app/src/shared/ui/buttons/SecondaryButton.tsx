@@ -20,12 +20,11 @@ const SecondaryButton = ({
         padding,
         `text-${fontSize}`,
         `rounded-${rounded}`,
-        ` text-slate-600 
-        text-start
-        bg-slate-200 dark:bg-slate-600
-        lg:hover:bg-slate-600 lg:hover:text-slate-200
-        dark:text-slate-200 dark:lg:hover:bg-[#373737]
-        font-normal lg:cursor-pointer transition-all duration-200`
+        ` dark:text-slate-300 
+        dark:lg:hover:bg-[rgb(34,39,43)] 
+        text-start 
+    
+        font-medium lg:cursor-pointer transition-all duration-200`
       )}
     >
       {Icon && <Icon data-testid="btn-icon-id" />}
@@ -35,3 +34,7 @@ const SecondaryButton = ({
 };
 
 export default SecondaryButton;
+
+//  bg-slate-200 dark:bg-slate-600
+//         lg:hover:bg-slate-600 lg:hover:text-slate-200
+//         dark:text-slate-200 dark:lg:hover:bg-[#373737]

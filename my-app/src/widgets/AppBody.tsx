@@ -23,14 +23,13 @@ const AppBody = () => {
         background: currentBoard?.background,
         backgroundImage: `url(${currentBoard?.background})`,
       }}
-      className={`min-h-screen  flex justify-center  bg-cover bg-center relative bg-[#eaf0f5] dark:bg-[#212121]
-        ${location.pathname === `/boards/${currentBoard?.id}` && "px-0"}
-        ${location.pathname !== "/auth" && "px-12 lg:px-32"}  
+      className={`flex min-h-screen bg-cover bg-center relative bg-[#eaf0f5] dark:bg-[rgba(29,33,37)] pb-20
+        ${location.pathname !== "/auth" && "px-12 lg:px-12"}  
          `}
     >
       {!currentBoard && location.pathname !== "/auth" && <SideBarMenuDesktop />}
       {location.pathname !== "/auth" && <SideBarMenuMobile />}
-      <div className={`w-full ${location.pathname !== "/auth" && "py-5"}`}>
+      <div className={` ${location.pathname !== "/auth" && "py-5"}`}>
         <AppRouter />
       </div>
     </main>

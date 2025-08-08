@@ -30,7 +30,7 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 left-0 h-14 bg-[#6565a4] border-[#bcbcbc] dark:bg-[#1a1a1a] dark:border-[#585858] flex items-center justify-between px-3 lg:px-10  border-b z-50 
+      className={`sticky top-0 left-0 h-14 bg-[#6565a4] border-[#bcbcbc] dark:border-[#282c30] dark:bg-[rgba(29,33,37)] flex items-center justify-between px-3 lg:px-10  border-b z-50 
       ${location.pathname === "/auth" && "hidden"}
       `}
     >

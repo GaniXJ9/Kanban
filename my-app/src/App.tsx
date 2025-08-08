@@ -28,6 +28,7 @@ const App = () => {
 
         {currentBoard && <EntityPanel />}
         <AppBody />
+        <footer className="shrink-1"></footer>
       </BrowserRouter>
     </>
   );
