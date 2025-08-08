@@ -7,6 +7,7 @@ import Success from "../../../shared/ui/buttons/Success";
 import ConfirmIcon from "../../../shared/icons/ConfirmIcon";
 import useColumns from "../../../app/store/columns";
 import useBoards from "../../../app/store/boards";
+import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
 
 const AddNewColumn = ({
   toggleShowInputColumn,
@@ -23,7 +24,11 @@ const AddNewColumn = ({
   const { currentBoard } = useBoards();
 
   const onSubmit = async (data: ColumnForm) => {
-    const newColumn = { id: crypto.randomUUID(), ...data, tasks: [] };
+    const newColumn: ColumnEntity = {
+      id: crypto.randomUUID(),
+      ...data,
+      tasks: [],
+    };
     if (currentBoard) addColumn(newColumn, currentBoard);
     reset();
   };
@@ -56,7 +61,9 @@ const AddNewColumn = ({
           rounded="md"
           size="w-full"
         />
+
         <DangerButton
+          data-testid="close-button-id"
           Icon={CloseIcon}
           padding="p-3"
           rounded="md"

@@ -9,9 +9,11 @@ const DangerButton = ({
   rounded,
   onClick,
   Icon,
+  ...props
 }: buttonProps) => {
   return (
     <button
+      {...props}
       onClick={onClick}
       className={clsx(
         size,

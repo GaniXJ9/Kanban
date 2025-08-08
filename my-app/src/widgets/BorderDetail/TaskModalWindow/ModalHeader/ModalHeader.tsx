@@ -1,7 +1,5 @@
 import CloseIcon from "../../../../shared/icons/CloseIcon";
-import PictureTwotone from "../../../../shared/icons/PictureTwotone";
 import DangerButton from "../../../../shared/ui/buttons/DangerButton";
-import SecondaryButton from "../../../../shared/ui/buttons/SecondaryButton";
 import ModalInfo from "./ModalInfo";
 import ImportanceUI from "./ImportanceUI";
 import useTasks from "../../../../app/store/tasks";
@@ -20,7 +18,6 @@ const ModalHeader = () => {
           "absolute -top-0 lg:top-5 right-5 flex items-center gap-5"
         )}
       >
-        <SecondaryButton Icon={PictureTwotone} padding="p-2" rounded="md" />
         <DangerButton
           onClick={closeModal}
           padding="p-2"
