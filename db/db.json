@@ -63,19 +63,8 @@
         },
         {
           "id": 3,
-          "name": "In Proccess",
-          "tasks": [
-            {
-              "id": "56e647db-c444-46ba-bfe4-f9d1945640a7",
-              "name": "фыс",
-              "date": 1754903949438,
-              "deadline": null,
-              "importance": null,
-              "description": null,
-              "background": null,
-              "comments": []
-            }
-          ]
+          "name": "In Proccesss",
+          "tasks": []
         }
       ],
       "name": "w",

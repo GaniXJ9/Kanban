@@ -38,7 +38,7 @@ const Header = () => {
   return (
     <header
       className={clsx(
-        "sticky top-0 left-0 h-14 bg-[#6565a4] border-[#bcbcbc] dark:border-[#282c30] dark:bg-[rgba(29,33,37)] flex items-center justify-between px-3 lg:px-10  border-b z-50",
+        "sticky top-0 left-0 h-14  bg-[#6565a4] border-[#bcbcbc] dark:border-[#282c30] dark:bg-[rgba(29,33,37)] flex items-center justify-between px-3 lg:px-10  border-b z-50",
         location.pathname === "/sign-in" && "hidden",
         location.pathname === "/registration" && "hidden"
       )}

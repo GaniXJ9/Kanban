@@ -3,7 +3,7 @@ import PageTitle from "../../widgets/Common/PageTitle";
 
 const Boards = () => {
   return (
-    <section className="h-full">
+    <section className="h-full pt-10">
       <PageTitle title="Boards List" />
       <BoardList />
     </section>

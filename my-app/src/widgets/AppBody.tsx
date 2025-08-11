@@ -11,38 +11,33 @@ const AppBody = () => {
   const { currentBoard, setCurrentBoard } = useBoards();
 
   useEffect(() => {
-    if (currentBoard) {
-      if (location.pathname !== `/boards/${currentBoard.id}`) {
-        setCurrentBoard(null);
-      }
+    if (currentBoard && location.pathname !== `/boards/${currentBoard.id}`) {
+      setCurrentBoard(null);
     }
-  }, [location]);
+  }, [location.pathname, currentBoard, setCurrentBoard]);
+
+  const isAuthPage =
+    location.pathname === "/sign-in" || location.pathname === "/registration";
 
   return (
     <main
       style={{
         background: currentBoard?.background,
-        backgroundImage: `url(${currentBoard?.background})`,
+        backgroundImage: currentBoard?.background
+          ? `url(${currentBoard.background})`
+          : undefined,
       }}
       className={clsx(
-        "flex min-h-screen bg-cover bg-center relative bg-[#eaf0f5] dark:bg-[rgba(29,33,37)] px-12 ",
-        location.pathname === "/sign-in" && " lg:px-0 pb-0",
-        location.pathname === "/registration" && " lg:px-0 pb-0"
+        "flex min-h-screen bg-cover bg-center relative bg-[#eaf0f5] dark:bg-[rgba(29,33,37)] px-12",
+        (location.pathname === "/sign-in" ||
+          location.pathname === "/registration") &&
+          "lg:px-0 pb-0 py-0"
       )}
     >
-      {!currentBoard &&
-        location.pathname !== "/sign-in" &&
-        location.pathname !== "/registration" && <SideBarMenuDesktop />}
-      {location.pathname !== "/sign-in" &&
-        location.pathname !== "/registration" && <SideBarMenuMobile />}
+      {!currentBoard && !isAuthPage && <SideBarMenuDesktop />}
+      {!isAuthPage && <SideBarMenuMobile />}
 
-      <div
-        className={clsx(
-          "w-full ",
-          location.pathname === "/sign-in" && "py-0",
-          location.pathname === "/registration" && "py-0"
-        )}
-      >
+      <div className={clsx("w-full ", isAuthPage && "")}>
         <AppRouter />
       </div>
     </main>

@@ -16,7 +16,7 @@ const SideBarMenuDesktop = () => {
   return (
     <aside
       className={clsx(
-        "w-1/4 hidden lg:flex flex-col",
+        "w-1/4 hidden lg:flex flex-col pt-8",
         location.pathname === "/sign-in" && "hidden",
         location.pathname === "/registration" && "hidden",
         currentBoard && "hidden"
