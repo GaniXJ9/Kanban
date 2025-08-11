@@ -3,7 +3,6 @@ import FormField from "./FormField";
 import type { UseFormRegister, FieldError } from "react-hook-form";
 
 interface BoardNameFieldProps {
-  title: string;
   register: UseFormRegister<BoardDataForm>;
   error?: FieldError;
 }

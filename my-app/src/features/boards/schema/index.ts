@@ -5,4 +5,4 @@ export const board = yup.object().shape({
   name: yup.string().required("Must be filled!"),
 });
 
-export type BoardDataForm = yup.InferType<typeof board>;
+export type BoardDataForm = Required<yup.InferType<typeof board>>;

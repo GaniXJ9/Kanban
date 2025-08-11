@@ -92,7 +92,7 @@ const BoardForm = () => {
         fillBackgroundImageInput={fillBackgroundImageInput}
         setBgImg={setBgImg}
       />
-      <BoardNameField title="Name" register={register} error={errors.name} />
+      <BoardNameField register={register} error={errors.name} />
       <PrimaryButton text="Create Board" padding="px-4 py-2" size={"w-full"} />
     </form>
   );
