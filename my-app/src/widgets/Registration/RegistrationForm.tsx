@@ -7,8 +7,9 @@ import {
 } from "../../features/register/schema";
 import PrimaryButton from "../../shared/ui/buttons/PrimaryButton";
 import Input from "../../shared/ui/inputs/Input";
+import { NavLink } from "react-router-dom";
 
-const RegistartionPage = () => {
+const RegistartionForm = () => {
   const { toRegister } = useRegistration();
   const {
     register,
@@ -24,7 +25,7 @@ const RegistartionPage = () => {
 
   return (
     <form
-      className="flex flex-col items-center w-full gap-5 rounded-md"
+      className="flex flex-col items-center w-full gap-8 rounded-md"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Input
@@ -56,8 +57,14 @@ const RegistartionPage = () => {
         error={errors.confirmPassword?.message}
       />
       <PrimaryButton text="Registration" padding={"px-3 py-2"} />
+      <NavLink
+        to="/sign-in"
+        className="text-[#07437A] dark:text-slate-300 border-b border-[#07437A] dark:border-slate-300"
+      >
+        to Sing In
+      </NavLink>
     </form>
   );
 };
 
-export default RegistartionPage;
+export default RegistartionForm;

@@ -5,4 +5,4 @@ export const signIn = yup.object().shape({
   password: yup.string().required("Must be filled!"),
 });
 
-export type SignInForm = yup.InferType<typeof signIn>;
+export type SignInFormType = yup.InferType<typeof signIn>;

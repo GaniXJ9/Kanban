@@ -20,9 +20,9 @@ const PrimaryButton = ({
         margin || "mx-auto",
         `text-${fontSize}`,
         `rounded-${rounded}`,
-        `border  block rounded-md
+        `border block rounded-md bg-[#07437A]
       lg:hover:bg-slate-400 dark:lg:hover:bg-slate-600
-      text-white bg-slate-600 dark:bg-slate-800 h-full
+      text-white  dark:bg-slate-600 h-full
          lg:hover:text-slate-200
         dark:text-slate-200 
         font-normal lg:cursor-pointer transition-all duration-200

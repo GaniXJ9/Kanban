@@ -14,7 +14,7 @@ const AccountBlock = () => {
   const logOut = () => {
     localStorage.removeItem("currentUser");
     localStorage.removeItem("token");
-    navigate("/auth");
+    navigate("/sign-in");
     toggleShowAccount();
   };
 

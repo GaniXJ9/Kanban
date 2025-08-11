@@ -24,7 +24,6 @@ const SecondaryButton = ({
         lg:hover:bg-slate-200
         dark:lg:hover:bg-[rgb(34,39,43)] 
         text-start 
-    
         font-medium lg:cursor-pointer transition-all duration-200`
       )}
     >

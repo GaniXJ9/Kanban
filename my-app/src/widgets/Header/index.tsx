@@ -5,6 +5,7 @@ import DesksIcon from "../../shared/icons/DesksIcon";
 import PrimaryButton from "../../shared/ui/buttons/PrimaryButton";
 import { useEffect, useState } from "react";
 import CreateBlock from "./CreateBoard/CreateBlock";
+import clsx from "clsx";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -28,11 +29,19 @@ const Header = () => {
     setShowCreateBoardBlock(false);
   }, [location.pathname]);
 
+  {
+    `sticky top-0 left-0 h-14 bg-[#6565a4] border-[#bcbcbc] dark:border-[#282c30] dark:bg-[rgba(29,33,37)] flex items-center justify-between px-3 lg:px-10  border-b z-50 
+      ${location.pathname === "/sign-in" && "hidden"}
+      `;
+  }
+
   return (
     <header
-      className={`sticky top-0 left-0 h-14 bg-[#6565a4] border-[#bcbcbc] dark:border-[#282c30] dark:bg-[rgba(29,33,37)] flex items-center justify-between px-3 lg:px-10  border-b z-50 
-      ${location.pathname === "/auth" && "hidden"}
-      `}
+      className={clsx(
+        "sticky top-0 left-0 h-14 bg-[#6565a4] border-[#bcbcbc] dark:border-[#282c30] dark:bg-[rgba(29,33,37)] flex items-center justify-between px-3 lg:px-10  border-b z-50",
+        location.pathname === "/sign-in" && "hidden",
+        location.pathname === "/registration" && "hidden"
+      )}
     >
       <div className="flex lg:hidden items-center gap-3 px-3">
         <span className="text-slate-200">
