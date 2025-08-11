@@ -26,6 +26,7 @@
   "include": [
     "src",
     "src/shared/icons/DragableItemIcon.tsx",
-    "src/shared/icons/Sad/.tsx"
+    "src/shared/icons/Sad/.tsx",
+    "src/widgets/Header/CreateBoard/BoardForm/FormField.tsx"
   ]
 }

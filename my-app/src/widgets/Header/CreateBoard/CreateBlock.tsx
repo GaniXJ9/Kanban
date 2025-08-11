@@ -2,7 +2,7 @@ import { useState } from "react";
 import DesksIcon from "../../../shared/icons/DesksIcon";
 import ArrowLeft from "../../../shared/icons/ArrowLeft";
 import CloseIcon from "../../../shared/icons/CloseIcon";
-import CreateBoardBlock from "../CreateBoard/CreateBoardBlock";
+import CreateBoardBlock from "./CreateBoard";
 import ActionCard from "./ActionCard";
 import SecondaryButton from "../../../shared/ui/buttons/SecondaryButton";
 

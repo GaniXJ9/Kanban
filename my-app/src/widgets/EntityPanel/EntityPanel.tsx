@@ -3,7 +3,7 @@ import DeleteIcon from "../../shared/icons/DeleteIcon";
 import useBoards from "../../app/store/boards";
 import useTasks from "../../app/store/tasks";
 import DangerButton from "../../shared/ui/buttons/DangerButton";
-import SearchBlock from "../Header/InputBlock/Search";
+import SearchBlock from "../Header/Search/Search";
 
 const EntityPanel = () => {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
-import BoardForm from "./BoardForm";
+import BoardForm from "./BoardForm/BoardForm";
 
-const CreateBoardBlock = () => {
+const CreateBoard = () => {
   return (
     <section className="w-full">
       <h1
@@ -13,4 +13,4 @@ const CreateBoardBlock = () => {
   );
 };
 
-export default CreateBoardBlock;
+export default CreateBoard;
