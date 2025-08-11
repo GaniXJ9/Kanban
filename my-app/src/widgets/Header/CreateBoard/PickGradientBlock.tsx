@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import PickGradientItem from "./PickGradientItem";
-import useBackGroundGradient from "../../../../shared/use-hook/useBackGroundGradient";
+import useBackGroundGradient from "../../../shared/use-hook/useBackGroundGradient";
 
 const PickGradientBlock = ({
   setBg,

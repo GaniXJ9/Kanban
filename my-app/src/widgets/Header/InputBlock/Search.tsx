@@ -1,8 +1,8 @@
 import { useEffect, useState, type ChangeEvent } from "react";
-import Search from "../../../shared/icons/SearchIcon";
 import SearchItemList from "./SearchItemList";
 import useTasks from "../../../app/store/tasks";
 import useBoards from "../../../app/store/boards";
+import SearchIcon from "../../../shared/icons/SearchIcon";
 
 const SearchBlock = () => {
   const { currentBoard } = useBoards();
@@ -41,7 +41,7 @@ const SearchBlock = () => {
     <div className="relative mx-5 lg:mx-0 lg:w-1/2 h-9 items-center gap-5 lg:flex">
       <div className="relative w-full block">
         <span className="absolute text-white top-2 left-2">
-          <Search />
+          <SearchIcon />
         </span>
         <input
           onInput={onInput}

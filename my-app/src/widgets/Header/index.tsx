@@ -46,7 +46,7 @@ const Header = () => {
         <DesksIcon />
         <span className="text-xl">Kanban</span>
       </div>
-      <div className="relative h-full p-2">
+      <div className="relative h-full p-2 ">
         <PrimaryButton
           text="Create"
           onClick={toggleCreateBoardBlock}
@@ -54,7 +54,7 @@ const Header = () => {
         />
       </div>
       {showCreateBoardBlock && <CreateBlock closeBlock={closeBlock} />}
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-2 items-center ">
         <ToggleThemeButton />
         <AccountBlock />
       </div>

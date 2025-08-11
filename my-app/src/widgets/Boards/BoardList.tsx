@@ -5,6 +5,7 @@ import type { BoardEntity } from "../../features/types/boards/BoardEntity";
 import useUsers from "../../app/store/users";
 import Loader from "../Loader";
 import "react-loading-skeleton/dist/skeleton.css";
+import Notebook from "../../shared/icons/List";
 
 const BoardList = () => {
   const { boards, setUserBoards } = useBoards();
@@ -23,9 +24,9 @@ const BoardList = () => {
     <section className="h-full">
       {boards.length === 0 ? (
         <h3
-          className={`text-lg font-normal uppercase w-full py-10 text-slate-400 dark:text-slate-200`}
+          className={`flex items-center text-lg font-normal uppercase w-full py-10 text-slate-400 dark:text-slate-200`}
         >
-          Empty List
+          Empty List <Notebook />
         </h3>
       ) : (
         <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-2 p-2">

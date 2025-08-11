@@ -6,11 +6,11 @@ import PickGradientBlock from "./PickGradientBlock";
 import PickImgBlock from "./PickImgBlock";
 import BoardRef from "./BoardRef";
 import BoardTitle from "./BoardTitle";
-import useBackGroundGradient from "../../../../shared/use-hook/useBackGroundGradient";
-import useBoards from "../../../../app/store/boards";
-import useUsers from "../../../../app/store/users";
-import { board, type BoardDataForm } from "../../../../features/boards/schema";
-import PrimaryButton from "../../../../shared/ui/buttons/PrimaryButton";
+import useBackGroundGradient from "../../../shared/use-hook/useBackGroundGradient";
+import useBoards from "../../../app/store/boards";
+import useUsers from "../../../app/store/users";
+import { board, type BoardDataForm } from "../../../features/boards/schema";
+import PrimaryButton from "../../../shared/ui/buttons/PrimaryButton";
 
 const BoardForm = () => {
   const {
@@ -81,7 +81,7 @@ const BoardForm = () => {
     navigate(`/boards/${newBoard.id}`);
   };
   return (
-    <form className="w-full p-2" onSubmit={handleSubmit(onSubmit)}>
+    <form className="w-full p-2 " onSubmit={handleSubmit(onSubmit)}>
       <BoardRef bgColor={bgColor} bgImg={bgImg} />
       <div className="flex flex-col justify-between py-3">
         <BoardTitle title="Background" />

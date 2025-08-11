@@ -1,9 +1,8 @@
 import MenuLink from "./MenuLink";
-import DesksIcon from "../../shared/icons/DesksIcon";
-
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import useBoards from "../../app/store/boards";
+import BorderAll from "../../shared/icons/Notebook";
 
 const SideBarMenuDesktop = () => {
   const location = useLocation();
@@ -21,7 +20,7 @@ const SideBarMenuDesktop = () => {
       ${currentBoard && "hidden"}`}
     >
       <div className="flex flex-col py-5 ">
-        <MenuLink link={"/boards"} linkTitle={"Boards"} Icon={DesksIcon} />
+        <MenuLink link={"/boards"} linkTitle={"Boards"} Icon={BorderAll} />
       </div>
     </aside>
   );

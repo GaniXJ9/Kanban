@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import useBackGroundImg from "../../../../shared/use-hook/useBackGroundImg";
+import useBackGroundImg from "../../../shared/use-hook/useBackGroundImg";
 import PickImgItem from "./PickImgItem";
 
 const PickImgBlock = ({ setBg }: { setBg: (value: string) => void }) => {
