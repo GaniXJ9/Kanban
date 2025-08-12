@@ -29,16 +29,10 @@ const Header = () => {
     setShowCreateBoardBlock(false);
   }, [location.pathname]);
 
-  {
-    `sticky top-0 left-0 h-14 bg-[#6565a4] border-[#bcbcbc] dark:border-[#282c30] dark:bg-[rgba(29,33,37)] flex items-center justify-between px-3 lg:px-10  border-b z-50 
-      ${location.pathname === "/sign-in" && "hidden"}
-      `;
-  }
-
   return (
     <header
       className={clsx(
-        "sticky top-0 left-0 h-14  bg-[#6565a4] border-[#bcbcbc] dark:border-[#282c30] dark:bg-[rgba(29,33,37)] flex items-center justify-between px-3 lg:px-10  border-b z-50",
+        "sticky top-0 left-0 h-14 bg-gradient-to-b from-[#8686c2] to-[#666696] border-[#bcbcbc] dark:border-[#282c30] dark:from-[rgba(29,33,37)] dark:to-[rgba(29,33,37)] flex items-center justify-between px-3 lg:px-10  border-b z-50",
         location.pathname === "/sign-in" && "hidden",
         location.pathname === "/registration" && "hidden"
       )}
@@ -52,7 +46,9 @@ const Header = () => {
         className="lg:hover:cursor-pointer text-white items-center gap-1 hidden lg:flex"
         onClick={toBoards}
       >
-        <DesksIcon />
+        <span className="p-2  bg-[#07437A] rounded-md text-white">
+          <DesksIcon />
+        </span>
         <span className="text-xl">Kanban</span>
       </div>
       <div className="relative h-full p-2 ">

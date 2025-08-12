@@ -28,10 +28,10 @@ const AppBody = () => {
           : undefined,
       }}
       className={clsx(
-        "flex min-h-screen bg-cover bg-center relative bg-[#eaf0f5] dark:bg-[rgba(29,33,37)] px-12",
+        "flex h-full bg-cover bg-center relative bg-[#eaf0f5] dark:bg-[rgba(29,33,37)] px-10 min-h-screen",
         (location.pathname === "/sign-in" ||
           location.pathname === "/registration") &&
-          "lg:px-0 pb-0 py-0"
+          "lg:px-0  py-0"
       )}
     >
       {!currentBoard && !isAuthPage && <SideBarMenuDesktop />}
