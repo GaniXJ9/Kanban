@@ -5,6 +5,7 @@ import type { ColumnEntity } from "../../../../features/types/columns/ColumnEnti
 import type { TaskEntity } from "../../../../features/types/tasks/TaskEntity";
 import useTasks from "../../../../app/store/tasks";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import clsx from "clsx";
 
 const TaskList = ({
   tasks,
@@ -21,7 +22,7 @@ const TaskList = ({
 
   return (
     <SortableContext items={tasksIds}>
-      <div className="flex flex-col gap-2">
+      <div className={clsx("flex flex-col gap-2")}>
         {taskLoadId === column.id ? (
           <>
             {tasks.map((task: TaskEntity) => (

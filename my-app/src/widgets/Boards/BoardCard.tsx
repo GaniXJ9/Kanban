@@ -21,7 +21,7 @@ const BoardCard = ({ board }: { board: BoardEntity }) => {
 
   return (
     <div
-      className={`relative  rounded-md min-h-36 lg:min-h-44 flex flex-col lg:hover:cursor-pointer bg-slate-100 shadow-md dark:bg-[#1a1a1a] dark:border border-[#585858]`}
+      className={`relative rounded-md min-h-36 lg:min-h-44 flex flex-col lg:hover:cursor-pointer bg-slate-100 shadow-md dark:bg-[#1a1a1a] dark:border border-[#585858]`}
     >
       <div
         className={`lg:hover:opacity-50 rounded-t-md w-full h-3/4 bg-cover bg-center transition-all duration-200`}

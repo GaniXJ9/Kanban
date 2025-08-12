@@ -28,8 +28,6 @@ const App = () => {
 
         {currentBoard && <EntityPanel />}
         <AppBody />
-
-        <footer className="h-10 bg-slate-600"> </footer>
       </BrowserRouter>
     </>
   );

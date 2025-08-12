@@ -6,6 +6,7 @@ import useBoards from "../../../app/store/boards";
 import useColumns from "../../../app/store/columns";
 import useTasks from "../../../app/store/tasks";
 import SecondaryButton from "../../../shared/ui/buttons/SecondaryButton";
+import clsx from "clsx";
 
 const ColumnHead = ({ column }: { column: ColumnEntity }) => {
   const [value, setValue] = useState<string>(column.name);
@@ -27,7 +28,11 @@ const ColumnHead = ({ column }: { column: ColumnEntity }) => {
   };
 
   return (
-    <div className="flex justify-between items-center gap-1 ">
+    <div
+      className={clsx(
+        "flex justify-between items-center gap-1 border-b border-slate-500 dark:border-[#3f3e3e] pb-0.5"
+      )}
+    >
       <UpdateInput
         handleUpdate={handleUpdate}
         setValue={setValue}
