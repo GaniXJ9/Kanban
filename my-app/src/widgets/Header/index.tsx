@@ -32,7 +32,7 @@ const Header = () => {
   return (
     <header
       className={clsx(
-        "fixed top-0 left-0  w-full border-[#bcbcbc] dark:border-[#282c30] dark:from-[rgba(29,33,37)] dark:to-[rgba(29,33,37)] flex items-center justify-between px-3 lg:px-14  border-b z-50",
+        "fixed top-0 left-0 w-full bg-[#eaf0f5]/70 dark:bg-[rgba(29,33,37)] border-[#bcbcbc] dark:border-[#282c30] dark:from-[rgba(29,33,37)] dark:to-[rgba(29,33,37)] flex items-center justify-between px-3 lg:px-14  border-b z-50",
         location.pathname === "/sign-in" && "hidden",
         location.pathname === "/registration" && "hidden"
       )}

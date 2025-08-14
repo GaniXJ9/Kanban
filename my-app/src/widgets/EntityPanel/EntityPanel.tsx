@@ -19,7 +19,7 @@ const EntityPanel = () => {
   };
 
   return (
-    <section className="fixed w-full flex justify-between items-center px-10 backdrop-blur-sm h-16 z-40 mb-14 ">
+    <section className="fixed top-12 w-full flex justify-between items-center px-14 backdrop-blur-sm h-16 z-40 mb-14 ">
       <h1 className={`text-xl font-medium text-white`}>{currentBoard?.name}</h1>
 
       <SearchBlock />

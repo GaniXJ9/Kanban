@@ -20,6 +20,10 @@ const SideBarMenuDesktop = () => {
     setCurrentBoard(null);
   }, []);
 
+  useEffect(() => {
+    setExpand(false);
+  }, [location.pathname]);
+
   return (
     <aside
       className={clsx(
