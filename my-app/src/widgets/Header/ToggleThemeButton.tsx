@@ -1,16 +1,23 @@
+import clsx from "clsx";
 import useStore from "../../app/store";
+import MoonOutlined from "../../shared/icons/Moon";
+import Light from "../../shared/icons/Light";
 
 const ToggleThemeButton = () => {
-  const { toggleTheme } = useStore();
+  const { theme, toggleTheme } = useStore();
   return (
     <div
-      className={`relative w-14  p-3  border-2 border-white bg-gray-400 dark:bg-slate-800  dark:border-[#838383]   rounded-full lg:hover:cursor-pointer
+      className={` relative shadow-inner p-1.5 shadow-gray-400 dark:shadow-gray-700 border-slate-600 bg-white dark:bg-slate-800  dark:border-[#838383]   rounded-md lg:hover:cursor-pointer
        `}
       onClick={toggleTheme}
     >
       <p
-        className={`absolute top-1 size-4 bg-yellow-50 left-1 dark:bg-[#464545] dark:left-8 rounded-full transition-all duration-200`}
-      ></p>
+        className={clsx(
+          `  text-yellow-500 dark:text-white  dark:left-8 rounded-md transition-all duration-200`
+        )}
+      >
+        {theme === "light" ? <Light /> : <MoonOutlined />}
+      </p>
     </div>
   );
 };

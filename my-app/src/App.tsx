@@ -27,6 +27,7 @@ const App = () => {
         <Header />
 
         {currentBoard && <EntityPanel />}
+
         <AppBody />
       </BrowserRouter>
     </>

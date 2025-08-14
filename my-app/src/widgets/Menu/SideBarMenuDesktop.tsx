@@ -1,14 +1,20 @@
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useBoards from "../../app/store/boards";
 import BorderAll from "../../shared/icons/Notebook";
 import clsx from "clsx";
 import MenuLink from "./MenuLink";
 import MainPageIcon from "../../shared/icons/MainPageIcon";
+import MobileMenuIcon from "../../shared/icons/MobileMenuIcon";
 
 const SideBarMenuDesktop = () => {
   const location = useLocation();
+  const [expand, setExpand] = useState<boolean>(false);
   const { currentBoard, setCurrentBoard } = useBoards();
+
+  const handleExpand = () => {
+    setExpand((prev) => !prev);
+  };
 
   useEffect(() => {
     setCurrentBoard(null);
@@ -17,13 +23,47 @@ const SideBarMenuDesktop = () => {
   return (
     <aside
       className={clsx(
-        " w-1/5 hidden lg:flex flex-col pt-5",
+        "sticky top-0 left-0 shadow-[0_0_2px_0_rgba(0,0,0,0.5)] bg-inherit transition-all duration-200 flex  border-r  z-50",
+        expand
+          ? "w-1/4 border-[rgba(255,255,255,0.5)]"
+          : "w-10  border-[rgba(52,52,52,0.5)]",
         location.pathname === "/sign-in" && "hidden",
         location.pathname === "/registration" && "hidden",
         currentBoard && "hidden"
       )}
     >
-      <div className="flex flex-col py-5 gap-2">
+      <p
+        className={clsx(
+          expand ? "text-slate-200 rotate-90" : "text-[#07437A] rotate-0",
+          "absolute top-2 left-2.5 transition-all duration-200 lg:cursor-pointer dark:text-slate-200"
+        )}
+        onClick={handleExpand}
+      >
+        <MobileMenuIcon />
+      </p>
+
+      <p
+        className={clsx(
+          expand &&
+            "bg-[#30679b] dark:bg-[#193751] border-r border-[rgba(220,218,218,0.5)]",
+          "flex justify-start items-center text-nowrap h-full w-10"
+        )}
+      >
+        <span
+          className={clsx(
+            expand ? "text-slate-200 " : "text-[#07437A]  bg-inherit",
+            "block cursor-vertical-text uppercase tracking-widest  -rotate-90  w-10 text-center dark:text-slate-200"
+          )}
+        >
+          Task Tracking
+        </span>
+      </p>
+      <div
+        className={clsx(
+          "transition-all duration-200 w-full py-12 ",
+          expand ? "opacity-100" : "opacity-0"
+        )}
+      >
         <MenuLink link={"/"} linkTitle={"Home"} Icon={MainPageIcon} />
         <MenuLink link={"/boards"} linkTitle={"Boards"} Icon={BorderAll} />
       </div>

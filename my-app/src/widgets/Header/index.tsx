@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import AccountBlock from "./AccountBlock/AccountBlock";
 import ToggleThemeButton from "./ToggleThemeButton";
 import DesksIcon from "../../shared/icons/DesksIcon";
-import PrimaryButton from "../../shared/ui/buttons/PrimaryButton";
+// import PrimaryButton from "../../shared/ui/buttons/PrimaryButton";
 import { useEffect, useState } from "react";
 import CreateBlock from "./CreateBoard/CreateBlock";
 import clsx from "clsx";
@@ -17,9 +17,9 @@ const Header = () => {
     navigate("/boards");
   };
 
-  const toggleCreateBoardBlock = () => {
-    setShowCreateBoardBlock((prev) => !prev);
-  };
+  // const toggleCreateBoardBlock = () => {
+  //   setShowCreateBoardBlock((prev) => !prev);
+  // };
 
   const closeBlock = () => {
     setShowCreateBoardBlock(false);
@@ -32,7 +32,7 @@ const Header = () => {
   return (
     <header
       className={clsx(
-        "sticky top-0 left-0 h-14 bg-gradient-to-b from-[#8686c2] to-[#666696] border-[#bcbcbc] dark:border-[#282c30] dark:from-[rgba(29,33,37)] dark:to-[rgba(29,33,37)] flex items-center justify-between px-3 lg:px-10  border-b z-50",
+        "fixed top-0 left-0  w-full border-[#bcbcbc] dark:border-[#282c30] dark:from-[rgba(29,33,37)] dark:to-[rgba(29,33,37)] flex items-center justify-between px-3 lg:px-14  border-b z-50",
         location.pathname === "/sign-in" && "hidden",
         location.pathname === "/registration" && "hidden"
       )}
@@ -49,15 +49,17 @@ const Header = () => {
         <span className="p-2  bg-[#07437A] rounded-md text-white">
           <DesksIcon />
         </span>
-        <span className="text-xl">Kanban</span>
+        <span className="text-xl text-[#07437A] dark:text-slate-200 uppercase font-sans">
+          Kanban
+        </span>
       </div>
-      <div className="relative h-full p-2 ">
+      {/* <div className="relative h-full p-2 ">
         <PrimaryButton
           text="Create"
           onClick={toggleCreateBoardBlock}
-          padding="px-5"
+          padding="px-5 py-1"
         />
-      </div>
+      </div> */}
       {showCreateBoardBlock && <CreateBlock closeBlock={closeBlock} />}
       <div className="flex gap-2 items-center ">
         <ToggleThemeButton />

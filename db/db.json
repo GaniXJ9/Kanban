@@ -96,18 +96,76 @@
       "userToken": "3178b943-712f-4695-97a7-9887c26d5d40",
       "columns": [
         {
-          "id": 1,
-          "name": "To Do",
-          "tasks": []
-        },
-        {
           "id": 2,
           "name": "Done",
-          "tasks": []
+          "tasks": [
+            {
+              "id": "eaa86d55-e8db-4b18-93ae-ddcf274a432c",
+              "name": "asc",
+              "date": 1754989554208,
+              "deadline": null,
+              "importance": "High Priorety",
+              "description": null,
+              "background": null,
+              "comments": []
+            }
+          ]
         },
         {
           "id": 3,
           "name": "In Proccess",
+          "tasks": [
+            {
+              "id": "685a2776-90dd-4613-95cb-35e1caeada07",
+              "name": "g",
+              "date": 1754991539928,
+              "deadline": null,
+              "importance": "Important",
+              "description": null,
+              "background": null,
+              "comments": []
+            }
+          ]
+        },
+        {
+          "id": "0c4b4c40-e1db-4ff2-96c7-4e59c897a43e",
+          "name": "asc",
+          "tasks": [
+            {
+              "id": "600bddfb-1556-4b52-84bd-5f2666887851",
+              "name": "asc",
+              "date": 1754989552801,
+              "deadline": null,
+              "importance": "Not urgent, but necessary",
+              "description": "",
+              "background": null,
+              "comments": [
+                {
+                  "id": "6762581f-0258-4e78-a59a-90a79bc03311",
+                  "text": "d",
+                  "date": "2025-08-12T09:10:07.256Z",
+                  "user": {
+                    "id": "8df8",
+                    "username": "Gani",
+                    "email": "ganisergaliev29@gmail.com",
+                    "password": "123123123",
+                    "confirmPassword": "123123123",
+                    "token": "3178b943-712f-4695-97a7-9887c26d5d40",
+                    "boards": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2940b5f0-6c47-421a-a881-e95aad6eec61",
+          "name": "asc",
+          "tasks": []
+        },
+        {
+          "id": 1,
+          "name": "To Do",
           "tasks": []
         }
       ],

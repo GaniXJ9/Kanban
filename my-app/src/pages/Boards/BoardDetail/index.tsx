@@ -166,7 +166,7 @@ const BoardDetail = () => {
   }
 
   return (
-    <section className="w-full h-11/12 scrollbar__custom dark:scrollbar__custom--dark overflow-hidden overflow-x-auto pt-20 flex gap-3 py-5 mb-20">
+    <section className="relative w-full h-11/12 scrollbar__custom dark:scrollbar__custom--dark overflow-hidden overflow-x-auto pt-20 flex gap-3 py-5 mb-20">
       <DndContext
         sensors={sensors}
         onDragStart={onDragStart}
@@ -186,7 +186,7 @@ const BoardDetail = () => {
               {columns.map((column: ColumnEntity) =>
                 columnLoadId === column.id ? (
                   <div>
-                    <Loader text="" color="border-red-500" />
+                    <Loader text="" color="border-red-500" key={column.id} />
                   </div>
                 ) : (
                   <Column column={column} key={column.id} />

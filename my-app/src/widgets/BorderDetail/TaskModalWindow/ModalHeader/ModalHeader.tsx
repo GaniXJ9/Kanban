@@ -11,7 +11,7 @@ const ModalHeader = () => {
   const closeModal = () => setCurrentTask(null);
 
   return (
-    <div className=" bg-[#6565a4]  dark:bg-[#1a1a1a] p-2 lg:p-5 lg:px-10 flex items-center relative rounded-t-2xl border-b border-white dark:border-[#535252]">
+    <div className=" bg-gradient-to-b from-[#8686c2] to-[#666696]  dark:from-[rgba(29,33,37)]  dark:to-[rgba(29,33,37)] p-2 lg:p-5 lg:px-10 flex items-center relative rounded-t-2xl border-b border-white dark:border-[#535252]">
       <div
         className={clsx(
           currentTask && "-top-10",

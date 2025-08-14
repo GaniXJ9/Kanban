@@ -4,6 +4,7 @@ import useColumns from "../../../../app/store/columns";
 import useBoards from "../../../../app/store/boards";
 import { importanceColor } from "../../../../shared/actions/importanceColor";
 import Loader from "../../../Loader";
+import clsx from "clsx";
 
 const importaceVariant = [
   { id: 1, value: "Optionaly", color: "#00ffbc" },
@@ -52,14 +53,14 @@ const ImportanceUI = () => {
       <div className="flex items-center">
         <div
           onClick={toggleShowOptions}
-          className={`size-3 mx-2 p-2 outline-none rounded-full transition-shadow duration-300  lg:cursor-pointer lg:hover:opacity-50
-    shadow-[0_0_0_1px_white] 
-    ${importanceColor(currentTask?.importance || null)} 
-    ${
-      currentTask?.importance
-        ? "shadow-[0_0_8px_3px_rgba(255,255,255,0.4)]"
-        : ""
-    }`}
+          className={clsx(
+            importanceColor(currentTask?.importance || null),
+            "size-3 mx-2 p-2 outline-none rounded-full transition-shadow shadow-[0_0_8px_3px_rgba(255,255,255,0.4)] duration-300  lg:cursor-pointer lg:hover:opacity-50shadow-[0_0_0_1px_white]"
+          )}
+          //       className={`size-3 mx-2 p-2 outline-none rounded-full transition-shadow duration-300  lg:cursor-pointer lg:hover:opacity-50
+          // shadow-[0_0_0_1px_white]
+          // ${importanceColor(currentTask?.importance || null)}
+          // ${"shadow-[0_0_8px_3px_rgba(255,255,255,0.4)]"}`}
           title={currentTask?.importance || "Set Importance"}
           tabIndex={0}
         >
@@ -77,13 +78,21 @@ const ImportanceUI = () => {
           <li
             key={el.id}
             onMouseDown={() => handleSelectImportance(el.value)}
-            className={`p-2
-              bg-[${
-                el.color
-              }] shadow-[0_0_0_1px_white] rounded-full lg:cursor-pointer lg:hover:opacity-50 ${
+            // className={`p-2
+            //   bg-[${
+            //     el.color
+            //   }] shadow-[0_0_8px_3px_rgba(255,255,255,0.4)] rounded-full lg:cursor-pointer lg:hover:opacity-50 ${
+            //   el.value === currentTask?.importance &&
+            //   "opacity-20 pointer-events-none"
+            // }`}
+
+            className={clsx(
+              "p-2  rounded-full lg:cursor-pointer lg:hover:opacity-50",
+              `bg-[${el.color}]`,
+              `shadow-[0_0_8px_3px_${el.color}]`,
               el.value === currentTask?.importance &&
-              "opacity-20 pointer-events-none"
-            }`}
+                "opacity-20 pointer-events-none"
+            )}
             title={el.value}
           ></li>
         ))}

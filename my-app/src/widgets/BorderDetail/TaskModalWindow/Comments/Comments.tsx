@@ -8,7 +8,7 @@ const Comments = () => {
 
   return (
     <section className="container border-b relative w-full overflow-auto lg:p-5 ">
-      <p className="border-b text:lg lg:text-2xl text-slate-600 dark:text-slate-200 font-medium py-2">
+      <p className="border-b text-lg lg:text-lg text-slate-600 dark:text-slate-200 font-normal py-2">
         Comments
       </p>
 
