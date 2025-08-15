@@ -1,20 +1,72 @@
 @import "tailwindcss";
 @tailwind utilities;
 @custom-variant dark (&:where(.dark , .dark *));
-
+@keyframes glow-rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-
 @layer utilities {
   .scrollbar__custom {
     scrollbar-color: #c0cbe0 rgba(43, 43, 43, 0.5); /* thumb, track */
   }
-
   @media screen and (min-width: 640px) {
     .scrollbar__custom::-webkit-scrollbar {
       display: none;
     }
+  }
+}
+.red-glow {
+  position: relative;
+  overflow: hidden;
+  border-radius: 7px;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.red-glow::after {
+  position: absolute;
+  border-radius: 7px;
+
+  top: -25%;
+  left: -25%;
+  width: 150%;
+  height: 150%;
+  border-radius: inherit;
+  content: "";
+  background: repeating-conic-gradient(
+    from var(--angle),
+    transparent 0deg 45deg,
+    #ff6467 30%,
+    #fb2c36 10%,
+    rgba(251, 44, 54, 0.1) 5%,
+    transparent 55deg 1turn
+  );
+  animation: spin 3s linear infinite;
+  z-index: -1;
+}
+
+.red-glow::before {
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
   }
 }
