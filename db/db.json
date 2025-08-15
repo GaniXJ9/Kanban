@@ -52,11 +52,6 @@
       "userToken": "3178b943-712f-4695-97a7-9887c26d5d40",
       "columns": [
         {
-          "id": 3,
-          "name": "In Proccesss",
-          "tasks": []
-        },
-        {
           "id": 1,
           "name": "To Do",
           "tasks": []
@@ -64,6 +59,11 @@
         {
           "id": 2,
           "name": "Done",
+          "tasks": []
+        },
+        {
+          "id": 3,
+          "name": "In Proccesss",
           "tasks": []
         },
         {
