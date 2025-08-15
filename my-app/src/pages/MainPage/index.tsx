@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import PageTitle from "../../widgets/Common/PageTitle";
+import HeroSection from "../../widgets/MainPage/Hero/HeroSection";
+import FeaturesSection from "../../widgets/MainPage/Features/FeaturesSection";
+import AboutSection from "../../widgets/MainPage/About/AboutSection";
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -15,7 +17,9 @@ const MainPage = () => {
 
   return (
     <>
-      <PageTitle title="Main" />
+      <HeroSection />
+      <FeaturesSection />
+      <AboutSection />
     </>
   );
 };

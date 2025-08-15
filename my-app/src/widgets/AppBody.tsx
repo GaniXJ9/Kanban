@@ -28,7 +28,7 @@ const AppBody = () => {
           : undefined,
       }}
       className={clsx(
-        "flex bg-cover bg-center relative bg-[#eaf0f5] dark:bg-[rgba(29,33,37)] min-h-screen overflow-y-auto",
+        "relative flex bg-cover bg-center bg-[#eaf0f5] dark:bg-[rgba(29,33,37)] min-h-screen overflow-y-auto",
         (location.pathname === "/sign-in" ||
           location.pathname === "/registration") &&
           "lg:px-0  py-0"
@@ -37,7 +37,13 @@ const AppBody = () => {
       {!currentBoard && !isAuthPage && <SideBarMenuDesktop />}
       {!isAuthPage && <SideBarMenuMobile />}
 
-      <div className={clsx("w-full px-32 pt-14", isAuthPage && "")}>
+      <div
+        className={clsx(
+          "w-full p-12",
+          location.pathname === "/" && "px-0 py-0",
+          isAuthPage && ""
+        )}
+      >
         <AppRouter />
       </div>
     </main>

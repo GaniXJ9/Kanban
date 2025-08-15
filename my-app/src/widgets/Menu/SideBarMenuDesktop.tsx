@@ -27,7 +27,7 @@ const SideBarMenuDesktop = () => {
   return (
     <aside
       className={clsx(
-        "sticky top-0 left-0 shadow-[0_0_2px_0_rgba(0,0,0,0.5)] bg-inherit transition-all duration-200 flex  border-r  z-50",
+        "fixed h-full  top-0 left-0 shadow-[0_0_2px_0_rgba(0,0,0,0.5)] bg-black/10 backdrop-blur-sm transition-all duration-200 flex  border-r  z-50",
         expand
           ? "w-1/4 border-[rgba(255,255,255,0.5)]"
           : "w-10  border-[rgba(52,52,52,0.5)]",
@@ -50,7 +50,7 @@ const SideBarMenuDesktop = () => {
         className={clsx(
           expand &&
             "bg-[#30679b] dark:bg-[#193751] border-r border-[rgba(220,218,218,0.5)]",
-          "flex justify-start items-center text-nowrap h-full w-10"
+          "flex justify-start items-center text-nowrap  w-10"
         )}
       >
         <span

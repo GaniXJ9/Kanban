@@ -52,27 +52,6 @@
       "userToken": "3178b943-712f-4695-97a7-9887c26d5d40",
       "columns": [
         {
-          "id": 2,
-          "name": "Done",
-          "tasks": []
-        },
-        {
-          "id": "655c24bb-80ff-42e6-9b4b-848cf72bacd4",
-          "name": "sad",
-          "tasks": [
-            {
-              "id": "c09d3cef-0c5f-43f6-8adf-750fe28c4a3c",
-              "name": "asc",
-              "date": 1754984365224,
-              "deadline": null,
-              "importance": null,
-              "description": null,
-              "background": null,
-              "comments": []
-            }
-          ]
-        },
-        {
           "id": 3,
           "name": "In Proccesss",
           "tasks": []
@@ -80,6 +59,11 @@
         {
           "id": 1,
           "name": "To Do",
+          "tasks": []
+        },
+        {
+          "id": 2,
+          "name": "Done",
           "tasks": []
         },
         {
