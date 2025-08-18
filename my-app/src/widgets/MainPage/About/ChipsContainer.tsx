@@ -11,7 +11,7 @@ const ChipsContainer = ({
   gap: string;
 }) => {
   return (
-    <div className={clsx("flex")} style={{ gap: gap }}>
+    <div className={clsx("flex -z-10")} style={{ gap: gap }}>
       {Array.from({ length: count }).map((_, i) => (
         <div
           key={i}

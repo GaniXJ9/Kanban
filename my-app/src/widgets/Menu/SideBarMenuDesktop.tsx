@@ -17,13 +17,12 @@ const SideBarMenuDesktop = () => {
   };
 
   useEffect(() => {
-    setCurrentBoard(null);
-  }, []);
-
-  useEffect(() => {
     setExpand(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    setCurrentBoard(null);
+  }, []);
   return (
     <aside
       className={clsx(

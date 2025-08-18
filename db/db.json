@@ -80,11 +80,6 @@
       "userToken": "3178b943-712f-4695-97a7-9887c26d5d40",
       "columns": [
         {
-          "id": "0c4b4c40-e1db-4ff2-96c7-4e59c897a43e",
-          "name": "asc",
-          "tasks": []
-        },
-        {
           "id": 2,
           "name": "Done",
           "tasks": [
@@ -99,6 +94,11 @@
               "comments": []
             }
           ]
+        },
+        {
+          "id": "0c4b4c40-e1db-4ff2-96c7-4e59c897a43e",
+          "name": "asc",
+          "tasks": []
         },
         {
           "id": "2940b5f0-6c47-421a-a881-e95aad6eec61",
@@ -166,13 +166,13 @@
           "tasks": []
         },
         {
-          "id": 2,
-          "name": "Done",
+          "id": 3,
+          "name": "In Proccess",
           "tasks": []
         },
         {
-          "id": 3,
-          "name": "In Proccess",
+          "id": 2,
+          "name": "Done",
           "tasks": []
         }
       ],

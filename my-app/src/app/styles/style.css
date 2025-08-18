@@ -1,21 +1,14 @@
 @import "tailwindcss";
 @tailwind utilities;
 @custom-variant dark (&:where(.dark , .dark *));
-@keyframes glow-rotate {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 @layer utilities {
   .scrollbar__custom {
-    scrollbar-color: #c0cbe0 rgba(43, 43, 43, 0.5); /* thumb, track */
+    scrollbar-color: #c0cbe0 rgba(43, 43, 43, 0.5);
   }
   @media screen and (min-width: 640px) {
     .scrollbar__custom::-webkit-scrollbar {
@@ -53,7 +46,7 @@
     rgba(251, 44, 54, 0.1) 5%,
     transparent 55deg 1turn
   );
-  animation: spin 3s linear infinite;
+  animation: spinRed 3s linear infinite;
   z-index: -1;
 }
 
@@ -62,11 +55,129 @@
   opacity: 0.5;
 }
 
-@keyframes spin {
+@keyframes spinRed {
   from {
     --angle: 0deg;
   }
   to {
     --angle: 360deg;
+  }
+}
+
+.green-glow {
+  position: relative;
+  overflow: hidden;
+  border-radius: 7px;
+}
+
+.green-glow::after {
+  position: absolute;
+  border-radius: 7px;
+
+  top: -25%;
+  left: -25%;
+  width: 150%;
+  height: 150%;
+  border-radius: inherit;
+  content: "";
+  background: repeating-conic-gradient(
+    from var(--angle),
+    transparent 0deg 45deg,
+    rgba(10, 110, 15, 0.1) 5%,
+    #1ec255 10%,
+    #0ef589 30%,
+    transparent 55deg 1turn
+  );
+  animation: spinGreen 3s linear infinite;
+  z-index: -1;
+}
+
+.green-glow::before {
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+@keyframes spinGreen {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: -360deg;
+  }
+}
+
+.yellow-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.yellow-glow::after {
+  position: absolute;
+  top: -25%;
+  left: -25%;
+  width: 150%;
+  height: 150%;
+  content: "";
+  background: repeating-conic-gradient(
+    from var(--angle),
+    transparent 0deg 45deg,
+    rgba(197, 148, 12, 0.1) 5%,
+    #eccf29 10%,
+    #fcff51 30%,
+    transparent 55deg 1turn
+  );
+  animation: spinYellow 3s linear infinite;
+  z-index: -1;
+}
+
+.yellow-glow::before {
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+@keyframes spinYellow {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: -360deg;
+  }
+}
+
+.blue-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.blue-glow::after {
+  position: absolute;
+  top: -25%;
+  left: -25%;
+  width: 150%;
+  height: 150%;
+  content: "";
+  background: repeating-conic-gradient(
+    from var(--angle),
+    transparent 0deg 45deg,
+    rgba(37, 35, 155, 0.1) 5%,
+    #2c0fd16e 10%,
+    rgba(7, 52, 201, 0.5) 40%,
+    transparent 55deg 1turn
+  );
+  animation: spinBlue 3s linear infinite;
+  z-index: -1;
+}
+
+.blue-glow::before {
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+@keyframes spinBlue {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: -360deg;
   }
 }
