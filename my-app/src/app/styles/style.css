@@ -41,9 +41,9 @@
   background: repeating-conic-gradient(
     from var(--angle),
     transparent 0deg 45deg,
-    #ff6467 30%,
-    #fb2c36 10%,
-    rgba(251, 44, 54, 0.1) 5%,
+    rgba(230, 34, 99, 0.8) 30%,
+    #ff175d 10%,
+    rgba(233, 133, 253, 0.1) 5%,
     transparent 55deg 1turn
   );
   animation: spinRed 3s linear infinite;
@@ -83,9 +83,9 @@
   background: repeating-conic-gradient(
     from var(--angle),
     transparent 0deg 30deg,
-    rgba(32, 255, 11, 0.5) 5%,
-    #3aff126e 10%,
-    rgba(61, 226, 130, 0.1) 20%,
+    rgba(19, 141, 8, 0.842) 5%,
+    #09d390 10%,
+    rgba(13, 218, 98, 0.144) 20%,
     transparent 15deg 2turn
   );
   animation: spinGreen 3s linear infinite;
@@ -122,12 +122,12 @@
     from var(--angle),
     transparent 0deg 45deg,
     rgba(197, 148, 12, 0.1) 5%,
-    #eccf29 10%,
-    rgba(252, 255, 81, 0.6) 20%,
+    #ec6729 10%,
+    rgba(252, 255, 81, 0.6) 30%,
     transparent 45deg 1turn
   );
 
-  animation: spinYellow 1s linear infinite;
+  animation: spinYellow 3s linear infinite;
   z-index: -1;
 }
 
@@ -160,9 +160,9 @@
   background: repeating-conic-gradient(
     from var(--angle),
     transparent 0deg 30deg,
-    rgba(53, 51, 201, 0.5) 5%,
-    #145dca6e 10%,
-    rgba(3, 31, 121, 0.1) 20%,
+    rgba(54, 51, 201, 0.849) 5%,
+    #145dcae5 10%,
+    rgba(3, 31, 121, 0.103) 20%,
     transparent 15deg 2turn
   );
   animation: spinBlue 3s linear infinite;

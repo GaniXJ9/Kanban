@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import { useEffect, useRef, useState, type SVGProps } from "react";
-import List from "../../../shared/icons/List";
 import BxlTailwindCss from "../../../shared/icons/BxlTailwindCss";
 import FeatureCard from "./FeatureCard";
 import type { Id } from "../../../shared/type/IdType";
-import ManageIcon from "../../../shared/icons/ManageIcon";
+import ReactIcon from "../../../shared/icons/ReactIcon";
+import TypeScriptIcon from "../../../shared/icons/TypeScriptIcon";
 
 interface Feature {
   id: Id;
@@ -16,24 +16,24 @@ interface Feature {
 const featuresMain: Feature[] = [
   {
     id: 1,
-    title: "Columns for your process",
+    title: "React",
     subtitle:
       "Create as many stages as you need for your tasks, such as In Progress, Under Review, and Completed",
-    icon: List,
+    icon: ReactIcon,
   },
   {
     id: 2,
-    title: "Dragging tasks",
+    title: "TailwindCSS",
     subtitle:
       "Change the order and move tasks between columns using drag-and-drop",
-    icon: ManageIcon,
+    icon: BxlTailwindCss,
   },
   {
     id: 3,
-    title: "Clean interface",
+    title: "TypeScript ",
     subtitle:
       "TailwindCSS responsive design, no frills — everything for productive work",
-    icon: BxlTailwindCss,
+    icon: TypeScriptIcon,
   },
 ];
 

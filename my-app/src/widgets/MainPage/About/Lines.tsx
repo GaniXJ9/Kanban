@@ -16,7 +16,7 @@ const Lines = () => {
         <div className="p-0.5 absolute rounded-full border-2 -top-1 -left-1 bg-white border-[#adadad]"></div>
       </div>
       <div className="absolute top-1/2 translate-y-1.5 right-1/2 p-0.5">
-        <div className="red-glow  h-28 w-[25vw] relative rounded-tl-md pt-0.5 pl-0.5 pb-0 z-15">
+        <div className="red-glow  h-28 w-[25vw] relative rounded-tl-md pt-[2.5px] pl-[2.5px] pb-0 z-15">
           <p className="border-2 border-[#adadad]  bg-[#eaf0f5] rounded-tl-md  dark:bg-[rgba(29,33,37)] h-full border-b-transparent  border-r-transparent z-0"></p>
         </div>
       </div>
