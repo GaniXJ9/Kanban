@@ -57,8 +57,8 @@
           "tasks": []
         },
         {
-          "id": 3,
-          "name": "In Proccesss",
+          "id": "7229dba8-b8a8-4d3e-8794-44585d661d74",
+          "name": "asd",
           "tasks": []
         },
         {
@@ -78,8 +78,8 @@
           ]
         },
         {
-          "id": "7229dba8-b8a8-4d3e-8794-44585d661d74",
-          "name": "asd",
+          "id": 3,
+          "name": "In Proccesss",
           "tasks": []
         }
       ],
@@ -90,6 +90,22 @@
       "id": "c516644a-4a48-4597-bce2-e4c272db259e",
       "userToken": "3178b943-712f-4695-97a7-9887c26d5d40",
       "columns": [
+        {
+          "id": 3,
+          "name": "In Proccess",
+          "tasks": [
+            {
+              "id": "685a2776-90dd-4613-95cb-35e1caeada07",
+              "name": "g",
+              "date": 1754991539928,
+              "deadline": null,
+              "importance": "Important",
+              "description": null,
+              "background": null,
+              "comments": []
+            }
+          ]
+        },
         {
           "id": 2,
           "name": "Done",
@@ -143,22 +159,6 @@
           ]
         },
         {
-          "id": 3,
-          "name": "In Proccess",
-          "tasks": [
-            {
-              "id": "685a2776-90dd-4613-95cb-35e1caeada07",
-              "name": "g",
-              "date": 1754991539928,
-              "deadline": null,
-              "importance": "Important",
-              "description": null,
-              "background": null,
-              "comments": []
-            }
-          ]
-        },
-        {
           "id": 1,
           "name": "To Do",
           "tasks": []
@@ -172,8 +172,8 @@
       "userToken": "3178b943-712f-4695-97a7-9887c26d5d40",
       "columns": [
         {
-          "id": 1,
-          "name": "To Do",
+          "id": 2,
+          "name": "Done",
           "tasks": []
         },
         {
@@ -182,8 +182,8 @@
           "tasks": []
         },
         {
-          "id": 2,
-          "name": "Done",
+          "id": 1,
+          "name": "To Do",
           "tasks": []
         }
       ],

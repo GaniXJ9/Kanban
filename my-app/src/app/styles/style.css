@@ -82,11 +82,11 @@
   content: "";
   background: repeating-conic-gradient(
     from var(--angle),
-    transparent 0deg 45deg,
-    rgba(10, 110, 15, 0.1) 5%,
-    #1ec255 10%,
-    #0ef589 30%,
-    transparent 55deg 1turn
+    transparent 0deg 30deg,
+    rgba(32, 255, 11, 0.5) 5%,
+    #3aff126e 10%,
+    rgba(61, 226, 130, 0.1) 20%,
+    transparent 15deg 2turn
   );
   animation: spinGreen 3s linear infinite;
   z-index: -1;
@@ -127,12 +127,6 @@
     transparent 45deg 1turn
   );
 
-  /* from var(--angle),
-    transparent 0deg 30deg,
-    rgba(53, 51, 201, 0.5) 5%,
-    #145dca6e 10%,
-    rgba(3, 31, 121, 0.1) 20%,
-    transparent 15deg 2turn */
   animation: spinYellow 1s linear infinite;
   z-index: -1;
 }

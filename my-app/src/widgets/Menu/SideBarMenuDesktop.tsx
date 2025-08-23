@@ -26,8 +26,9 @@ const SideBarMenuDesktop = () => {
 
   return (
     <aside
+      onClick={handleExpand}
       className={clsx(
-        "fixed h-full  top-0 left-0 shadow-[0_0_2px_0_rgba(0,0,0,0.5)] bg-black/10 backdrop-blur-sm transition-all duration-200 flex  border-r  z-50",
+        "fixed h-full lg:cursor-pointer top-0 left-0 shadow-[0_0_2px_0_rgba(0,0,0,0.5)] bg-black/10 hover:bg-black/20  backdrop-blur-sm transition-all duration-200 flex  border-r  z-50",
         expand
           ? "w-full lg:w-1/4  border-[rgba(255,255,255,0.5)]"
           : "w-10  border-[rgba(52,52,52,0.5)]",
@@ -41,7 +42,6 @@ const SideBarMenuDesktop = () => {
           expand ? "text-slate-200 rotate-90" : "text-[#07437A] rotate-0",
           "absolute top-2 left-2.5 transition-all duration-200 lg:cursor-pointer dark:text-slate-200"
         )}
-        onClick={handleExpand}
       >
         <MobileMenuIcon />
       </p>

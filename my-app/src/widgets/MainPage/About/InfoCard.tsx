@@ -17,20 +17,17 @@ interface Info {
 
 const InfoCard = ({ info }: { info: Info }) => {
   return (
-    <p
+    <div
       key={info.id}
-      className="relative flex flex-col  gap-2 p-5  border border-[#adadad] rounded-md shadow-md z-10"
+      className="relative flex flex-col  gap-2 p-5  bg-[#eaf0f5] dark:bg-[rgba(29,33,37)] border border-[#adadad] rounded-md shadow-md z-30 "
     >
       <span
         className={clsx(
           "bg-gradient-to-r",
           glowClasses[info.glowColor],
-          "absolute -top-0.5 right-[5%] transform bg-transparent w-1/2 h-[2px]"
+          "absolute -top-0.5 right-[50%] lg:right-[5%] transform bg-transparent w-1/2 h-[2px]"
         )}
       ></span>
-      {/* <span className="w-fit p-2 rounded-xl shadow-inner shadow-gray-400  text-[#07437A] ">
-        <info.icon />
-      </span> */}
 
       <h1 className="text-[1.4rem] font-bold bg-gradient-to-t from-[#8b9094] to-[#323d47] dark:from-[#e1e2e4] dark:to-[#ffffff]  bg-clip-text text-transparent">
         {info.title}
@@ -43,7 +40,7 @@ const InfoCard = ({ info }: { info: Info }) => {
       <h4 className="text-xs font-normal text-slate-400 dark:text-slate-200">
         {info.info}
       </h4>
-    </p>
+    </div>
   );
 };
 

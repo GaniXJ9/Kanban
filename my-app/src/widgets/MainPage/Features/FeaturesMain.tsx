@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import { useEffect, useRef, useState, type SVGProps } from "react";
 import List from "../../../shared/icons/List";
-import ManageIcon from "../../../shared/icons/ManageIcon";
 import BxlTailwindCss from "../../../shared/icons/BxlTailwindCss";
 import FeatureCard from "./FeatureCard";
 import type { Id } from "../../../shared/type/IdType";
+import ManageIcon from "../../../shared/icons/ManageIcon";
 
 interface Feature {
   id: Id;
@@ -68,7 +68,7 @@ const FeaturesMain = () => {
       ref={sectionRef}
       className={clsx(
         animate ? "-translate-y-2 opacity-100" : "translate-y-5 opacity-0",
-        "grid grid-cols-1 lg:grid-cols-3 px-20 gap-10 transition-all duration-[2s] ease-in-out mt-10"
+        "grid grid-cols-1 lg:grid-cols-3 px-5 pl-15 lg:px-20 gap-10 transition-all duration-[2s] ease-in-out mt-10"
       )}
     >
       {featuresMain.map((feature) => (

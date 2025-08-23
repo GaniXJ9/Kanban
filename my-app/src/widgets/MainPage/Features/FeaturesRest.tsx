@@ -77,8 +77,8 @@ const FeaturesRest = () => {
     <section
       ref={sectionRef}
       className={clsx(
-        animate ? "-translate-y-2 opacity-100" : "translate-y-5 opacity-0",
-        "grid grid-cols-3 px-20 gap-10 transition-all duration-[2s] ease-in-out mt-10"
+        animate ? "-translate-y-2 opacity-100" : "translate-y-5 opacity-0 ",
+        "grid grid-cols-1 lg:grid-cols-3 px-5 pl-15 lg:px-20 gap-10 transition-all duration-[2s] ease-in-out mt-10 "
       )}
     >
       {featuresMain.map((feature) => (
