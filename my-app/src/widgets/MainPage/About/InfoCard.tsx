@@ -13,7 +13,6 @@ interface Info {
   title: string;
   subtitle: string;
   info: string;
-  // icon: React.FC<SVGProps<SVGSVGElement>>;
 }
 
 const InfoCard = ({ info }: { info: Info }) => {
@@ -33,13 +32,17 @@ const InfoCard = ({ info }: { info: Info }) => {
         <info.icon />
       </span> */}
 
-      <h1 className="text-[1.4rem] font-bold bg-gradient-to-t from-[#8b9094] to-[#323d47] bg-clip-text text-transparent">
+      <h1 className="text-[1.4rem] font-bold bg-gradient-to-t from-[#8b9094] to-[#323d47] dark:from-[#e1e2e4] dark:to-[#ffffff]  bg-clip-text text-transparent">
         {info.title}
       </h1>
 
-      <h3 className="text-md font-medium text-slate-600">{info.subtitle}</h3>
+      <h3 className="text-md font-medium text-slate-600 dark:text-slate-300">
+        {info.subtitle}
+      </h3>
 
-      <h4 className="text-xs font-normal text-slate-400">{info.info}</h4>
+      <h4 className="text-xs font-normal text-slate-400 dark:text-slate-200">
+        {info.info}
+      </h4>
     </p>
   );
 };

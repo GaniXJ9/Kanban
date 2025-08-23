@@ -18,7 +18,7 @@ const Column = ({ column }: { column: ColumnEntity }) => {
       ref={setNodeRef}
       className={clsx(
         isDragging && "opacity-70",
-        "relative flex flex-col flex-shrink-0 space-y-3 rounded-lg py-3 h-fit px-3 bg-white/90 dark:bg-[#1a1a1a]/94 "
+        "relative flex flex-col flex-shrink-0 space-y-3 rounded-lg py-3 h-fit px-3 bg-white/90 dark:bg-[#1a1a1a]             "
       )}
     >
       <ColumnHead column={column} />

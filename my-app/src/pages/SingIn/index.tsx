@@ -1,5 +1,4 @@
 import DesksIcon from "../../shared/icons/DesksIcon";
-import ToggleThemeButton from "../../widgets/Header/ToggleThemeButton";
 import SignInForm from "../../widgets/SignIn/SignInForm";
 
 const SingInPage = () => {
@@ -15,7 +14,6 @@ const SingInPage = () => {
           </span>
         </p>
         <SignInForm />
-        <ToggleThemeButton />
       </div>
     </section>
   );

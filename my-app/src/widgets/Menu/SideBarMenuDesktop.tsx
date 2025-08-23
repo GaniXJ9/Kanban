@@ -23,12 +23,13 @@ const SideBarMenuDesktop = () => {
   useEffect(() => {
     setCurrentBoard(null);
   }, []);
+
   return (
     <aside
       className={clsx(
         "fixed h-full  top-0 left-0 shadow-[0_0_2px_0_rgba(0,0,0,0.5)] bg-black/10 backdrop-blur-sm transition-all duration-200 flex  border-r  z-50",
         expand
-          ? "w-1/4 border-[rgba(255,255,255,0.5)]"
+          ? "w-full lg:w-1/4  border-[rgba(255,255,255,0.5)]"
           : "w-10  border-[rgba(52,52,52,0.5)]",
         location.pathname === "/sign-in" && "hidden",
         location.pathname === "/registration" && "hidden",

@@ -2,7 +2,6 @@ import { useLocation } from "react-router-dom";
 import AppRouter from "../app/router/AppRouter";
 import { useEffect } from "react";
 import SideBarMenuDesktop from "./Menu/SideBarMenuDesktop";
-import SideBarMenuMobile from "./Menu/SideBarMenuMobile";
 import useBoards from "../app/store/boards";
 import clsx from "clsx";
 
@@ -35,13 +34,12 @@ const AppBody = () => {
       )}
     >
       {!currentBoard && !isAuthPage && <SideBarMenuDesktop />}
-      {!isAuthPage && <SideBarMenuMobile />}
 
       <div
         className={clsx(
-          "w-full p-12",
+          "w-full ",
           location.pathname === "/" && "px-0 py-0",
-          isAuthPage && ""
+          isAuthPage ? "p-0" : "p-12"
         )}
       >
         <AppRouter />

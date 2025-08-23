@@ -26,19 +26,19 @@ const Lines = () => {
 
       <div className="absolute top-1/2 -translate-y-4 left-1/2 p-0.5">
         <div className="blue-glow   h-34 w-[35vw] relative rounded-md pt-0.5 rounded-tr-md  pr-0.5 pb-0 z-10">
-          <p className="border-2 border-[#adadad] dark:border-[#575656]  bg-[#eaf0f5] rounded-tr-md  dark:bg-[rgba(29,33,37)] h-full border-b-transparent  border-l-transparent"></p>
+          <p className="border-2 border-[#adadad]   bg-[#eaf0f5] rounded-tr-md  dark:bg-[rgba(29,33,37)] h-full border-b-transparent  border-l-transparent"></p>
         </div>
       </div>
 
       <div className="absolute top-1/2 translate-y-1.5 left-1/2 p-0.5">
         <div className="green-glow rounded-tr-md h-28  w-64 relative z-0 pr-0.5 pt-0.5">
-          <p className="z-20 border-2 border-[#adadad] dark:border-[#575656]  bg-[#eaf0f5] rounded-tr-md  dark:bg-[rgba(29,33,37)] h-full w-full border-b-transparent  border-l-transparent"></p>
+          <p className="z-20 border-2 border-[#adadad]   bg-[#eaf0f5] rounded-tr-md  dark:bg-[rgba(29,33,37)] h-full w-full border-b-transparent  border-l-transparent"></p>
         </div>
       </div>
 
       <div className="absolute top-1/2 translate-y-1.5 -translate-x-[45px] right-1/2 pr-0.5">
         <div className="z-10 yellow-glow h-29 w-10 relative   pr-0.5 pb-0 ">
-          <p className="border-2 -z-10 border-[#adadad] dark:border-[#575656] bg-[#eaf0f5]  dark:bg-[rgba(29,33,37)] h-full border-y-transparent  border-l-transparent"></p>
+          <p className="border-2 -z-10 border-[#adadad]  bg-[#eaf0f5]  dark:bg-[rgba(29,33,37)] h-full border-y-transparent  border-l-transparent"></p>
         </div>
       </div>
     </>

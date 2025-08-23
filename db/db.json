@@ -57,14 +57,25 @@
           "tasks": []
         },
         {
-          "id": 2,
-          "name": "Done",
-          "tasks": []
-        },
-        {
           "id": 3,
           "name": "In Proccesss",
           "tasks": []
+        },
+        {
+          "id": 2,
+          "name": "Done",
+          "tasks": [
+            {
+              "id": "fdaecc8c-ff38-4fa8-beca-4b322fa6cdb2",
+              "name": "asdas ",
+              "date": 1755775146612,
+              "deadline": null,
+              "importance": null,
+              "description": null,
+              "background": null,
+              "comments": []
+            }
+          ]
         },
         {
           "id": "7229dba8-b8a8-4d3e-8794-44585d661d74",

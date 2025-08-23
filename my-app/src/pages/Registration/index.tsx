@@ -1,5 +1,4 @@
 import DesksIcon from "../../shared/icons/DesksIcon";
-import ToggleThemeButton from "../../widgets/Header/ToggleThemeButton";
 import RegistrationForm from "../../widgets/Registration/RegistrationForm";
 
 const Registration = () => {
@@ -15,7 +14,6 @@ const Registration = () => {
           </span>
         </p>
         <RegistrationForm />
-        <ToggleThemeButton />
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+import ManageMobileIcon from "../../../shared/icons/ManageIcon";
 import ManageIcon from "../../../shared/icons/ManageIcon";
 
 const HeroSection = () => {
@@ -15,14 +16,17 @@ const HeroSection = () => {
         <div className="bg-black/30 p-6 w-1/2 h-full  shadow-lg backdrop-blur-sm" />
 
         <div className="-translate-x-1/2 flex flex-col items-center">
-          <p className="bg-white w-fit p-2 rounded-2xl shadow-inner shadow-black border border-slate-500 text-[#07437A] ">
+          <p className="bg-white w-fit p-2 rounded-2xl shadow-inner shadow-black border border-slate-500 text-[#07437A] hidden lg:block ">
             <ManageIcon />
+          </p>
+          <p className="bg-white w-fit p-2 rounded-2xl shadow-inner shadow-black border border-slate-500 text-[#07437A] block lg:hidden ">
+            <ManageMobileIcon />
           </p>
           <p
             className="font-normal uppercase border-b w-full border-[#bcbcbc] py-1 flex items-center justify-end gap-2
            text-slate-200 "
           >
-            <span className="text-[2.2rem] font-bold bg-gradient-to-t from-[#07437A] to-[#529bdf] bg-clip-text text-transparent">
+            <span className="text-sm lg:text-[2.2rem] font-bold bg-gradient-to-t from-[#07437A] to-[#529bdf] bg-clip-text text-transparent">
               Manage tasks easily and visually
             </span>
           </p>
