@@ -23,7 +23,7 @@ const TaskDescription = () => {
 
   return (
     <div className="container border-b lg:p-5 w-full lg:border-r border-[#535252]">
-      <p className=" text-lg lg:text-lg text-slate-600 dark:text-slate-200 font-normal py-2 flex">
+      <p className="text-lg lg:text-lg text-[#3262a1] dark:text-slate-200 font-normal py-2 flex">
         <DescriptionIcon /> Description :
       </p>
       <div className="py-5">

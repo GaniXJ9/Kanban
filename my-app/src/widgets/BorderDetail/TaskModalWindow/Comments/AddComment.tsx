@@ -42,7 +42,7 @@ const AddComment = () => {
       <SendButton
         onClick={handleAddComment}
         padding="py-1.5 px-3"
-        rounded="lg"
+        rounded="sm"
       />
     </div>
   );

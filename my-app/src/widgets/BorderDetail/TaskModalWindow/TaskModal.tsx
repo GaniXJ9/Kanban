@@ -8,7 +8,9 @@ const TaskModal = () => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const closeModal = () => {
-    if (currentTask) () => setCurrentTask(null);
+    if (currentTask) {
+      setCurrentTask(null);
+    }
   };
 
   useEffect(() => {
@@ -37,7 +39,7 @@ const TaskModal = () => {
 
       <aside
         ref={modalRef}
-        className={`fixed z-50 left-0 bottom-0 w-full rounded-t-2xl
+        className={`fixed z-50 left-0 bottom-0 w-full 
     bg-slate-200 dark:bg-[#292828] transition-all duration-200 transform
     ${currentTask ? "translate-y-0" : "translate-y-full"}`}
       >

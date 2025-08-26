@@ -13,7 +13,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-black/40 "></div>
 
       <div className="relative z-10 h-full flex items-center p-10 pb-0">
-        <div className="bg-black/30 p-6 w-full lg:w-1/2 h-full  shadow-lg backdrop-blur-sm" />
+        <div className="bg-black/30 p-6 w-full lg:w-1/2 h-full shadow-lg backdrop-blur-sm" />
 
         <div className="-translate-x-1/2 flex flex-col items-center">
           <p className="bg-white w-fit p-2 rounded-2xl shadow-inner shadow-black border border-slate-500 text-[#07437A] hidden lg:block ">

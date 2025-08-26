@@ -19,7 +19,7 @@ const FeatureCard = ({ feature }: { feature: Feature }) => {
       key={feature.id}
     >
       {feature.icon && (
-        <span className="w-fit p-2 rounded-xl shadow-inner shadow-gray-400  text-[#07437A] ">
+        <span className="w-fit p-2 rounded-xl shadow-inner shadow-gray-400  text-[#07437A] dark:text-[#0d6ec9]  ">
           <feature.icon />
         </span>
       )}
@@ -27,7 +27,7 @@ const FeatureCard = ({ feature }: { feature: Feature }) => {
       <h1
         className={clsx(
           feature.icon ? "text-center " : "text-start ",
-          "font-medium uppercase tracking-wider text-sm lg:text-lg bg-gradient-to-r from-[#07437A] to-[#5681a9] bg-clip-text text-transparent"
+          "font-medium uppercase tracking-wider text-sm lg:text-lg bg-gradient-to-r from-[#07437A] dark:from-[#2d86da]  to-[#5681a9] bg-clip-text text-transparent"
         )}
       >
         {feature.title}
@@ -38,7 +38,7 @@ const FeatureCard = ({ feature }: { feature: Feature }) => {
           feature.icon
             ? "text-center text-xs lg:text-sm"
             : "text-start text-xs",
-          " font-medium  tracking-wider bg-gradient-to-r  from-[#2a5a87] to-[#5681a9] bg-clip-text text-transparent"
+          " font-medium  tracking-wider bg-gradient-to-r  from-[#2a5a87] dark:from-[#2d86da] to-[#5681a9] bg-clip-text text-transparent"
         )}
       >
         {feature.subtitle}
