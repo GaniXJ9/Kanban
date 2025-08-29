@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import AccountBlock from "./AccountBlock/AccountBlock";
 import ToggleThemeButton from "./ToggleThemeButton";
 import DesksIcon from "../../shared/icons/DesksIcon";
-import PrimaryButton from "../../shared/ui/buttons/PrimaryButton";
+// import PrimaryButton from "../../shared/ui/buttons/PrimaryButton";
 import { useEffect, useState } from "react";
 import CreateBlock from "./CreateBoard/CreateBlock";
 import clsx from "clsx";
@@ -17,9 +17,9 @@ const Header = () => {
     navigate("/boards");
   };
 
-  const toggleCreateBoardBlock = () => {
-    setShowCreateBoardBlock((prev) => !prev);
-  };
+  // const toggleCreateBoardBlock = () => {
+  //   setShowCreateBoardBlock((prev) => !prev);
+  // };
 
   const closeBlock = () => {
     setShowCreateBoardBlock(false);
@@ -53,13 +53,13 @@ const Header = () => {
           Kanban
         </span>
       </div>
-      <div className="relative h-full p-2 ">
+      {/* <div className="relative h-full p-2 ">
         <PrimaryButton
           text="Create"
           onClick={toggleCreateBoardBlock}
           padding="px-5 py-1"
         />
-      </div>
+      </div> */}
       {showCreateBoardBlock && <CreateBlock closeBlock={closeBlock} />}
       <div className="flex gap-2 items-center ">
         <ToggleThemeButton />
