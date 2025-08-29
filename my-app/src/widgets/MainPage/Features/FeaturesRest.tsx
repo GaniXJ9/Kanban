@@ -1,7 +1,9 @@
 import clsx from "clsx";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import type { Id } from "../../../shared/type/IdType";
 import FeatureCard from "./FeatureCard";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface Feature {
   id: Id;
@@ -48,37 +50,23 @@ const featuresMain: Feature[] = [
 ];
 
 const FeaturesRest = () => {
-  const [animate, setAnimate] = useState(false);
-  const sectionRef = useRef<HTMLElement | null>(null);
-
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setAnimate(true);
-          observer.disconnect();
-        }
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo(
+      ".featuresRest",
+      {
+        y: 20,
+        opacity: 0,
       },
-      { threshold: 0.7 }
+      { scrollTrigger: ".featuresRest", y: -20, opacity: 100, duration: 0.2 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
   }, []);
 
   return (
     <section
-      ref={sectionRef}
       className={clsx(
-        animate ? "-translate-y-2 opacity-100" : "translate-y-5 opacity-0 ",
-        "grid grid-cols-1 lg:grid-cols-3 px-5 pl-15 lg:px-20 gap-10 transition-all duration-[2s] ease-in-out mt-10 "
+        "featuresRest grid grid-cols-1 lg:grid-cols-3 px-5 pl-15 lg:px-20 gap-10 transition-all duration-[2s] ease-in-out mt-10 "
       )}
     >
       {featuresMain.map((feature) => (

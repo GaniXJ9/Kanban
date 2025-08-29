@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import HeroSection from "../../widgets/MainPage/Hero/HeroSection";
 import FeaturesSection from "../../widgets/MainPage/Features/FeaturesSection";
 import AboutSection from "../../widgets/MainPage/About/AboutSection";
+// import GsapAnim from "../../widgets/MainPage/GsapAnim/GsapAnim";
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const MainPage = () => {
       <HeroSection />
       <FeaturesSection />
       <AboutSection />
+      {/* <GsapAnim /> */}
     </>
   );
 };

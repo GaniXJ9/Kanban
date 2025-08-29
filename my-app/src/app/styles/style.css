@@ -31,23 +31,22 @@
 .red-glow::after {
   position: absolute;
   border-radius: 7px;
-
-  top: -25%;
-  left: -25%;
-  width: 150%;
-  height: 150%;
+  top: 1%;
+  left: 0.5%;
+  width: 100%;
+  height: 120%;
   border-radius: inherit;
   content: "";
   background: repeating-conic-gradient(
     from var(--angle),
     transparent 0deg 45deg,
-    rgba(230, 34, 99, 0.8) 30%,
-    #ff175d 10%,
-    rgba(233, 133, 253, 0.1) 5%,
+    rgba(230, 34, 99, 0.2) 20%,
+    rgba(239, 66, 75, 0.907) 30%,
+    rgba(233, 133, 253, 0.2) 5%,
     transparent 55deg 1turn
   );
   animation: spinRed 3s linear infinite;
-  z-index: -1;
+  z-index: 1;
 }
 
 .red-glow::before {
@@ -73,23 +72,22 @@
 .green-glow::after {
   position: absolute;
   border-radius: 7px;
-
-  top: -25%;
-  left: -25%;
-  width: 150%;
+  top: 1%;
+  left: 0%;
+  width: 100%;
   height: 150%;
   border-radius: inherit;
   content: "";
   background: repeating-conic-gradient(
     from var(--angle),
     transparent 0deg 30deg,
-    rgba(19, 141, 8, 0.842) 5%,
-    #09d390 10%,
+    rgba(38, 169, 26, 0.767) 5%,
+    #20c07d 10%,
     rgba(13, 218, 98, 0.144) 20%,
     transparent 15deg 2turn
   );
   animation: spinGreen 3s linear infinite;
-  z-index: -1;
+  z-index: 1;
 }
 
 .green-glow::before {
@@ -113,10 +111,10 @@
 
 .yellow-glow::after {
   position: absolute;
-  top: -25%;
-  left: -25%;
-  width: 150%;
-  height: 150%;
+  top: 1%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
   content: "";
   background: repeating-conic-gradient(
     from var(--angle),
@@ -128,7 +126,7 @@
   );
 
   animation: spinYellow 3s linear infinite;
-  z-index: -1;
+  z-index: 1;
 }
 
 .yellow-glow::before {
@@ -152,21 +150,21 @@
 
 .blue-glow::after {
   position: absolute;
-  top: -25%;
-  left: -25%;
-  width: 150%;
-  height: 150%;
+  top: 1%;
+  left: 1%;
+  width: 100%;
+  height: 120%;
   content: "";
   background: repeating-conic-gradient(
     from var(--angle),
     transparent 0deg 30deg,
-    rgba(54, 51, 201, 0.849) 5%,
-    #145dcae5 10%,
-    rgba(3, 31, 121, 0.103) 20%,
+    rgba(82, 80, 209, 0.849) 5%,
+    #2675e3e5 5%,
+    rgba(9, 41, 147, 0.103) 20%,
     transparent 15deg 2turn
   );
   animation: spinBlue 3s linear infinite;
-  z-index: -1;
+  z-index: 1;
 }
 
 .blue-glow::before {
