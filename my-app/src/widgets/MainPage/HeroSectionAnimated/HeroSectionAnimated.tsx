@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import ManageIcon from "../../../shared/icons/ManageIcon";
-import DisappearAnim from "./DisappearTextAnim";
 import gsap from "gsap";
+import TextDisappear from "../../../shared/animation/TextDisappear";
 
 const HeroSectionAnimated = () => {
   useEffect(() => {
@@ -66,7 +66,7 @@ const HeroSectionAnimated = () => {
         </span>
         <div className="kanbanText flex flex-col justify-center">
           <div>
-            <DisappearAnim text="Kanban" />
+            <TextDisappear text="Kanban" />
           </div>
           <span className="text-sm kanbanText text-slate-600 dark:text-slate-300">
             Scrool it Down

@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
 
-const DisappearAnim = ({ text }: { text: string }) => {
+const TextDisappear = ({ text }: { text: string }) => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -39,4 +39,4 @@ const DisappearAnim = ({ text }: { text: string }) => {
   );
 };
 
-export default DisappearAnim;
+export default TextDisappear;
