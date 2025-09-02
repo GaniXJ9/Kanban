@@ -35,6 +35,7 @@ const HeroSectionAnimated = () => {
         scrub: true,
       },
       x: 300,
+      opacity: 0,
     });
 
     gsap.to(".afterText", {
@@ -59,22 +60,21 @@ const HeroSectionAnimated = () => {
 
   return (
     <section className="h-[200vh] border-y relative overflow-hidden">
-      <div className="text-[5rem] font-bold h-screen flex items-center fixed top-0 left-1/2 -translate-x-1/2">
+      <div className="text-lg lg:text-[5rem] font-bold h-screen flex flex-col lg:flex-row items-center justify-center  fixed top-0 left-1/2 -translate-x-1/2">
         <span className="kanbanIcon text-[#07437A]">
           <ManageIcon />
         </span>
-        <div className="kanbanText">
-          <DisappearAnim text="Kanban" />
+        <div className="kanbanText flex flex-col justify-center">
+          <div>
+            <DisappearAnim text="Kanban" />
+          </div>
+          <span className="text-sm kanbanText text-slate-600 dark:text-slate-300">
+            Scrool it Down
+          </span>
         </div>
       </div>
     </section>
   );
 };
-
-// bg-red-50
-// bg-blue-50
-// bg-yellow-50
-// bg-green-50
-// bg-orange-50
 
 export default HeroSectionAnimated;
