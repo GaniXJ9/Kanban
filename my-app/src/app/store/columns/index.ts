@@ -1,10 +1,10 @@
 import { create } from "zustand";
-import type { Id } from "../../../shared/type/IdType";
-import type { BoardEntity } from "../../../features/types/boards/BoardEntity";
-import type { Columns } from "../../../features/types/columns/Columns";
-import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
+import type { BoardEntity } from "../../../features/types/boards/board-entity";
+import type { Columns } from "../../../features/types/columns/columns";
+import type { ColumnEntity } from "../../../features/types/columns/column-entity";
 import useBoards from "../boards";
 import { BOARDS_URL } from "../../api";
+import type { Id } from "../../../shared/type/common";
 
 const useColumns = create<Columns>((set) => ({
   loading: false,
@@ -43,7 +43,7 @@ const useColumns = create<Columns>((set) => ({
     }));
 
     const updatedColumnList = currentBoard.columns.filter(
-      (column) => column.id !== id
+      (column) => column.id !== id,
     );
     try {
       const response = await fetch(`${BOARDS_URL}/${currentBoard.id}`, {
@@ -62,13 +62,13 @@ const useColumns = create<Columns>((set) => ({
   updateColumn: async (
     currentBoard: BoardEntity,
     column: ColumnEntity,
-    newTitle: string
+    newTitle: string,
   ) => {
     set(() => ({ columnLoadId: column.id }));
 
     const updatedColumn = { ...column, name: newTitle };
     const updatedColumnList = currentBoard.columns.map((col) =>
-      col.id === column.id ? updatedColumn : col
+      col.id === column.id ? updatedColumn : col,
     );
 
     try {

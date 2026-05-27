@@ -1,8 +1,8 @@
-import AddTaskBlock from "../AddTaskBlock";
+import AddTaskBlock from "../add-task-block";
 import { useSortable } from "@dnd-kit/sortable";
-import ColumnHead from "./ColumnHead";
-import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
-import TaskList from "./tasks/TaskList";
+import ColumnHead from "./column-head";
+import type { ColumnEntity } from "../../../features/types/columns/column-entity";
+import TaskList from "./tasks/task-list";
 import clsx from "clsx";
 
 const Column = ({ column }: { column: ColumnEntity }) => {
@@ -18,7 +18,7 @@ const Column = ({ column }: { column: ColumnEntity }) => {
       ref={setNodeRef}
       className={clsx(
         isDragging && "opacity-70",
-        "relative flex flex-col flex-shrink-0 space-y-3 rounded-lg py-3 h-fit px-3 bg-white/90 dark:bg-[#1a1a1a]             "
+        "relative flex flex-col flex-shrink-0 space-y-3 rounded-lg py-3 h-fit px-3 bg-white/90 dark:bg-[#1a1a1a]             ",
       )}
     >
       <ColumnHead column={column} />

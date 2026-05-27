@@ -1,8 +1,8 @@
 import { useEffect, useState, type ChangeEvent } from "react";
-import SearchItemList from "./SearchItemList";
+import SearchItemList from "./search-item-list";
 import useTasks from "../../../app/store/tasks";
 import useBoards from "../../../app/store/boards";
-import SearchIcon from "../../../shared/icons/SearchIcon";
+import SearchIcon from "../../../shared/icons/search-icon";
 
 const SearchBlock = () => {
   const { currentBoard } = useBoards();

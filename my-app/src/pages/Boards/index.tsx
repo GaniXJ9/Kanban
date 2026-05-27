@@ -1,5 +1,5 @@
-import BoardList from "../../widgets/boards/BoardList";
-import PageTitle from "../../widgets/common/PageTitle";
+import BoardList from "../../widgets/boards/board-list";
+import PageTitle from "../../widgets/common/page-title";
 
 const Boards = () => {
   return (

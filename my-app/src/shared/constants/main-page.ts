@@ -1,6 +1,6 @@
-import BxlTailwindCss from "../icons/BxlTailwindCss";
-import ReactIcon from "../icons/ReactIcon";
-import TypeScriptIcon from "../icons/TypeScriptIcon";
+import BxlTailwindCss from "../icons/bxl-tailwindcss";
+import ReactIcon from "../icons/react-icon";
+import TypeScriptIcon from "../icons/typescript-icon";
 import type { Feature, GlowLineConfig, Info } from "../type/main-page";
 
 export const HERO_BG = "/heroSectionBackground.jpg";

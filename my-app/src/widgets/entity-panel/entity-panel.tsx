@@ -1,0 +1,36 @@
+import { useNavigate } from "react-router-dom";
+import DeleteIcon from "../../shared/icons/delete-icon";
+import useBoards from "../../app/store/boards";
+import useTasks from "../../app/store/tasks";
+import DangerButton from "../../shared/ui/buttons/danger-button";
+import SearchBlock from "../header/search/search";
+
+const EntityPanel = () => {
+  const navigate = useNavigate();
+  const { currentBoard, deleteBoard } = useBoards();
+  const { setCurrentTask } = useTasks();
+
+  const handleDelete = () => {
+    if (currentBoard) {
+      deleteBoard(currentBoard.id);
+      setCurrentTask(null);
+      navigate("/boards");
+    }
+  };
+
+  return (
+    <section className="fixed top-12 w-full flex justify-between items-center px-14 backdrop-blur-sm h-16 z-40 mb-14 ">
+      <h1 className={`text-xl font-medium text-white`}>{currentBoard?.name}</h1>
+
+      <SearchBlock />
+      <DangerButton
+        onClick={handleDelete}
+        padding={"p-2"}
+        rounded={"full"}
+        Icon={DeleteIcon}
+      />
+    </section>
+  );
+};
+
+export default EntityPanel;

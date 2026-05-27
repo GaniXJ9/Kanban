@@ -1,10 +1,10 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import AccountBlock from "./account-block/AccountBlock";
+import AccountBlock from "./account-block/account-block";
 import ToggleThemeButton from "./toggle-theme-button";
-import DesksIcon from "../../shared/icons/DesksIcon";
-import PrimaryButton from "../../shared/ui/buttons/PrimaryButton";
+import DesksIcon from "../../shared/icons/desks-icon";
+import PrimaryButton from "../../shared/ui/buttons/primary-button";
 import { useEffect, useState } from "react";
-import CreateBlock from "./create-board/CreateBlock";
+import CreateBlock from "./create-board/create-block";
 import clsx from "clsx";
 
 const Header = () => {

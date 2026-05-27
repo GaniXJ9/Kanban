@@ -1,5 +1,5 @@
 import React, { type SVGProps } from "react";
-import type { Size } from "../../../features/types/common/Size";
+import type { Size } from "../../../features/types/common/size";
 import clsx from "clsx";
 
 type ButtonProps = {
@@ -34,7 +34,7 @@ const Success = ({
         bg-[#4cbf5b] dark:bg-[#50a953b1]
         lg:hover:bg-slate-600 lg:hover:text-slate-200
         dark:text-slate-200 dark:lg:hover:bg-[#373737]
-        font-normal lg:cursor-pointer transition-all duration-200`
+        font-normal lg:cursor-pointer transition-all duration-200`,
       )}
     >
       {Icon && <Icon />}

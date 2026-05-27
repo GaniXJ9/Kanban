@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import useStore from "../../app/store";
-import MoonOutlined from "../../shared/icons/Moon";
-import Light from "../../shared/icons/Light";
+import MoonOutlined from "../../shared/icons/moon";
+import Light from "../../shared/icons/light";
 
 const ToggleThemeButton = () => {
   const { theme, toggleTheme } = useStore();

@@ -1,8 +1,8 @@
 import { create } from "zustand";
-import type { Id } from "../../../shared/type/IdType";
-import type { Boards } from "../../../features/types/boards/Boards";
-import type { BoardEntity } from "../../../features/types/boards/BoardEntity";
+import type { Boards } from "../../../features/types/boards/boards";
+import type { BoardEntity } from "../../../features/types/boards/board-entity";
 import { BOARDS_URL } from "../../api";
+import type { Id } from "../../../shared/type/common";
 
 const useBoards = create<Boards>((set) => ({
   loading: false,

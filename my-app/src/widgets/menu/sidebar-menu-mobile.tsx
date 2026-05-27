@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import MobileMenuIcon from "../../shared/icons/MobileMenuIcon";
+import MobileMenuIcon from "../../shared/icons/mobile-menu-icon";
 import { useLocation } from "react-router-dom";
 import MenuLink from "./menu-link";
-import DesksIcon from "../../shared/icons/DesksIcon";
+import DesksIcon from "../../shared/icons/desks-icon";
 
 const SideBarMenuMobile = () => {
   const location = useLocation();

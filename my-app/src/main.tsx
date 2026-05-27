@@ -5,5 +5,5 @@ import "./app/styles/style.css";
 createRoot(document.getElementById("root")!).render(
   <>
     <App />
-  </>
+  </>,
 );

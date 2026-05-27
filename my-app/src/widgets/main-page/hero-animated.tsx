@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import ManageIcon from "../../shared/icons/manage-icon";
 import gsap from "gsap";
-import TextDisappear from "../../shared/animation/TextDisappear";
+import TextDisappear from "../../shared/animation/text-disappear";
 
 const HeroAnimated = () => {
   useEffect(() => {

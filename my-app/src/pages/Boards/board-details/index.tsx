@@ -12,15 +12,15 @@ import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 import { createPortal } from "react-dom";
-import AddColumn from "../../../widgets/board-details/column/AddColumn";
-import TaskCard from "../../../widgets/board-details/column/tasks/TaskCard";
+import AddColumn from "../../../widgets/board-details/column/add-column";
+import TaskCard from "../../../widgets/board-details/column/tasks/task-card";
 import useColumns from "../../../app/store/columns";
-import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
+import type { ColumnEntity } from "../../../features/types/columns/column-entity";
 import useBoards from "../../../app/store/boards";
-import type { TaskEntity } from "../../../features/types/tasks/TaskEntity";
+import type { TaskEntity } from "../../../features/types/tasks/task-entity";
 import useTasks from "../../../app/store/tasks";
-import TaskModal from "../../../widgets/board-details/task-modal-window/TaskModal";
-import Column from "../../../widgets/board-details/column/Column";
+import TaskModal from "../../../widgets/board-details/task-modal-window/task-modal";
+import Column from "../../../widgets/board-details/column/column";
 import Loader from "../../../widgets/loader";
 
 const BoardDetail = () => {
@@ -37,7 +37,7 @@ const BoardDetail = () => {
       activationConstraint: {
         distance: 10,
       },
-    })
+    }),
   );
 
   const columsId = useMemo(() => columns?.map((col) => col.id), [columns]);
@@ -105,10 +105,10 @@ const BoardDetail = () => {
     const columnsFromStore = useColumns.getState().columns;
 
     const sourceColumnIndex = columnsFromStore.findIndex((col) =>
-      col.tasks.some((task) => task.id === activeTask.id)
+      col.tasks.some((task) => task.id === activeTask.id),
     );
     const destinationColumnIndex = columnsFromStore.findIndex(
-      (col) => col.id === overColumn.id
+      (col) => col.id === overColumn.id,
     );
 
     if (sourceColumnIndex === -1 || destinationColumnIndex === -1) return;
@@ -121,7 +121,7 @@ const BoardDetail = () => {
     }
 
     const newSourceTasks = sourceColumn.tasks.filter(
-      (task) => task.id !== activeTask.id
+      (task) => task.id !== activeTask.id,
     );
     const newDestinationTasks = [...destinationColumn.tasks];
 
@@ -190,7 +190,7 @@ const BoardDetail = () => {
                   </div>
                 ) : (
                   <Column column={column} key={column.id} />
-                )
+                ),
               )}
             </>
           )}
@@ -205,7 +205,7 @@ const BoardDetail = () => {
               />
             )}
           </DragOverlay>,
-          document.body
+          document.body,
         )}
       </DndContext>
 

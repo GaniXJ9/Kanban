@@ -1,5 +1,5 @@
 import type { SVGProps } from "react";
-import type { Id } from "./IdType";
+import type { Id } from "./";
 
 export type Feature = {
   id: Id;

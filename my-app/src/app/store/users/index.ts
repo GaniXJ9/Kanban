@@ -1,16 +1,16 @@
+import getUsers from "../../../shared/users/get-users";
+import type { Users } from "../../../features/types/users/users";
+import type { UserEntity } from "../../../features/types/users/user-entity";
+import type { SignInFormType } from "../../../features/sing-in/schema";
 import { create } from "zustand";
-import getUsers from "../../../shared/users/getUsers";
-import type { Users } from "../../../features/types/users/Users";
-import type { UserEntity } from "../../../features/types/users/UserEntity";
-import type { SignInForm } from "../../../features/sing-in/schema";
 
 const useUsers = create<Users>((set) => ({
   currentUser: JSON.parse(localStorage.getItem("currentUser") as string),
-  confirmData: async (data: SignInForm) => {
+  confirmData: async (data: SignInFormType) => {
     try {
       const users = await getUsers();
       const loggedUser = users.find(
-        (user: UserEntity) => user.email === data.email
+        (user: UserEntity) => user.email === data.email,
       );
 
       if (loggedUser) {

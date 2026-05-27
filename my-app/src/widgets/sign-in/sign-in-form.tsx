@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import Input from "../../shared/ui/inputs/Input";
-import { useSignIn } from "../../features/sing-in/use-hook/useSingIn";
+import Input from "../../shared/ui/inputs/input";
+import { useSignIn } from "../../features/sing-in/use-hook/use-sing-in";
 import { signIn, type SignInFormType } from "../../features/sing-in/schema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import PrimaryButton from "../../shared/ui/buttons/PrimaryButton";
+import PrimaryButton from "../../shared/ui/buttons/primary-button";
 import { NavLink } from "react-router-dom";
 
 const SignInForm = () => {

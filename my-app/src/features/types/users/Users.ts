@@ -1,5 +1,5 @@
 import type { SignInForm } from "../../sing-in/schema";
-import type { UserEntity } from "./UserEntity";
+import type { UserEntity } from "./user-entity";
 
 export interface Users {
   currentUser: UserEntity | null;

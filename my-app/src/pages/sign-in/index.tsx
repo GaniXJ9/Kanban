@@ -1,4 +1,4 @@
-import DesksIcon from "../../shared/icons/DesksIcon";
+import DesksIcon from "../../shared/icons/desks-icon";
 import SignInForm from "../../widgets/sign-in/sign-in-form";
 
 const SingInPage = () => {

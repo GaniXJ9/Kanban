@@ -1,12 +1,12 @@
 import { create } from "zustand";
-import type { CommentEntity } from "../../../features/types/comments/CommentEntity";
+import type { CommentEntity } from "../../../features/types/comments/comment-entity";
 import { BOARDS_URL } from "../../api";
-import type { BoardEntity } from "../../../features/types/boards/BoardEntity";
-import type { TaskEntity } from "../../../features/types/tasks/TaskEntity";
-import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
+import type { BoardEntity } from "../../../features/types/boards/board-entity";
+import type { TaskEntity } from "../../../features/types/tasks/task-entity";
+import type { ColumnEntity } from "../../../features/types/columns/column-entity";
 import useBoards from "../boards";
 import useTasks from "../tasks";
-import type { Id } from "../../../shared/type/IdType";
+import type { Id } from "../../../shared/type/";
 
 interface Comments {
   commentLoadId: Id | null;
@@ -14,13 +14,13 @@ interface Comments {
     currentBoard: BoardEntity,
     column: ColumnEntity,
     task: TaskEntity,
-    newComment: CommentEntity
+    newComment: CommentEntity,
   ) => void;
   deleteComment: (
     currentBoard: BoardEntity,
     column: ColumnEntity,
     task: TaskEntity,
-    commentId: Id
+    commentId: Id,
   ) => void;
 }
 
@@ -30,7 +30,7 @@ const useComments = create<Comments>((set) => ({
     currentBoard: BoardEntity,
     column: ColumnEntity,
     task: TaskEntity,
-    newComment: CommentEntity
+    newComment: CommentEntity,
   ) => {
     set(() => ({
       commentLoadId: task.id,
@@ -40,12 +40,12 @@ const useComments = create<Comments>((set) => ({
     const updatedTask = { ...task, comments: updatedComments };
 
     const updatedTasks = column.tasks.map((t) =>
-      t.id === task.id ? updatedTask : t
+      t.id === task.id ? updatedTask : t,
     );
     const updatedColumn = { ...column, tasks: updatedTasks };
 
     const updatedColumns: ColumnEntity[] = currentBoard.columns.map((col) =>
-      col.id === column.id ? updatedColumn : col
+      col.id === column.id ? updatedColumn : col,
     );
 
     try {
@@ -74,18 +74,18 @@ const useComments = create<Comments>((set) => ({
     currentBoard: BoardEntity,
     column: ColumnEntity,
     task: TaskEntity,
-    commentId: Id
+    commentId: Id,
   ) => {
     const updatedComments = task.comments.filter((c) => c.id !== commentId);
     const updatedTask = { ...task, comments: updatedComments };
 
     const updatedTasks = column.tasks.map((t) =>
-      t.id === task.id ? updatedTask : t
+      t.id === task.id ? updatedTask : t,
     );
     const updatedColumn = { ...column, tasks: updatedTasks };
 
     const updatedColumns: ColumnEntity[] = currentBoard.columns.map((col) =>
-      col.id === column.id ? updatedColumn : col
+      col.id === column.id ? updatedColumn : col,
     );
 
     try {

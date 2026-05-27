@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useRegistration } from "../../features/register/use-hook/useRegistration";
+import { useRegistration } from "../../features/register/use-hook/use-registration";
 import {
   registration,
   type RegistrationForm,
 } from "../../features/register/schema";
-import PrimaryButton from "../../shared/ui/buttons/PrimaryButton";
-import Input from "../../shared/ui/inputs/Input";
+import PrimaryButton from "../../shared/ui/buttons/primary-button";
+import Input from "../../shared/ui/inputs/input";
 import { NavLink } from "react-router-dom";
 
 const RegistartionForm = () => {

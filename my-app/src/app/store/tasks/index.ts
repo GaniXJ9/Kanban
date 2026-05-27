@@ -1,10 +1,10 @@
 import { create } from "zustand";
-import type { TaskEntity } from "../../../features/types/tasks/TaskEntity";
-import type { BoardEntity } from "../../../features/types/boards/BoardEntity";
-import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
+import type { TaskEntity } from "../../../features/types/tasks/task-entity";
+import type { BoardEntity } from "../../../features/types/boards/board-entity";
+import type { ColumnEntity } from "../../../features/types/columns/column-entity";
 import useBoards from "../../store/boards";
-import type { Id } from "../../../shared/type/IdType";
-import type { Tasks } from "../../../features/types/tasks/Tasks";
+import type { Id } from "../../../shared/type/";
+import type { Tasks } from "../../../features/types/tasks/tasks";
 import { BOARDS_URL } from "../../api";
 
 const useTasks = create<Tasks>((set, get) => ({
@@ -22,7 +22,7 @@ const useTasks = create<Tasks>((set, get) => ({
   filterTask: (searchQuery: string) => {
     const all = get().tasks;
     const result = all.filter((t) =>
-      t.name.toLowerCase().includes(searchQuery.toLowerCase())
+      t.name.toLowerCase().includes(searchQuery.toLowerCase()),
     );
     set({ filteredTasks: result });
   },
@@ -34,7 +34,7 @@ const useTasks = create<Tasks>((set, get) => ({
   addTask: async (
     task: TaskEntity,
     column: ColumnEntity,
-    currentBoard: BoardEntity
+    currentBoard: BoardEntity,
   ) => {
     set(() => ({ taskLoadId: column.id }));
     const updatedTaskList = [...column.tasks, task];
@@ -45,7 +45,7 @@ const useTasks = create<Tasks>((set, get) => ({
     };
 
     const updatedColumnList: ColumnEntity[] = currentBoard.columns.map((col) =>
-      col.id === column.id ? updatedColumn : col
+      col.id === column.id ? updatedColumn : col,
     );
     try {
       const response = await fetch(`${BOARDS_URL}/${currentBoard.id}`, {
@@ -65,7 +65,7 @@ const useTasks = create<Tasks>((set, get) => ({
   deleteTask: async (
     id: Id,
     column: ColumnEntity,
-    currentBoard: BoardEntity
+    currentBoard: BoardEntity,
   ) => {
     set(() => ({ taskLoadId: id }));
 
@@ -76,7 +76,7 @@ const useTasks = create<Tasks>((set, get) => ({
     };
 
     const updatedColumnList: ColumnEntity[] = currentBoard.columns.map((col) =>
-      col.id === column.id ? updatedColumn : col
+      col.id === column.id ? updatedColumn : col,
     );
 
     try {
@@ -98,18 +98,18 @@ const useTasks = create<Tasks>((set, get) => ({
     task: TaskEntity,
     newName: string,
     column: ColumnEntity,
-    currentBoard: BoardEntity
+    currentBoard: BoardEntity,
   ) => {
     const updatedTask = { ...task, name: newName };
     const updatedTaskList = column.tasks.map((t) =>
-      t.id === task.id ? updatedTask : t
+      t.id === task.id ? updatedTask : t,
     );
     const updatedColumn: ColumnEntity = {
       ...column,
       tasks: updatedTaskList,
     };
     const updatedColumnList = currentBoard.columns.map((col) =>
-      col.id === column.id ? updatedColumn : col
+      col.id === column.id ? updatedColumn : col,
     );
 
     try {
@@ -137,18 +137,18 @@ const useTasks = create<Tasks>((set, get) => ({
     task: TaskEntity,
     newValue: string,
     column: ColumnEntity,
-    currentBoard: BoardEntity
+    currentBoard: BoardEntity,
   ) => {
     const updatedTask = { ...task, description: newValue };
     const updatedTaskList = column.tasks.map((t) =>
-      t.id === task.id ? updatedTask : t
+      t.id === task.id ? updatedTask : t,
     );
     const updatedColumn: ColumnEntity = {
       ...column,
       tasks: updatedTaskList,
     };
     const updatedColumnList = currentBoard.columns.map((col) =>
-      col.id === column.id ? updatedColumn : col
+      col.id === column.id ? updatedColumn : col,
     );
 
     try {
@@ -174,7 +174,7 @@ const useTasks = create<Tasks>((set, get) => ({
 
   updateTaskOrder: async (
     newOrder: ColumnEntity[],
-    currentBoard: BoardEntity
+    currentBoard: BoardEntity,
   ) => {
     const updatedBoard = { ...currentBoard, columns: newOrder };
 
@@ -202,20 +202,20 @@ const useTasks = create<Tasks>((set, get) => ({
     value: string,
     task: TaskEntity,
     column: ColumnEntity,
-    currentBoard: BoardEntity
+    currentBoard: BoardEntity,
   ) => {
     set(() => ({ taskLoadId: task.id }));
 
     const updatedTask = { ...task, importance: value };
     const updatedTaskList = column.tasks.map((t) =>
-      t.id === task.id ? updatedTask : t
+      t.id === task.id ? updatedTask : t,
     );
     const updatedColumn: ColumnEntity = {
       ...column,
       tasks: updatedTaskList,
     };
     const updatedColumnList = currentBoard.columns.map((col) =>
-      col.id === column.id ? updatedColumn : col
+      col.id === column.id ? updatedColumn : col,
     );
 
     try {

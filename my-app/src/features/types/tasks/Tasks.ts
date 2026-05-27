@@ -1,7 +1,7 @@
-import type { Id } from "../../../shared/type/IdType";
-import type { BoardEntity } from "../boards/BoardEntity";
-import type { ColumnEntity } from "../columns/ColumnEntity";
-import type { TaskEntity } from "./TaskEntity";
+import type { Id } from "../../../shared/type/";
+import type { BoardEntity } from "../boards/board-entity";
+import type { ColumnEntity } from "../columns/column-entity";
+import type { TaskEntity } from "./task-entity";
 
 export interface Tasks {
   tasks: TaskEntity[];
@@ -16,29 +16,29 @@ export interface Tasks {
   addTask: (
     task: TaskEntity,
     column: ColumnEntity,
-    currentBoard: BoardEntity
+    currentBoard: BoardEntity,
   ) => void;
   deleteTask: (id: Id, column: ColumnEntity, currentBoard: BoardEntity) => void;
   updateTitle: (
     task: TaskEntity,
     newName: string,
     column: ColumnEntity,
-    currentBoard: BoardEntity
+    currentBoard: BoardEntity,
   ) => void;
   updateDescription: (
     task: TaskEntity,
     value: string,
     column: ColumnEntity,
-    currentBoard: BoardEntity
+    currentBoard: BoardEntity,
   ) => void;
   updateTaskOrder: (
     newOrder: ColumnEntity[],
-    currentBoard: BoardEntity
+    currentBoard: BoardEntity,
   ) => void;
   setImportance: (
     value: string,
     task: TaskEntity,
     column: ColumnEntity,
-    currentBoard: BoardEntity
+    currentBoard: BoardEntity,
   ) => void;
 }

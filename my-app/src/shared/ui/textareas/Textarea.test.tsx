@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Textarea from "./Textarea";
+import Textarea from "./textarea";
 import { fireEvent } from "@testing-library/react";
 
 describe("Textarea", () => {
@@ -15,7 +15,7 @@ describe("Textarea", () => {
         setValue={setValue}
         onBlur={onBlur}
         required={false}
-      />
+      />,
     );
 
     const textarea = screen.getByTestId("test-textarea-id");
@@ -32,7 +32,7 @@ describe("Textarea", () => {
         setValue={setValue}
         onFocus={onFocus}
         required={false}
-      />
+      />,
     );
 
     const textarea = screen.getByTestId("test-textarea-id");

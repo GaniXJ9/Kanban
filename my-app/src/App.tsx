@@ -1,5 +1,5 @@
 import Header from "./widgets/header/index.tsx";
-import EntityPanel from "./widgets/entity-panel/EntityPanel.tsx";
+import EntityPanel from "./widgets/entity-panel/entity-panel.tsx";
 import useBoards from "./app/store/boards/index.ts";
 import useStore from "./app/store/index.ts";
 import AppBody from "./widgets/app-body.tsx";

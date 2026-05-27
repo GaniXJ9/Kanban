@@ -1,5 +1,5 @@
-import type { Id } from "../../../shared/type/IdType";
-import type { BoardEntity } from "./BoardEntity";
+import type { Id } from "../../../shared/type/";
+import type { BoardEntity } from "./board-entity";
 
 export interface Boards {
   loading: boolean;

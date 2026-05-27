@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Success from "./Success";
+import Success from "./success";
 import "@testing-library/jest-dom";
 
 const MockIcon = () => <svg data-testid="btn-icon-id" />;

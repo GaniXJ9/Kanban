@@ -1,0 +1,42 @@
+import { useEffect } from "react";
+import BoardCard from "./board-card";
+import useBoards from "../../app/store/boards";
+import type { BoardEntity } from "../../features/types/boards/board-entity";
+import useUsers from "../../app/store/users";
+import Loader from "../loader";
+import "react-loading-skeleton/dist/skeleton.css";
+import Notebook from "../../shared/icons/list";
+
+const BoardList = () => {
+  const { boards, setUserBoards } = useBoards();
+  const { currentUser } = useUsers();
+
+  useEffect(() => {
+    if (currentUser) {
+      setUserBoards(currentUser?.token);
+    }
+  }, []);
+
+  if (!boards) {
+    return <Loader />;
+  }
+  return (
+    <section className="h-full">
+      {boards.length === 0 ? (
+        <h3
+          className={`flex items-center text-lg font-normal uppercase w-full py-10 text-slate-400 dark:text-slate-200`}
+        >
+          Empty List <Notebook />
+        </h3>
+      ) : (
+        <div className="w-full grid grid-cols-2 lg:grid-cols-4 gap-2 p-2">
+          {boards.map((board: BoardEntity) => (
+            <BoardCard board={board} key={board.id} />
+          ))}
+        </div>
+      )}
+    </section>
+  );
+};
+
+export default BoardList;

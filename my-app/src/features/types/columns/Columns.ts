@@ -1,6 +1,6 @@
-import type { Id } from "../../../shared/type/IdType";
-import type { BoardEntity } from "../boards/BoardEntity";
-import type { ColumnEntity } from "./ColumnEntity";
+import type { Id } from "../../../shared/type/";
+import type { BoardEntity } from "../boards/board-entity";
+import type { ColumnEntity } from "./column-entity";
 
 export interface Columns {
   loading: boolean;
@@ -14,7 +14,7 @@ export interface Columns {
   updateColumn: (
     currentBoard: BoardEntity,
     column: ColumnEntity,
-    newTitle: string
+    newTitle: string,
   ) => void;
   updateColumnOrder: (newColumnOrder: ColumnEntity[]) => void;
 }

@@ -1,7 +1,7 @@
 import useTasks from ".";
-import type { BoardEntity } from "../../../features/types/boards/BoardEntity";
-import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
-import type { TaskEntity } from "../../../features/types/tasks/TaskEntity";
+import type { BoardEntity } from "../../../features/types/boards/board-entity";
+import type { ColumnEntity } from "../../../features/types/columns/column-entity";
+import type { TaskEntity } from "../../../features/types/tasks/task-entity";
 import useBoards from "../boards";
 
 describe("useTask store", () => {
@@ -163,7 +163,7 @@ describe("useTask store", () => {
       Promise.resolve({
         ok: true,
         json: () => Promise.resolve({}),
-      })
+      }),
     ) as jest.Mock;
 
     const store = useTasks.getState();
@@ -211,7 +211,7 @@ describe("useTask store", () => {
       Promise.resolve({
         ok: true,
         json: () => Promise.resolve({}),
-      })
+      }),
     ) as jest.Mock;
 
     const store = useTasks.getState();
@@ -247,7 +247,7 @@ describe("useTask store", () => {
     await store.deleteTask(mockTaskId, mockColumn, mockBoard);
 
     expect(useTasks.getState().tasks.map((t) => t.id)).not.toContain(
-      mockTaskId
+      mockTaskId,
     );
 
     const updatedColumn = useBoards
@@ -284,7 +284,7 @@ describe("useTask store", () => {
     };
 
     global.fetch = jest.fn(() =>
-      Promise.resolve({ ok: true, json: () => Promise.resolve({}) })
+      Promise.resolve({ ok: true, json: () => Promise.resolve({}) }),
     ) as jest.Mock;
 
     useBoards.setState({ currentBoard: mockBoard });
@@ -330,7 +330,7 @@ describe("useTask store", () => {
     };
 
     global.fetch = jest.fn(() =>
-      Promise.resolve({ ok: true, json: () => Promise.resolve({}) })
+      Promise.resolve({ ok: true, json: () => Promise.resolve({}) }),
     ) as jest.Mock;
 
     useBoards.setState({ currentBoard: mockBoard });
@@ -340,7 +340,7 @@ describe("useTask store", () => {
       mockTask,
       "New Description",
       mockColumn,
-      mockBoard
+      mockBoard,
     );
 
     const updatedTask = useTasks
@@ -381,7 +381,7 @@ describe("useTask store", () => {
     };
 
     global.fetch = jest.fn(() =>
-      Promise.resolve({ ok: true, json: () => Promise.resolve({}) })
+      Promise.resolve({ ok: true, json: () => Promise.resolve({}) }),
     ) as jest.Mock;
 
     useBoards.setState({ currentBoard: mockBoard });
@@ -426,7 +426,7 @@ describe("useTask store", () => {
     };
 
     global.fetch = jest.fn(() =>
-      Promise.resolve({ ok: true, json: () => Promise.resolve({}) })
+      Promise.resolve({ ok: true, json: () => Promise.resolve({}) }),
     ) as jest.Mock;
 
     useBoards.setState({ currentBoard: mockBoard });

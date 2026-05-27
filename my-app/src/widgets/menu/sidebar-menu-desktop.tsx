@@ -1,9 +1,9 @@
 import useBoards from "../../app/store/boards";
-import BorderAll from "../../shared/icons/Notebook";
+import BorderAll from "../../shared/icons/notebook";
 import clsx from "clsx";
 import MenuLink from "./menu-link";
-import MainPageIcon from "../../shared/icons/MainPageIcon";
-import MobileMenuIcon from "../../shared/icons/MobileMenuIcon";
+import MainPageIcon from "../../shared/icons/main-page-icon";
+import MobileMenuIcon from "../../shared/icons/mobile-menu-icon";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 

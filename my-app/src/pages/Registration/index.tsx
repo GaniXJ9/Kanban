@@ -1,4 +1,4 @@
-import DesksIcon from "../../shared/icons/DesksIcon";
+import DesksIcon from "../../shared/icons/desks-icon";
 import RegistrationForm from "../../widgets/registration/registration-form";
 
 const Registration = () => {

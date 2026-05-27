@@ -1,0 +1,57 @@
+import type { ColumnEntity } from "../../../../features/types/columns/column-entity";
+import useBoards from "../../../../app/store/boards";
+import useTasks from "../../../../app/store/tasks";
+import BarsOutlined from "../../../../shared/icons/bars-outlined";
+import DeleteTaskIcon from "../../../../shared/icons/delete-task-icon";
+import useColumns from "../../../../app/store/columns";
+import SecondaryButton from "../../../../shared/ui/buttons/secondary-button";
+import DangerButton from "../../../../shared/ui/buttons/danger-button";
+import type { Id } from "../../../../shared/type/common";
+
+const TaskControls = ({
+  column,
+  taskId,
+}: {
+  column: ColumnEntity;
+  taskId: Id;
+}) => {
+  const { currentBoard } = useBoards();
+  const { setCurrentColumn } = useColumns();
+  const { setCurrentTask, deleteTask } = useTasks();
+
+  const handleDeleteTask = () => {
+    if (currentBoard) {
+      deleteTask(taskId, column, currentBoard);
+      setCurrentTask(null);
+    }
+  };
+
+  const showModal = () => {
+    const task = column.tasks.find((task) => task.id === taskId);
+    if (task) {
+      setCurrentTask(task);
+      setCurrentColumn(column);
+    } else {
+      console.log("Task Not Found");
+    }
+  };
+  return (
+    <div className="flex gap-1 z-0  transition-all duration-200  ">
+      <SecondaryButton
+        onClick={showModal}
+        padding="px-1"
+        size="size-6"
+        rounded="md"
+        Icon={BarsOutlined}
+      />
+      <DangerButton
+        onClick={handleDeleteTask}
+        Icon={DeleteTaskIcon}
+        size="size-6"
+        rounded="md"
+      />
+    </div>
+  );
+};
+
+export default TaskControls;

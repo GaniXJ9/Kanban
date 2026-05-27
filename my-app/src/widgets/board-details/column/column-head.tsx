@@ -1,0 +1,52 @@
+import { useState } from "react";
+import DeleteIcon from "../../../shared/icons/delete-icon";
+import UpdateInput from "../../../shared/ui/inputs/update-input";
+import type { ColumnEntity } from "../../../features/types/columns/column-entity";
+import useBoards from "../../../app/store/boards";
+import useColumns from "../../../app/store/columns";
+import useTasks from "../../../app/store/tasks";
+import SecondaryButton from "../../../shared/ui/buttons/secondary-button";
+import clsx from "clsx";
+
+const ColumnHead = ({ column }: { column: ColumnEntity }) => {
+  const [value, setValue] = useState<string>(column.name);
+  const { currentBoard } = useBoards();
+  const { deleteColumn, updateColumn } = useColumns();
+  const { setCurrentTask } = useTasks();
+
+  const handleUpdate = () => {
+    if (currentBoard) {
+      updateColumn(currentBoard, column, value);
+    }
+  };
+
+  const handleDelete = () => {
+    if (currentBoard) {
+      deleteColumn(column.id, currentBoard);
+      setCurrentTask(null);
+    }
+  };
+
+  return (
+    <div
+      className={clsx(
+        "flex justify-between items-center gap-1 border-b border-slate-500 dark:border-[#3f3e3e] pb-0.5",
+      )}
+    >
+      <UpdateInput
+        handleUpdate={handleUpdate}
+        setValue={setValue}
+        defFalue={value}
+      />
+
+      <SecondaryButton
+        onClick={handleDelete}
+        padding="p-2"
+        rounded="md"
+        Icon={DeleteIcon}
+      />
+    </div>
+  );
+};
+
+export default ColumnHead;
