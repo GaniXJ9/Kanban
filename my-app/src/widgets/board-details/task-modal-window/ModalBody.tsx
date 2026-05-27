@@ -1,4 +1,4 @@
-import Comments from "./Comments/Comments";
+import Comments from "./comments/Comments";
 import TaskDescription from "./TaskDescription";
 
 const ModalBody = () => {

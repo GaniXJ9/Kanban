@@ -2,7 +2,7 @@ import AddTaskBlock from "../AddTaskBlock";
 import { useSortable } from "@dnd-kit/sortable";
 import ColumnHead from "./ColumnHead";
 import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
-import TaskList from "./Tasks/TaskList";
+import TaskList from "./tasks/TaskList";
 import clsx from "clsx";
 
 const Column = ({ column }: { column: ColumnEntity }) => {

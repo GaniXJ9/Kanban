@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
-import Header from "./widgets/Header/index.tsx";
+import Header from "./widgets/header/index.tsx";
 import AppBody from "./widgets/AppBody.tsx";
-import EntityPanel from "./widgets/EntityPanel/EntityPanel.tsx";
+import EntityPanel from "./widgets/entity-panel/EntityPanel.tsx";
 import useBoards from "./app/store/boards/index.ts";
 import { useEffect } from "react";
 import useStore from "./app/store/index.ts";

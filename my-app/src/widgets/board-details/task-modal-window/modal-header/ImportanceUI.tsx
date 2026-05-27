@@ -3,7 +3,7 @@ import useTasks from "../../../../app/store/tasks";
 import useColumns from "../../../../app/store/columns";
 import useBoards from "../../../../app/store/boards";
 import { importanceColor } from "../../../../shared/actions/importanceColor";
-import Loader from "../../../Loader";
+import Loader from "../../../loader";
 import clsx from "clsx";
 
 const importaceVariant = [

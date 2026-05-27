@@ -12,16 +12,16 @@ import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 import { createPortal } from "react-dom";
-import AddColumn from "../../../widgets/BorderDetail/Column/AddColumn";
-import TaskCard from "../../../widgets/BorderDetail/Column/Tasks/TaskCard";
+import AddColumn from "../../../widgets/board-details/column/AddColumn";
+import TaskCard from "../../../widgets/board-details/column/tasks/TaskCard";
 import useColumns from "../../../app/store/columns";
 import type { ColumnEntity } from "../../../features/types/columns/ColumnEntity";
 import useBoards from "../../../app/store/boards";
 import type { TaskEntity } from "../../../features/types/tasks/TaskEntity";
 import useTasks from "../../../app/store/tasks";
-import TaskModal from "../../../widgets/BorderDetail/TaskModalWindow/TaskModal";
-import Column from "../../../widgets/BorderDetail/Column/Column";
-import Loader from "../../../widgets/Loader";
+import TaskModal from "../../../widgets/board-details/task-modal-window/TaskModal";
+import Column from "../../../widgets/board-details/column/Column";
+import Loader from "../../../widgets/loader";
 
 const BoardDetail = () => {
   const [activeColumn, setActiveColumn] = useState<ColumnEntity | null>(null);

@@ -1,4 +1,4 @@
-import BoardForm from "./BoardForm/BoardForm";
+import BoardForm from "./board-form/BoardForm";
 
 const CreateBoard = () => {
   return (

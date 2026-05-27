@@ -3,7 +3,7 @@ import BoardCard from "./BoardCard";
 import useBoards from "../../app/store/boards";
 import type { BoardEntity } from "../../features/types/boards/BoardEntity";
 import useUsers from "../../app/store/users";
-import Loader from "../Loader";
+import Loader from "../loader";
 import "react-loading-skeleton/dist/skeleton.css";
 import Notebook from "../../shared/icons/List";
 

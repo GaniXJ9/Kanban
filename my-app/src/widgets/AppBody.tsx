@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import AppRouter from "../app/router/AppRouter";
 import { useEffect } from "react";
-import SideBarMenuDesktop from "./Menu/SideBarMenuDesktop";
+import SideBarMenuDesktop from "./menu/SideBarMenuDesktop";
 import useBoards from "../app/store/boards";
 import clsx from "clsx";
 

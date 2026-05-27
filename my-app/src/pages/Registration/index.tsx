@@ -1,5 +1,5 @@
 import DesksIcon from "../../shared/icons/DesksIcon";
-import RegistrationForm from "../../widgets/Registration/RegistrationForm";
+import RegistrationForm from "../../widgets/registration/RegistrationForm";
 
 const Registration = () => {
   return (
