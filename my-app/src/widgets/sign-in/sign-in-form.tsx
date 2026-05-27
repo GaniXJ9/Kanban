@@ -23,7 +23,7 @@ const SignInForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col items-center w-full gap-8 "
+      className="flex flex-col items-center w-full gap-8 rounded-md"
     >
       <p
         className={`text-md transition-all font-medium duration-200 text-rose-600 ${

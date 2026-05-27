@@ -1,9 +1,9 @@
-import { useLocation } from "react-router-dom";
-import AppRouter from "../app/router/AppRouter";
-import { useEffect } from "react";
-import SideBarMenuDesktop from "./menu/SideBarMenuDesktop";
+import AppRouter from "../app/router/app-router";
+import SideBarMenuDesktop from "./menu/sidebar-menu-desktop";
 import useBoards from "../app/store/boards";
 import clsx from "clsx";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const AppBody = () => {
   const location = useLocation();
@@ -30,7 +30,7 @@ const AppBody = () => {
         "relative flex bg-cover bg-center bg-[#eaf0f5] dark:bg-[rgba(29,33,37)] min-h-screen overflow-y-auto",
         (location.pathname === "/sign-in" ||
           location.pathname === "/registration") &&
-          "lg:px-0  py-0"
+          "lg:px-0  py-0",
       )}
     >
       {!currentBoard && !isAuthPage && <SideBarMenuDesktop />}
@@ -39,7 +39,7 @@ const AppBody = () => {
         className={clsx(
           "w-full ",
           location.pathname === "/" && "px-0 py-0",
-          isAuthPage ? "p-0" : "p-12"
+          isAuthPage ? "p-0" : "p-12",
         )}
       >
         <AppRouter />

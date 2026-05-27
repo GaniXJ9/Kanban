@@ -234,5 +234,6 @@
       "background": "https://avatars.mds.yandex.net/i?id=557ea8789a278f192ff1c3ddcc00f5b3_l-5169643-images-thumbs&n=13",
       "name": "s"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

@@ -27,6 +27,7 @@
     "src",
     "src/shared/icons/DragableItemIcon.tsx",
     "src/shared/icons/Sad/.tsx",
-    "src/widgets/header/create-board/board-form/FormField.tsx"
+    "src/widgets/header/create-board/board-form/FormField.tsx",
+    "src/widgets/.tsx"
   ]
 }
