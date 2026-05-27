@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import HeroSection from "../../widgets/MainPage/Hero/HeroSection";
-import FeaturesSection from "../../widgets/main-page/Features/FeaturesSection";
-import AboutSection from "../../widgets/main-page/About/AboutSection";
-import HeroSectionAnimated from "../../widgets/main-page/HeroSectionAnimated/HeroSectionAnimated";
+import FeaturesSection from "../../widgets/main-page/feature-section";
+import AboutSection from "../../widgets/main-page/about-section";
+import HeroSection from "../../widgets/main-page/hero-section";
+// import HeroSectionAnimated from "../../widgets/main-page/HeroSectionAnimated/HeroSectionAnimated";
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -18,8 +18,8 @@ const MainPage = () => {
 
   return (
     <>
-      <HeroSectionAnimated />
-      {/* <HeroSection /> */}
+      {/* <HeroSectionAnimated /> */}
+      <HeroSection />
       <FeaturesSection />
       <AboutSection />
     </>

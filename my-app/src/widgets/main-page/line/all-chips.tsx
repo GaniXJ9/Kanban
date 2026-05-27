@@ -1,4 +1,4 @@
-import ChipsContainer from "./ChipsContainer";
+import ChipsContainer from "./chips-container";
 
 const AllChips = () => {
   return (

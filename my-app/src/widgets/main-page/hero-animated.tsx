@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import ManageIcon from "../../../shared/icons/ManageIcon";
+import ManageIcon from "../../shared/icons/manage-icon";
 import gsap from "gsap";
-import TextDisappear from "../../../shared/animation/TextDisappear";
+import TextDisappear from "../../shared/animation/TextDisappear";
 
-const HeroSectionAnimated = () => {
+const HeroAnimated = () => {
   useEffect(() => {
     const kanbanIcontl = gsap.timeline({
       scrollTrigger: {
@@ -77,4 +77,4 @@ const HeroSectionAnimated = () => {
   );
 };
 
-export default HeroSectionAnimated;
+export default HeroAnimated;

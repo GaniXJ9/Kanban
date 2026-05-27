@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import Chip from "./Chip";
+import Chip from "../../../shared/ui/chips/chip";
 
 const ChipsContainer = ({
   count,

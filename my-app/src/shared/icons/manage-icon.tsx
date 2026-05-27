@@ -1,11 +1,11 @@
 import type { SVGProps } from "react";
 
-export default function ManageMobileIcon(props: SVGProps<SVGSVGElement>) {
+const ManageIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="60"
-      height="60"
+      width="100"
+      height="100"
       viewBox="0 0 16 16"
       {...props}
     >
@@ -16,3 +16,5 @@ export default function ManageMobileIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export default ManageIcon

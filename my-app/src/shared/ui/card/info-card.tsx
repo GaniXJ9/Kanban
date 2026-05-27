@@ -1,4 +1,9 @@
 import clsx from "clsx";
+import type { Info } from "../../type/main-page";
+
+interface InfoCardProps {
+  info: Info;
+}
 
 const glowClasses: Record<string, string> = {
   red: "from-red-300/0 via-red-400 via-70% to-red-300/0",
@@ -7,15 +12,7 @@ const glowClasses: Record<string, string> = {
   blue: "from-blue-300/0 via-blue-600 via-70% to-blue-300/0",
 };
 
-interface Info {
-  id: number;
-  glowColor: string;
-  title: string;
-  subtitle: string;
-  info: string;
-}
-
-const InfoCard = ({ info }: { info: Info }) => {
+const InfoCard = ({ info }: InfoCardProps) => {
   return (
     <div
       key={info.id}
@@ -25,7 +22,7 @@ const InfoCard = ({ info }: { info: Info }) => {
         className={clsx(
           "bg-gradient-to-r",
           glowClasses[info.glowColor],
-          "absolute -top-0.5 right-[50%] lg:right-[5%] transform bg-transparent w-1/2 h-[2px]"
+          "absolute -top-0.5 right-[50%] lg:right-[5%] transform bg-transparent w-1/2 h-[2px]",
         )}
       ></span>
 
